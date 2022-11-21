@@ -8,9 +8,6 @@ package-lock.json
 /.pnp
 .pnp.js
 
-# annotto-front
-annotto-front*
-
 # Logs
 npm-debug.log*
 yarn-debug.log*
