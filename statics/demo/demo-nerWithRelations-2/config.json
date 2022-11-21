@@ -1,0 +1,127 @@
+{
+  "tasks": [
+    {
+      "category": "Grid entities",
+      "type": "ner",
+      "_id": "603aa1b1756b27001c6923c3",
+      "exposed": true,
+      "annotationPourcent": 99,
+      "annotationCount": 515,
+      "project": "603aa1b1756b27001c6923c2",
+      "description": "",
+      "color": "#73d13d",
+      "value": "Poste",
+      "label": "Poste",
+      "updatedAt": "2021-02-27T19:46:57.454Z",
+      "createdAt": "2021-02-27T19:46:57.454Z",
+      "__v": 0,
+      "hotkey": "p",
+      "max": null,
+      "min": null,
+      "done": true
+    },
+    {
+      "category": "Grid entities",
+      "type": "ner",
+      "_id": "603aa1b1756b27001c6923c4",
+      "parents": [],
+      "exposed": true,
+      "annotationPourcent": 1,
+      "annotationCount": 5,
+      "project": "603aa1b1756b27001c6923c2",
+      "color": "#597ef7",
+      "value": "Transfo",
+      "label": "Transfo",
+      "updatedAt": "2021-02-27T19:46:57.454Z",
+      "createdAt": "2021-02-27T19:46:57.454Z",
+      "__v": 0,
+      "description": null,
+      "hotkey": "",
+      "max": null,
+      "min": null,
+      "done": true
+    },
+    {
+      "_id": "603aa1b1756b27001c6923c5",
+      "exposed": true,
+      "type": "ner",
+      "annotationPourcent": 75,
+      "annotationCount": 389,
+      "project": "603aa1b1756b27001c6923c2",
+      "color": "#ff4d4f",
+      "value": "Tension",
+      "label": "Tension",
+      "category": "Grid entities",
+      "updatedAt": "2021-02-27T19:46:57.455Z",
+      "createdAt": "2021-02-27T19:46:57.455Z",
+      "__v": 0,
+      "description": null,
+      "hotkey": "u",
+      "max": null,
+      "min": null,
+      "done": true
+    },
+    {
+      "_id": "6045f149756b27001c692a40",
+      "exposed": true,
+      "type": "ner",
+      "annotationPourcent": 5,
+      "annotationCount": 26,
+      "project": "603aa1b1756b27001c6923c2",
+      "color": "#40a9ff",
+      "label": "LIT",
+      "description": "LIT sous forme d' IDR",
+      "hotkey": "n",
+      "value": "LIT",
+      "category": "Grid entities",
+      "min": null,
+      "max": null,
+      "updatedAt": "2021-03-08T09:41:29.186Z",
+      "createdAt": "2021-03-08T09:41:29.186Z",
+      "__v": 0,
+      "done": true
+    }
+  ],
+  "name": "Annotations Trucs/MACHINS/Bidules",
+  "client": "ljn",
+  "type": "text",
+  "guidelines": "no guideline",
+  "highlights": [],
+  "description": "Annotations de trucs, machins et bidules",
+  "admins": [
+    "admin@test.com"
+  ],
+  "users": [],
+  "defaultTags": [
+    "To delete",
+    "To check",
+    "To discuss"
+  ],
+  "showPredictions": false,
+  "prefillPredictions": true,
+  "filterPredictionsMinimum": 0.4,
+  "deadline": "2023-03-19T19:37:55.097Z",
+  "entitiesRelationsGroup": [
+    {
+      "name": "Grid relations",
+      "values": [
+        {
+          "exposed": true,
+          "_id": "6076e45d0c81f6001c50e1e8",
+          "label": "is_tension_of",
+          "value": "is_tension_of",
+          "color": "#ff7a45",
+          "hotkey": "t"
+        },
+        {
+          "exposed": true,
+          "_id": "6076e45d0c81f6001c50e1e9",
+          "label": "is_line_extremity",
+          "value": "is_line_extremity",
+          "color": "#fa8c16",
+          "hotkey": "l"
+        }
+      ]
+    }
+  ]
+}

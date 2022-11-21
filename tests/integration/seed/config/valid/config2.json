@@ -1,0 +1,21 @@
+{
+  "name": "Project X",
+  "type": "image",
+  "client": "test",
+  "tasks": [
+    {
+      "category": "Category level1",
+      "type": "zone",
+      "value": "ZONE1",
+      "hotkey": "D",
+      "label": "ZONE1"
+    },
+    {
+      "category": "Category level2",
+      "type": "zone",
+      "value": "ZONE2",
+      "hotkey": "E",
+      "label": "ZONE2"
+    }
+  ]
+}

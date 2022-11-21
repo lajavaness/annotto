@@ -1,0 +1,21 @@
+{
+  "name": "Project X",
+  "type": "text",
+  "client": "test",
+  "tasks": [
+    {
+      "category": "Category myClassif1",
+      "type": "classification",
+      "value": "myClassif1",
+      "hotkey": "D",
+      "label": "myClassif1"
+    },
+    {
+      "category": "Category myClassif2",
+      "type": "classification",
+      "value": "myClassif2",
+      "hotkey": "E",
+      "label": "myClassif2"
+    }
+  ]
+}

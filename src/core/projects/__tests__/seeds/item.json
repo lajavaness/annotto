@@ -1,0 +1,456 @@
+{
+	"_id" : "605d96a6828b41001ce5176a",
+	"type" : "text",
+	"status" : "todo",
+	"annotated" : true,
+	"annotatedBy" : [
+		"thomas@lajavaness.com"
+	],
+	"annotationValues" : [
+		"c_n_1",
+		"c_base",
+		"c_n_1",
+		"c_n_1",
+		"ent_c_n_1",
+		"ent_c_n_1",
+		"ent_c_base",
+		"ent_c_n_1",
+		"ent_c_n_1",
+		"ent_voltage",
+		"ent_voltage",
+		"ent_substation",
+		"ent_substation",
+		"ent_substation",
+		"ent_substation",
+		"ent_transmission_line",
+		"ent_substation",
+		"ent_substation",
+		"ent_substation",
+		"ent_substation",
+		"ent_substation"
+	],
+	"entitiesRelations" : [
+		{
+			"src" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 375,
+					"end" : 380
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 381,
+					"end" : 393
+				}
+			},
+			"value" : "is_line_extremity"
+		},
+		{
+			"src" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 504,
+					"end" : 509
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 510,
+					"end" : 519
+				}
+			},
+			"value" : "is_line_extremity"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_n_1",
+				"ner" : {
+					"start" : 753,
+					"end" : 767
+				}
+			},
+			"dest" : {
+				"value" : "ent_transmission_line",
+				"ner" : {
+					"start" : 800,
+					"end" : 813
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 627,
+					"end" : 632
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 633,
+					"end" : 645
+				}
+			},
+			"value" : "is_line_extremity"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_n_1",
+				"ner" : {
+					"start" : 654,
+					"end" : 668
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 627,
+					"end" : 632
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_n_1",
+				"ner" : {
+					"start" : 654,
+					"end" : 668
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 633,
+					"end" : 645
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_n_1",
+				"ner" : {
+					"start" : 317,
+					"end" : 331
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 375,
+					"end" : 380
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_n_1",
+				"ner" : {
+					"start" : 317,
+					"end" : 331
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 381,
+					"end" : 393
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_base",
+				"ner" : {
+					"start" : 527,
+					"end" : 537
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 510,
+					"end" : 519
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_c_base",
+				"ner" : {
+					"start" : 527,
+					"end" : 537
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 504,
+					"end" : 509
+				}
+			},
+			"value" : "is_constraint_of"
+		},
+		{
+			"src" : {
+				"value" : "ent_voltage",
+				"ner" : {
+					"start" : 190,
+					"end" : 196
+				}
+			},
+			"dest" : {
+				"value" : "ent_substation",
+				"ner" : {
+					"start" : 177,
+					"end" : 189
+				}
+			},
+			"value" : "is_tension_of"
+		}
+	],
+	"highlights" : [ ],
+	"tags" : [ ],
+	"annotatedAt" : "2021-03-26T13:19:17.296Z",
+	"velocity" : 44,
+	"annotationTimes" : [
+		44,
+		73,
+		38
+	],
+	"lastAnnotator" : {
+		"_id" : "5fbe60caf43068001bc97e49",
+		"email" : "thomas@lajavaness.com",
+		"firstName" : "Thomas",
+		"lastName" : "Kuoch",
+		"profile" : {
+			"_id" : "5fd3738550bf5e001be7d9d9",
+			"role" : "admin",
+			"user" : "5fbe60caf43068001bc97e49",
+			"email" : "thomas@lajavaness.com",
+			"createdAt" : "2020-12-11T13:26:29.826Z",
+			"updatedAt" : "2020-12-11T13:26:29.826Z",
+			"__v" : 0
+		}
+	},
+	"commentCount" : 0,
+	"logCount" : 6,
+	"sourceHighlights" : [ ],
+	"raw" : {
+		"data" : {
+			"text" : "xxtitledoc Note d’étude de la zone ZEBRA xxparenttitlesection 7 Stratégies étudiées de manière approfondie xxparenttitlesection 7.2 Stratégie adaptation de la topologie : 3 N à Saint-Vulbas 400 kV xxtitlesection 7.2.2 Contrainte N-1 / Comparaison avec la stratégie Self série xxparagraph On constate que le risque de contrainte N-1 est beaucoup plus important sur les lignes Creys-Saint-Vulbas (sur la perte de la ligne réciproque) lorsque le schéma à 3N à Saint-Vulbas est retenu (lorsqu’une des lignes Creys-St Vulbas est en contrainte) que pour une optimisation du schéma à Grande-Ile au pas horaire avec self série sur les Creys Saint-Vulbas (40% de contrainte N-1 contre 5%). Ceci augmente aussi le risque sur le réseau 400kV voisin : le risque de contrainte N-1 est de 9% par an sur la liaison CREYSL72GEN.P contre 3% lorsque le schéma est optimisé à chaque pas de temps."
+		},
+		"datatype" : "text",
+		"uuid" : "Etudes/EdZ/Etude de zone ZEBRA/0 - Docs/Note d etude ZEBRA.docx_7.2.2_1_e92055f5-bcdb-4d7a-b16e-da80e9923b1b"
+	},
+	"project" : "605d96a2828b41001ce4fe2c",
+	"uuid" : "Etudes/EdZ/Etude de zone ZEBRA/0 - Docs/Note d etude ZEBRA.docx_7.2.2_1_e92055f5-bcdb-4d7a-b16e-da80e9923b1b",
+	"compositeUuid" : "605d96a2828b41001ce4fe2c_Etudes/EdZ/Etude de zone ZEBRA/0 - Docs/Note d etude ZEBRA.docx_7.2.2_1_e92055f5-bcdb-4d7a-b16e-da80e9923b1b",
+	"data" : {
+		"text" : "xxtitledoc Note d’étude de la zone ZEBRA xxparenttitlesection 7 Stratégies étudiées de manière approfondie xxparenttitlesection 7.2 Stratégie adaptation de la topologie : 3 N à Saint-Vulbas 400 kV xxtitlesection 7.2.2 Contrainte N-1 / Comparaison avec la stratégie Self série xxparagraph On constate que le risque de contrainte N-1 est beaucoup plus important sur les lignes Creys-Saint-Vulbas (sur la perte de la ligne réciproque) lorsque le schéma à 3N à Saint-Vulbas est retenu (lorsqu’une des lignes Creys-St Vulbas est en contrainte) que pour une optimisation du schéma à Grande-Ile au pas horaire avec self série sur les Creys Saint-Vulbas (40% de contrainte N-1 contre 5%). Ceci augmente aussi le risque sur le réseau 400kV voisin : le risque de contrainte N-1 est de 9% par an sur la liaison CREYSL72GEN.P contre 3% lorsque le schéma est optimisé à chaque pas de temps."
+	},
+	"body" : "xxtitledoc Note d’étude de la zone ZEBRA xxparenttitlesection 7 Stratégies étudiées de manière approfondie xxparenttitlesection 7.2 Stratégie adaptation de la topologie : 3 N à Saint-Vulbas 400 kV xxtitlesection 7.2.2 Contrainte N-1 / Comparaison avec la stratégie Self série xxparagraph On constate que le risque de contrainte N-1 est beaucoup plus important sur les lignes Creys-Saint-Vulbas (sur la perte de la ligne réciproque) lorsque le schéma à 3N à Saint-Vulbas est retenu (lorsqu’une des lignes Creys-St Vulbas est en contrainte) que pour une optimisation du schéma à Grande-Ile au pas horaire avec self série sur les Creys Saint-Vulbas (40% de contrainte N-1 contre 5%). Ceci augmente aussi le risque sur le réseau 400kV voisin : le risque de contrainte N-1 est de 9% par an sur la liaison CREYSL72GEN.P contre 3% lorsque le schéma est optimisé à chaque pas de temps.",
+	"updatedAt" : "2021-04-06T20:54:09.145Z",
+	"createdAt" : "2021-03-26T08:09:10.901Z",
+	"__v" : 3,
+	"predictions" : {
+		"raw" : {
+			"constraint_type_in_paragraph" : {
+				"labels" : [
+					{
+						"value" : "c_n_1",
+						"proba" : 0.99
+					},
+					{
+						"value" : "c_base",
+						"proba" : 0.99
+					},
+					{
+						"value" : "c_n_1",
+						"proba" : 0.99
+					},
+					{
+						"value" : "c_n_1",
+						"proba" : 0.99
+					}
+				]
+			},
+			"constraints_entities" : {
+				"entities" : [
+					{
+						"value" : "ent_c_n_1",
+						"start" : 218,
+						"end" : 232
+					},
+					{
+						"value" : "ent_c_n_1",
+						"start" : 317,
+						"end" : 331
+					},
+					{
+						"value" : "ent_c_base",
+						"start" : 527,
+						"end" : 537
+					},
+					{
+						"value" : "ent_c_n_1",
+						"start" : 654,
+						"end" : 668
+					},
+					{
+						"value" : "ent_c_n_1",
+						"start" : 753,
+						"end" : 767
+					}
+				]
+			},
+			"grid_entities" : {
+				"entities" : [
+					{
+						"value" : "ent_voltage",
+						"start" : 190,
+						"end" : 196
+					},
+					{
+						"value" : "ent_voltage",
+						"start" : 725,
+						"end" : 730
+					},
+					{
+						"value" : "ent_substation",
+						"start" : 375,
+						"end" : 380
+					},
+					{
+						"value" : "ent_substation",
+						"start" : 457,
+						"end" : 473
+					},
+					{
+						"value" : "ent_substation",
+						"start" : 504,
+						"end" : 509
+					},
+					{
+						"value" : "ent_substation",
+						"start" : 510,
+						"end" : 523
+					},
+					{
+						"value" : "ent_substation",
+						"start" : 577,
+						"end" : 587
+					},
+					{
+						"value" : "ent_substation",
+						"start" : 627,
+						"end" : 632
+					},
+					{
+						"value" : "ent_transmission_line",
+						"start" : 800,
+						"end" : 813
+					}
+				]
+			}
+		},
+		"keys" : [
+			{
+				"value" : "c_n_1",
+				"proba" : 0.99
+			},
+			{
+				"value" : "c_base",
+				"proba" : 0.99
+			},
+			{
+				"value" : "c_n_1",
+				"proba" : 0.99
+			},
+			{
+				"value" : "c_n_1",
+				"proba" : 0.99
+			},
+			{
+				"value" : "ent_c_n_1",
+				"start" : 218,
+				"end" : 232
+			},
+			{
+				"value" : "ent_c_n_1",
+				"start" : 317,
+				"end" : 331
+			},
+			{
+				"value" : "ent_c_base",
+				"start" : 527,
+				"end" : 537
+			},
+			{
+				"value" : "ent_c_n_1",
+				"start" : 654,
+				"end" : 668
+			},
+			{
+				"value" : "ent_c_n_1",
+				"start" : 753,
+				"end" : 767
+			},
+			{
+				"value" : "ent_voltage",
+				"start" : 190,
+				"end" : 196
+			},
+			{
+				"value" : "ent_voltage",
+				"start" : 725,
+				"end" : 730
+			},
+			{
+				"value" : "ent_substation",
+				"start" : 375,
+				"end" : 380
+			},
+			{
+				"value" : "ent_substation",
+				"start" : 457,
+				"end" : 473
+			},
+			{
+				"value" : "ent_substation",
+				"start" : 504,
+				"end" : 509
+			},
+			{
+				"value" : "ent_substation",
+				"start" : 510,
+				"end" : 523
+			},
+			{
+				"value" : "ent_substation",
+				"start" : 577,
+				"end" : 587
+			},
+			{
+				"value" : "ent_substation",
+				"start" : 627,
+				"end" : 632
+			},
+			{
+				"value" : "ent_transmission_line",
+				"start" : 800,
+				"end" : 813
+			}
+		]
+	},
+	"seenAt" : "2021-04-06T20:54:09.143Z"
+}

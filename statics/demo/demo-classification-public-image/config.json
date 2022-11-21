@@ -1,0 +1,109 @@
+{
+  "name": "DEMO: Classification public image",
+  "description": "Project image",
+  "type": "image",
+  "client": "LJN",
+  "deadline": "2025-08-30T13:57:20.355Z",
+  "users": [
+    "user-42@lajavaness.com"
+  ],
+  "dataScientists": [
+    "datascientist-42@lajavaness.com"
+  ],
+  "admins": [
+    "admin-42@lajavaness.com"
+  ],
+  "tasks": [
+    {
+      "category": "type",
+      "label": "PNI",
+      "value": "pni",
+      "hotkey": "1",
+      "type": "classifications"
+    },
+    {
+      "category": "type",
+      "label": "Passporte",
+      "value": "passeport",
+      "hotkey": "c",
+      "type": "classifications"
+    },
+    {
+      "category": "type",
+      "label": "Kbis",
+      "value": "kbis",
+      "hotkey": "3",
+      "type": "classifications"
+    },
+    {
+      "category": "type",
+      "label": "Justif",
+      "value": "justif",
+      "hotkey": "4",
+      "type": "classifications"
+    },
+    {
+      "category": "type",
+      "label": "Avis Imp\u00f4t",
+      "value": "avis",
+      "hotkey": "5",
+      "type": "classifications"
+    },
+    {
+      "category": "type",
+      "label": "Livret Familial",
+      "value": "livret",
+      "hotkey": "6",
+      "type": "classifications"
+    },
+    {
+      "category": "type",
+      "label": "Autre",
+      "value": "autre",
+      "hotkey": "7",
+      "type": "classifications"
+    },
+    {
+      "category": "lisible",
+      "label": "Oui",
+      "value": "L",
+      "hotkey": "l",
+      "type": "classifications"
+    },
+    {
+      "category": "lisible",
+      "label": "Non",
+      "value": "N",
+      "hotkey": "n",
+      "type": "classifications"
+    },
+    {
+      "category": "lisible",
+      "label": "Autre ladrad",
+      "value": "_",
+      "hotkey": "_",
+      "type": "classifications"
+    },
+    {
+      "category": "sexe",
+      "label": "Homme",
+      "value": "H",
+      "hotkey": "h",
+      "type": "classifications"
+    },
+    {
+      "category": "sexe",
+      "label": "Femme",
+      "value": "F",
+      "hotkey": "f",
+      "type": "classifications"
+    },
+    {
+      "category": "sexe",
+      "label": "Autre genre",
+      "value": "-",
+      "hotkey": "-",
+      "type": "classifications"
+    }
+  ]
+}

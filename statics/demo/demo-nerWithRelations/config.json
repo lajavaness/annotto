@@ -1,0 +1,100 @@
+{
+  "name": "DEMO: NER with relations",
+  "description": "Projet de demo",
+  "type": "text",
+  "client": "LJN",
+  "entitiesRelationsGroup": [
+    {
+      "name": "relationsGroup1",
+      "min": 2,
+      "max": 2,
+      "values": [
+        {
+          "value": "is_from",
+          "label": "is_from"
+        },
+        {
+          "value": "belongs_to",
+          "label": "belongs_to"
+        }
+      ]
+    },
+    {
+      "name": "relationsGroup2",
+      "values": [
+        {
+          "value": "is_unit",
+          "label": "is_unit"
+        }
+      ]
+    }
+  ],
+  "deadline": "2023-11-30T13:57:20.355Z",
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "tasks": [
+    {
+      "category": "Entities",
+      "type": "ner",
+      "value": "name",
+      "label": "Name",
+      "hotkey": "n"
+    },
+    {
+      "category": "Entities",
+      "type": "ner",
+      "value": "skill",
+      "label": "Skill",
+      "hotkey": "c"
+    },
+    {
+      "category": "Entities",
+      "type": "ner",
+      "value": "formation",
+      "label": "Formation",
+      "hotkey": "f"
+    },
+    {
+      "category": "Entities",
+      "type": "ner",
+      "value": "Exp",
+      "label": "Experience",
+      "hotkey": "e"
+    },
+    {
+      "category": "My Classification",
+      "type": "ner",
+      "hotkey": "i",
+      "label": "Tag 1",
+      "value": "ignore"
+    },
+    {
+      "category": "My Classification",
+      "type": "ner",
+      "hotkey": "a",
+      "label": "Tag 2",
+      "value": "not-sure"
+    },
+    {
+      "category": "My Classification",
+      "type": "ner",
+      "hotkey": "w",
+      "label": "Tag 3",
+      "value": "weird"
+    },
+    {
+      "category": "My Classification",
+      "type": "ner",
+      "label": "Tag 4",
+      "value": "no-box",
+      "hotkey": "-"
+    }
+  ]
+}

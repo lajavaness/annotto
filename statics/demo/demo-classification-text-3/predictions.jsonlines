@@ -1,0 +1,3 @@
+{"uuid":"20200626_500k_19052700000006537_269991","annotations":{"Category": { "labels": [{ "value": "P01", "proba":0.9940561436 }] }}}
+{"uuid":"20200626_500k_19080700000000905_394648","annotations":{"Category": { "labels": [{ "value": "P02", "proba":0.9940561436 }] }}}
+{"uuid":"20200626_500k_19050300000023992_174390","annotations":{"Category": { "labels": [{ "value": "P03", "proba":0.9940561436 }] }}}

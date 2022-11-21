@@ -1,0 +1,62 @@
+version: '3.8'
+
+volumes:
+  postgres_data:
+
+services:
+  postgres:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: [ "CMD", "psql", "-U", "postgres", "-c", "SELECT 1;" ]
+      interval: 1m
+      timeout: 10s
+      retries: 5
+
+  keycloak:
+    image: jboss/keycloak:15.0.1
+    command:
+      - "-Dkeycloak.migration.action=import"
+      - "-Dkeycloak.migration.provider=dir"
+      - "-Dkeycloak.migration.dir=/tmp/keycloak-import"
+      - "-Dkeycloak.migration.strategy=IGNORE_EXISTING"
+      - "-Dkeycloak.migration.usersExportStrategy=SAME_FILE"
+      - "-Dkeycloak.migration.realmName=annotto"
+      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_LOGLEVEL: DEBUG
+    volumes:
+      # To pre-configured keycloak with data
+      - ./statics/keycloak:/tmp/keycloak-import
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      - "8080:8080"
+#      - 443:8443
+
+  mongo:
+    image: "mongo:4.4"
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --host mongo:27017 --quiet) -eq 1
+      interval: 10s
+      start_period: 30s

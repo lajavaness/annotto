@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 be2d1fdb25e6f437bff01c57f853b6b02c328dc8 Manuel Dupont <manuel@lajavaness.com> 1668443284 +0100	branch: Created from HEAD
+be2d1fdb25e6f437bff01c57f853b6b02c328dc8 af0ba830f6a1b781999902e9c8d6a81512452299 Manuel Dupont <manuel@lajavaness.com> 1668443866 +0100	commit: fix: Set swagger url dynamically

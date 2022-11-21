@@ -1,0 +1,61 @@
+{
+  "name": "TEST 3",
+  "client": "LJN",
+  "type": "text",
+  "deadline": "2022-05-27T14:10:28.397Z",
+  "description": "test project ",
+  "defaultTags": [
+    "To delete",
+    "To check",
+    "To discuss"
+  ],
+  "classifications": [
+    {
+      "name": "a",
+      "type": "classifications",
+      "values": [
+        {
+          "category": "a",
+          "label": "aa",
+          "value": "aa",
+          "exposed": true,
+          "_id": "62976e3a1d26c87b2526db27"
+        },
+        {
+          "category": "a",
+          "label": "ab",
+          "value": "ab",
+          "exposed": true,
+          "_id": "62976e3a1d26c87b2526db28"
+        }
+      ]
+    },
+    {
+      "name": "b",
+      "min": 1,
+      "max": 2,
+      "conditions": [
+        "aa"
+      ],
+      "type": "classifications",
+      "values": [
+        {
+          "category": "b",
+          "label": "ba",
+          "value": "ba",
+          "exposed": true,
+          "_id": "62976e3a1d26c87b2526db29"
+        },
+        {
+          "category": "b",
+          "color": "#bae637",
+          "hotkey": "e",
+          "label": "bb",
+          "value": "bb",
+          "exposed": true,
+          "_id": "62976e3a1d26c87b2526db2a"
+        }
+      ]
+    }
+  ]
+}

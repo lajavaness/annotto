@@ -1,0 +1,1 @@
+{"uuid": "1831440", "annotations": {"Sentiment": {"labels":[{"value": "pos", "proba": 0.999}] } ,"Entities": {"entities": [{"value": "FOO", "start": 23, "end": 33 }] } } }

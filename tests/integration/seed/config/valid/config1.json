@@ -1,0 +1,33 @@
+{
+  "name": "demo ner 666",
+  "description": "Projet de demo",
+  "type": "text",
+  "client": "LJN",
+  "deadline": "2030-12-24T08:48:27.125Z",
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "filterPredictionsMinimum": 0.4,
+  "tasks": [
+    {
+      "type": "ner",
+      "category": "Entities",
+      "label": "Name1",
+      "value": "entity-name",
+      "hotkey": "n"
+    },
+    {
+      "type": "ner",
+      "category": "My Classification",
+      "label": "Name2",
+      "value": "classif-name",
+      "hotkey": "i"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+0000000000000000000000000000000000000000 dfaac350205d3614718162c0b11ca852ce27bb78 Manuel Dupont <manuel@lajavaness.com> 1657627119 +0200	branch: Created from HEAD
+dfaac350205d3614718162c0b11ca852ce27bb78 4e76873c6587bf2389e81a38cbd22ccfbacb0a1f Manuel Dupont <manuel@lajavaness.com> 1657627208 +0200	commit: refactor: Moving tests demos to test folder
+4e76873c6587bf2389e81a38cbd22ccfbacb0a1f 5ecfa4a764ddc6f028caf5feddfd391aebe30605 Manuel Dupont <manuel@lajavaness.com> 1657631601 +0200	commit: refactor: Adding new demos
+5ecfa4a764ddc6f028caf5feddfd391aebe30605 f0461e052ec7dd67b794c50db2f43dc20b01d33d Manuel Dupont <manuel@lajavaness.com> 1657631834 +0200	commit: chore: Rephrasing some values in the demos
+f0461e052ec7dd67b794c50db2f43dc20b01d33d 7365674b34a137d3932ff29fd49a0edc6deea39b Manuel Dupont <manuel@lajavaness.com> 1662549541 +0200	rebase (finish): refs/heads/feat/add-demos onto def1ff40cc74af8917601f379e0575cef27add89
+7365674b34a137d3932ff29fd49a0edc6deea39b 634e82bb51f1003b3504ff2250ae4319421415c4 Manuel Dupont <manuel@lajavaness.com> 1668433638 +0100	rebase (finish): refs/heads/feat/add-demos onto 82118616cd27404002ceb697505166e3c29061a8
+634e82bb51f1003b3504ff2250ae4319421415c4 30fe4220dc49b7555b8211bfac1719b28d8b0cf4 Manuel Dupont <manuel@lajavaness.com> 1668433675 +0100	rebase (finish): refs/heads/feat/add-demos onto 1fa1643fc9577d4037a5221684fb7c0648de5906
+30fe4220dc49b7555b8211bfac1719b28d8b0cf4 7ecc507ad80d68461e835b959e8e97dd2f263b09 Manuel Dupont <manuel@lajavaness.com> 1668433764 +0100	rebase (continue) (finish): refs/heads/feat/add-demos onto be2d1fdb25e6f437bff01c57f853b6b02c328dc8
+7ecc507ad80d68461e835b959e8e97dd2f263b09 dfa5ae23a883519d6d1dbead14c4566f0afc1377 Manuel Dupont <manuel@lajavaness.com> 1668435015 +0100	rebase (continue) (finish): refs/heads/feat/add-demos onto 1fa1643fc9577d4037a5221684fb7c0648de5906
+dfa5ae23a883519d6d1dbead14c4566f0afc1377 3b942d210ee2a031169f860174920b065aadb6f7 Manuel Dupont <manuel@lajavaness.com> 1668681126 +0100	rebase (finish): refs/heads/feat/add-demos onto 3b942d210ee2a031169f860174920b065aadb6f7
+3b942d210ee2a031169f860174920b065aadb6f7 e9dd33e8dd7db4fb151b19e965d3c071a9d638b2 Manuel Dupont <manuel@lajavaness.com> 1668681637 +0100	commit: chore: Set the right path, typo

@@ -1,0 +1,87 @@
+{
+  "name": "Project X",
+  "type": "text",
+  "defaultTags": [
+    "ceci est un tag",
+    "ceci est un autre tag"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "users": [
+    "user@test.com"
+  ],
+  "tasks": [
+    {
+      "category": "level1",
+      "type": "classifications",
+      "value": "RA",
+      "hotkey": "A",
+      "description": "description",
+      "shortDescription": " est une short de moins de 100 characters car ca doit faire moins de 100 characters.",
+      "label": "Category RA",
+      "conditions": [
+        "FOO"
+      ]
+    },
+    {
+      "category": "level2",
+      "type": "classifications",
+      "value": "FOO",
+      "hotkey": "Z",
+      "label": "FOO",
+      "conditions": [
+        "BAR"
+      ]
+    },
+    {
+      "category": "level3",
+      "type": "classifications",
+      "value": "BAR",
+      "hotkey": "X",
+      "label": "BAR"
+    },
+    {
+      "category": "level2",
+      "type": "classifications",
+      "value": "RA01",
+      "hotkey": "B",
+      "label": "Category RA01"
+    },
+    {
+      "category": "level1",
+      "type": "classifications",
+      "value": "RB",
+      "hotkey": "C",
+      "label": "Category RB",
+      "conditions": [
+        "FOO"
+      ]
+    },
+    {
+      "category": "level2",
+      "type": "classifications",
+      "value": "FOO",
+      "hotkey": "Z",
+      "label": "FOO",
+      "conditions": [
+        "BAR"
+      ]
+    },
+    {
+      "category": "level3",
+      "type": "classifications",
+      "value": "BAR",
+      "hotkey": "X",
+      "label": "BAR"
+    },
+    {
+      "category": "level1",
+      "type": "classifications",
+      "name": "Tone",
+      "value": "Aggressive",
+      "hotkey": "D",
+      "label": "agg"
+    }
+  ]
+}

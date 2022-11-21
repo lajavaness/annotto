@@ -1,0 +1,1 @@
+{ "uuid": "dc86e13b-9d53-468b-ba70-b19e241c43e9" , "annotations": { "Text Recognition task": { "entities": [ { "value": "FOO", "text": "This is a prediction"} ]}} }

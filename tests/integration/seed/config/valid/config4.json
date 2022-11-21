@@ -1,0 +1,63 @@
+{
+  "name": "Project X",
+  "type": "text",
+  "client": "test",
+  "tasks": [
+    {
+      "category": "level1",
+      "type": "classification",
+      "value": "RA",
+      "hotkey": "A",
+      "label": "Category RA",
+      "conditions": [
+        "foobar",
+        "RA01"
+      ]
+    },
+    {
+      "category": "level2",
+      "type": "classification",
+      "value": "FOOBAR",
+      "hotkey": "Z",
+      "label": "foobar"
+    },
+    {
+      "category": "level2",
+      "type": "classification",
+      "value": "RA01",
+      "hotkey": "B",
+      "label": "Category RA01"
+    },
+    {
+      "category": "level1",
+      "type": "classification",
+      "value": "RB",
+      "hotkey": "C",
+      "label": "Category RB",
+      "conditions": [
+        "foobar2"
+      ]
+    },
+    {
+      "category": "level2",
+      "type": "classifications",
+      "value": "FOOBAR2",
+      "hotkey": "T",
+      "label": "foobar2"
+    },
+    {
+      "category": "Tone",
+      "type": "classifications",
+      "value": "Aggresive",
+      "hotkey": "D",
+      "label": "agg"
+    },
+    {
+      "category": "NER level1",
+      "type": "ner",
+      "value": "NER1",
+      "hotkey": "E",
+      "label": "Category NER1"
+    }
+  ]
+}

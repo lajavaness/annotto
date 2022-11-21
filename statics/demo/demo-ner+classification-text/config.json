@@ -1,0 +1,209 @@
+{
+  "name": "DEMO: NER and Classification text",
+  "description": "Demo NER and Classification",
+  "type": "text",
+  "client": "LJN",
+  "deadline": "2023-04-30T13:57:20.355Z",
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "tasks": [
+    {
+      "category": "Entities 1",
+      "type": "ner",
+      "min": 1,
+      "max": 2,
+      "value": "name",
+      "label": "Name",
+      "hotkey": "a"
+    },
+    {
+      "category": "Entities 1",
+      "type": "ner",
+      "value": "skill",
+      "label": "Skill",
+      "hotkey": "b"
+    },
+    {
+      "category": "Entities 1",
+      "type": "ner",
+      "value": "formation",
+      "label": "Formation",
+      "hotkey": "c"
+    },
+    {
+      "category": "Entities 1",
+      "type": "ner",
+      "value": "Exp",
+      "label": "Experience",
+      "hotkey": "d"
+    },
+    {
+      "category": "Entities 2",
+      "type": "ner",
+      "hotkey": "e",
+      "label": "Tag 1",
+      "value": "ignore"
+    },
+    {
+      "category": "Entities 2",
+      "type": "ner",
+      "hotkey": "f",
+      "label": "Tag 2",
+      "value": "not-sure"
+    },
+    {
+      "category": "Entities 2",
+      "type": "ner",
+      "hotkey": "g",
+      "label": "Tag 3",
+      "value": "weird"
+    },
+    {
+      "category": "Entities 2",
+      "type": "ner",
+      "label": "Tag 4",
+      "value": "no-box",
+      "hotkey": "h"
+    },
+    {
+      "category": "Sentiment",
+      "type": "classifications",
+      "hotkey": "i",
+      "label": "Positif",
+      "value": "pos"
+    },
+    {
+      "category": "Sentiment",
+      "type": "classifications",
+      "hotkey": "j",
+      "label": "Autre M",
+      "value": "_"
+    },
+    {
+      "category": "Sentiment",
+      "type": "classifications",
+      "hotkey": "k",
+      "label": "N\u00e9gatif",
+      "value": "neg"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "l",
+      "label": "Carri\u00e8res",
+      "value": "Carri\u00e8res"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "m",
+      "label": "Charge",
+      "value": "Charge, horaires, temps de travail"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "n",
+      "label": "Famille",
+      "value": "Famille"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "o",
+      "label": "Fiert\u00e9, patriotisme, valeurs",
+      "value": "Fiert\u00e9, patriotisme, valeurs"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "p",
+      "label": "Habillement",
+      "value": "Habillement"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "q",
+      "label": "Infrastructures - base",
+      "value": "Infrastructures - base"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "r",
+      "label": "Int\u00e9r\u00eat intrins\u00e8que des t\u00e2ches, responsabilit\u00e9s",
+      "value": "Int\u00e9r\u00eat intrins\u00e8que des t\u00e2ches, responsabilit\u00e9s"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "s",
+      "label": "Affectation / rattachement / mutations",
+      "value": "Affectation / rattachement / mutations"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "t",
+      "label": "M\u00e9canique",
+      "value": "M\u00e9canique"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "u",
+      "label": "Missions mer / OPEX",
+      "value": "Missions mer / OPEX"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "v",
+      "label": "Salaires, primes, retraites",
+      "value": "Salaires, primes, retraites"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "w",
+      "label": "Soutien - Administration, RH",
+      "value": "Soutien - Administration, RH"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "x",
+      "label": "Vie collective / soutien moral / ambiance / coh\u00e9sion",
+      "value": "Vie collective / soutien moral / ambiance / coh\u00e9sion"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "y",
+      "label": "Hi\u00e9rarchie, reconnaissance",
+      "value": "Hi\u00e9rarchie, reconnaissance"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "z",
+      "label": "Reste",
+      "value": "Reste"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "1",
+      "label": "Delete",
+      "value": "Delete"
+    }
+  ]
+}

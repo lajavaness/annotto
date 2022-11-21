@@ -1,0 +1,403 @@
+{
+  "name": "DEMO: Classification text 3 - emails",
+  "description": "Demo",
+  "type": "text",
+  "client": "LJN",
+  "deadline": "2023-04-30T13:57:20.355Z",
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "tasks": [
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P01",
+      "label": "P01 Formation",
+      "hotkey": "c"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P02",
+      "label": "P02 Presta",
+      "hotkey": "\u00e9"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P03",
+      "label": "P03 Mesures",
+      "hotkey": "\""
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P04",
+      "label": "P04 Gestion de la liste",
+      "hotkey": "'"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P05",
+      "label": "P05 Suivi",
+      "hotkey": "("
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P06",
+      "label": "P06 Creat P",
+      "hotkey": "\u00a7"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P07A",
+      "label": "P07A RDV Demande",
+      "hotkey": "\u00e8"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P07B",
+      "label": "P07B RDV Existant",
+      "hotkey": "q"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P08",
+      "label": "P08 Fraudes",
+      "hotkey": "!"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P09",
+      "label": "P09 InfoG P",
+      "hotkey": "\u00e7"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P10",
+      "label": "P10 Aides P",
+      "hotkey": "\u00e0"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "P11",
+      "label": "P11 Inscr.",
+      "hotkey": ")"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I02",
+      "label": "I02 Demande ARE",
+      "hotkey": "a"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I03",
+      "label": "I03 IncidPaie",
+      "hotkey": "z"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I04",
+      "label": "I04 PaieNonPaie",
+      "hotkey": "e"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I05",
+      "label": "I05 Fin Droits",
+      "hotkey": "r"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I06",
+      "label": "I06 Creat I",
+      "hotkey": "t"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I07A",
+      "label": "I07A RDV Demande",
+      "hotkey": "y"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I07B",
+      "label": "I07B RDV Existant",
+      "hotkey": "s"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I08",
+      "label": "I08 InfoG I",
+      "hotkey": "u"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I09",
+      "label": "I09 Aides I",
+      "hotkey": "i"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "value": "I10",
+      "label": "I10 Actu",
+      "hotkey": "o"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "label": "Aucune des cats",
+      "value": "NONE",
+      "hotkey": "x"
+    },
+    {
+      "category": "Category",
+      "type": "classifications",
+      "label": "Je ne sais pas",
+      "value": "JSP",
+      "hotkey": "n"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I10A",
+      "label": "I10 Actu comment",
+      "hotkey": "A"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I10B",
+      "label": "I10 Actu oubli",
+      "hotkey": "B"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I10C",
+      "label": "I10 Actu absence",
+      "hotkey": "C"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I10D",
+      "label": "I10 Actu adresse",
+      "hotkey": "D"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I10E",
+      "label": "I10 Actu erreur",
+      "hotkey": "E"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P11M",
+      "label": "P11 Maintient DE",
+      "hotkey": "F"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P01A",
+      "label": "P01 Form d\u00e9marches fin",
+      "hotkey": "G"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P01B",
+      "label": "P01 Form int\u00e9r\u00eat g\u00e9n\u00e9ral",
+      "hotkey": "H"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P01C",
+      "label": "P01C Form int\u00e9r\u00eat partic.",
+      "hotkey": "J"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P01D",
+      "label": "P01D Form part. cr\u00e9neau",
+      "hotkey": "K"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P01E",
+      "label": "P01E Form financement",
+      "hotkey": "L"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P07AA",
+      "label": "P07A RDV avec motif",
+      "hotkey": "M"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P07AS",
+      "label": "P07A RDV sans motif",
+      "hotkey": "N"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P07BN",
+      "label": "P07B RDV Annulation",
+      "hotkey": "O"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P07BM",
+      "label": "P07B RDV Modif",
+      "hotkey": "P"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P07BC",
+      "label": "P07B RDV Confirm",
+      "hotkey": "Q"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I07AA",
+      "label": "I07A RDV avec motif",
+      "hotkey": "R"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I07AS",
+      "label": "I07A RDV sans motif",
+      "hotkey": "S"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I07BN",
+      "label": "I07B RDV Annulation",
+      "hotkey": "T"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I07BM",
+      "label": "I07B RDV Modif",
+      "hotkey": "U"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "I07BC",
+      "label": "I07B RDV Confirm",
+      "hotkey": "V"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04BA",
+      "label": "P04B Absence RDV",
+      "hotkey": "W"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04AV",
+      "label": "P04A Averti Radiation",
+      "hotkey": "X"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04AC",
+      "label": "P04A Averti Cessation",
+      "hotkey": "Y"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04AM",
+      "label": "P04A Averti Modif",
+      "hotkey": "Z"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04AE",
+      "label": "P04A Controle RE",
+      "hotkey": "1"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04BR",
+      "label": "P04B Contest Radiation",
+      "hotkey": "2"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04BC",
+      "label": "P04B Contest Cessation",
+      "hotkey": "3"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "P04BM",
+      "label": "P04B Contest Modif",
+      "hotkey": "4"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "value": "None",
+      "label": "None",
+      "hotkey": "5"
+    },
+    {
+      "category": "Gabarit",
+      "type": "classifications",
+      "label": "Je ne sais pas 2",
+      "value": "JSP 2",
+      "hotkey": "6"
+    }
+  ]
+}

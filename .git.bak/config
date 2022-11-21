@@ -1,0 +1,34 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+	hooksPath = .husky
+[submodule]
+	active = .
+[remote "origin"]
+	url = https://git@github.com/lajavaness/annotto
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "chore/remove-unnecessary-tests"]
+	remote = origin
+	merge = refs/heads/chore/remove-unnecessary-tests
+[branch "feat/add-demos"]
+	remote = origin
+	merge = refs/heads/feat/add-demos
+[branch "docs/keycloak"]
+	remote = origin
+	merge = refs/heads/docs/keycloak
+[branch "docs/update-swagger-docs"]
+	remote = origin
+	merge = refs/heads/docs/update-swagger-docs
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[branch "refactor/convert-to-typescript"]
+	remote = origin
+	merge = refs/heads/refactor/convert-to-typescript
+[branch "fix/add-swagger-url"]
+	remote = origin
+	merge = refs/heads/fix/add-swagger-url

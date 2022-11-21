@@ -1,0 +1,784 @@
+[
+    {
+        "_id": "605ddee690952a001c2c8b0e",
+        "status": "done",
+        "task": {
+            "_id": "605d96a2828b41001ce4fe34",
+            "parents": [],
+            "exposed": true,
+            "type": "classifications",
+            "annotationPourcent": 3,
+            "annotationCount": 4,
+            "project": "605d96a2828b41001ce4fe2c",
+            "value": "c_n_1",
+            "hotkey": "i",
+            "label": "c_n_1",
+            "category": "constraint_type_in_paragraph",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "color": null,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.041Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b15",
+        "status": "done",
+        "ner": {
+            "start": 725,
+            "end": 730
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe3a",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 62,
+            "annotationCount": 90,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#ff0000",
+            "value": "ent_voltage",
+            "hotkey": "f",
+            "label": "ent_voltage",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.760Z",
+            "createdAt": "2021-03-26T08:09:06.760Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.042Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b14",
+        "status": "done",
+        "ner": {
+            "start": 190,
+            "end": 196
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe3a",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 62,
+            "annotationCount": 90,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#ff0000",
+            "value": "ent_voltage",
+            "hotkey": "f",
+            "label": "ent_voltage",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.760Z",
+            "createdAt": "2021-03-26T08:09:06.760Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.042Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b19",
+        "status": "done",
+        "ner": {
+            "start": 627,
+            "end": 632
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.043Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b0f",
+        "status": "done",
+        "ner": {
+            "start": 218,
+            "end": 232
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe42",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 10,
+            "annotationCount": 15,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#36cfc9",
+            "value": "ent_c_n_1",
+            "hotkey": "è",
+            "label": "ent_c_n_1",
+            "category": "constraints_entities",
+            "updatedAt": "2021-03-26T08:09:06.761Z",
+            "createdAt": "2021-03-26T08:09:06.761Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.041Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b1a",
+        "status": "done",
+        "ner": {
+            "start": 800,
+            "end": 813
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe39",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 2,
+            "annotationCount": 3,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#868686",
+            "value": "ent_transmission_line",
+            "hotkey": "d",
+            "label": "ent_transmission_line",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.760Z",
+            "createdAt": "2021-03-26T08:09:06.760Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.043Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b12",
+        "status": "done",
+        "ner": {
+            "start": 654,
+            "end": 668
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe42",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 10,
+            "annotationCount": 15,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#36cfc9",
+            "value": "ent_c_n_1",
+            "hotkey": "è",
+            "label": "ent_c_n_1",
+            "category": "constraints_entities",
+            "updatedAt": "2021-03-26T08:09:06.761Z",
+            "createdAt": "2021-03-26T08:09:06.761Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.042Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b1d",
+        "status": "done",
+        "ner": {
+            "start": 381,
+            "end": 393
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.044Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b0c",
+        "status": "done",
+        "task": {
+            "_id": "605d96a2828b41001ce4fe2d",
+            "parents": [],
+            "exposed": true,
+            "type": "classifications",
+            "annotationPourcent": 42,
+            "annotationCount": 61,
+            "project": "605d96a2828b41001ce4fe2c",
+            "value": "c_base",
+            "hotkey": "a",
+            "label": "c_base",
+            "category": "constraint_type_in_paragraph",
+            "updatedAt": "2021-03-26T08:09:06.757Z",
+            "createdAt": "2021-03-26T08:09:06.757Z",
+            "__v": 0,
+            "color": null,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.040Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b16",
+        "status": "done",
+        "ner": {
+            "start": 375,
+            "end": 380
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.042Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b10",
+        "status": "done",
+        "ner": {
+            "start": 317,
+            "end": 331
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe42",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 10,
+            "annotationCount": 15,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#36cfc9",
+            "value": "ent_c_n_1",
+            "hotkey": "è",
+            "label": "ent_c_n_1",
+            "category": "constraints_entities",
+            "updatedAt": "2021-03-26T08:09:06.761Z",
+            "createdAt": "2021-03-26T08:09:06.761Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.041Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b1c",
+        "status": "done",
+        "ner": {
+            "start": 510,
+            "end": 519
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.044Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b0b",
+        "status": "done",
+        "task": {
+            "_id": "605d96a2828b41001ce4fe34",
+            "parents": [],
+            "exposed": true,
+            "type": "classifications",
+            "annotationPourcent": 3,
+            "annotationCount": 4,
+            "project": "605d96a2828b41001ce4fe2c",
+            "value": "c_n_1",
+            "hotkey": "i",
+            "label": "c_n_1",
+            "category": "constraint_type_in_paragraph",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "color": null,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.040Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b17",
+        "status": "done",
+        "ner": {
+            "start": 504,
+            "end": 509
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.043Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b11",
+        "status": "done",
+        "ner": {
+            "start": 527,
+            "end": 537
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe3b",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 90,
+            "annotationCount": 131,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#ff00ff",
+            "value": "ent_c_base",
+            "hotkey": "@",
+            "label": "ent_c_base",
+            "category": "constraints_entities",
+            "updatedAt": "2021-03-26T08:09:06.760Z",
+            "createdAt": "2021-03-26T08:09:06.760Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.041Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b1b",
+        "status": "done",
+        "ner": {
+            "start": 457,
+            "end": 469
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.043Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b0d",
+        "status": "done",
+        "task": {
+            "_id": "605d96a2828b41001ce4fe34",
+            "parents": [],
+            "exposed": true,
+            "type": "classifications",
+            "annotationPourcent": 3,
+            "annotationCount": 4,
+            "project": "605d96a2828b41001ce4fe2c",
+            "value": "c_n_1",
+            "hotkey": "i",
+            "label": "c_n_1",
+            "category": "constraint_type_in_paragraph",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "color": null,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.040Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddf2f90952a001c2c8b28",
+        "status": "done",
+        "ner": {
+            "start": 633,
+            "end": 645
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:18:39.140Z",
+        "createdAt": "2021-03-26T13:18:39.121Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b13",
+        "status": "done",
+        "ner": {
+            "start": 753,
+            "end": 767
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe42",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 10,
+            "annotationCount": 15,
+            "project": "605d96a2828b41001ce4fe2c",
+            "color": "#36cfc9",
+            "value": "ent_c_n_1",
+            "hotkey": "è",
+            "label": "ent_c_n_1",
+            "category": "constraints_entities",
+            "updatedAt": "2021-03-26T08:09:06.761Z",
+            "createdAt": "2021-03-26T08:09:06.761Z",
+            "__v": 0,
+            "description": null,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.063Z",
+        "createdAt": "2021-03-26T13:17:26.042Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddee690952a001c2c8b18",
+        "status": "done",
+        "ner": {
+            "start": 577,
+            "end": 587
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:17:26.064Z",
+        "createdAt": "2021-03-26T13:17:26.043Z",
+        "__v": 0
+    },
+    {
+        "_id": "605ddf5590952a001c2c8b2b",
+        "status": "done",
+        "ner": {
+            "start": 177,
+            "end": 189
+        },
+        "task": {
+            "_id": "605d96a2828b41001ce4fe37",
+            "parents": [],
+            "exposed": true,
+            "type": "ner",
+            "annotationPourcent": 94,
+            "annotationCount": 137,
+            "project": "605d96a2828b41001ce4fe2c",
+            "description": "",
+            "color": "#d6d6d6",
+            "value": "ent_substation",
+            "hotkey": "q",
+            "label": "ent_substation",
+            "category": "grid_entities",
+            "updatedAt": "2021-03-26T08:09:06.759Z",
+            "createdAt": "2021-03-26T08:09:06.759Z",
+            "__v": 0,
+            "max": null,
+            "min": null
+        },
+        "item": "605d96a6828b41001ce5176a",
+        "user": {
+            "_id": "5fbe60caf43068001bc97e49",
+            "email": "thomas@lajavaness.com",
+            "firstName": "Thomas",
+            "lastName": "Kuoch"
+        },
+        "updatedAt": "2021-03-26T13:19:17.289Z",
+        "createdAt": "2021-03-26T13:19:17.276Z",
+        "__v": 0
+    }
+]

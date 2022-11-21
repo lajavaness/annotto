@@ -1,0 +1,17 @@
+{
+  "name":"Project X",
+  "type":"image",
+  "client":"test",
+  "ner":[
+     {
+        "name":"NER level1",
+        "values":[
+           {
+              "value":"NER1",
+              "hotkey":"C",
+              "label":"Category NER1"
+           }
+        ]
+     }
+  ]
+}

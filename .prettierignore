@@ -1,0 +1,12 @@
+# NPM
+node_modules
+package-lock.json
+
+# VS Code
+.vscode/*
+
+# Jest and generic test utilities
+/coverage/
+__snapshots__/
+
+statics/

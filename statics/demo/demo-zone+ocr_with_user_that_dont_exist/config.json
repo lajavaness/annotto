@@ -1,0 +1,65 @@
+{
+  "name": "DEMO Zone and Text : CV - Extraction",
+  "description": "Demo de projet",
+  "type": "image",
+  "guidelines": "The Guidelines",
+  "client": "LJN",
+  "deadline": "2025-11-30T13:57:20.355Z",
+  "users": [
+    "user-42@lajavaness.com"
+  ],
+  "dataScientists": [
+    "datascientist-42@lajavaness.com"
+  ],
+  "admins": [
+    "admin-42@lajavaness.com"
+  ],
+  "defaultTags": [
+    "pose question",
+    "etrange",
+    "rigolo"
+  ],
+  "tasks": [
+    {
+      "category": "Text Recognition task",
+      "type": "text",
+      "value": "textInput1",
+      "label": "textInput1"
+    },
+    {
+      "category": "Text Recognition task",
+      "type": "text",
+      "value": "textInput2",
+      "label": "textInput2"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_name",
+      "label": "Name",
+      "hotkey": "n",
+      "color": "123"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_skill",
+      "label": "Skill",
+      "hotkey": "c"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_formation",
+      "label": "Formation",
+      "hotkey": "f"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_Exp",
+      "label": "Experience",
+      "hotkey": "e"
+    }
+  ]
+}

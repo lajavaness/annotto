@@ -1,0 +1,47 @@
+{
+  "defaultTags": [
+    "To delete",
+    "To check",
+    "To discuss"
+  ],
+  "itemTags": [],
+  "description": "test project ",
+  "active": true,
+  "admins": [
+    "admin@test.com"
+  ],
+  "users": [],
+  "dataScientists": [],
+  "tasks": [
+    "62976e3a1d26c87b2526db27",
+    "62976e3a1d26c87b2526db28",
+    "62976e3a1d26c87b2526db29",
+    "62976e3a1d26c87b2526db2a"
+  ],
+  "filterPredictionsMinimum": 0.4,
+  "highlights": [],
+  "itemCount": 0,
+  "commentCount": 0,
+  "deadline": "2022-05-27T14:10:28.397Z",
+  "progress": null,
+  "velocity": null,
+  "remainingWork": null,
+  "lastAnnotationTime": null,
+  "showPredictions": true,
+  "prefillPredictions": true,
+  "annotators": [],
+  "_id": "62976e3a1d26c87b2526db26",
+  "name": "TEST 3",
+  "type": "text",
+  "entitiesRelationsGroup": [],
+  "client": {
+    "isActive": true,
+    "_id": "62946524a53205bc71d75982",
+    "name": "LJN",
+    "updatedAt": "2022-05-30T06:33:08.843Z",
+    "createdAt": "2022-05-30T06:33:08.843Z",
+    "__v": 0
+  },
+  "updatedAt": "2022-06-01T13:48:52.266Z",
+  "createdAt": "2022-06-01T13:48:52.266Z"
+}

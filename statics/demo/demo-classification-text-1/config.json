@@ -1,0 +1,169 @@
+{
+  "name": "DEMO: Classification text 1",
+  "description": "demo",
+  "type": "text",
+  "client": "LJN",
+  "deadline": "2025-02-30T13:57:20.355Z",
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "highlights": [
+    "contrat",
+    "militaire"
+  ],
+  "tasks": [
+    {
+      "category": "Sentiment",
+      "type": "classifications",
+      "hotkey": "p",
+      "label": "Positif",
+      "value": "pos"
+    },
+    {
+      "category": "Sentiment",
+      "type": "classifications",
+      "hotkey": "-",
+      "label": "Autre M",
+      "value": "_"
+    },
+    {
+      "category": "Sentiment",
+      "type": "classifications",
+      "hotkey": "n",
+      "label": "N\u00e9gatif",
+      "value": "neg"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "0",
+      "label": "Carri\u00e8res",
+      "value": "Carri\u00e8res"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "1",
+      "label": "Charge",
+      "value": "Charge, horaires, temps de travail"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "2",
+      "label": "Famille",
+      "value": "Famille",
+      "condition": [
+        "Enfant"
+      ]
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "F",
+      "label": "Enfant",
+      "value": "Enfant"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "3",
+      "label": "Fiert\u00e9, patriotisme, valeurs",
+      "value": "Fiert\u00e9, patriotisme, valeurs"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "4",
+      "label": "Habillement",
+      "value": "Habillement"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "5",
+      "label": "Infrastructures - base",
+      "value": "Infrastructures - base"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "6",
+      "label": "Int\u00e9r\u00eat intrins\u00e8que des t\u00e2ches, responsabilit\u00e9s",
+      "value": "Int\u00e9r\u00eat intrins\u00e8que des t\u00e2ches, responsabilit\u00e9s"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "7",
+      "label": "Affectation / rattachement / mutations",
+      "value": "Affectation / rattachement / mutations"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "8",
+      "label": "M\u00e9canique",
+      "value": "M\u00e9canique"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "9",
+      "label": "Missions mer / OPEX",
+      "value": "Missions mer / OPEX"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "A",
+      "label": "Salaires, primes, retraites",
+      "value": "Salaires, primes, retraites"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "Z",
+      "label": "Soutien - Administration, RH",
+      "value": "Soutien - Administration, RH"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "E",
+      "label": "Vie collective / soutien moral / ambiance / coh\u00e9sion",
+      "value": "Vie collective / soutien moral / ambiance / coh\u00e9sion",
+      "exposed": false
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "R",
+      "label": "Hi\u00e9rarchie, reconnaissance",
+      "value": "Hi\u00e9rarchie, reconnaissance",
+      "exposed": false
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "T",
+      "label": "Reste",
+      "value": "Reste",
+      "exposed": false
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "Y",
+      "label": "Delete",
+      "value": "Delete",
+      "exposed": false
+    }
+  ]
+}

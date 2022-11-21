@@ -1,0 +1,35 @@
+{
+  "name": "Project X",
+  "type": "image",
+  "client": "test",
+  "tasks": [
+    {
+      "category": "Category myClassif1",
+      "type": "classifications",
+      "value": "myClassif1",
+      "hotkey": "D",
+      "label": "myClassif1"
+    },
+    {
+      "category": "Category myClassif2",
+      "type": "classifications",
+      "value": "myClassif2",
+      "hotkey": "E",
+      "label": "myClassif2"
+    },
+    {
+      "category": "Category level1",
+      "type": "zone",
+      "value": "ZONE1",
+      "hotkey": "F",
+      "label": "ZONE1"
+    },
+    {
+      "category": "Category level2",
+      "type": "zone",
+      "value": "ZONE2",
+      "hotkey": "G",
+      "label": "ZONE2"
+    }
+  ]
+}

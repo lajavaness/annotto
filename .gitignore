@@ -1,0 +1,51 @@
+# Build
+/build/
+/dist/
+
+# NPM
+node_modules
+package-lock.json
+/.pnp
+.pnp.js
+
+# annotto-front
+annotto-front*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.DS_STORE
+
+# Webstorm
+.idea/
+*.iml
+
+# Atom
+.save.cson
+
+# VS Code
+.vscode/*
+
+# Jest and generic test utilities
+/coverage/
+
+# Cypress
+/cypress/screenshots
+/cypress/videos
+
+# Istanbul
+/.nyc_output/*
+
+# SonarQube
+/.scannerwork/*
+
+# Local environment files
+/.env*local
+
+.data
+.env
+
+junit.xml

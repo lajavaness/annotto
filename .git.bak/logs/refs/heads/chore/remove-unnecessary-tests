@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 e7046de2608cd57c4e5171ec83e9a96a1faf7909 Manuel Dupont <manuel@lajavaness.com> 1657011856 +0200	branch: Created from HEAD
+e7046de2608cd57c4e5171ec83e9a96a1faf7909 4816e42a613f9f6d6f507b2d147f4af5916a4cfd Manuel Dupont <manuel@lajavaness.com> 1657124916 +0200	commit: chore: Remove dead code
+4816e42a613f9f6d6f507b2d147f4af5916a4cfd 306931490f8ae78f8de1c6569b67598044f61955 Manuel Dupont <manuel@lajavaness.com> 1657180751 +0200	commit (amend): refactor: Remove dead code

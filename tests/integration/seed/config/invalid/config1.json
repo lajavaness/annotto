@@ -1,0 +1,29 @@
+{
+  "name":"Project X",
+  "type":"text",
+  "client":"test",
+  "classifications":[
+     {
+        "name":"level1",
+        "values":[
+           {
+              "value":"RA",
+              "hotkey":"A",
+              "label":"Category RA"
+           }
+        ]
+     }
+  ],
+  "ner":[
+     {
+        "name":"NER level1",
+        "values":[
+           {
+              "value":"NER1",
+              "hotkey":"A",
+              "label":"Category NER1"
+           }
+        ]
+     }
+  ]
+}

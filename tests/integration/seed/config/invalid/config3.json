@@ -1,0 +1,76 @@
+{
+  "name":"Project X",
+  "type":"text",
+  "client":"test",
+  "classifications":[
+     {
+        "name":"level1",
+        "values":[
+           {
+              "value":"RA",
+              "hotkey":"A",
+              "label":"Category RA",
+              "children":{
+                 "name":"level2",
+                 "values":[
+                    {
+                       "value":"FOOBAR",
+                       "hotkey":"Z",
+                       "label":"foobar",
+                       "children":{
+                          "name":"foochilds",
+                          "values":[
+                             {
+                                "value":"foochild",
+                                "hotkey":"X",
+                                "label":"foochild"
+                             }
+                          ]
+                       }
+                    }
+                 ]
+              }
+           },
+           {
+              "value":"RB",
+              "hotkey":"B",
+              "label":"Category RB",
+              "children":{
+                 "name":"level2",
+                 "values":[
+                    {
+                       "value":"FOOBAR",
+                       "hotkey":"Z",
+                       "label":"Category FOOBAR"
+                    }
+                 ]
+              }
+           }
+        ]
+     }
+  ],
+  "ner":[
+     {
+        "name":"NER level1",
+        "values":[
+           {
+              "value":"NER1",
+              "hotkey":"C",
+              "label":"Category NER1"
+           }
+        ]
+     }
+  ],
+  "zone":[
+     {
+        "name":"zone level1",
+        "values":[
+           {
+              "value":"ZONE1",
+              "hotkey":"D",
+              "label":"Category ZONE1"
+           }
+        ]
+     }
+  ]
+}

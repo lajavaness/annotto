@@ -1,0 +1,71 @@
+{
+  "name": "Project Classification Image",
+  "type": "image",
+  "tasks": [
+    {
+      "category": "level1",
+      "type": "classifications",
+      "value": "Animal",
+      "hotkey": "A",
+      "label": "Category Animal",
+      "description": "description Category Animal",
+      "conditions": [
+        "Category Cat"
+      ]
+    },
+    {
+      "category": "level2",
+      "type": "classifications",
+      "value": "Cat",
+      "hotkey": "Z",
+      "label": "Category cat",
+      "description": "description cat",
+      "conditions": [
+        "Category Ugly cat"
+      ]
+    },
+    {
+      "category": "level3",
+      "type": "classifications",
+      "value": "Ugly cat",
+      "hotkey": "X",
+      "label": "Category Ugly cat",
+      "description": "description Ugly cat"
+    },
+    {
+      "category": "level2",
+      "type": "classifications",
+      "value": "Dog",
+      "hotkey": "B",
+      "label": "Category Dog",
+      "description": "description Category Dog",
+      "conditions": [
+        "Category Ugly dog"
+      ]
+    },
+    {
+      "category": "level3",
+      "type": "classifications",
+      "value": "Ugly dog",
+      "hotkey": "Y",
+      "label": "Category Ugly dog",
+      "description": "description Category Ugly dog"
+    },
+    {
+      "category": "level1",
+      "type": "classifications",
+      "value": "Car",
+      "hotkey": "C",
+      "label": "Category Car",
+      "description": "description Category Car"
+    },
+    {
+      "category": "Picture quality",
+      "type": "classifications",
+      "value": "Good",
+      "hotkey": "D",
+      "label": "Good pic quality",
+      "description": "description good pic quality"
+    }
+  ]
+}

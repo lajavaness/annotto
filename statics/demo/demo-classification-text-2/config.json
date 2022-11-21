@@ -1,0 +1,148 @@
+{
+  "name": "DEMO: Classification text 2 - test annotators",
+  "description": "test annotators",
+  "type": "text",
+  "deadline": "2023-05-30T13:57:20.355Z",
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "client": "LJN",
+  "tasks": [
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "1",
+      "label": "RC",
+      "value": "RC",
+      "conditions": [
+        "01 Acc",
+        "03 Cpt",
+        "04 Frn",
+        "05 Dep",
+        "06 Itv",
+        "07 Lky",
+        "08 Qual",
+        "10 Rac",
+        "11 Rlv"
+      ]
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "a",
+      "label": "01 Acc",
+      "value": "RA01"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "z",
+      "label": "03 Cpt",
+      "value": "RA03"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "e",
+      "label": "04 Frn",
+      "value": "RA04"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "r",
+      "label": "05 Dep",
+      "value": "RA05"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "t",
+      "label": "06 Itv",
+      "value": "RA06"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "y",
+      "label": "07 Lky",
+      "value": "RA07"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "u",
+      "label": "08 Qual",
+      "value": "RA08"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "i",
+      "label": "10 Rac",
+      "value": "RA10"
+    },
+    {
+      "category": "Niveau2",
+      "type": "classifications",
+      "hotkey": "o",
+      "label": "11 Rlv",
+      "value": "RA11"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "2",
+      "label": "COM",
+      "value": "COM"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "3",
+      "label": "Corpo",
+      "value": "CORPO"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "4",
+      "label": "Aggr",
+      "value": "AGGRESSIVE"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "5",
+      "label": "Pos/Norep",
+      "value": "PASREPONSE"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "6",
+      "label": "Neg/Norep",
+      "value": "NEGNORESP"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "8",
+      "label": "Autre",
+      "value": "AUTRE"
+    },
+    {
+      "category": "Niveau1",
+      "type": "classifications",
+      "hotkey": "9",
+      "label": "Suppr",
+      "value": "SUPPRIMER"
+    }
+  ]
+}
