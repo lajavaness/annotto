@@ -1,4 +1,4 @@
-## La Javaness Annotto API
+## La Javaness Annotto
 [![Test](https://github.com/lajavaness/annotto/actions/workflows/tests.yml/badge.svg)](https://github.com/lajavaness/annotto/actions/workflows/tests.yml)
 
 Is the API to create a new project and store a corresponding dataset and then annotate data.
