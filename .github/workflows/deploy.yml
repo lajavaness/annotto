@@ -8,7 +8,7 @@ on:
       - next
 
 jobs:
-  unit-tests:
+  unit-tests-api:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,6 +32,25 @@ jobs:
         if: always()
         run: docker-compose down
 
+  unit-tests-frontend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install dependencies
+        run: yarn --cwd annotto-front install
+      - name: Run unit tests
+        run: yarn --cwd annotto-front test:ci
+
   integration-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -52,7 +71,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
     needs:
-      - unit-tests
+      - unit-tests-api
+      - unit-tests-frontend
       - integration-tests
     strategy:
       matrix:
@@ -134,7 +154,7 @@ jobs:
       contents: read
       packages: write
     env:
-      IMAGE: ${{ secrets.DOCKER_REGISTRY }}/annotto-bundle
+      IMAGE: ${{ secrets.DOCKER_REGISTRY }}/annotto:bundle
     steps:
       - name: Extract branch name
         shell: bash
