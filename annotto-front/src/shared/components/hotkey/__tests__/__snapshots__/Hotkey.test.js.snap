@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hotkey matches snapshot 1`] = `
+<DocumentFragment>
+  <kbd
+    class="sc-gsBqHK gdjmQG"
+  >
+    bar
+  </kbd>
+</DocumentFragment>
+`;
+
+exports[`Hotkey matches snapshot when component is selected 1`] = `
+<DocumentFragment>
+  <kbd
+    class="sc-gsBqHK kSurQp"
+  >
+    bar
+  </kbd>
+</DocumentFragment>
+`;

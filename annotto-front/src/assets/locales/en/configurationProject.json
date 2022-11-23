@@ -1,0 +1,111 @@
+{
+	"submit": "Publish",
+	"cancel": "Cancel",
+	"save": "Save",
+	"reset": "Reset modifications",
+	"exportButton": "Download the current settings",
+	"prev": "Previous Step",
+	"next": "Next Step",
+	"successMessage": "Edit project succeed",
+	"changeTabModal": {
+		"title": "Modifications hasn't saved",
+		"content": "Saving modifications?",
+		"contentError": "Please fill all the required fields to save your modifications.",
+		"okText": "Yes",
+		"cancelText": "No"
+	},
+	"resetConfirmationModal": {
+		"title": "Warning",
+		"content": "All changes made will be lost, do you want to continue?",
+		"okText": "Yes"
+	},
+	"steps": {
+		"config": "Project",
+		"labeling": "Labeling",
+		"files": "Files",
+		"export": "Export",
+		"guide": "Annotation Guide",
+		"design": "Design",
+		"preview": "Preview"
+	},
+	"config": {
+		"detail": "Project details",
+		"permissions": "Users permissions",
+		"client": "Client",
+		"type": "Project type",
+		"name": "Project name",
+		"deadline": "Project deadline",
+		"description": "Project description",
+		"tags": "Default markers",
+		"admins": "Project administrators",
+		"dataScientists": "Data Scientist",
+		"users": "Users",
+		"delete": "To delete",
+		"check": "To check",
+		"discuss": "To discuss"
+	},
+	"files": {
+		"files": "Files",
+		"singleFileUpload": "Allow only one file to upload",
+		"onlyJsonFile": "You can only upload Json file!",
+		"warning": "Warning",
+		"conflict": "Config file will overwrite existing fields in the form.",
+		"configFile": "Config file (JSON file)",
+		"itemFile": "Item file (JSONL file)",
+		"annotatedFile": "Annotations file (JSONL file)",
+		"predictionFile": "Predictions file (JSONL file)",
+		"api": "Similarity API endpoint",
+		"update": "Update",
+		"add": "Add",
+		"alert": "Every change in this page will have a strong impact on the project. Please make sure you know what you're doing before any change.",
+		"or": "or"
+	},
+	"export": {
+		"configuration": "Configuration (Config file)",
+		"annotationsAndCommentsHistory": "Annotations with comments and history",
+		"annotationsAndComment": "Annotated items with comments",
+		"allItems": "Items",
+		"exportButton": "Export File(s)"
+	},
+	"labeling": {
+		"classifications": "Classifications",
+		"zone": "Zone",
+		"ner": "NER",
+		"text": "Text",
+		"entitiesRelationsGroup": "Relations NER",
+		"addColor": "Add",
+		"addTask": "Add a new task",
+		"addLabel": "Add a new label",
+		"waring": {
+			"title": "Do really you want to delete {{name}} ?",
+			"delete": "This action is irreversible. You won't be able to recover deleted information.",
+			"duplicate": "'{{value}}' already exists."
+		},
+		"form": {
+			"required": "{{label}} is required!",
+			"maxHotkey": "A hotkey must not exceed 1 character",
+			"isLabelUsedInCondition": "You cannot modify the code of this label because it is used in the condition of the task \"{{ task }}\"",
+			"isTaskUsedInCondition": "You cannot modify the type of this task because it is used in the condition of the task \"{{ task }}\"",
+			"name": "Task Title",
+			"type": "Task Type",
+			"code": "Task Code",
+			"condition": "Task Condition",
+			"min": "Minimum Fields",
+			"max": "Maximum Fields",
+			"label": {
+				"code": "Label Code",
+				"name": "Label Name",
+				"color": "Color",
+				"hotkey": "Hotkey",
+				"expo": "Exposed",
+				"exclusive": "Exclusive",
+				"description": "Label Description"
+			},
+			"defaultTaskTextName": "{{index}}: Task Text"
+		}
+	},
+	"guide": {
+		"edit": "Edit View",
+		"tutorial": "Demo View"
+	}
+}

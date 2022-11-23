@@ -1,22 +1,22 @@
-FROM node:lts-alpine as builder
+FROM node:16-alpine as builder-annotto-front
+RUN mkdir -p /app
+WORKDIR /app
+COPY annotto-front /app
 
-COPY yarn*.lock ./
-COPY package*.json ./
-RUN yarn install
+RUN yarn && yarn build
 
-# The instructions for second stage
-FROM node:lts-alpine
+FROM node:16-alpine as builder-annotto-api
+WORKDIR /app
+COPY . .
+RUN yarn && yarn build
 
-RUN apk update && apk add bash && apk add curl
+FROM node:16-alpine
+
+COPY --from=builder-annotto-front /app annotto-front
+COPY --from=builder-annotto-api /app annotto-api
 
 EXPOSE 5001
+EXPOSE 3000
 
-WORKDIR /annotto
-
-COPY . .
-COPY --from=builder node_modules node_modules
-
-RUN  rm -f .npmrc
-
-CMD yarn start
-
+CMD ["yarn", "--cwd", "annotto-front", "serve", "&"]
+CMD ["yarn", "--cwd", "annotto-api", "start", "&"]

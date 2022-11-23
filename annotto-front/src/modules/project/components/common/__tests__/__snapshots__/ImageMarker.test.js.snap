@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageMarker matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-aKXVD cPPqcz"
+  >
+    <img
+      class="sc-kmATbt EQBwG"
+    />
+    <svg
+      class="sc-cvJIAo kpuwKS"
+      data-testid="__markers-container__"
+    />
+    <div
+      class="sc-bdfBQB dbZmsR"
+      data-testid="__loader__"
+    >
+      <div
+        class="ant-spin ant-spin-lg ant-spin-spinning"
+      >
+        <span
+          class="ant-spin-dot ant-spin-dot-spin"
+        >
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

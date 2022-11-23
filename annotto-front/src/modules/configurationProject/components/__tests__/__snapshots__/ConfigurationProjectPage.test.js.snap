@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigurationProjectPage matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-aKXVD iHzyhq"
+    data-testid="__configuration_project-page__"
+  >
+    <div
+      class="sc-gsBqHK eMOMPs"
+      data-testid="__loader__"
+    >
+      <div
+        class="ant-spin ant-spin-lg ant-spin-spinning"
+      >
+        <span
+          class="ant-spin-dot ant-spin-dot-spin"
+        >
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+          <i
+            class="ant-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;

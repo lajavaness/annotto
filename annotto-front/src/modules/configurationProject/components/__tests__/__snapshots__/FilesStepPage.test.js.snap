@@ -1,0 +1,352 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilesStepPage matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsBqHK jMCMRZ"
+  >
+    <form
+      class="ant-form ant-form-vertical sc-fybuyZ ddejrc"
+    >
+      <div
+        class="sc-iWFTwQ iupdHB"
+      >
+        <div
+          class="sc-aKXVD hQbhhA"
+        >
+          configurationProject:files.files
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label"
+          >
+            <label
+              class=""
+              for="config"
+              title="configurationProject:files.configFile"
+            >
+              configurationProject:files.configFile
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <span
+                  class=""
+                >
+                  <div
+                    class="ant-upload ant-upload-select ant-upload-select-text"
+                  >
+                    <span
+                      class="ant-upload"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <input
+                        accept=""
+                        id="config"
+                        style="display: none;"
+                        type="file"
+                      />
+                      <button
+                        class="ant-btn"
+                        type="button"
+                      >
+                        <span
+                          aria-label="upload"
+                          class="anticon anticon-upload"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="upload"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                        <span>
+                          configurationProject:files.add
+                        </span>
+                      </button>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-upload-list ant-upload-list-text"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label"
+          >
+            <label
+              class="ant-form-item-required"
+              title="configurationProject:files.itemFile"
+            >
+              configurationProject:files.itemFile
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-start sc-gIRjGK dNhWuL"
+                >
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class=""
+                    >
+                      <div
+                        class="ant-upload ant-upload-select ant-upload-select-text"
+                      >
+                        <span
+                          class="ant-upload"
+                          role="button"
+                          tabindex="0"
+                        >
+                          <input
+                            accept=""
+                            id="items"
+                            style="display: none;"
+                            type="file"
+                          />
+                          <button
+                            class="ant-btn"
+                            type="button"
+                          >
+                            <span
+                              aria-label="upload"
+                              class="anticon anticon-upload"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="upload"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                                />
+                              </svg>
+                            </span>
+                            <span>
+                              configurationProject:files.add
+                            </span>
+                          </button>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-upload-list ant-upload-list-text"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label"
+          >
+            <label
+              class=""
+              title="configurationProject:files.annotatedFile"
+            >
+              configurationProject:files.annotatedFile
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-start"
+                >
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class=""
+                    >
+                      <div
+                        class="ant-upload ant-upload-select ant-upload-select-text"
+                      >
+                        <span
+                          class="ant-upload"
+                          role="button"
+                          tabindex="0"
+                        >
+                          <input
+                            accept=""
+                            id="annotations"
+                            style="display: none;"
+                            type="file"
+                          />
+                          <button
+                            class="ant-btn"
+                            type="button"
+                          >
+                            <span
+                              aria-label="upload"
+                              class="anticon anticon-upload"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="upload"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                                />
+                              </svg>
+                            </span>
+                            <span>
+                              configurationProject:files.add
+                            </span>
+                          </button>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-upload-list ant-upload-list-text"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label"
+          >
+            <label
+              class=""
+              title="configurationProject:files.predictionFile"
+            >
+              configurationProject:files.predictionFile
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-start"
+                >
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class=""
+                    >
+                      <div
+                        class="ant-upload ant-upload-select ant-upload-select-text"
+                      >
+                        <span
+                          class="ant-upload"
+                          role="button"
+                          tabindex="0"
+                        >
+                          <input
+                            accept=""
+                            id="predictions"
+                            style="display: none;"
+                            type="file"
+                          />
+                          <button
+                            class="ant-btn"
+                            type="button"
+                          >
+                            <span
+                              aria-label="upload"
+                              class="anticon anticon-upload"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="upload"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 00-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                                />
+                              </svg>
+                            </span>
+                            <span>
+                              configurationProject:files.add
+                            </span>
+                          </button>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-upload-list ant-upload-list-text"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

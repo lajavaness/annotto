@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelationPath matches snapshot 1`] = `
+<DocumentFragment>
+  <svg>
+    <g
+      class="sc-gsBqHK hZNRSb"
+      fill="transparent"
+    >
+      <defs>
+        <marker
+          class="sc-kmATbt vsmJn"
+          id="arrowhead_0"
+          markerHeight="3"
+          markerWidth="3"
+          orient="auto"
+          refX="2"
+          refY="1.5"
+          stroke="none"
+        >
+          <polygon
+            points="0 0, 3 1.5, 0 3"
+          />
+        </marker>
+      </defs>
+      <path
+        id="curve_0"
+        marker-end="url(#arrowhead_0)"
+        stroke-linecap="round"
+        stroke-width="3"
+      />
+      <g
+        visibility="hidden"
+      >
+        <rect
+          height="16"
+          rx="5"
+          ry="5"
+          stroke="none"
+          width="50"
+          x="0"
+          y="0"
+        />
+        <text
+          class="sc-aKXVD cPQigE"
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="0"
+          y="0"
+        />
+      </g>
+    </g>
+  </svg>
+</DocumentFragment>
+`;

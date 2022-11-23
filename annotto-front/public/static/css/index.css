@@ -1,0 +1,19 @@
+@font-face {font-family: "Scala Sans-Bold LF";
+    src: url("../../fonts/Scala Sans-Bold LF/Scala Sans-Bold LF.eot"); /* IE9*/
+    src: url("../../fonts/Scala Sans-Bold LF/Scala Sans-Bold LF.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../../fonts/Scala Sans-Bold LF/Scala Sans-Bold LF.woff2") format("woff2"), /* chrome、firefox */
+    url("../../fonts/Scala Sans-Bold LF/Scala Sans-Bold LF.woff") format("woff"), /* chrome、firefox */
+    url("../../fonts/Scala Sans-Bold LF/Scala Sans-Bold LF.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../../fonts/Scala Sans-Bold LF/Scala Sans-Bold LF.svg#Scala Sans-Bold LF") format("svg");/* iOS 4.1- */
+    font-weight: bold
+}
+
+
+html,
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}

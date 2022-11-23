@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnnotatorsContainer matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsBqHK gsESNF"
+  >
+    <div
+      class="sc-kmATbt cDljgH"
+    >
+      project:annotators.noAnnotators
+    </div>
+  </div>
+</DocumentFragment>
+`;

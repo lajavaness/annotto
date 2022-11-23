@@ -1,0 +1,80 @@
+[
+	{
+		"_id": "5f61ebdfd15130001ba9a20d",
+		"type": "image",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["admin@lajavaness.com"],
+		"annotationValues": ["bbox_name"],
+		"tags": [],
+		"raw": {
+			"uuid": "2CV",
+			"datatype": "image",
+			"data": {
+				"url": "https://www.moncvparfait.fr/wp-content/uploads/sites/4/2019/11/Vincent-Moreau-1-CONTENT-FR.svg"
+			}
+		},
+		"project": "5f61ebcdd15130001ba9a20b",
+		"uuid": "2CV",
+		"data": {
+			"url": "https://www.moncvparfait.fr/wp-content/uploads/sites/4/2019/11/Vincent-Moreau-1-CONTENT-FR.svg"
+		},
+		"updatedAt": "2020-10-06T09:18:21.618Z",
+		"createdAt": "2020-09-16T10:41:35.056Z",
+		"__v": 1,
+		"annotatedAt": "2020-09-22T15:02:07.311Z",
+		"seenAt": "2020-10-06T09:18:21.617Z"
+	},
+	{
+		"_id": "5f61ebdfd15130001ba9a20e",
+		"type": "image",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["admin@lajavaness.com"],
+		"annotationValues": ["ignore"],
+		"tags": ["mark"],
+		"raw": {
+			"uuid": "3CV",
+			"datatype": "image",
+			"data": {
+				"url": "https://cdn-images.resumelab.com/pages/google_docs_templates_resumelab_new_7.png?1579701443"
+			}
+		},
+		"project": "5f61ebcdd15130001ba9a20b",
+		"uuid": "3CV",
+		"data": {
+			"url": "https://cdn-images.resumelab.com/pages/google_docs_templates_resumelab_new_7.png?1579701443"
+		},
+		"updatedAt": "2020-10-05T14:45:59.853Z",
+		"createdAt": "2020-09-16T10:41:35.056Z",
+		"__v": 2,
+		"annotatedAt": "2020-09-24T08:14:59.509Z",
+		"seenAt": "2020-10-05T14:45:48.376Z"
+	},
+	{
+		"_id": "5f61ebdfd15130001ba9a20f",
+		"type": "image",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["admin@lajavaness.com"],
+		"annotationValues": ["bbox_Exp"],
+		"tags": [],
+		"raw": {
+			"uuid": "7CV",
+			"datatype": "image",
+			"data": {
+				"url": "https://www.moncvparfait.fr/wp-content/themes/myperfectresume/images/FRCV-Century-Gothic-New-Classic.svg"
+			}
+		},
+		"project": "5f61ebcdd15130001ba9a20b",
+		"uuid": "7CV",
+		"data": {
+			"url": "https://www.moncvparfait.fr/wp-content/themes/myperfectresume/images/FRCV-Century-Gothic-New-Classic.svg"
+		},
+		"updatedAt": "2020-10-05T14:38:08.910Z",
+		"createdAt": "2020-09-16T10:41:35.056Z",
+		"__v": 3,
+		"annotatedAt": "2020-09-25T09:57:42.330Z",
+		"seenAt": "2020-10-05T14:38:08.909Z"
+	}
+]

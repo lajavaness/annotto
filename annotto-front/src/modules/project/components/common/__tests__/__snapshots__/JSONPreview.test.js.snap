@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONPreview matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsBqHK ixPyrw"
+  />
+</DocumentFragment>
+`;
