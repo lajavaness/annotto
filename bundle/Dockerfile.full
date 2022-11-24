@@ -1,13 +1,13 @@
 FROM node:16-alpine as builder-annotto-front
 RUN mkdir -p /app
 WORKDIR /app
-COPY annotto-front /app
+COPY ../annotto-front /app
 
 RUN yarn && yarn build
 
 FROM node:16-alpine as builder-annotto-api
 WORKDIR /app
-COPY . .
+COPY .. .
 RUN yarn && yarn build
 
 FROM ubuntu:18.04
@@ -40,13 +40,13 @@ RUN wget https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_TAG}/
     tar -xvzf keycloak-${KEYCLOAK_TAG}.tar.gz && \
     mv keycloak-${KEYCLOAK_TAG} keycloak && \
     keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
-COPY statics/keycloak /tmp/keycloak-import
+COPY ../statics/keycloak /tmp/keycloak-import
 
 # overrides default vhost config with the one in repo we just fetched
-COPY bundle/conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 ## Script that starts all stack together
-COPY bundle/bin/start.sh start.sh
+COPY bin/start.sh start.sh
 
 RUN chmod 777 start.sh
 

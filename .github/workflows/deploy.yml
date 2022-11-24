@@ -192,7 +192,7 @@ jobs:
       contents: read
       packages: write
     env:
-      IMAGE: ${{ secrets.DOCKER_REGISTRY }}/annotto:bundle
+      IMAGE: ${{ secrets.DOCKER_REGISTRY }}/annotto
     steps:
       - name: Extract branch name
         shell: bash
@@ -218,7 +218,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile.full
+          file: ./bundle/Dockerfile.full
           push: true
           tags: ${{ env.IMAGE }}:latest , ${{ env.IMAGE }}:${{ needs.semantic-release.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
