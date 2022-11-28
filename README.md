@@ -62,7 +62,7 @@ yarn start:dev
 | ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 | ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 
-#### Users and Roles
+## Users and Roles
 When starting Annotto, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
 
 The different default users are: 
