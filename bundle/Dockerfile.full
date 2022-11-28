@@ -1,24 +1,42 @@
 FROM node:16-alpine as builder-annotto-front
-RUN mkdir -p /app
-WORKDIR /app
-COPY ../annotto-front /app
 
-RUN yarn && yarn build
+WORKDIR /app
+COPY ./annotto-front .
+
+RUN yarn install && \
+    yarn build
 
 FROM node:16-alpine as builder-annotto-api
+
+RUN apk update && apk add bash && apk add curl
+
+# install node-prune (https://github.com/tj/node-prune)
+RUN curl -sf https://gobinaries.com/tj/node-prune | sh
+
 WORKDIR /app
-COPY .. .
-RUN yarn && yarn build
+
+COPY yarn*.lock ./
+COPY package*.json ./
+
+RUN yarn install
+# The instructions for second stage
+COPY . .
+
+RUN yarn build
+
+# remove development dependencies
+RUN npm prune --omit=dev
+
+# run node prune
+RUN /usr/local/bin/node-prune
 
 FROM ubuntu:18.04
 
 ## Install Keycloak, annotto-front, annotto-api
-ARG KEYCLOAK_TAG
-
-ENV ANNOTTO_FRONT_URL http://localhost:3000
-ENV KEYCLOAK_AUTH_URL http://localhost:8080/auth
-ENV PROXY_ADDRESS_FORWARDING true
-ENV KEYCLOAK_FRONTEND_URL http://localhost:8080/auth
+ENV ANNOTTO_FRONT_URL "http://localhost:3000"
+ENV KEYCLOAK_AUTH_URL "http://localhost:3000/auth"
+ENV KEYCLOAK_ADMIN_URL  "http://localhost:3000/auth/realms/master/admin/"
+ENV KEYCLOAK_FRONTEND_URL "http://localhost:3000/auth"
 
 WORKDIR /opt
 
@@ -36,20 +54,23 @@ COPY --from=builder-annotto-api /app/dist annotto-api
 COPY --from=builder-annotto-api /app/node_modules annotto-api/node_modules
 
 ############ -------  Install Keycloak ------ ##########
-RUN wget https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_TAG}/keycloak-${KEYCLOAK_TAG}.tar.gz && \
-    tar -xvzf keycloak-${KEYCLOAK_TAG}.tar.gz && \
-    mv keycloak-${KEYCLOAK_TAG} keycloak && \
+RUN wget https://github.com/keycloak/keycloak/releases/download/15.0.1/keycloak-15.0.1.tar.gz && \
+    tar -xvzf keycloak-15.0.1.tar.gz && \
+    mv keycloak-15.0.1 keycloak && \
     keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
-COPY ../statics/keycloak /tmp/keycloak-import
+COPY ./statics/keycloak /tmp/keycloak-import
+COPY ./bundle/conf/standalone.xml keycloak/standalone/configuration/standalone.xml
 
 # overrides default vhost config with the one in repo we just fetched
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./bundle/conf/nginx.conf /etc/nginx/nginx.conf
 
 ## Script that starts all stack together
-COPY bin/start.sh start.sh
+COPY ./bundle/bin/start.sh start.sh
 
 RUN chmod 777 start.sh
 
 EXPOSE 3000
+EXPOSE 5001
+EXPOSE 8080
 
 CMD ["./start.sh"]

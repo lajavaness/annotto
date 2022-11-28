@@ -42,6 +42,6 @@ cypress.json
 
 # Keep environment files as apps use them to customise builds per target, but
 # remove local developer files
-.env*local
+**/.env.*
 
 .git
