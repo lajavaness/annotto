@@ -15,10 +15,7 @@ Annotto is the only **go to** annotation tool to successfully annotate your docu
 
 # Start with docker
 ```
-  docker run --rm -d --name annotto -p 3000:3000 -p 8080:8080 \
- -e KEYCLOAK_USER=admin \
- -e KEYCLOAK_PASSWORD=admin \
- ljnrepo/annotto:latest
+  docker run --rm -d --name annotto -p 3000:3000 ljnrepo/annotto:latest
 ```
 ***
 **Annotto** will be available at [http://localhost:3000](http://localhost:3000) with default credentials
@@ -65,26 +62,18 @@ yarn start:dev
 | ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 | ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 
-## Keycloak
-Annotto is protected by OAuth using Keycloak. When you start the environment with docker-compose, you will automatically
-create users to be able to make authorized requests to annotto API.
+#### Users and Roles
+When starting Annotto, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
 
-If you want to reach Keycloak Admin Console, you can go to [http://localhost:8080/auth](http://localhost:8080/auth) with credentials
-**admin/admin**
-
-When Keycloak is launched it will automatically create those Annotto users:
+The different default users are: 
 
 |username|password|role|
 |---|---|---|
-|admin|test|Admin|
-|data|test|Data Scientist|
-|user|test|User|
+|admin|test|admin|
+|data|test|dataScientist|
+|user|test|user|
 
-By default, an OAuth Realm `annotto` with basics users and roles are preconfigured when launching with [docker-compose.yml](./docker-compose.yml)
-Once the service is started, you can manage your Keycloak instance at your will.
-
-You can see more documentation on Keycloak and Annotto [here](./docs/keycloak.md)
-
+See more documentation on Keycloak [here](./docs/keycloak.md)
 
 ##  Contributing
 
