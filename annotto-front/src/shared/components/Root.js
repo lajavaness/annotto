@@ -19,7 +19,7 @@ import 'assets/locales'
 const sagaExtension = getSagaExtension()
 
 const store = createStore({
-	extensions: [sagaExtension],
+  extensions: [sagaExtension],
 })
 
 sagaExtension.middleware[0].run(sagas)
@@ -27,30 +27,30 @@ sagaExtension.middleware[0].run(sagas)
 store.addModule(rootModule)
 
 configure({
-	ignoreEventsCondition: (event) => {
-		const { target } = event
+  ignoreEventsCondition: (event) => {
+    const { target } = event
 
-		if (target && target.tagName) {
-			const tagName = target.tagName.toLowerCase()
-			const type = target.getAttribute('type')
-			if (
-				['select', 'textarea'].includes(tagName) ||
-				(tagName === 'input' && type && !['checkbox', 'radio'].includes(type))
-			) {
-				return true
-			}
-		}
+    if (target && target.tagName) {
+      const tagName = target.tagName.toLowerCase()
+      const type = target.getAttribute('type')
+      if (
+        ['select', 'textarea'].includes(tagName) ||
+        (tagName === 'input' && type && !['checkbox', 'radio'].includes(type))
+      ) {
+        return true
+      }
+    }
 
-		return false
-	},
+    return false
+  },
 })
 
 const Root = () => (
-	<Provider store={store}>
-		<ThemeProvider theme={theme}>
-			<App />
-		</ThemeProvider>
-	</Provider>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </Provider>
 )
 
 export default Root

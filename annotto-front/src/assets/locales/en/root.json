@@ -1,68 +1,68 @@
 {
-	"logoutConfirmModal": {
-		"title": "Log out",
-		"content": "Are you sure you want to logout ?",
-		"ok": "Yes",
-		"cancel": "No"
-	},
-	"header": {
-		"title": {
-			"default": "Annotto by La Javaness",
-			"home": "Home",
-			"createProject": "Project Creation",
-			"editProject": "Edit configuration",
-			"annotation": "Annotation"
-		},
-		"menu": {
-			"logout": "Log out"
-		}
-	},
-	"units": {
-		"percentLabel": "{{count}}%",
-		"secondLabel": "{{count}}s",
-		"hourLabel": "{{count}}h"
-	},
-	"errors": {
-		"label": {
-			"403": "Sorry, you are not authorised to access this page.",
-			"404": "Sorry, the page you visited does not exist.",
-			"500": "Sorry, something went wrong on our end.",
-			"default": "An error occurred."
-		},
-		"backButton": "Back Home"
-	},
-	"apiError": {
-		"title": "An error has occurred",
-		"ERROR": "An error occurred: please try again",
-		"ERROR_CLIENT_VALIDATION": "Your session has expired: please reconnect",
-		"ERROR_CLIENT_NOT_FOUND": "Email not found",
-		"ERROR_PROJECT_VALIDATION": "Error, project is not valid.",
-		"ERROR_PROJECT_STAT_QUERY": "ERROR_PROJECT_STAT_QUERY",
-		"ERROR_BATCH_NOT_FOUND": "ERROR_BATCH_NOT_FOUND",
-		"ERROR_BATCH_VALIDATION": "ERROR_BATCH_VALIDATION",
-		"ERROR_ITEM_NOT_FOUND": "ERROR_ITEM_NOT_FOUND",
-		"ERROR_ITEM_VALIDATION": "ERROR_ITEM_VALIDATION",
-		"ERROR_FILTER_NOT_FOUND": "ERROR_FILTER_NOT_FOUND",
-		"ERROR_VALIDATION_ITEM_ANNOTATION": "ERROR_VALIDATION_ITEM_ANNOTATION",
-		"ERROR_FILTER_PAYLOAD": "ERROR_FILTER_PAYLOAD",
-		"ERROR_FILTER_EXIST_FOR_PROJECT_AND_USER": "An error occurred: please try again",
-		"NO_FILTER_ON_PROJECT": "NO_FILTER_ON_PROJECT",
-		"ERROR_COMMENT_VALIDATION": "ERROR_COMMENT_VALIDATION",
-		"TASK_NOT_FOUND": "TASK_NOT_FOUND",
-		"ERROR_ANNOTATION_MISSING_PARENT_ID": "ERROR_ANNOTATION_MISSING_PARENT_ID",
-		"UNAUTHORIZED": "Error, your session has expired, please reconnect using your identity provider.",
-		"FORBIDDEN_PROFILE_NOT_ALLOWED": "FORBIDDEN_PROFILE_NOT_ALLOWED",
-		"FORBIDDEN_ROLE_NOT_ALLOWED": "FORBIDDEN_ROLE_NOT_ALLOWED",
-		"ERROR_PROJECT_NOT_FOUND": "Error, can't find the project, please contact the platform admin",
-		"ERROR_PROJECT_CREATION": "Error, can't create the project.",
-		"ERROR_PROJECT_CREATION_DUPLICATE_NAME": "Error, Can't create the project, a project using the same name exists.",
-		"ERROR_MISSING_PROJECT_FILE": "Error, missing project file. You need a project file to validate the project creation.",
-		"ERROR_MISSING_ITEMS_FILE": "Error, missing items file. You need an item file to validate the project creation.",
-		"TOO_MANY_EXCLUSIVE": "An error occurred: please try again",
-		"ERROR_UNAUTHORIZED": "Error, your session has expired, please reconnect using your identity provider.",
-		"INTERNAL_SERVER_ERROR": "Server error. Please try again or contact the platform admin",
-		"ERROR_ROUTE_NOT_FOUND": "ERROR_ROUTE_NOT_FOUND",
-		"ERROR_INVALID_S3_URI": "Error, the image URL is not valid. Please contact the project admin",
-		"ERROR_INVALID_CREDENTIALS": "Your username or password is incorrect, please try again"
-	}
+  "logoutConfirmModal": {
+    "title": "Log out",
+    "content": "Are you sure you want to logout ?",
+    "ok": "Yes",
+    "cancel": "No"
+  },
+  "header": {
+    "title": {
+      "default": "Annotto by La Javaness",
+      "home": "Home",
+      "createProject": "Project Creation",
+      "editProject": "Edit configuration",
+      "annotation": "Annotation"
+    },
+    "menu": {
+      "logout": "Log out"
+    }
+  },
+  "units": {
+    "percentLabel": "{{count}}%",
+    "secondLabel": "{{count}}s",
+    "hourLabel": "{{count}}h"
+  },
+  "errors": {
+    "label": {
+      "403": "Sorry, you are not authorised to access this page.",
+      "404": "Sorry, the page you visited does not exist.",
+      "500": "Sorry, something went wrong on our end.",
+      "default": "An error occurred."
+    },
+    "backButton": "Back Home"
+  },
+  "apiError": {
+    "title": "An error has occurred",
+    "ERROR": "An error occurred: please try again",
+    "ERROR_CLIENT_VALIDATION": "Your session has expired: please reconnect",
+    "ERROR_CLIENT_NOT_FOUND": "Email not found",
+    "ERROR_PROJECT_VALIDATION": "Error, project is not valid.",
+    "ERROR_PROJECT_STAT_QUERY": "ERROR_PROJECT_STAT_QUERY",
+    "ERROR_BATCH_NOT_FOUND": "ERROR_BATCH_NOT_FOUND",
+    "ERROR_BATCH_VALIDATION": "ERROR_BATCH_VALIDATION",
+    "ERROR_ITEM_NOT_FOUND": "ERROR_ITEM_NOT_FOUND",
+    "ERROR_ITEM_VALIDATION": "ERROR_ITEM_VALIDATION",
+    "ERROR_FILTER_NOT_FOUND": "ERROR_FILTER_NOT_FOUND",
+    "ERROR_VALIDATION_ITEM_ANNOTATION": "ERROR_VALIDATION_ITEM_ANNOTATION",
+    "ERROR_FILTER_PAYLOAD": "ERROR_FILTER_PAYLOAD",
+    "ERROR_FILTER_EXIST_FOR_PROJECT_AND_USER": "An error occurred: please try again",
+    "NO_FILTER_ON_PROJECT": "NO_FILTER_ON_PROJECT",
+    "ERROR_COMMENT_VALIDATION": "ERROR_COMMENT_VALIDATION",
+    "TASK_NOT_FOUND": "TASK_NOT_FOUND",
+    "ERROR_ANNOTATION_MISSING_PARENT_ID": "ERROR_ANNOTATION_MISSING_PARENT_ID",
+    "UNAUTHORIZED": "Error, your session has expired, please reconnect using your identity provider.",
+    "FORBIDDEN_PROFILE_NOT_ALLOWED": "FORBIDDEN_PROFILE_NOT_ALLOWED",
+    "FORBIDDEN_ROLE_NOT_ALLOWED": "FORBIDDEN_ROLE_NOT_ALLOWED",
+    "ERROR_PROJECT_NOT_FOUND": "Error, can't find the project, please contact the platform admin",
+    "ERROR_PROJECT_CREATION": "Error, can't create the project.",
+    "ERROR_PROJECT_CREATION_DUPLICATE_NAME": "Error, Can't create the project, a project using the same name exists.",
+    "ERROR_MISSING_PROJECT_FILE": "Error, missing project file. You need a project file to validate the project creation.",
+    "ERROR_MISSING_ITEMS_FILE": "Error, missing items file. You need an item file to validate the project creation.",
+    "TOO_MANY_EXCLUSIVE": "An error occurred: please try again",
+    "ERROR_UNAUTHORIZED": "Error, your session has expired, please reconnect using your identity provider.",
+    "INTERNAL_SERVER_ERROR": "Server error. Please try again or contact the platform admin",
+    "ERROR_ROUTE_NOT_FOUND": "ERROR_ROUTE_NOT_FOUND",
+    "ERROR_INVALID_S3_URI": "Error, the image URL is not valid. Please contact the project admin",
+    "ERROR_INVALID_CREDENTIALS": "Your username or password is incorrect, please try again"
+  }
 }

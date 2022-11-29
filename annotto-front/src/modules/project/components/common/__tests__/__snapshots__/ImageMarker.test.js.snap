@@ -3,20 +3,22 @@
 exports[`ImageMarker matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-aKXVD cPPqcz"
+    class="sc-ZqGJI jRKgWj"
   >
     <img
-      class="sc-kmATbt EQBwG"
+      class="sc-knEsKG dCWNq"
     />
     <svg
-      class="sc-cvJIAo kpuwKS"
+      class="sc-cxdZMj gnjBWy"
       data-testid="__markers-container__"
     />
     <div
-      class="sc-bdfBQB dbZmsR"
+      class="sc-bcXHqe obZLm"
       data-testid="__loader__"
     >
       <div
+        aria-busy="true"
+        aria-live="polite"
         class="ant-spin ant-spin-lg ant-spin-spinning"
       >
         <span

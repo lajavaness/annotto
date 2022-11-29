@@ -3,7 +3,7 @@
 exports[`Hotkey matches snapshot 1`] = `
 <DocumentFragment>
   <kbd
-    class="sc-gsBqHK gdjmQG"
+    class="sc-grxQYx gHwJYh"
   >
     bar
   </kbd>
@@ -13,7 +13,7 @@ exports[`Hotkey matches snapshot 1`] = `
 exports[`Hotkey matches snapshot when component is selected 1`] = `
 <DocumentFragment>
   <kbd
-    class="sc-gsBqHK kSurQp"
+    class="sc-grxQYx iBIajC"
   >
     bar
   </kbd>

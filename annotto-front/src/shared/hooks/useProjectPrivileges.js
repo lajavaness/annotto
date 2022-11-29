@@ -11,65 +11,65 @@ import { selectUserInfo } from 'modules/root/selectors/authSelectors'
 import { selectProjectUsersByRole } from 'modules/project/selectors/projectSelectors'
 
 const useProjectPrivileges = (isConfigProjectContext = false) => {
-	const [privileges, setPrivileges] = useState([])
+  const [privileges, setPrivileges] = useState([])
 
-	const user = useSelector(selectUserInfo)
+  const user = useSelector(selectUserInfo)
 
-	const projectUsersByRole = useSelector(
-		!isConfigProjectContext ? selectProjectUsersByRole : selectConfigProjectUsersByRole
-	)
+  const projectUsersByRole = useSelector(
+    !isConfigProjectContext ? selectProjectUsersByRole : selectConfigProjectUsersByRole
+  )
 
-	const resolvedProjectRoleByEmail = useCallback(
-		(userEmail) => {
-			const usersByRoles = {}
+  const resolvedProjectRoleByEmail = useCallback(
+    (userEmail) => {
+      const usersByRoles = {}
 
-			Object.entries(projectUsersByRole).forEach(([role, value]) => {
-				if (!value) {
-					usersByRoles[role] = []
-				} else {
-					usersByRoles[role] = value
-				}
-			})
+      Object.entries(projectUsersByRole).forEach(([role, value]) => {
+        if (!value) {
+          usersByRoles[role] = []
+        } else {
+          usersByRoles[role] = value
+        }
+      })
 
-			if (!Object.values(usersByRoles).every((value) => isEmpty(value))) {
-				const [role] = Object.entries(usersByRoles).find(([_, values]) => {
-					return values.includes(userEmail)
-				}) || [null]
-				if (role) {
-					return role
-				} else {
-					return DEFAULT
-				}
-			}
-		},
-		[projectUsersByRole]
-	)
+      if (!Object.values(usersByRoles).every((value) => isEmpty(value))) {
+        // eslint-disable-next-line no-unused-vars
+        const [role] = Object.entries(usersByRoles).find(([_, values]) => {
+          return values.includes(userEmail)
+        }) || [null]
+        if (role) {
+          return role
+        }
+        return DEFAULT
+      }
 
-	useEffect(() => {
-		if (user) {
-			const roles = user?.profile?.roles
-			if (roles?.includes(ADMIN)) {
-				setPrivileges(PRIVILEGES[ADMIN])
-			} else {
-				if (user.email) {
-					const projectRole = resolvedProjectRoleByEmail(user.email)
-					if (projectRole && projectRole !== DEFAULT) {
-						setPrivileges(PROJECT_PRIVILEGES[projectRole])
-					} else if (projectRole === DEFAULT && roles) {
-						let userPrivileges = []
-						Object.keys(PRIVILEGES).forEach((role) => {
-							if (roles.includes(role)) {
-								userPrivileges = [...userPrivileges, ...PRIVILEGES[role]]
-							}
-						})
-						setPrivileges(userPrivileges)
-					}
-				}
-			}
-		}
-	}, [user, resolvedProjectRoleByEmail])
+      return null
+    },
+    [projectUsersByRole]
+  )
 
-	return useCallback((privilege) => !isEmpty(privileges) && privilege && privileges?.includes(privilege), [privileges])
+  useEffect(() => {
+    if (user) {
+      const roles = user?.profile?.roles
+      if (roles?.includes(ADMIN)) {
+        setPrivileges(PRIVILEGES[ADMIN])
+      } else if (user.email) {
+        const projectRole = resolvedProjectRoleByEmail(user.email)
+        if (projectRole && projectRole !== DEFAULT) {
+          setPrivileges(PROJECT_PRIVILEGES[projectRole])
+        } else if (projectRole === DEFAULT && roles) {
+          let userPrivileges = []
+          Object.keys(PRIVILEGES).forEach((role) => {
+            if (roles.includes(role)) {
+              userPrivileges = [...userPrivileges, ...PRIVILEGES[role]]
+            }
+          })
+          setPrivileges(userPrivileges)
+        }
+      }
+    }
+  }, [user, resolvedProjectRoleByEmail])
+
+  return useCallback((privilege) => !isEmpty(privileges) && privilege && privileges?.includes(privilege), [privileges])
 }
 
 export default useProjectPrivileges

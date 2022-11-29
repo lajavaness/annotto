@@ -8,11 +8,11 @@ const Hotkey = ({ isSelected, label }) => <Styled.Root $isSelected={isSelected}>
 export default Hotkey
 
 Hotkey.propTypes = {
-	label: PropTypes.string.isRequired,
-	/** Manages background color depending on whether it selected */
-	isSelected: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+  /** Manages background color depending on whether it selected. */
+  isSelected: PropTypes.bool,
 }
 
 Hotkey.defaultProps = {
-	isSelected: false,
+  isSelected: false,
 }

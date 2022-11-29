@@ -5,13 +5,13 @@ import rootReducer from 'modules/root/reducers/rootReducer'
 import rootSaga from 'modules/root/sagas/rootSaga'
 
 const rootModule = {
-	id: 'root',
-	reducerMap: {
-		root: rootReducer,
-		auth: authReducer,
-	},
-	sagas: [rootSaga, authSaga],
-	initialActions: [startup()],
+  id: 'root',
+  reducerMap: {
+    root: rootReducer,
+    auth: authReducer,
+  },
+  sagas: [rootSaga, authSaga],
+  initialActions: [startup()],
 }
 
 export default rootModule

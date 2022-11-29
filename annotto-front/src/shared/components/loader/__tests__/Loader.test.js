@@ -7,8 +7,8 @@ const defaultProps = {}
 const getInstance = (props = {}) => <Loader {...defaultProps} {...props} />
 
 describe('AnimatedLoader', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

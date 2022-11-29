@@ -11,33 +11,33 @@ import { isArray, isEmpty } from 'lodash'
  * [category : String , children : [task], ...otherProperties].
  */
 export const groupTasksByCategories = (tasks) => {
-	if (!isArray(tasks) || isEmpty(tasks)) {
-		return []
-	}
+  if (!isArray(tasks) || isEmpty(tasks)) {
+    return []
+  }
 
-	const taskWithoutCategories = tasks.filter(({ category }) => isEmpty(category))
-	const tasksWithCategories = tasks.filter(({ category }) => !isEmpty(category))
+  const taskWithoutCategories = tasks.filter(({ category }) => isEmpty(category))
+  const tasksWithCategories = tasks.filter(({ category }) => !isEmpty(category))
 
-	const groupedTasks = tasksWithCategories.reduce((acc, { category, ...others }, index) => {
-		const categoryIndex = acc.findIndex(({ category: accCategory }) => accCategory === category)
-		const child = others
+  const groupedTasks = tasksWithCategories.reduce((acc, { category, ...others }) => {
+    const categoryIndex = acc.findIndex(({ category: accCategory }) => accCategory === category)
+    const child = others
 
-		if (categoryIndex < 0) {
-			acc.push({ category, children: [child] })
-		} else {
-			acc[categoryIndex] = {
-				...acc[categoryIndex],
-				children: [...acc[categoryIndex].children, child],
-			}
-		}
-		return acc
-	}, [])
+    if (categoryIndex < 0) {
+      acc.push({ category, children: [child] })
+    } else {
+      acc[categoryIndex] = {
+        ...acc[categoryIndex],
+        children: [...acc[categoryIndex].children, child],
+      }
+    }
+    return acc
+  }, [])
 
-	const mappedTasksWithoutCategories = taskWithoutCategories.map(({ category, ...others }, index) => ({
-		...others,
-		category: null,
-		children: [],
-	}))
+  const mappedTasksWithoutCategories = taskWithoutCategories.map(({ category, ...others }) => ({
+    ...others,
+    category: null,
+    children: [],
+  }))
 
-	return [...groupedTasks, ...mappedTasksWithoutCategories]
+  return [...groupedTasks, ...mappedTasksWithoutCategories]
 }

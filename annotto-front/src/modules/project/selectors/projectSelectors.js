@@ -42,6 +42,6 @@ export const selectIsFilterModalOpen = (state) => state?.project?.isFilterModalO
 export const selectIsGuideModalOpen = (state) => state?.project?.isGuideModalOpen || false
 
 export const selectProjectUsersByRole = createSelector(
-	[selectProjectAdmins, selectProjectDatascientists, selectProjectUsers],
-	(admins, dataScientists, users) => ({ [ADMIN]: admins, [DATASCIENTIST]: dataScientists, [USER]: users })
+  [selectProjectAdmins, selectProjectDatascientists, selectProjectUsers],
+  (admins, dataScientists, users) => ({ [ADMIN]: admins, [DATASCIENTIST]: dataScientists, [USER]: users })
 )

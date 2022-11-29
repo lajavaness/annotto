@@ -7,14 +7,14 @@ import theme from '__theme__'
 import Table from 'shared/components/table/Table'
 
 const getInstance = () => (
-	<ThemeProvider theme={theme}>
-		<Table />
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <Table />
+  </ThemeProvider>
 )
 
 describe('Table', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

@@ -4,12 +4,12 @@ exports[`RelationPath matches snapshot 1`] = `
 <DocumentFragment>
   <svg>
     <g
-      class="sc-gsBqHK hZNRSb"
+      class="sc-grxQYx JDUug"
       fill="transparent"
     >
       <defs>
         <marker
-          class="sc-kmATbt vsmJn"
+          class="sc-knEsKG cgdThH"
           id="arrowhead_0"
           markerHeight="3"
           markerWidth="3"
@@ -42,7 +42,7 @@ exports[`RelationPath matches snapshot 1`] = `
           y="0"
         />
         <text
-          class="sc-aKXVD cPQigE"
+          class="sc-ZqGJI dAJwfZ"
           dominant-baseline="middle"
           text-anchor="middle"
           x="0"

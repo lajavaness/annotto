@@ -5,32 +5,32 @@ import JsonEditor from 'shared/components/common/JsonEditor'
 
 const defaultProps = {}
 const getInstance = (props = {}) => (
-	<div>
-		<JsonEditor {...defaultProps} {...props} />
-	</div>
+  <div>
+    <JsonEditor {...defaultProps} {...props} />
+  </div>
 )
 
 describe('JsonEditor', () => {
-	document.createRange = () => {
-		const range = new Range()
+  document.createRange = () => {
+    const range = new Range()
 
-		range.getBoundingClientRect = jest.fn()
+    range.getBoundingClientRect = jest.fn()
 
-		range.getClientRects = () => {
-			return {
-				item: () => null,
-				length: 0,
-				[Symbol.iterator]: jest.fn(),
-			}
-		}
+    range.getClientRects = () => {
+      return {
+        item: () => null,
+        length: 0,
+        [Symbol.iterator]: jest.fn(),
+      }
+    }
 
-		range.startContainer.getBoundingClientRect = jest.fn()
+    range.startContainer.getBoundingClientRect = jest.fn()
 
-		return range
-	}
+    return range
+  }
 
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

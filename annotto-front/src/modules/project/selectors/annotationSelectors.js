@@ -6,8 +6,8 @@ export const selectAnnotationItems = (state) => state?.project?.annotation?.item
 export const selectCurrentItemId = (state) => state?.project?.annotation?.currentItemId || null
 
 export const selectCurrentItem = createSelector(
-	[selectAnnotationItems, selectCurrentItemId],
-	(items, currentItemId) => items?.find(({ _id }) => currentItemId === _id) || null
+  [selectAnnotationItems, selectCurrentItemId],
+  (items, currentItemId) => items?.find(({ _id }) => currentItemId === _id) || null
 )
 
 export const selectCurrentItemAnnotations = (state) => selectCurrentItem(state)?.annotations || null

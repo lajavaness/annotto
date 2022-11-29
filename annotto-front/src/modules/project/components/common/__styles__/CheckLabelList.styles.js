@@ -3,25 +3,25 @@ import { TagsTwoTone } from '@ant-design/icons'
 import styled from '@xstyled/styled-components'
 
 export const Root = styled.div`
-	height: 100%;
+  height: 100%;
 `
 
 export const CheckboxGroup = styled(Checkbox.Group)`
-	&& {
-		width: 100%;
-		margin: 8px 0 16px 0;
-	}
+  && {
+    width: 100%;
+    margin: 8px 0 16px 0;
+  }
 `
 
 export const ItemRow = styled(Row)`
-	display: flex;
-	justify-content: space-between;
-	& > div {
-		border-bottom: regular;
-	}
-	${({ $hasBelowSevenChildren, theme }) =>
-		$hasBelowSevenChildren
-			? `
+  display: flex;
+  justify-content: space-between;
+  & > div {
+    border-bottom: regular;
+  }
+  ${({ $hasBelowSevenChildren, theme }) =>
+    $hasBelowSevenChildren
+      ? `
 					& > div {
 						width: 100%;
 					}
@@ -36,7 +36,7 @@ export const ItemRow = styled(Row)`
 						border-top-right-radius: ${theme.radii.regular};
 					}
 			  `
-			: `
+      : `
 					& > div {
 						width: calc(50% - 4px);
 					}
@@ -61,56 +61,56 @@ export const ItemRow = styled(Row)`
 `
 
 export const ItemCol = styled(Col)`
-	background-color: backgroundSecondary;
+  background-color: backgroundSecondary;
 `
 
 export const Label = styled.div`
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	padding: 4px 8px;
-	cursor: pointer;
-	height: 100%;
-	align-items: center;
-	.ant-tag {
-		margin-right: 0;
-	}
-	&:hover {
-		background-color: rgba(0, 0, 0, 0.1);
-	}
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  cursor: pointer;
+  height: 100%;
+  align-items: center;
+  .ant-tag {
+    margin-right: 0;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 `
 
 export const LabelText = styled(Typography.Text)`
-	flex: 1;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const PredictionIcon = styled(TagsTwoTone)``
 
 export const CheckboxLabel = styled.div`
-	display: flex;
-	flex: 1;
-	overflow: hidden;
-	.ant-checkbox-wrapper {
-		margin-right: 8px;
-		margin-left: 16px;
-	}
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  .ant-checkbox-wrapper {
+    margin-right: 8px;
+    margin-left: 16px;
+  }
 `
 export const IconHotkey = styled.div`
-	display: flex;
-	align-items: center;
-	.anticon {
-		margin-right: 18px;
-		color: darkgray;
-	}
+  display: flex;
+  align-items: center;
+  .anticon {
+    margin-right: 18px;
+    color: darkgray;
+  }
 `
 
 export const ColoredLeftSection = styled.div`
-	width: 16px;
-	height: 100%;
-	background-color: ${({ background }) => (background ? background : 'transparent')};
-	position: absolute;
-	left: 0;
+  width: 16px;
+  height: 100%;
+  background-color: ${({ background }) => background || 'transparent'};
+  position: absolute;
+  left: 0;
 `

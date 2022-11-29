@@ -2,35 +2,6 @@
 
 exports[`AnnotationPage matches snapshot 1`] = `
 <DocumentFragment>
-  <section
-    class="sc-eCjjWe dBnnMG"
-    data-testid="__annotation-page__"
-  >
-    <div
-      class="sc-iWRHom dvmkiK"
-      data-testid="__loader__"
-    >
-      <div
-        class="ant-spin ant-spin-lg ant-spin-spinning"
-      >
-        <span
-          class="ant-spin-dot ant-spin-dot-spin"
-        >
-          <i
-            class="ant-spin-dot-item"
-          />
-          <i
-            class="ant-spin-dot-item"
-          />
-          <i
-            class="ant-spin-dot-item"
-          />
-          <i
-            class="ant-spin-dot-item"
-          />
-        </span>
-      </div>
-    </div>
-  </section>
+  Loading
 </DocumentFragment>
 `;

@@ -1,25 +1,25 @@
 {
-	"createButton": "Create new project",
-	"successCreate": "Project creation succeed",
-	"breadcrumb": {
-		"home": "Home",
-		"createProject": "Create Project"
-	},
-	"table": {
-		"name": "Name",
-		"client": "Client",
-		"name_plural": "Projects Names ({{count}})",
-		"users": "Users",
-		"items": "Items",
-		"progress": "Progress",
-		"velocity": "Velocity",
-		"remaining_time": "Remaining time",
-		"remaining_work": "Remaining work",
-		"notes": "Notes",
-		"update": "Update",
-		"annotate": "Annotate"
-	},
-	"button": {
-		"loadMore": "Load more"
-	}
+  "createButton": "Create new project",
+  "successCreate": "Project creation succeed",
+  "breadcrumb": {
+    "home": "Home",
+    "createProject": "Create Project"
+  },
+  "table": {
+    "name": "Name",
+    "client": "Client",
+    "name_plural": "Projects Names ({{count}})",
+    "users": "Users",
+    "items": "Items",
+    "progress": "Progress",
+    "velocity": "Velocity",
+    "remaining_time": "Remaining time",
+    "remaining_work": "Remaining work",
+    "notes": "Notes",
+    "update": "Update",
+    "annotate": "Annotate"
+  },
+  "button": {
+    "loadMore": "Load more"
+  }
 }

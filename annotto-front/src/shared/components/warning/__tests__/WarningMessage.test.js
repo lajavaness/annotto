@@ -8,20 +8,20 @@ import WarningMessage from 'shared/components/warning/WarningMessage'
 
 const defaultProps = {}
 const getInstance = (props = {}) => (
-	<ThemeProvider theme={theme}>
-		<WarningMessage {...defaultProps} {...props} />
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <WarningMessage {...defaultProps} {...props} />
+  </ThemeProvider>
 )
 
 describe('WarningMessage', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 
-	it('display message', () => {
-		const message = 'foo'
-		const { getByText } = render(getInstance({ message }))
-		expect(getByText(message)).toBeVisible()
-	})
+  it('display message', () => {
+    const message = 'foo'
+    const { getByText } = render(getInstance({ message }))
+    expect(getByText(message)).toBeVisible()
+  })
 })

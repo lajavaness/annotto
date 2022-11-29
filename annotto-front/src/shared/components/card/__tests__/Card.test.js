@@ -8,15 +8,15 @@ import Card from 'shared/components/card/Card'
 
 const defaultProps = {}
 const getInstance = (props = {}) => (
-	<ThemeProvider theme={theme}>
-		<Card {...defaultProps} {...props} />
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <Card {...defaultProps} {...props} />
+  </ThemeProvider>
 )
 
 describe('Card', () => {
-	it('matches snapshot ', () => {
-		const title = 'Foo'
-		const { asFragment } = render(getInstance({ title }))
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot ', () => {
+    const title = 'Foo'
+    const { asFragment } = render(getInstance({ title }))
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

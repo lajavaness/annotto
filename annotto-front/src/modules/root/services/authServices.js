@@ -13,6 +13,7 @@ const keycloakConfig = {
 }
 
 export const initService = async () => {
+  // eslint-disable-next-line no-useless-catch
   try {
     const keycloak = new Keycloak(keycloakConfig)
     await keycloak.init({ onLoad: 'login-required' })
@@ -23,8 +24,9 @@ export const initService = async () => {
 }
 
 export const getUserInfoService = async (keycloak) => {
+  // eslint-disable-next-line no-useless-catch
   try {
-    if (!!keycloak) {
+    if (keycloak) {
       const userInfo = await keycloak.loadUserInfo()
       const user = {
         email: userInfo.email,
@@ -38,32 +40,33 @@ export const getUserInfoService = async (keycloak) => {
 
       return user
     }
+    throw new Error('No Keycloak instance has been provided')
   } catch (err) {
     throw err
   }
 }
 
 export const refreshTokenService = async (keycloak) => {
+  // eslint-disable-next-line no-useless-catch
   try {
-    if (!!keycloak) {
+    if (keycloak) {
       await keycloak.updateToken(parseInt(process.env.REACT_APP_KEYCLOAK_REFRESH_TOKEN_DURATION))
       return
-    } else {
-      throw new Error('No Keycloak instance has been provided')
     }
+    throw new Error('No Keycloak instance has been provided')
   } catch (err) {
     throw err
   }
 }
 
 export const logoutService = async (keycloak) => {
+  // eslint-disable-next-line no-useless-catch
   try {
-    if (!!keycloak) {
+    if (keycloak) {
       await keycloak.logout()
       return
-    } else {
-      throw new Error('No Keycloak instance has been provided')
     }
+    throw new Error('No Keycloak instance has been provided')
   } catch (err) {
     throw err
   }

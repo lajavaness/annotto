@@ -2,14 +2,6 @@
 
 exports[`AnnotatorsContainer matches snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-gsBqHK gsESNF"
-  >
-    <div
-      class="sc-kmATbt cDljgH"
-    >
-      project:annotators.noAnnotators
-    </div>
-  </div>
+  Loading
 </DocumentFragment>
 `;

@@ -266,9 +266,7 @@ describe('projectSagas', () => {
 
     it('calls resolveApiUrl', () => {
       const saga = fetchProjectItemsSaga({ payload })
-      expect(saga.next().value).toEqual(
-        call(resolveApiUrl, 'REACT_APP_PROJECT_STATS_ITEMS_ROUTE', { projectId: projectId })
-      )
+      expect(saga.next().value).toEqual(call(resolveApiUrl, 'REACT_APP_PROJECT_STATS_ITEMS_ROUTE', { projectId }))
     })
 
     it('select selectProjectFilterId', () => {
@@ -355,9 +353,7 @@ describe('projectSagas', () => {
 
     it('calls resolveApiUrl', () => {
       const saga = fetchProjectStatsTasksSaga({ payload })
-      expect(saga.next().value).toEqual(
-        call(resolveApiUrl, 'REACT_APP_PROJECT_STATS_TASKS_ROUTE', { projectId: projectId })
-      )
+      expect(saga.next().value).toEqual(call(resolveApiUrl, 'REACT_APP_PROJECT_STATS_TASKS_ROUTE', { projectId }))
     })
 
     it('select selectProjectStatsTasks', () => {
@@ -436,7 +432,7 @@ describe('projectSagas', () => {
 
     it('calls resolveApiUrl', () => {
       const saga = fetchProjectUsersSaga({ payload })
-      expect(saga.next().value).toEqual(call(resolveApiUrl, 'REACT_APP_PROJECT_USERS_ROUTE', { projectId: projectId }))
+      expect(saga.next().value).toEqual(call(resolveApiUrl, 'REACT_APP_PROJECT_USERS_ROUTE', { projectId }))
     })
 
     it('puts request', () => {
@@ -547,13 +543,13 @@ describe('projectSagas', () => {
       },
     ]
 
-    putSuccessCases.forEach(({ title, payload, oldLogs }) => {
-      it(title, () => {
-        const saga = fetchProjectLogsSaga({ payload })
+    putSuccessCases.forEach((successCase) => {
+      it(successCase.title, () => {
+        const saga = fetchProjectLogsSaga({ payload: successCase.payload })
         sagaNextN(saga, 2)
         saga.next({ payload: { logs } })
         saga.next(logs.data)
-        expect(saga.next(oldLogs).value).toEqual(put(fetchProjectLogsSuccess({ ...logs, data: logs.data })))
+        expect(saga.next(successCase.oldLogs).value).toEqual(put(fetchProjectLogsSuccess({ ...logs, data: logs.data })))
       })
     })
 
@@ -627,7 +623,7 @@ describe('projectSagas', () => {
       expect(saga.next().value).toEqual(take(FETCH_PROJECT_LOGS_SUCCESS))
     })
 
-    it('takes project logs fetching result', () => {
+    it('takes project logs fetching result success', () => {
       const saga = fetchProjectItemsAndLogsSaga({ payload })
       sagaNextN(saga, 4)
       expect(saga.next().value).toEqual(put(fetchProjectItemsAndLogsSuccess()))
@@ -694,14 +690,14 @@ describe('projectSagas', () => {
     })
 
     describe('if length of highlights in payload is different than length currentHighlights', () => {
-      const payload = { highlights: ['foo'] }
+      const newPayload = { highlights: ['foo'] }
       const currentHighlights = ['foo', 'bar']
       const data = { success: { payload: 'foo' } }
       const item = { _id: 'foo', highlights: ['foo'] }
       const items = [item]
 
       it('selects AnnotationItems', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -710,7 +706,7 @@ describe('projectSagas', () => {
       })
 
       it('selects CurrentItem', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -720,7 +716,7 @@ describe('projectSagas', () => {
       })
 
       it('puts fetchAnnotationItem', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -731,7 +727,7 @@ describe('projectSagas', () => {
       })
 
       it('takes FETCH_ANNOTATION_ITEM_SUCCESS', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -743,7 +739,7 @@ describe('projectSagas', () => {
       })
 
       it('puts updateCurrentAnnotationItem', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -758,7 +754,7 @@ describe('projectSagas', () => {
       })
 
       it('takes UPDATE_CURRENT_ANNOTATION_ITEM_SUCCESS', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -772,7 +768,7 @@ describe('projectSagas', () => {
       })
 
       it('puts putProjectSuccess', () => {
-        const saga = putProjectSaga({ payload })
+        const saga = putProjectSaga({ payload: newPayload })
         sagaNextN(saga, 1)
         saga.next(projectId)
         saga.next(currentHighlights)
@@ -783,7 +779,7 @@ describe('projectSagas', () => {
         sagaNextN(saga, 1)
         saga.next({ payload: { item: { highlights: currentHighlights } } })
         sagaNextN(saga, 1)
-        expect(saga.next().value).toEqual(put(putProjectSuccess(payload)))
+        expect(saga.next().value).toEqual(put(putProjectSuccess(newPayload)))
       })
     })
   })

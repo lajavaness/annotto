@@ -11,16 +11,16 @@ import PreviewStepPage from 'modules/configurationProject/components/PreviewStep
 const initialState = {}
 const getStore = (state) => createStore({ initialState: state })
 const getInstance = (state = initialState) => (
-	<Provider store={getStore(state)}>
-		<ThemeProvider theme={theme}>
-			<PreviewStepPage />
-		</ThemeProvider>
-	</Provider>
+  <Provider store={getStore(state)}>
+    <ThemeProvider theme={theme}>
+      <PreviewStepPage />
+    </ThemeProvider>
+  </Provider>
 )
 
 describe('PreviewStepPage', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

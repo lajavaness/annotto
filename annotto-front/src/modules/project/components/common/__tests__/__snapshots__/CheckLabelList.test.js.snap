@@ -3,7 +3,7 @@
 exports[`CheckLabelList matches snapshot with no data 1`] = `
 <DocumentFragment>
   <div
-    class="sc-aKXVD caceiT"
+    class="sc-ZqGJI bMqrSS"
   />
 </DocumentFragment>
 `;
@@ -11,7 +11,7 @@ exports[`CheckLabelList matches snapshot with no data 1`] = `
 exports[`CheckLabelList matches snapshot with tasks && annotations 1`] = `
 <DocumentFragment>
   <div
-    class="sc-aKXVD caceiT"
+    class="sc-ZqGJI bMqrSS"
   />
 </DocumentFragment>
 `;
@@ -19,7 +19,7 @@ exports[`CheckLabelList matches snapshot with tasks && annotations 1`] = `
 exports[`CheckLabelList matches snapshot with tasks 1`] = `
 <DocumentFragment>
   <div
-    class="sc-aKXVD caceiT"
+    class="sc-ZqGJI bMqrSS"
   >
     <h5
       class="ant-typography"
@@ -27,24 +27,24 @@ exports[`CheckLabelList matches snapshot with tasks 1`] = `
       task1
     </h5>
     <div
-      class="ant-checkbox-group sc-kmATbt hNisJz"
+      class="ant-checkbox-group sc-knEsKG ebraTK"
       data-testid="__check-label-list__"
     >
       <div
-        class="ant-row sc-cvJIAo JxHcJ"
+        class="ant-row sc-cxdZMj hKuUhd"
       >
         <div
-          class="ant-col sc-dkmKIT dRjAvl"
+          class="ant-col sc-dkKxlM ckWbNm"
         >
           <div
-            class="sc-gIRjGK leRpwN"
+            class="sc-gJFNMl cSBKiF"
             data-testid="__checkbox__"
           >
             <div
-              class="sc-tkKUh drvlnY"
+              class="sc-uokDu QCvoz"
             />
             <div
-              class="sc-jLiVFv mrmQC"
+              class="sc-jKvnYE fzZXDY"
             >
               <label
                 class="ant-checkbox-wrapper"
@@ -63,16 +63,16 @@ exports[`CheckLabelList matches snapshot with tasks 1`] = `
                 </span>
               </label>
               <span
-                class="ant-typography ant-typography-ellipsis ant-typography-single-line sc-fybuyZ bbPKtW"
+                class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line sc-fxTzYC hjUKLg"
               >
                 label1.1
               </span>
             </div>
             <div
-              class="sc-bUrLeq kAtkRI"
+              class="sc-bTUVah dpJiNm"
             >
               <kbd
-                class="sc-gsBqHK gdjmQG"
+                class="sc-grxQYx gHwJYh"
               >
                 a
               </kbd>
@@ -80,17 +80,17 @@ exports[`CheckLabelList matches snapshot with tasks 1`] = `
           </div>
         </div>
         <div
-          class="ant-col sc-dkmKIT dRjAvl"
+          class="ant-col sc-dkKxlM ckWbNm"
         >
           <div
-            class="sc-gIRjGK leRpwN"
+            class="sc-gJFNMl cSBKiF"
             data-testid="__checkbox__"
           >
             <div
-              class="sc-tkKUh drvlnY"
+              class="sc-uokDu QCvoz"
             />
             <div
-              class="sc-jLiVFv mrmQC"
+              class="sc-jKvnYE fzZXDY"
             >
               <label
                 class="ant-checkbox-wrapper"
@@ -109,13 +109,13 @@ exports[`CheckLabelList matches snapshot with tasks 1`] = `
                 </span>
               </label>
               <span
-                class="ant-typography ant-typography-ellipsis ant-typography-single-line sc-fybuyZ bbPKtW"
+                class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line sc-fxTzYC hjUKLg"
               >
                 label1.2
               </span>
             </div>
             <div
-              class="sc-bUrLeq kAtkRI"
+              class="sc-bTUVah dpJiNm"
             />
           </div>
         </div>

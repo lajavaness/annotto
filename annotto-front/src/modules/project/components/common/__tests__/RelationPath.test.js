@@ -8,16 +8,16 @@ import RelationPath from 'modules/project/components/common/RelationPath'
 
 const defaultProps = {}
 const getInstance = (props = {}) => (
-	<ThemeProvider theme={theme}>
-		<svg>
-			<RelationPath {...defaultProps} {...props} />
-		</svg>
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <svg>
+      <RelationPath {...defaultProps} {...props} />
+    </svg>
+  </ThemeProvider>
 )
 
 describe('RelationPath', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

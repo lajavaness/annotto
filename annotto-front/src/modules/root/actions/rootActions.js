@@ -27,172 +27,172 @@ export const LOGOUT_SUCCESS = 'root/logoutSuccess'
 export const LOGOUT_FAILURE = 'root/logoutFailure'
 
 export const startup = () => {
-	return {
-		type: STARTUP,
-	}
+  return {
+    type: STARTUP,
+  }
 }
 
 export const startupSuccess = () => {
-	return {
-		type: STARTUP_SUCCESS,
-	}
+  return {
+    type: STARTUP_SUCCESS,
+  }
 }
 
 export const startupFailure = (err) => {
-	return {
-		type: STARTUP_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: STARTUP_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }
 
 export const fetchUser = () => {
-	return {
-		type: FETCH_USER,
-	}
+  return {
+    type: FETCH_USER,
+  }
 }
 
 export const fetchUserSuccess = (user) => {
-	return {
-		type: FETCH_USER_SUCCESS,
-		payload: {
-			user,
-		},
-	}
+  return {
+    type: FETCH_USER_SUCCESS,
+    payload: {
+      user,
+    },
+  }
 }
 
 export const fetchUserFailure = (err) => {
-	return {
-		type: FETCH_USER_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: FETCH_USER_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }
 
 export const fetchUsers = (query) => {
-	return {
-		type: FETCH_USERS,
-		payload: {
-			query,
-		},
-	}
+  return {
+    type: FETCH_USERS,
+    payload: {
+      query,
+    },
+  }
 }
 
 export const fetchUsersSuccess = (users) => {
-	return {
-		type: FETCH_USERS_SUCCESS,
-		payload: {
-			users,
-		},
-	}
+  return {
+    type: FETCH_USERS_SUCCESS,
+    payload: {
+      users,
+    },
+  }
 }
 
 export const fetchUsersFailure = (err) => {
-	return {
-		type: FETCH_USERS_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: FETCH_USERS_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }
 
 export const setExpirationDate = (expirationDate) => {
-	return {
-		type: SET_EXPIRATION_DATE,
-		payload: {
-			expirationDate,
-		},
-	}
+  return {
+    type: SET_EXPIRATION_DATE,
+    payload: {
+      expirationDate,
+    },
+  }
 }
 
 export const setExpirationDateSuccess = (expirationDate) => {
-	return {
-		type: SET_EXPIRATION_DATE_SUCCESS,
-		payload: {
-			expirationDate,
-		},
-	}
+  return {
+    type: SET_EXPIRATION_DATE_SUCCESS,
+    payload: {
+      expirationDate,
+    },
+  }
 }
 
 export const setExpirationDateFailure = (err) => {
-	return {
-		type: SET_EXPIRATION_DATE_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: SET_EXPIRATION_DATE_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }
 
 export const fetchProject = (projectId) => ({
-	type: FETCH_PROJECT,
-	payload: { projectId },
+  type: FETCH_PROJECT,
+  payload: { projectId },
 })
 
 export const fetchProjectSuccess = (project) => ({
-	type: FETCH_PROJECT_SUCCESS,
-	payload: { project },
+  type: FETCH_PROJECT_SUCCESS,
+  payload: { project },
 })
 
 export const fetchProjectFailure = (err) => ({
-	type: FETCH_PROJECT_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: FETCH_PROJECT_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })
 
 export const fetchClients = (query) => {
-	return {
-		type: FETCH_CLIENTS,
-		payload: {
-			query,
-		},
-	}
+  return {
+    type: FETCH_CLIENTS,
+    payload: {
+      query,
+    },
+  }
 }
 
 export const fetchClientsSuccess = (clients) => {
-	return {
-		type: FETCH_CLIENTS_SUCCESS,
-		payload: {
-			clients,
-		},
-	}
+  return {
+    type: FETCH_CLIENTS_SUCCESS,
+    payload: {
+      clients,
+    },
+  }
 }
 
 export const fetchClientsFailure = (err) => {
-	return {
-		type: FETCH_CLIENTS_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: FETCH_CLIENTS_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }
 
 export const logout = () => {
-	return {
-		type: LOGOUT,
-	}
+  return {
+    type: LOGOUT,
+  }
 }
 
 export const logoutSuccess = () => {
-	return {
-		type: LOGOUT_SUCCESS,
-	}
+  return {
+    type: LOGOUT_SUCCESS,
+  }
 }
 
 export const logoutFailure = (err) => {
-	return {
-		type: LOGOUT_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: LOGOUT_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }

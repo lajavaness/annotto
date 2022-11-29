@@ -5,25 +5,25 @@ import React, { useRef, useState } from 'react'
 import * as Styled from './__styles__/Table.styles'
 
 const EllipsisTableTooltip = ({ title, children }) => {
-	const [isVisible, setIsVisible] = useState(false)
-	const containerRef = useRef()
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef()
 
-	const _onVisibleChange = (isVisible) => {
-		if (containerRef.current && containerRef.current.clientWidth < containerRef.current.scrollWidth) {
-			setIsVisible(isVisible)
-		}
-	}
+  const _onVisibleChange = (isOpen) => {
+    if (containerRef.current && containerRef.current.clientWidth < containerRef.current.scrollWidth) {
+      setIsVisible(isOpen)
+    }
+  }
 
-	return (
-		<Tooltip visible={isVisible} onVisibleChange={_onVisibleChange} title={title}>
-			<Styled.Container ref={containerRef}>{children}</Styled.Container>
-		</Tooltip>
-	)
+  return (
+    <Tooltip open={isVisible} onOpenChange={_onVisibleChange} title={title}>
+      <Styled.Container ref={containerRef}>{children}</Styled.Container>
+    </Tooltip>
+  )
 }
 
 export default EllipsisTableTooltip
 
 EllipsisTableTooltip.propTypes = {
-	children: PropTypes.node,
-	title: PropTypes.string,
+  children: PropTypes.node,
+  title: PropTypes.string,
 }

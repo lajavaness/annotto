@@ -18,29 +18,29 @@ import 'codemirror/theme/neat.css'
 window.jsonlint = jsonlint
 
 const JsonEditor = ({ ...props }) => {
-	const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-	const _onEditorDidMount = () => setMounted(true)
+  const _onEditorDidMount = () => setMounted(true)
 
-	return (
-		<CodeMirror
-			{...props}
-			editorDidMount={_onEditorDidMount}
-			autoScroll={false}
-			autoCursor={false}
-			options={{
-				mode: 'application/json',
-				theme: 'neat',
-				lineNumbers: true,
-				smartIndent: true,
-				lint: mounted,
-				tabSize: 2,
-				foldGutter: true,
-				selfContain: true,
-				gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
-			}}
-		/>
-	)
+  return (
+    <CodeMirror
+      {...props}
+      editorDidMount={_onEditorDidMount}
+      autoScroll={false}
+      autoCursor={false}
+      options={{
+        mode: 'application/json',
+        theme: 'neat',
+        lineNumbers: true,
+        smartIndent: true,
+        lint: mounted,
+        tabSize: 2,
+        foldGutter: true,
+        selfContain: true,
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter', 'CodeMirror-lint-markers'],
+      }}
+    />
+  )
 }
 
 export default JsonEditor

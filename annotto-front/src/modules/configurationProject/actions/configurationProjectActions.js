@@ -33,157 +33,157 @@ export const EXPORT_CONFIG_FAILURE = 'EXPORT_CONFIG_FAILURE'
 export const RESET_CONFIG = 'RESET_CONFIG'
 
 export const startup = () => {
-	return {
-		type: STARTUP,
-	}
+  return {
+    type: STARTUP,
+  }
 }
 
 export const startupSuccess = (project) => {
-	return {
-		type: STARTUP_SUCCESS,
-		payload: { project },
-	}
+  return {
+    type: STARTUP_SUCCESS,
+    payload: { project },
+  }
 }
 
 export const startupFailure = (err) => {
-	return {
-		type: STARTUP_FAILURE,
-		payload: {
-			error: err,
-			errorString: err && err.toString(),
-		},
-	}
+  return {
+    type: STARTUP_FAILURE,
+    payload: {
+      error: err,
+      errorString: err && err.toString(),
+    },
+  }
 }
 
 export const postProject = () => ({
-	type: POST_PROJECT,
+  type: POST_PROJECT,
 })
 
 export const postProjectSuccess = () => ({
-	type: POST_PROJECT_SUCCESS,
+  type: POST_PROJECT_SUCCESS,
 })
 
 export const postProjectFailure = (err) => ({
-	type: POST_PROJECT_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: POST_PROJECT_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })
 
 export const updateConfigProject = (key, config) => ({
-	type: UPDATE_CONFIG_PROJECT,
-	payload: {
-		key,
-		config,
-	},
+  type: UPDATE_CONFIG_PROJECT,
+  payload: {
+    key,
+    config,
+  },
 })
 
 export const updateConfigProjectSuccess = (config) => ({
-	type: UPDATE_CONFIG_PROJECT_SUCCESS,
-	payload: {
-		config,
-	},
+  type: UPDATE_CONFIG_PROJECT_SUCCESS,
+  payload: {
+    config,
+  },
 })
 
 export const updateConfigProjectFailure = (err) => ({
-	type: UPDATE_CONFIG_PROJECT_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: UPDATE_CONFIG_PROJECT_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })
 
 export const exportCurrentConfig = () => ({
-	type: EXPORT_CURRENT_CONFIG,
+  type: EXPORT_CURRENT_CONFIG,
 })
 
 export const exportCurrentConfigSuccess = () => ({
-	type: EXPORT_CURRENT_CONFIG_SUCCESS,
+  type: EXPORT_CURRENT_CONFIG_SUCCESS,
 })
 
 export const exportCurrentConfigFailure = (err) => ({
-	type: EXPORT_CURRENT_CONFIG_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: EXPORT_CURRENT_CONFIG_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })
 
 export const uploadItems = (file, isUpdate) => ({
-	type: UPLOAD_ITEMS,
-	payload: {
-		file,
-		isUpdate,
-	},
+  type: UPLOAD_ITEMS,
+  payload: {
+    file,
+    isUpdate,
+  },
 })
 
 export const uploadPredictions = (file) => ({
-	type: UPLOAD_PREDICTIONS,
-	payload: {
-		file,
-	},
+  type: UPLOAD_PREDICTIONS,
+  payload: {
+    file,
+  },
 })
 
 export const uploadAnnotations = (file) => ({
-	type: UPLOAD_ANNOTATIONS,
-	payload: {
-		file,
-	},
+  type: UPLOAD_ANNOTATIONS,
+  payload: {
+    file,
+  },
 })
 
 export const postFile = (projectId, route, type, file, isUpdate, transactionId) => ({
-	type: POST_FILE,
-	payload: { projectId, route, type, file, isUpdate, transactionId },
+  type: POST_FILE,
+  payload: { projectId, route, type, file, isUpdate, transactionId },
 })
 
 export const postFileSuccess = () => ({
-	type: POST_FILE_SUCCESS,
+  type: POST_FILE_SUCCESS,
 })
 
 export const postFileFailure = (err) => ({
-	type: POST_FILE_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: POST_FILE_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })
 
 export const exportConfig = (types) => ({
-	type: EXPORT_CONFIG,
-	payload: {
-		types,
-	},
+  type: EXPORT_CONFIG,
+  payload: {
+    types,
+  },
 })
 
 export const exportConfigSuccess = () => ({
-	type: EXPORT_CONFIG_SUCCESS,
+  type: EXPORT_CONFIG_SUCCESS,
 })
 
 export const exportConfigFailure = (err) => ({
-	type: EXPORT_CONFIG_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: EXPORT_CONFIG_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })
 
 export const resetConfig = () => ({
-	type: RESET_CONFIG,
+  type: RESET_CONFIG,
 })
 
 export const putConfigProject = () => ({
-	type: PUT_CONFIG_PROJECT,
+  type: PUT_CONFIG_PROJECT,
 })
 
 export const putConfigProjectSuccess = () => ({
-	type: PUT_CONFIG_PROJECT_SUCCESS,
+  type: PUT_CONFIG_PROJECT_SUCCESS,
 })
 
 export const putConfigProjectFailure = (err) => ({
-	type: PUT_CONFIG_PROJECT_FAILURE,
-	payload: {
-		error: err,
-		errorString: err && err.toString(),
-	},
+  type: PUT_CONFIG_PROJECT_FAILURE,
+  payload: {
+    error: err,
+    errorString: err && err.toString(),
+  },
 })

@@ -8,71 +8,71 @@ import { importModuleService } from '../../services/moduleServices'
 import { fetchBundleSaga, watchFetchBundle } from '../i18nSagas'
 
 describe('bundleSagas', () => {
-	describe('watchFetchBundle', () => {
-		it('links to fetchBundleSaga', () => {
-			const saga = watchFetchBundle()
-			expect(saga.next().value).toEqual(takeEvery(FETCH_BUNDLE, fetchBundleSaga))
-		})
-	})
+  describe('watchFetchBundle', () => {
+    it('links to fetchBundleSaga', () => {
+      const saga = watchFetchBundle()
+      expect(saga.next().value).toEqual(takeEvery(FETCH_BUNDLE, fetchBundleSaga))
+    })
+  })
 
-	describe('fetchBundleSaga', () => {
-		const language = 'en'
-		const namespace = 'foo'
+  describe('fetchBundleSaga', () => {
+    const language = 'en'
+    const namespace = 'foo'
 
-		beforeEach(() => {
-			i18n.removeResourceBundle(language, namespace)
-		})
+    beforeEach(() => {
+      i18n.removeResourceBundle(language, namespace)
+    })
 
-		describe('With no language in payload', () => {
-			const payload = { namespace }
+    describe('With no language in payload', () => {
+      const payload = { namespace }
 
-			it('calls bundle import', () => {
-				const saga = fetchBundleSaga({ payload })
-				expect(saga.next().value).toEqual(call(importModuleService, `assets/locales/en/${payload.namespace}.json`))
-			})
+      it('calls bundle import', () => {
+        const saga = fetchBundleSaga({ payload })
+        expect(saga.next().value).toEqual(call(importModuleService, `assets/locales/en/${payload.namespace}.json`))
+      })
 
-			it('returns result', () => {
-				const saga = fetchBundleSaga({ payload })
-				saga.next(language)
-				const data = { foo: 'bar' }
-				expect(i18n.hasResourceBundle(language, payload.namespace))
-				expect(saga.next(data).value).toEqual(put(fetchBundleSuccess(payload.namespace, data)))
-			})
-		})
+      it('returns result', () => {
+        const saga = fetchBundleSaga({ payload })
+        saga.next(language)
+        const data = { foo: 'bar' }
+        expect(saga.next(data).value).toEqual(put(fetchBundleSuccess(payload.namespace, data)))
+        expect(i18n.hasResourceBundle(language, payload.namespace)).toBeTruthy()
+      })
+    })
 
-		describe('With language in payload', () => {
-			const payload = {
-				namespace,
-				language,
-			}
+    describe('With language in payload', () => {
+      const payload = {
+        namespace,
+        language,
+      }
 
-			it('calls bundle import', () => {
-				const saga = fetchBundleSaga({ payload })
-				expect(saga.next().value).toEqual(
-					call(importModuleService, `assets/locales/${payload.language}/${payload.namespace}.json`)
-				)
-			})
+      it('calls bundle import', () => {
+        const saga = fetchBundleSaga({ payload })
+        expect(saga.next().value).toEqual(
+          call(importModuleService, `assets/locales/${payload.language}/${payload.namespace}.json`)
+        )
+      })
 
-			it('returns result', () => {
-				const saga = fetchBundleSaga({ payload })
-				saga.next()
-				const data = { foo: 'bar' }
-				expect(i18n.hasResourceBundle(payload.language, payload.namespace))
-				expect(saga.next(data).value).toEqual(put(fetchBundleSuccess(payload.namespace, data)))
-			})
-		})
+      it('returns result', () => {
+        const saga = fetchBundleSaga({ payload })
+        saga.next()
+        const data = { foo: 'bar' }
+        expect(saga.next(data).value).toEqual(put(fetchBundleSuccess(payload.namespace, data)))
+        expect(i18n.hasResourceBundle(payload.language, payload.namespace)).toBeTruthy()
+      })
+    })
 
-		it('stops execution', () => {
-			i18n.addResourceBundle(language, namespace, { foo: 'bar' }, false, true)
-			const saga = fetchBundleSaga({ payload: { language, namespace } })
-			expect(saga.next().value).toEqual(put(fetchBundleSuccess(namespace, { foo: 'bar' })))
-		})
+    it('stops execution', () => {
+      i18n.addResourceBundle(language, namespace, { foo: 'bar' }, false, true)
+      const saga = fetchBundleSaga({ payload: { language, namespace } })
+      expect(saga.next().value).toEqual(put(fetchBundleSuccess(namespace, { foo: 'bar' })))
+    })
 
-		it('returns error', () => {
-			const saga = fetchBundleSaga({ payload: { language, namespace } })
-			saga.next()
-			const err = new Error('error')
-			expect(saga.throw(err).value).toEqual(put(fetchBundleFailure(namespace, err)))
-		})
-	})
+    it('returns error', () => {
+      const saga = fetchBundleSaga({ payload: { language, namespace } })
+      saga.next()
+      const err = new Error('error')
+      expect(saga.throw(err).value).toEqual(put(fetchBundleFailure(namespace, err)))
+    })
+  })
 })

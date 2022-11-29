@@ -8,14 +8,14 @@ import NerContainer from 'modules/project/components/common/NerContainer'
 
 const defaultProps = {}
 const getInstance = (props = {}) => (
-	<ThemeProvider theme={theme}>
-		<NerContainer {...defaultProps} {...props} />
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <NerContainer {...defaultProps} {...props} />
+  </ThemeProvider>
 )
 
 describe('NerContainer', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

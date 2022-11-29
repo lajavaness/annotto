@@ -11,19 +11,19 @@ import ProjectsPage from 'modules/projects/components/ProjectsPage'
 
 const initialState = {}
 const getStore = (state) => createStore({ initialState: state })
-const getInstance = (state = initialState, children) => (
-	<Provider store={getStore(state)}>
-		<ThemeProvider theme={theme}>
-			<LocationProvider>
-				<ProjectsPage>{children}</ProjectsPage>
-			</LocationProvider>
-		</ThemeProvider>
-	</Provider>
+const getInstance = (children, state = initialState) => (
+  <Provider store={getStore(state)}>
+    <ThemeProvider theme={theme}>
+      <LocationProvider>
+        <ProjectsPage>{children}</ProjectsPage>
+      </LocationProvider>
+    </ThemeProvider>
+  </Provider>
 )
 
 describe('ProjectsPage', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

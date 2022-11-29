@@ -3,10 +3,12 @@
 exports[`Root matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBQB dbZmsR"
+    class="sc-bcXHqe obZLm"
     data-testid="__loader__"
   >
     <div
+      aria-busy="true"
+      aria-live="polite"
       class="ant-spin ant-spin-lg ant-spin-spinning"
     >
       <span

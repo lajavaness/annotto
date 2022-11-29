@@ -11,16 +11,16 @@ import DesignStepPage from 'modules/configurationProject/components/DesignStepPa
 const initialState = {}
 const getStore = (state) => createStore({ initialState: state })
 const getInstance = (state = initialState) => (
-	<Provider store={getStore(state)}>
-		<ThemeProvider theme={theme}>
-			<DesignStepPage />
-		</ThemeProvider>
-	</Provider>
+  <Provider store={getStore(state)}>
+    <ThemeProvider theme={theme}>
+      <DesignStepPage />
+    </ThemeProvider>
+  </Provider>
 )
 
 describe('DesignStepPage', () => {
-	it('matches snapshot', () => {
-		const { asFragment } = render(getInstance())
-		expect(asFragment()).toMatchSnapshot()
-	})
+  it('matches snapshot', () => {
+    const { asFragment } = render(getInstance())
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

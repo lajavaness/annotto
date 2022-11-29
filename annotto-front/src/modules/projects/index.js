@@ -10,18 +10,18 @@ import ProjectsPage from 'modules/projects/components/ProjectsPage'
 import projectsSagas from 'modules/projects/sagas/projectsSagas'
 
 const moduleToLoad = {
-	id: 'projects',
-	reducerMap: {
-		projects: projectsReducer,
-	},
-	sagas: [projectsSagas],
-	initialActions: [startup()],
+  id: 'projects',
+  reducerMap: {
+    projects: projectsReducer,
+  },
+  sagas: [projectsSagas],
+  initialActions: [startup()],
 }
 
 export default function DynamicProjectPage(props) {
-	return (
-		<DynamicModuleLoader modules={[moduleToLoad]}>
-			<ProjectsPage {...props} />
-		</DynamicModuleLoader>
-	)
+  return (
+    <DynamicModuleLoader modules={[moduleToLoad]}>
+      <ProjectsPage {...props} />
+    </DynamicModuleLoader>
+  )
 }

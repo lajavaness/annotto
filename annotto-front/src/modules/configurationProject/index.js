@@ -10,18 +10,18 @@ import ConfigurationProjectPage from 'modules/configurationProject/components/Co
 import configurationProjectSagas from 'modules/configurationProject/sagas/configurationProjectSagas'
 
 const moduleToLoad = {
-	id: 'configurationProject',
-	reducerMap: {
-		configuration: configurationProjectReducer,
-	},
-	sagas: [configurationProjectSagas],
-	initialActions: [startup()],
+  id: 'configurationProject',
+  reducerMap: {
+    configuration: configurationProjectReducer,
+  },
+  sagas: [configurationProjectSagas],
+  initialActions: [startup()],
 }
 
 export default function DynamicProjectPage(props) {
-	return (
-		<DynamicModuleLoader modules={[moduleToLoad]}>
-			<ConfigurationProjectPage {...props} />
-		</DynamicModuleLoader>
-	)
+  return (
+    <DynamicModuleLoader modules={[moduleToLoad]}>
+      <ConfigurationProjectPage {...props} />
+    </DynamicModuleLoader>
+  )
 }

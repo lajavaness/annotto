@@ -2,35 +2,6 @@
 
 exports[`ProjectPage matches snapshot 1`] = `
 <DocumentFragment>
-  <section
-    class="sc-dkaWRx heWsvl"
-    data-testid="__project-page__"
-  >
-    <div
-      class="sc-eisiLS JIdvx"
-      data-testid="__loader__"
-    >
-      <div
-        class="ant-spin ant-spin-lg ant-spin-spinning"
-      >
-        <span
-          class="ant-spin-dot ant-spin-dot-spin"
-        >
-          <i
-            class="ant-spin-dot-item"
-          />
-          <i
-            class="ant-spin-dot-item"
-          />
-          <i
-            class="ant-spin-dot-item"
-          />
-          <i
-            class="ant-spin-dot-item"
-          />
-        </span>
-      </div>
-    </div>
-  </section>
+  Loading
 </DocumentFragment>
 `;

@@ -3,12 +3,12 @@
 exports[`WarningMessage matches snapshot 1`] = `
 <DocumentFragment>
   <span
-    class="sc-bdfBQB iA-dSgy"
+    class="sc-bcXHqe iQceHp"
     data-testid="__warning-message__"
   >
     <span
       aria-label="exclamation-circle"
-      class="anticon anticon-exclamation-circle sc-gsTEea ibqpFD"
+      class="anticon anticon-exclamation-circle sc-gswNZR doyeKd"
       role="img"
     >
       <svg
