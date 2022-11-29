@@ -32,25 +32,6 @@ jobs:
         if: always()
         run: docker-compose down
 
-  unit-tests-frontend:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 16.x ]
-      fail-fast: true
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install Yarn
-        run: npm install -g yarn
-      - name: Install dependencies
-        run: yarn --cwd annotto-front install
-      - name: Run unit tests
-        run: yarn --cwd annotto-front test:ci
-
   integration-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 30
