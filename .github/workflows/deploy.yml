@@ -59,10 +59,19 @@ jobs:
         node-version: [ 16.x ]
       fail-fast: true
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Run integrations tests
-        run: cd tests/integration && docker-compose up --abort-on-container-exit --exit-code-from annotto --build
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Start environment to tests
+        run: docker-compose up -d
+      - name: Install dependencies
+        run: yarn install
+      - name: Run unit tests
+        run: yarn test:int:ci
       - name: Stop containers
         if: always()
         run: docker-compose down
