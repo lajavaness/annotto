@@ -100,7 +100,7 @@
         "winston": "^3.6.0"
     },
     "scripts": {
-        "prepare": "husky install",
+        "prepare": "husky install && yarn --cwd ./annotto-front install",
         "clean": "rimraf ./dist",
         "build": "yarn clean && tsc && ncp ./statics ./dist/statics",
         "start": "yarn build && node ./dist/src/index.js",
@@ -110,7 +110,7 @@
         "mock:ci": "cross-env CI=true yarn mock || echo 'No mock server defined, running tests without mocks.'",
         "serve": "nodemon --inspect ./dist/src/index.js",
         "test": "NODE_ENV=test cross-env jest --runInBand --reporters=default --reporters=jest-junit --watchAll=false --verbose --bail",
-        "test:ci": "CI=true yarn test --ci",
+        "test:ci": "CI=true concurrently \"yarn test --ci\" \"yarn --cwd ./annotto-front test --ci\"",
         "test:int:ci": "ENV_TEST=int yarn test --ci",
         "test:coverage": "yarn test --coverage"
     }
