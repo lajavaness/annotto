@@ -1,0 +1,45 @@
+# Non-build assets
+*/cypress/
+*/docs/
+*/mocks/
+*.md
+
+# NPM
+node_modules
+package-lock.json
+/.pnp
+.pnp.js
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Jest
+coverage/
+__snapshots__/
+
+# Istanbul
+/.nyc_output/*
+
+# SonarQube
+/.scannerwork/*
+
+# Git
+*/.git/
+.gitignore
+
+# Docker & CI
+Dockerfile
+bitbucket-pipelines.yml
+
+# Other tooling config
+.mockyeah.json
+.prettierignore
+.prettierrc
+cypress.json
+tsconfig.json
+
+# Keep environment files as apps use them to customise builds per target, but
+# remove local developer files
+.env*local

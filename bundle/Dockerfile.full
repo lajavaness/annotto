@@ -1,0 +1,76 @@
+FROM node:16-alpine as builder-annotto-front
+
+WORKDIR /app
+COPY ./annotto-front .
+
+RUN yarn install && \
+    yarn build
+
+FROM node:16-alpine as builder-annotto-api
+
+RUN apk update && apk add bash && apk add curl
+
+# install node-prune (https://github.com/tj/node-prune)
+RUN curl -sf https://gobinaries.com/tj/node-prune | sh
+
+WORKDIR /app
+
+COPY yarn*.lock ./
+COPY package*.json ./
+
+RUN yarn install
+# The instructions for second stage
+COPY . .
+
+RUN yarn build
+
+# remove development dependencies
+RUN npm prune --omit=dev
+
+# run node prune
+RUN /usr/local/bin/node-prune
+
+FROM ubuntu:18.04
+
+## Install Keycloak, annotto-front, annotto-api
+ENV ANNOTTO_FRONT_URL "http://localhost:3000"
+ENV KEYCLOAK_AUTH_URL "http://localhost:3000/auth"
+ENV KEYCLOAK_ADMIN_URL  "http://localhost:3000/auth/realms/master/admin/"
+ENV KEYCLOAK_FRONTEND_URL "http://localhost:3000/auth"
+
+WORKDIR /opt
+
+RUN apt-get update && \
+    apt-get install -y wget curl gnupg default-jdk nginx && \
+    (wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -) && \
+    (echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list) && \
+    (curl -sL https://deb.nodesource.com/setup_16.x  | bash -) && \
+    apt-get update && \
+    apt-get install -y mongodb-org nodejs && \
+    mkdir -p /data/db
+
+COPY --from=builder-annotto-front /app/build /usr/share/nginx/html
+COPY --from=builder-annotto-api /app/dist annotto-api
+COPY --from=builder-annotto-api /app/node_modules annotto-api/node_modules
+
+############ -------  Install Keycloak ------ ##########
+RUN wget https://github.com/keycloak/keycloak/releases/download/15.0.1/keycloak-15.0.1.tar.gz && \
+    tar -xvzf keycloak-15.0.1.tar.gz && \
+    mv keycloak-15.0.1 keycloak && \
+    keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
+COPY ./statics/keycloak /tmp/keycloak-import
+COPY ./bundle/conf/standalone.xml keycloak/standalone/configuration/standalone.xml
+
+# overrides default vhost config with the one in repo we just fetched
+COPY ./bundle/conf/nginx.conf /etc/nginx/nginx.conf
+
+## Script that starts all stack together
+COPY ./bundle/bin/start.sh start.sh
+
+RUN chmod 777 start.sh
+
+EXPOSE 3000
+EXPOSE 5001
+EXPOSE 8080
+
+CMD ["./start.sh"]

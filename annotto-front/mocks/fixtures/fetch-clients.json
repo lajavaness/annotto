@@ -1,0 +1,33 @@
+{
+  "count": 4,
+  "index": 0,
+  "limit": 10,
+  "pageCount": 1,
+  "total": 4,
+  "data": [
+		{
+			"isActive": true,
+			"_id": "62c3ea822995e9001db8d209",
+			"name": "LJN",
+			"updatedAt": "2022-07-05T07:38:42.444Z",
+			"createdAt": "2022-07-05T07:38:42.444Z",
+			"__v": 0
+		},
+		{
+			"isActive": true,
+			"_id": "62c3ea842995e9001db8f8d0",
+			"name": "ljn",
+			"updatedAt": "2022-07-05T07:38:44.816Z",
+			"createdAt": "2022-07-05T07:38:44.816Z",
+			"__v": 0
+		},
+		{
+			"isActive": true,
+			"_id": "62bebec420a3a8001cde0ff3",
+			"name": "rte",
+			"updatedAt": "2022-07-01T09:30:44.530Z",
+			"createdAt": "2022-07-01T09:30:44.530Z",
+			"__v": 0
+		}
+	]
+}

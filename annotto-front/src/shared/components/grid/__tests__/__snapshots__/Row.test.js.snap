@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-row sc-bcXHqe jAIaYm"
+  >
+    Foo
+  </div>
+</DocumentFragment>
+`;

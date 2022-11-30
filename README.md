@@ -1,25 +1,51 @@
-## La Javaness Annotto
-[![Test](https://github.com/lajavaness/annotto/actions/workflows/tests.yml/badge.svg)](https://github.com/lajavaness/annotto/actions/workflows/tests.yml)
 
-Is the API to create a new project and store a corresponding dataset and then annotate data.
+## ![](annotto-front/public/static/images/logo_blue.png)nnotto
+*produced by* [La Javaness](https://www.lajavaness.com/)
 
+![GitHub](https://img.shields.io/github/license/lajavaness/annotto-api?logo=heartex) ![deploy](https://github.com/lajavaness/annotto-api/actions/workflows/deploy.yml/badge.svg) ![GitHub release](https://img.shields.io/github/v/release/lajavaness/annotto-api?include_prereleases)
+
+[Website](https://www.lajavaness.com/annotto) • [Docs](https://www.lajavaness.com/annotto)
+
+# Description
+Annotto is the only **go to** annotation tool to successfully annotate your documents at scale.
+
+# Table of contents
+1. [Start with docker](#start-with-docker)
+2. [Start for local development](#start-for-local-development)
+
+# Start with docker
+```
+  docker run --rm -d --name annotto -p 3000:3000 ljnrepo/annotto:latest
+```
+***
+**Annotto** will be available at [http://localhost:3000](http://localhost:3000) with default credentials
+```
+username (email): admin
+password: test
+```
+
+# Start for local development
 ## Prerequisites
 1. Node 16+
 2. Mongo 4.4
 3. Keycloak 15.0.1
-4. PostgreSQL 13+ (as Keycloak DB)
+4. PostgreSQL 13+
 
 ## Launch the app
 
-Install project dependencies
+1. Install project dependencies
 ```shell
 yarn install
 ```
-Launch environment
+2. Launch environment
 ```shell
 docker-compose up -d
 ```
-Launch annotto
+3. Launch annotto
+
+```shell
+yarn start:dev
+```
 
 ### Environment variables
 | Name                         | Default                                   | Optional-Required | Description                                                          |
@@ -36,44 +62,18 @@ Launch annotto
 | ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 | ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 
+## Users and Roles
+When starting Annotto, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
 
-```shell
-yarn start
-```
+The different default users are: 
 
-You should have this running now
-1. Annotto API (http://localhost:5001).
-   * Swagger available at http://localhost:5001/api-docs
-   * Health status available at http://localhost:5001/health
-2. Keycloak
-   * Admin Console:
-      - url: http://localhost:8080
-      - username: admin
-      - password: admin
-
-### Configuration
-The configuration resides in the `config` folder. Two configuration mode is available
-1. development (`config/development.js`)
-2. test (`config/test.js`)
-
-You can override the default config in `config/index.js` with those specific files.
-
-## Keycloak
-Annotto is protected by OAuth using Keycloak. When you start the environment with docker-compose, you will automatically 
-create users to be able to make authorized requests to annotto API.
-
-The users automatically created are:
 |username|password|role|
 |---|---|---|
-|admin|test|Admin|
-|data|test|Data Scientist|
-|user|test|User|
+|admin|test|admin|
+|data|test|dataScientist|
+|user|test|user|
 
-By default, an OAuth Realm `annotto` with basics users and roles are preconfigured when launching with docker-compose.yml
-Once the service is started, you can manage your Keycloak instance at your will.
-
-You can see more documentation on Keycloak and Annotto [here](./docs/keycloak.md)
-
+See more documentation on Keycloak [here](./docs/keycloak.md)
 
 ##  Contributing
 

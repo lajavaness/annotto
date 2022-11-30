@@ -1,0 +1,24 @@
+# Build
+/build/
+/dist/
+
+# NPM
+node_modules
+package-lock.json
+
+# VS Code
+.vscode/*
+
+# Jest and generic test utilities
+/coverage/
+__snapshots__/
+
+# Cypress
+/cypress/screenshots
+/cypress/videos
+
+# Istanbul
+/.nyc_output/*
+
+# SonarQube
+/.scannerwork/*

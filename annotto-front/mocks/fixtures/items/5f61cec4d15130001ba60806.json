@@ -1,0 +1,136 @@
+[
+	{
+		"_id": "5f61cee6d15130001ba6080a",
+		"type": "text",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["admin@lajavaness.com"],
+		"annotationValues": ["no-box", "name"],
+		"tags": [],
+		"raw": {
+			"data": {
+				"text": "  L'avancement est trop dépendant de la spécialité et, les postes décentrés n'offrent pas les possibilités d'évolution identiques aux postes en échelon central"
+			},
+			"datatype": "text",
+			"uuid": "16328032"
+		},
+		"project": "5f61cec4d15130001ba60806",
+		"uuid": "16328032",
+		"data": {
+			"text": "  L'avancement est trop dépendant de la spécialité et, les postes décentrés n'offrent pas les possibilités d'évolution identiques aux postes en échelon central"
+		},
+		"body": "  L'avancement est trop dépendant de la spécialité et, les postes décentrés n'offrent pas les possibilités d'évolution identiques aux postes en échelon central",
+		"updatedAt": "2020-10-06T21:19:47.262Z",
+		"createdAt": "2020-09-16T08:37:58.437Z",
+		"__v": 3,
+		"annotatedAt": "2020-09-22T08:38:56.724Z",
+		"seenAt": "2020-10-06T21:19:47.261Z"
+	},
+	{
+		"_id": "5f61cee6d15130001ba60808",
+		"type": "text",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["admin@lajavaness.com"],
+		"annotationValues": ["weird", "skill"],
+		"tags": [],
+		"raw": {
+			"data": {
+				"text": "En tant que militaire, volontaire sous contrat"
+			},
+			"datatype": "text",
+			"uuid": "1831440"
+		},
+		"project": "5f61cec4d15130001ba60806",
+		"uuid": "1831440",
+		"data": {
+			"text": "En tant que militaire, volontaire sous contrat"
+		},
+		"body": "En tant que militaire, volontaire sous contrat",
+		"updatedAt": "2020-10-06T09:17:47.532Z",
+		"createdAt": "2020-09-16T08:37:58.437Z",
+		"__v": 5,
+		"annotatedAt": "2020-09-22T09:46:18.028Z",
+		"seenAt": "2020-10-06T09:17:47.531Z"
+	},
+	{
+		"_id": "5f61cee6d15130001ba6080b",
+		"type": "text",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["florian@lajavaness.com"],
+		"annotationValues": ["name"],
+		"tags": [],
+		"raw": {
+			"data": {
+				"text": "Pas de soutien de ses chefs concernant les problèmes"
+			},
+			"datatype": "text",
+			"uuid": "46432890"
+		},
+		"project": "5f61cec4d15130001ba60806",
+		"uuid": "46432890",
+		"data": {
+			"text": "Pas de soutien de ses chefs concernant les problèmes"
+		},
+		"body": "Pas de soutien de ses chefs concernant les problèmes",
+		"updatedAt": "2020-10-06T09:17:06.185Z",
+		"createdAt": "2020-09-16T08:37:58.438Z",
+		"__v": 1,
+		"seenAt": "2020-10-06T09:17:06.184Z",
+		"annotatedAt": "2020-10-02T11:56:17.218Z"
+	},
+	{
+		"_id": "5f61cee6d15130001ba60809",
+		"type": "text",
+		"status": "todo",
+		"annotated": true,
+		"annotatedBy": ["admin@lajavaness.com"],
+		"annotationValues": ["weird", "Exp", "no-box"],
+		"tags": [],
+		"raw": {
+			"data": {
+				"text": " Cela donne une mauvaise vision aux élèves qui viennent d'incorporer la marine"
+			},
+			"datatype": "text",
+			"uuid": "33130831"
+		},
+		"project": "5f61cec4d15130001ba60806",
+		"uuid": "33130831",
+		"data": {
+			"text": " Cela donne une mauvaise vision aux élèves qui viennent d'incorporer la marine"
+		},
+		"body": " Cela donne une mauvaise vision aux élèves qui viennent d'incorporer la marine",
+		"updatedAt": "2020-10-06T08:34:09.250Z",
+		"createdAt": "2020-09-16T08:37:58.437Z",
+		"__v": 4,
+		"annotatedAt": "2020-10-02T15:26:15.303Z",
+		"seenAt": "2020-10-06T08:34:09.250Z"
+	},
+	{
+		"_id": "5f61cee6d15130001ba6080c",
+		"type": "text",
+		"status": "todo",
+		"annotated": false,
+		"annotatedBy": [],
+		"annotationValues": [],
+		"tags": [],
+		"raw": {
+			"data": {
+				"text": "  Ayant connu pendant quelques années le soutien à la main du commandement, je mesure la perte sèche en réactivité, moyens et cohérence"
+			},
+			"datatype": "text",
+			"uuid": "1914321"
+		},
+		"project": "5f61cec4d15130001ba60806",
+		"uuid": "1914321",
+		"data": {
+			"text": "  Ayant connu pendant quelques années le soutien à la main du commandement, je mesure la perte sèche en réactivité, moyens et cohérence"
+		},
+		"body": "  Ayant connu pendant quelques années le soutien à la main du commandement, je mesure la perte sèche en réactivité, moyens et cohérence",
+		"updatedAt": "2020-10-02T15:43:29.996Z",
+		"createdAt": "2020-09-16T08:37:58.438Z",
+		"__v": 0,
+		"seenAt": "2020-10-02T15:43:29.995Z"
+	}
+]

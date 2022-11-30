@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-bcXHqe jfXQmN"
+    data-testid="__null-page__"
+  />
+</DocumentFragment>
+`;

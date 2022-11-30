@@ -1,0 +1,191 @@
+{
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "annotators": {
+    "title": "Annotators",
+    "noAnnotators": "No annotator has been defined on this project"
+  },
+  "stats": {
+    "item": "item",
+    "items": "items",
+    "classification": "classification",
+    "classifications": "classifications",
+    "task": "task",
+    "tasks": "tasks",
+    "table": {
+      "name": "Name",
+      "totalItems": "{{count}} item",
+      "totalTask": "{{count}} task",
+      "totalPluralItems": "{{count}} items",
+      "totalPluralTasks": "{{count}} tasks",
+      "loadMore": "Load more",
+      "logCount": "Nbr of logs",
+      "velocity": "Velocity",
+      "annotated": "Annotated",
+      "isAnnotated": "Yes",
+      "isNotAnnotated": "No",
+      "annotationValues": "Labels",
+      "annotatedAt": "Last Update",
+      "value": "Label",
+      "annotationPourcent": "Percentage items",
+      "annotationCount": "Items"
+    }
+  },
+  "filter": {
+    "addButton": "Add filters",
+    "editButton": "Edit filters",
+    "reset": "Reset all",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "submit": "Save & Refresh",
+    "jsonMode": "JSON mode",
+    "requestJsonSchema": "Please check the JSON format of the Input field.",
+    "requestDateFormat": "Please check the Date format of the Input field.",
+    "successMessage": "Success Edit Filter",
+    "confirmTitle": "Confirm",
+    "confirmToJson": "Switch to JSON mode you will lose all filters previously!",
+    "confirmToForm": "Switch to From mode you will lose all filters previously!",
+    "fields": {
+      "annotated": "Items",
+      "uuid": "Similar to",
+      "annotatedBy": "Annotated by",
+      "annotatedAt": "Annotated between",
+      "annotationValues": "Annotations",
+      "tags": "Markers",
+      "predictionValues": "Prediction Value",
+      "predictionScores": "Prediction Scores",
+      "body": "Body"
+    },
+    "form": {
+      "notAnnotated": "Not annotated",
+      "all": "All",
+      "annotated": "Annotated",
+      "selectPlaceholder": "Select",
+      "containsAll": "Contains All",
+      "containsAny": "Contains Any",
+      "greaterThanAny": "Greater Than Any",
+      "greaterThanAll": "Greater Than All",
+      "wrongPredictions": "Prediction not annotated",
+      "size": "Size",
+      "textContains": "Contains"
+    }
+  },
+  "menu": {
+    "edit": "Administration",
+    "export": "Export",
+    "delete": "Delete Project",
+    "confirmDelete": {
+      "title": "Delete project",
+      "content": "Are you sure you want to delete this project?",
+      "ok": "Yes",
+      "cancel": "No"
+    },
+    "deleteProjectInProgress": "Delete project in progress..."
+  },
+  "projectSettings": {
+    "title": "Toolbox",
+    "highlights": "Highlights",
+    "showPredictions": "Show predictions",
+    "prefillPredictions": "Prefill with predictions"
+  },
+  "annotation": {
+    "start": "Start Annotation",
+    "postAnnotationSuccess": "Your annotation has been saved",
+    "itemName": "Item : #{{id}}",
+    "labeling": {
+      "tool": "Tool",
+      "mode": "Mode",
+      "sections": "Sections",
+      "relations": "Relations",
+      "char": "Character",
+      "word": "Word"
+    },
+    "textAnnotation": {
+      "placeholder": "Add text to annotate"
+    },
+    "select": {
+      "item": "Item",
+      "raw": "Raw",
+      "predictions": "Predictions"
+    },
+    "nav": {
+      "prev": "Previous",
+      "save": "Save & Next",
+      "next": "Next",
+      "errorTitle": "Error",
+      "saveErrorAnnotationBetween": "You must annotate the task \"{{task}}\" with a number of annotations between {{min}} and {{max}}. Currently {{current}}.",
+      "saveErrorLabelingBetween": "You must label the task \"{{task}}\" with a number of labels between {{min}} and {{max}}. Currently {{current}}.",
+      "saveErrorAnnotationInferior": "You must annotate the task \"{{task}}\" with a number of annotations greater than or equal to {{min}}. Currently {{current}}.",
+      "saveErrorLabelingInferior": "You must label the task \"{{task}}\" with a number of labels greater than or equal to {{min}}. Currently {{current}}.",
+      "saveErrorAnnotationSuperior": "You must annotate the task \"{{task}}\" with a number of annotations less than or equal to {{max}}. Currently {{current}}.",
+      "saveErrorLabelingSuperior": "You must label the task \"{{task}}\" with a number of labels less than or equal to {{max}}. Currently {{current}}."
+    },
+    "errors": {
+      "emptyType": "This project needs a type to be able to use the annotation, please configure one."
+    },
+    "placeholder": {
+      "textAnnotation": "Add text to annotate"
+    }
+  },
+  "logs": {
+    "title": "History",
+    "all": "All",
+    "tags": "Markers",
+    "comment": "Notes",
+    "loadMore": "Load more",
+    "config": "Config",
+    "annotation": "Labels",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "and": "and",
+    "tags-add-current": "added the marker",
+    "tags-remove-current": "deleted the marker",
+    "tags-add": "added a marker",
+    "tags-remove": "deleted a marker",
+    "tags-add-end": "on the item",
+    "tags-remove-end": "on the item",
+    "project-add": "created the project",
+    "project-remove": "deleted the project",
+    "mission-add": "created the mission",
+    "mission-remove": "deleted the mission",
+    "annotation-add": "annotated the item",
+    "annotation-add-current": "annotated this item",
+    "annotation-add-end": "with the label",
+    "annotation-add-end-plural": "with labels",
+    "annotation-add-text-end": "with text",
+    "annotation-remove": "deleted the label",
+    "annotation-remove-plural": "deleted labels",
+    "annotation-remove-text": "deleted text",
+    "annotation-remove-end": "from the item",
+    "annotation-remove-text-end": "text",
+    "annotation-remove-end-current": "from this item",
+    "prediction-add": "added predictions",
+    "relation-add": "added the relation",
+    "relation-add-plural": "added relations",
+    "relation-remove": "deleted the relation",
+    "relation-add-end": "from the item",
+    "relation-add-end-current": "from this item",
+    "relation-remove-end": "from the item",
+    "relation-remove-end-current": "from this item"
+  },
+  "comments": {
+    "comment-add": "commented the item",
+    "comment-remove": "deleted comment on the item",
+    "comment-add-current": "commented",
+    "comment-remove-current": "deleted a comment",
+    "placeholder": "Add a comment",
+    "tooltip": "Shift + Enter"
+  },
+  "warning": {
+    "filter": "No results are matching your search criteria",
+    "dataset": "No dataset to annotate",
+    "item": "No other item available"
+  },
+  "guide": {
+    "glossary": "Glossary",
+    "guidelines": "Annotation guide",
+    "edit": "Edit",
+    "emptyGuidelines": "Empty GuideLines"
+  }
+}

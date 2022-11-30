@@ -1,23 +1,21 @@
 # User Management with Keycloak
 Keycloak is an open source tool that helps for user authentication and authorization. It can act as a Single-Sign On solution and also provides user federation from other identity provider.
 
-## Keycloak as SSO
+## Keycloak
+Annotto is protected by OAuth using Keycloak. When you start annotto in production mode with `docker` or in development mode with [docker-compose](../README.md#start-for-local-development), some users will automatically
+be created. [docker-compose.yml](./docker-compose.yml)
 
-To login on Annotto you have one option available by default:
-1. [Keycloak Users](#keycloak-users-and-roles). Your user must be already registered in Keycloak with credentials.
+Once the service is started, you can manage your Keycloak instance at your will.
+Thanks for those files that are imported directly at keycloak startup 
+1. [Realm](../statics/keycloak/annotto-realm.json)
+2. [Users](../statics/keycloak/annotto-users-0.json)
 
-### Keycloak Users and Roles
-When starting keycloak with Annotto docker-compose for the first time, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
+### Keycloak Administration Console
+If you want to reach Keycloak Admin Console, you can go to [http://localhost:3000/auth](http://localhost:3000/auth) with credentials
 
-1. Admin Test 
-   1. Username:password = admin/test
-   2. role = `admin`
-2. User Test
-   1. Username:password = user/test
-   2. role = `user`
-3. Data Test
-   1. Username:password = data/test
-   2. role = `dataScientist`
+|user|pwd|
+|---|---|
+|admin|admin|
 
 ### SSO Microsoft
 If you want to use Annotto with an SSO such as Microsoft, you can configure keycloak to leverage this Identity Provider.

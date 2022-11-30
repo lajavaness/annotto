@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="ant-card sc-bcXHqe bokBqU"
+    data-testid="__card__"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          Foo
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    />
+  </div>
+</DocumentFragment>
+`;

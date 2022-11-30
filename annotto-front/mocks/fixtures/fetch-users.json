@@ -1,0 +1,29 @@
+{
+	"count": 2,
+	"index": 0,
+	"limit": 10,
+	"pageCount": 1,
+	"total": 2,
+	"data": [
+		{
+			"azure": { "oid": "ee80b2a7-fed0-45a0-9f13-ec543e74fbe6" },
+			"_id": "5f11b11e7860d65e6cb9cebe",
+			"firstName": "Cheng",
+			"lastName": "Chen",
+			"email": "cheng@ljnsso.onmicrosoft.com",
+			"provider": "azure-ljnsso",
+			"updatedAt": "2020-07-17T14:09:34.741Z",
+			"createdAt": "2020-07-17T14:09:34.740Z",
+			"__v": 0
+		},
+		{
+			"_id": "5f11b08a7860d65e6cb9cebd",
+			"email": "admin@lajavaness.com",
+			"firstName": "The",
+			"lastName": "Narrator",
+			"updatedAt": "2020-07-17T14:07:06.432Z",
+			"createdAt": "2020-07-17T14:07:06.429Z",
+			"__v": 0
+		}
+	]
+}

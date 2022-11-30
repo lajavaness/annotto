@@ -1,0 +1,21 @@
+{
+	"_id": "5f2d65ca9042e742f8d62bcb",
+	"email": "admin@lajavaness.com",
+	"firstName": "Admin",
+	"lastName": "Admin",
+	"updatedAt": "2020-08-07T14:31:38.932Z",
+	"createdAt": "2020-08-07T14:31:38.931Z",
+	"__v": 0,
+	"_mock": {
+		"project": [
+			{
+				"_id": "5f2d65ca9042e742f8d62bc3",
+				"name": "project 1"
+			},
+			{
+				"_id": "5f2d65ca9042e742f8d62bc4",
+				"name": "project 2"
+			}
+		]
+	}
+}
