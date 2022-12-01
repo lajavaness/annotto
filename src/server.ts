@@ -4,7 +4,7 @@ import expressSwaggerGenerator from 'express-swagger-generator'
 import { loggerMiddleware } from './utils/logger'
 import { errorHandlerMiddleware, generateError } from './utils/error'
 import getRouter from './router'
-
+import packageJson from '../package.json'
 import { Config } from '../config'
 
 /**
@@ -17,7 +17,7 @@ const getSwaggerOptions = (cfg: Config) => ({
     info: {
       description: 'Annotto API',
       title: '',
-      version: '1.0.0',
+      version: packageJson.version,
     },
     // removing http:// from base url
     host: cfg.baseUrl.replace(/(^\w+:|^)\/\//, ''),

@@ -10,7 +10,8 @@ WORKDIR /usr/src/app
 COPY yarn*.lock ./
 COPY package*.json ./
 
-RUN yarn install
+RUN yarn install --ignore-scripts # This will make installation only of root "./package.json", and not trigger the npm "prepare" scripts
+
 # The instructions for second stage
 COPY . .
 
