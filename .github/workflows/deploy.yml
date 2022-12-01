@@ -34,7 +34,6 @@ jobs:
 
   integration-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     strategy:
       matrix:
         node-version: [ 16.x ]
@@ -91,7 +90,6 @@ jobs:
 
   docker-build-and-push-api:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     if: github.event_name != 'pull_request' && needs.semantic-release.outputs.is-new-version == 'true'
     needs:
       - semantic-release
@@ -133,7 +131,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   docker-build-and-push-front:
-    timeout-minutes: 30
     runs-on: ubuntu-latest
     if: contains('
       refs/heads/main
@@ -173,7 +170,6 @@ jobs:
 
   bundle-release:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     if: github.event_name != 'pull_request' && needs.semantic-release.outputs.is-new-version == 'true'
     needs:
       - semantic-release
