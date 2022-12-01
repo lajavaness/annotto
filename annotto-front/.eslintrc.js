@@ -1,11 +1,18 @@
 module.exports = {
+  root: true,
   env: {
     es2021: true,
     node: true,
+    browser: true,
   },
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: 'module',
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-react'],
+    },
   },
   settings: {
     'import/resolver': {
@@ -14,11 +21,15 @@ module.exports = {
         paths: ['src', 'node_modules/'],
       },
     },
+    react: {
+      version: 'detect',
+    },
   },
   plugins: ['jsdoc'],
   extends: [
     'airbnb-base',
     'plugin:prettier/recommended',
+    'plugin:react/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
@@ -84,6 +95,7 @@ module.exports = {
       },
     ],
     'no-await-in-loop': 0,
+    'import/prefer-default-export': 'off',
   },
   overrides: [
     {
