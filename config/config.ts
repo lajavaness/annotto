@@ -30,7 +30,7 @@ export default {
     swaggerUi: '/explorer',
     apiDocs: '/api-docs',
   },
-  baseUrl: 'http://127.0.0.1:5001',
+  baseUrl: process.env.ANNOTTO_FRONT_URL || '127.0.0.1:5001',
   fileUpload: {
     maxFileSize: process.env.ANNOTTO_UPLOAD_MAX_FILE_SIZE
       ? parseInt(process.env.ANNOTTO_UPLOAD_MAX_FILE_SIZE)
