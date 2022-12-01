@@ -18,7 +18,8 @@ WORKDIR /app
 COPY yarn*.lock ./
 COPY package*.json ./
 
-RUN yarn install
+RUN yarn install --ignore-scripts
+
 # The instructions for second stage
 COPY . .
 
