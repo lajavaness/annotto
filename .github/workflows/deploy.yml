@@ -132,10 +132,7 @@ jobs:
 
   docker-build-and-push-front:
     runs-on: ubuntu-latest
-    if: contains('
-      refs/heads/main
-      refs/heads/next
-      ', github.ref) && github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && needs.semantic-release.outputs.is-new-version == 'true'
     needs:
       - semantic-release
     strategy:
