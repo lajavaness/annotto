@@ -100,7 +100,7 @@ jobs:
       contents: read
       packages: write
     env:
-      IMAGE: ${{ secrets.DOCKER_REGISTRY }}/annotto
+      IMAGE: ${{ secrets.DOCKER_REGISTRY }}/annotto-api
     steps:
       - name: Extract branch name
         shell: bash
