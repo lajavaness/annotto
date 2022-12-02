@@ -41,7 +41,6 @@ ENV KEYCLOAK_FRONTEND_URL "http://localhost:3000/auth"
 
 WORKDIR /opt
 
-RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null
 RUN apt clean && \
     apt-get update && \
     apt-get install -y wget curl gnupg default-jdk nginx
