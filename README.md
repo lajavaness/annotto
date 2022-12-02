@@ -4,6 +4,7 @@
 
 ![GitHub](https://img.shields.io/github/license/lajavaness/annotto-api?logo=heartex) ![deploy](https://github.com/lajavaness/annotto-api/actions/workflows/deploy.yml/badge.svg) ![GitHub release](https://img.shields.io/github/v/release/lajavaness/annotto-api?include_prereleases)
 ![Dependency-Track](https://dependency-track.ops.lajavaness.com/api/v1/badge/vulns/project/6f393512-576a-46ab-8d82-a22852a1fb82Is)
+
 [Website](https://www.lajavaness.com/annotto) • [Docs](https://lajavaness.github.io/annotto-docs/)
 
 # Description
@@ -48,19 +49,19 @@ yarn start:dev
 ```
 
 ### Environment variables
-| Name                         | Default                                   | Optional-Required | Description                                                          |
-|------------------------------|-------------------------------------------|---------------|----------------------------------------------------------------------|
-| PORT                         | 5001                                      | optional      | Server listening port                                                |
-| NODE_ENV                     | development                               | optional      | NODE Environment to use "[development, test]"                        |
-| ENCRYPTION_SECRET_KEY        | -                                         | optional      | A Secret Key used to encrypt AWS creds  (symmetric)                  |
-| MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | optional      | Mongo connection string                                              |
-| ANNOTTO_FRONT_URL            | http://localhost:3000                     | optional      | Annotto Front base url                                               |
-| KEYCLOAK_REALM               | annotto                                   | optional      | Keycloak Realm (preconfigured if started with docker-compose_)       |
-| KEYCLOAK_AUTH_URL            | http://localhost:8080/auth                | optional      | Keycloak auth url (preconfigured if started with docker-compose_)    |
-| KEYCLOAK_CLIENT_ID           | annotto                                   | optional      | Keycloak client id (preconfigured if started with docker-compose_)   |
-| KEYCLOAK_CLIENT_SECRET       | a7b7a29d-abb0-4e21-abec-bca99a47e40e      | optional      | Keycloak client secret (preconfigured if started with docker-compose_) |
-| ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
-| ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | optional      | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
+| Name                         | Default                                   | Description                                                          |
+|------------------------------|-------------------------------------------|----------------------------------------------------------------------|
+| PORT                         | 5001                                      | Server listening port                                                |
+| NODE_ENV                     | development                               | NODE Environment to use "[development, test]"                        |
+| ENCRYPTION_SECRET_KEY        | -                                         | A Secret Key used to encrypt AWS creds  (symmetric)                  |
+| MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | Mongo connection string                                              |
+| ANNOTTO_FRONT_URL            | http://localhost:3000                     | Annotto Front base url                                               |
+| KEYCLOAK_REALM               | annotto                                   | Keycloak Realm (preconfigured if started with docker-compose_)       |
+| KEYCLOAK_AUTH_URL            | http://localhost:8080/auth                | Keycloak auth url (preconfigured if started with docker-compose_)    |
+| KEYCLOAK_CLIENT_ID           | annotto                                   | Keycloak client id (preconfigured if started with docker-compose_)   |
+| KEYCLOAK_CLIENT_SECRET       | a7b7a29d-abb0-4e21-abec-bca99a47e40e      | Keycloak client secret (preconfigured if started with docker-compose_) |
+| ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
+| ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
 
 ## Users and Roles
 When starting Annotto, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
