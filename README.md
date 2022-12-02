@@ -53,7 +53,7 @@ yarn start:dev
 |------------------------------|-------------------------------------------|----------------------------------------------------------------------|
 | PORT                         | 5001                                      | Server listening port                                                |
 | NODE_ENV                     | development                               | NODE Environment to use "[development, test]"                        |
-| ENCRYPTION_SECRET_KEY        | -                                         | A Secret Key used to encrypt AWS creds  (symmetric)                  |
+| ENCRYPTION_SECRET_KEY        | aSecretKey                                | A Secret Key used to encrypt AWS creds  (symmetric)                  |
 | MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | Mongo connection string                                              |
 | ANNOTTO_FRONT_URL            | http://localhost:3000                     | Annotto Front base url                                               |
 | KEYCLOAK_REALM               | annotto                                   | Keycloak Realm (preconfigured if started with docker-compose_)       |
