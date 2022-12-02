@@ -68,7 +68,7 @@
 		"github-markdown-css": "^4.0.0",
 		"i18next": "^19.6.0",
 		"i18next-browser-languagedetector": "^5.0.0",
-		"immer": "^1.10.0",
+		"immer": "^9.0.6",
 		"jsonlint-mod": "^1.7.6",
 		"keycloak-js": "^18.0.0",
 		"less": "^3.12.2",
