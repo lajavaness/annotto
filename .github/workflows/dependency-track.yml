@@ -1,0 +1,35 @@
+name: Push to Dependency-Track
+
+on:
+  release:
+    types: [released]
+
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install dependencies
+        run: yarn install
+      - name: Generate SBOM
+        uses: CycloneDX/gh-node-module-generatebom@master
+        with:
+          output: './bom.xml'
+      - name: Push to DT
+        uses: DependencyTrack/gh-upload-sbom@v1.0.0
+        with:
+          serverhostname: 'dependency-track.ops.lajavaness.com'
+          apikey: ${{ secrets.DT_API_KEY }}
+          projectname: ${{ github.event.repository.name }}
+          projectversion: ${{ github.event.release.tag_name }}
