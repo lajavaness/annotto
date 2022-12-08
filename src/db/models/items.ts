@@ -57,6 +57,7 @@ export type Item = {
 }
 
 export type ItemDocument = Item & Document<unknown, unknown, Item>
+export type ItemS3Document = ItemDocument & { data: { url: string } }
 
 const itemSchema = new Schema<Item>(
   {

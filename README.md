@@ -21,7 +21,7 @@ Annotto is the only **go to** annotation tool to successfully annotate your docu
 ***
 **Annotto** will be available at [http://localhost:3000](http://localhost:3000) with default credentials
 ```
-username (email): admin
+username: admin
 password: test
 ```
 

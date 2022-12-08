@@ -48,6 +48,19 @@ services:
       - "8080:8080"
 #      - 443:8443
 
+  minio:
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=supersecret
+    image: quay.io/minio/minio:latest
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - ./storage/minio:/data
+    restart: unless-stopped
+
   mongo:
     image: "mongo:4.4"
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
