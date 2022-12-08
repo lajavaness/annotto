@@ -10,10 +10,10 @@ import { logger } from '../utils/logger'
 import queryBuilder, { CriteriaPayload, Paginate, ParamsPayload } from '../utils/query-builder'
 import AnnotationModel, { Annotation } from '../db/models/annotations'
 import FilterModel from '../db/models/filters'
-import ItemModel, { Item, ItemDocument } from '../db/models/items'
+import ItemModel, { Item, ItemDocument, ItemS3Document } from '../db/models/items'
 import ProjectModel from '../db/models/projects'
 import { handleItemStream, handleItemPredictionStream } from '../core/file-upload/stream-handler'
-import { browse, updateHighlights, putImgContentInItem, saveItem } from '../core/items'
+import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/items'
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
 import config from '../../config'
@@ -149,7 +149,7 @@ const saveAndPopulateItem = async (req: express.Request, item: ItemDocument) => 
   await saveItem(item, req._user)
 
   if (req._project.s3 && item?.data?.url) {
-    item = await putImgContentInItem(item, req._project.s3) // eslint-disable-line no-use-before-define
+    item.data.url = await convertToS3Url(item as ItemS3Document, req._project.s3) // eslint-disable-line no-use-before-define
   }
 
   return item

@@ -7807,6 +7807,11 @@ rxjs@^7.0.0:
   dependencies:
     tslib "^2.1.0"
 
+s3-url-parser@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/s3-url-parser/-/s3-url-parser-1.0.3.tgz#3c97e301e5355c907938a7e9b830528774933120"
+  integrity sha512-HErWK77P3LTE7VYDQUnLVGzB66mQVrG1IZnjLsLiwNAqXiI8xIOjheAlIR6AkUcRsDzf0MmIQX85t9OQ7PwjIA==
+
 safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"

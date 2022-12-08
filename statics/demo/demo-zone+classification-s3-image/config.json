@@ -1,0 +1,141 @@
+{
+  "name": "DEMO: S3 - Zone and Classification ",
+  "description": "Demo zone, classification with s3 images",
+  "type": "image",
+  "client": "LJN",
+  "deadline": "2023-04-30T13:57:20.355Z",
+  "s3": {
+    "accessKeyId": "admin",
+    "secretAccessKey": "supersecret"
+  },
+  "users": [
+    "user@test.com"
+  ],
+  "dataScientists": [
+    "data@test.com"
+  ],
+  "admins": [
+    "admin@test.com"
+  ],
+  "tasks": [
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_name",
+      "label": "Name",
+      "hotkey": "a"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_skill",
+      "label": "Skill",
+      "hotkey": "b"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_formation",
+      "label": "Formation",
+      "hotkey": "c"
+    },
+    {
+      "category": "bboxes",
+      "type": "zone",
+      "value": "bbox_Exp",
+      "label": "Experience",
+      "hotkey": "d"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "PNI",
+      "value": "pni",
+      "hotkey": "e"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "Passporte",
+      "value": "passeport",
+      "hotkey": "f"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "Kbis",
+      "value": "kbis",
+      "hotkey": "g"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "Justif",
+      "value": "justif",
+      "hotkey": "h"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "Avis Imp\u00f4t",
+      "value": "avis",
+      "hotkey": "i"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "Livret Familial",
+      "value": "livret",
+      "hotkey": "j"
+    },
+    {
+      "category": "type",
+      "type": "classifications",
+      "label": "Autre",
+      "value": "autre",
+      "hotkey": "k"
+    },
+    {
+      "category": "lisible",
+      "type": "classifications",
+      "label": "Oui",
+      "value": "L",
+      "hotkey": "l"
+    },
+    {
+      "category": "lisible",
+      "type": "classifications",
+      "label": "Non",
+      "value": "N",
+      "hotkey": "m"
+    },
+    {
+      "category": "lisible",
+      "type": "classifications",
+      "label": "Autre ladrad",
+      "value": "_",
+      "hotkey": "n"
+    },
+    {
+      "category": "sexe",
+      "type": "classifications",
+      "label": "Homme",
+      "value": "H",
+      "hotkey": "o"
+    },
+    {
+      "category": "sexe",
+      "type": "classifications",
+      "label": "Femme",
+      "value": "F",
+      "hotkey": "p"
+    },
+    {
+      "category": "sexe",
+      "type": "classifications",
+      "label": "Autre genre",
+      "value": "-",
+      "hotkey": "q"
+    }
+  ]
+}

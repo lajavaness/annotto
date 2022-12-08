@@ -7,11 +7,12 @@ import { generateError } from '../../utils/error'
 import { logger } from '../../utils/logger'
 import queryBuilder, { QueryPayload } from '../../utils/query-builder'
 import { Annotation } from '../../db/models/annotations'
-import ItemModel, { Item, ItemDocument } from '../../db/models/items'
+import ItemModel, { Item, ItemDocument, ItemS3Document } from '../../db/models/items'
 import { Project } from '../../db/models/projects'
 import { logTags } from '../logs'
 import { updateProjectStats } from '../projects'
 import { updateClassificationStats } from '../tasks'
+import S3Client from '../s3-client'
 
 const { setQuery } = queryBuilder('mongo')
 
@@ -296,45 +297,11 @@ export const updateItemsAfterBulkAnnotation = async (
   )
 }
 
-export const putImgContentInItem = async (
-  item: ItemDocument,
+export const convertToS3Url = async (
+  item: ItemS3Document,
   s3Config: { accessKeyId: string; secretAccessKey: string }
 ) => {
-  let s3Params
-
-  try {
-    s3Params = AmazonS3URI(item.data.url)
-  } catch (err) {
-    throw generateError({
-      code: 403,
-      message: 'ERROR_INVALID_S3_URI',
-    })
-  }
-
-  try {
-    const s3 = new AWS.S3({
-      accessKeyId: decrypt(s3Config.accessKeyId),
-      secretAccessKey: decrypt(s3Config.secretAccessKey),
-    })
-    const data = await s3
-      .getObject({
-        Bucket: s3Params.bucket,
-        Key: s3Params.key,
-      })
-      .promise()
-
-    item.data.url = `data:${data.ContentType};base64,`
-    item.data.url += data.Body ? data.Body.toString('base64') : ''
-
-    return item
-  } catch (error) {
-    console.error(error)
-    logger.error(error instanceof Error ? error.stack : 'Invalid Error')
-    throw generateError({
-      code: 403,
-      message: 'ERROR_S3_GETOBJECT',
-    })
-  }
+  return new S3Client().getSignedUrl(decrypt(s3Config.accessKeyId), decrypt(s3Config.secretAccessKey), item.data.url)
 }
 
 export const saveItem = async (
@@ -375,7 +342,7 @@ export default {
   updateHighlights,
   updateItemsAfterBulkAnnotation,
   updateItemStats,
-  putImgContentInItem,
+  convertToS3Url,
   filterAnnotationValues,
   calculateAnnotationTimesAndVelocity,
 }

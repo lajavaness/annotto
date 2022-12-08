@@ -1,0 +1,28 @@
+version: '3.8'
+
+volumes:
+  annotto_data:
+  minio_data:
+
+services:
+  annotto:
+    image: ljnrepo/annotto
+    volumes:
+      - annotto_data:/data/db
+    ports:
+      - "3000:3000"
+      - "5001:5001"
+      - "8080:8080"
+
+  minio:
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=supersecret
+    image: quay.io/minio/minio:latest
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - minio_data:/data
+    restart: unless-stopped
