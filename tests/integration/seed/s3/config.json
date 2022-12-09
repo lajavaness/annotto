@@ -3,8 +3,8 @@
   "type": "image",
   "client": "test",
   "s3": {
-    "accessKeyId": "xxx",
-    "secretAccessKey": "xxx"
+    "accessKeyId": "admin",
+    "secretAccessKey": "supersecret"
   },
   "tasks": [
     {

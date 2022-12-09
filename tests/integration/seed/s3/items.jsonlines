@@ -1,2 +1,2 @@
-{"uuid": "d7bb0128-c478-4f56-a00a-601ee6bd0849", "datatype": "image", "data": { "url": "https://seeds.s3.eu-central-1.amazonaws.com/seedFile1"}}
-{"uuid": "e1c7b817-7f20-4fe5-9c87-99d2cf768481", "datatype": "image", "data": { "url": "https://seeds.s3.eu-central-1.amazonaws.com/seedFile2"}}
+{"uuid": "d7bb0128-c478-4f56-a00a-601ee6bd0849", "datatype": "image", "data": { "url": "http://localhost:9000/annotto/seedFile1"}}
+{"uuid": "e1c7b817-7f20-4fe5-9c87-99d2cf768481", "datatype": "image", "data": { "url": "http://localhost:9000/annotto/seedFile2"}}

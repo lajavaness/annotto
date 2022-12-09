@@ -38,24 +38,3 @@ export const datascientist = {
   firstName: 'Tom',
   lastName: 'Bill',
 }
-
-export const projectUser = {
-  email: 'user@test.com',
-  password: 'LJN402983492834',
-  firstName: 'Jack',
-  lastName: 'Smith',
-}
-
-export const projectDatascientist = {
-  email: 'data@test.com',
-  password: 'LJN10293819283',
-  firstName: 'Jean',
-  lastName: 'Louis',
-}
-
-export const projectAdmin = {
-  email: 'admin@test.com',
-  password: 'LJN13209238273',
-  firstName: 'Pierre',
-  lastName: 'Jacques',
-}

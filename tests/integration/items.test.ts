@@ -1,12 +1,15 @@
+import AWS from 'aws-sdk'
 import express from 'express'
+import lineByLine from 'n-readlines'
 import { promises as fsPromises } from 'fs'
 import mongoose from 'mongoose'
 import supertest from 'supertest'
-import { Item } from '../../src/db/models/items'
+import { Item, ItemS3Document } from '../../src/db/models/items'
 import createServer from '../../src/__tests__/create-server'
 import getToken from '../../src/__tests__/get-oauth-token'
 import { adminOauth } from './seed/seed'
 import config from '../../config'
+import S3Client from '../../src/core/s3-client'
 
 let JWT: string
 let app: express.Application
@@ -81,6 +84,33 @@ const createSeedProject = (
       return res.body.project
     })
 }
+const createSeedS3Item = async (accessKeyId: string, secretAccessKey: string, item: ItemS3Document) => {
+  const s3Config = new S3Client().parseUrlParams(item.data.url)
+  try {
+    const awsConfig = {
+      credentials: new AWS.Credentials(accessKeyId, secretAccessKey),
+      s3ForcePathStyle: true,
+      endpoint: s3Config.endpoint,
+    }
+
+    AWS.config.update(awsConfig)
+    const s3 = new AWS.S3()
+
+    // uploading object with string data on Body
+    const fileObjectKey = s3Config.key
+    await s3
+      .putObject({
+        Bucket: s3Config.bucket,
+        Key: fileObjectKey,
+        Body: Buffer.from('toto'),
+      })
+      .promise()
+
+    console.log(`Successfully uploaded ${s3Config.bucket}/${fileObjectKey}`)
+  } catch (err) {
+    console.log('Error', err)
+  }
+}
 
 beforeAll(async () => {
   app = await createServer(config)
@@ -98,6 +128,22 @@ beforeEach(async () => {
     await collection.deleteMany({})
   }
 })
+
+async function initS3Items(seed: { config: string; items: string }) {
+  // Upload mock S3 files
+  const project = await import(seed.config)
+  // eslint-disable-next-line new-cap
+  const liner = new lineByLine(seed.items)
+
+  let line
+  const tasks = []
+
+  while ((line = liner.next())) {
+    tasks.push(createSeedS3Item(project.s3.accessKeyId, project.s3.secretAccessKey, JSON.parse(line.toString())))
+  }
+
+  await Promise.all(tasks)
+}
 
 describe('items', () => {
   test('GET /projects/:_id/items', async () => {
@@ -189,17 +235,26 @@ describe('items', () => {
   test('GET /projects/:_id/items/next Get next on a project with S3 config', async () => {
     const { _id } = await createSeedProject(JWT, s3SeedProject)
 
+    await initS3Items(s3SeedProject)
+
     // assert that S3 mock value in __mocks__ was correctly formatted
     return supertest(app)
       .get(`/api/projects/${_id}/items/next`)
       .set('Authorization', `Bearer ${JWT}`)
       .expect(200)
       .then((res) => res.body)
-      .then((item) => expect(item.data.url).toBe('data:FOO;base64,QkFS'))
+      .then((item) => {
+        const urlParams = new URL(item.data.url).searchParams
+        expect(urlParams.get('AWSAccessKeyId')).toBeDefined()
+        expect(urlParams.get('Expires')).toBeDefined()
+        expect(urlParams.get('Signature')).toBeDefined()
+      })
   })
 
   test('GET /projects/:_id/items/_id Get by id on a project with S3 config', async () => {
     const { _id } = await createSeedProject(JWT, s3SeedProject)
+
+    await initS3Items(s3SeedProject)
 
     // assert that S3 mock value in __mocks__ was correctly formated
     const itemId = await supertest(app)
@@ -213,7 +268,12 @@ describe('items', () => {
       .set('Authorization', `Bearer ${JWT}`)
       .expect(200)
       .then((res) => res.body)
-      .then((item) => expect(item.data.url).toBe('data:FOO;base64,QkFS'))
+      .then((item) => {
+        const urlParams = new URL(item.data.url).searchParams
+        expect(urlParams.get('AWSAccessKeyId')).toBeDefined()
+        expect(urlParams.get('Expires')).toBeDefined()
+        expect(urlParams.get('Signature')).toBeDefined()
+      })
   })
 
   // skip until highlight API is back...
