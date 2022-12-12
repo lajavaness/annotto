@@ -31,5 +31,5 @@ COPY --from=builder /usr/src/app/dist dist
 EXPOSE 5001
 COPY --from=builder /usr/src/app/node_modules node_modules
 
-CMD ["yarn", "start"]
+CMD ["node", "./dist/src/index.js"]
 
