@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/lajavaness/annotto/compare/v1.0.11...v1.0.12) (2022-12-12)
+
+
+### Bug Fixes
+
+* Update profile roles in annotto according to the role from keycloak, [#12](https://github.com/lajavaness/annotto/issues/12) ([6b37f49](https://github.com/lajavaness/annotto/commit/6b37f49efcb52d94f15a459abd4811e6a5364111))
+
 ## [1.0.11](https://github.com/lajavaness/annotto/compare/v1.0.10...v1.0.11) (2022-12-12)
 
 ## [1.0.10](https://github.com/lajavaness/annotto/compare/v1.0.9...v1.0.10) (2022-12-09)
