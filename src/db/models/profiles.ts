@@ -1,8 +1,9 @@
 import { Types, Schema, Document, model } from 'mongoose'
 
+export type ProfileRole = 'admin' | 'user' | 'dataScientist'
 export type Profile = {
   _id: Types.ObjectId
-  role: 'admin' | 'user' | 'dataScientist'
+  role: ProfileRole
   user: string
   email: string
   createdAt: Date
