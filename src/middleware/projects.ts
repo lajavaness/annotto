@@ -103,7 +103,7 @@ const index = async (
       { users: { $in: [req._user.email] } },
     ]
   }
-  logger.debug(criteria)
+  logger.debug(JSON.stringify(criteria))
 
   const params = setParams(req.query, config.search.project)
   try {

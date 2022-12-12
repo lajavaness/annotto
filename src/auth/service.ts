@@ -2,7 +2,7 @@ import express from 'express'
 import { Token } from 'keycloak-connect'
 import { AccessToken } from '../types'
 import { logger } from '../utils/logger'
-import ProfileModel from '../db/models/profiles'
+import ProfileModel, { ProfileRole } from '../db/models/profiles'
 import ProjectModel, { Project } from '../db/models/projects'
 import { keycloak } from './index'
 import config from '../../config'
@@ -45,7 +45,8 @@ export const haveAccessRole = (projectRole: string, email: string, project: Proj
  */
 const _getProfile = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
-    let profile = await ProfileModel.findOne({ user: req._user._id }).lean()
+    let profile = await ProfileModel.findOne({ user: req._user._id })
+    const tokenRole = req.token.content && req.token.content.resource_access[config.keycloak.realm].roles[0]
 
     if (!profile) {
       const newProfile = new ProfileModel({
@@ -53,9 +54,12 @@ const _getProfile = async (req: express.Request, res: express.Response, next: ex
         email: req._user.email,
         // TODO : Warning about this. There can be multiple roles coming from OAuth. So either take the first one, or,
         // make sure the DB can hold an array of roles
-        role: (req.token.content && req.token.content.resource_access[config.keycloak.realm].roles[0]) || [],
+        role: tokenRole || [],
       })
-      profile = (await newProfile.save()).toObject()
+      profile = await newProfile.save()
+    } else if (profile.role !== tokenRole) {
+      profile.role = tokenRole as ProfileRole
+      profile = await profile.save()
     }
 
     req._user.profile = profile
