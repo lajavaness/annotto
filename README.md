@@ -3,7 +3,7 @@
 *produced by* [La Javaness](https://www.lajavaness.com/)
 
 ![GitHub](https://img.shields.io/github/license/lajavaness/annotto-api?logo=heartex) ![deploy](https://github.com/lajavaness/annotto-api/actions/workflows/deploy.yml/badge.svg) ![GitHub release](https://img.shields.io/github/v/release/lajavaness/annotto-api?include_prereleases)
-![Dependency-Track](https://dependency-track.ops.lajavaness.com/api/v1/badge/vulns/project/6f393512-576a-46ab-8d82-a22852a1fb82Is)
+[![Dependency-Track](https://dependency-track.ops.lajavaness.com/api/v1/badge/vulns/project/7b01815b-08f2-430e-96a4-1ccb4aa52f40)](https://dependency-track.ops.lajavaness.com/projects/7b01815b-08f2-430e-96a4-1ccb4aa52f40)
 [![Codacy Security Scan](https://github.com/lajavaness/annotto/actions/workflows/codacy.yml/badge.svg)](https://github.com/lajavaness/annotto/actions/workflows/codacy.yml)
 [![CodeQL](https://github.com/lajavaness/annotto/actions/workflows/codeql.yml/badge.svg)](https://github.com/lajavaness/annotto/actions/workflows/codeql.yml)
 
