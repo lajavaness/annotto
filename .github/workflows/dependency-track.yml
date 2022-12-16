@@ -6,7 +6,7 @@ on:
 
 
 jobs:
-  unit-tests:
+  push-to-dt:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,9 +27,6 @@ jobs:
         with:
           output: './bom.xml'
       - name: Push to DT
-        uses: DependencyTrack/gh-upload-sbom@v1.0.0
-        with:
-          serverhostname: 'dependency-track.ops.lajavaness.com'
-          apikey: ${{ secrets.DT_API_KEY }}
-          projectname: ${{ github.event.repository.name }}
-          projectversion: ${{ github.event.release.tag_name }}
+        run: |
+          curl -X 'POST' 'https://dependency-track.ops.lajavaness.com/api/v1/bom' -H 'X-API-Key:${{ secrets.DT_API_KEY }}' -H 'Content-Type: multipart/form-data' -F 'bom=@bom.xml' -F 'project=7b01815b-08f2-430e-96a4-1ccb4aa52f40'
+
