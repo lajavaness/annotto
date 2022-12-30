@@ -3,6 +3,7 @@ import {
   filterAndAddAnnotationsToItemService,
   filterAndAddItemService,
   filterAndMergeAnnotationItemsService,
+  findAnnotationItemType,
   mapAnnotationItemsPredictionsKeyResponseService,
   mapAnnotationRequestService,
   mapAnnotationsRequestService,
@@ -10,7 +11,8 @@ import {
 } from 'modules/project/services/annotationServices'
 
 import { ANNOTATION_ITEMS_SIZE } from 'shared/enums/paginationTypes'
-import { CANCELLED, DONE } from 'shared/enums/annotationTypes'
+import { CANCELLED, DONE, NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
+import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectType'
 
 describe('annotationServices', () => {
   describe('filterAndMergeAnnotationItemsService', () => {
@@ -438,6 +440,34 @@ describe('annotationServices', () => {
         text: 'foo',
       }
       expect(mapAnnotationRequestService(input)).toEqual(output)
+    })
+  })
+
+  describe('findAnnotationItemType', () => {
+    it('Throws an error if no annotation type is found', () => {
+      const err = new Error('No annotation type found')
+
+      expect(() => findAnnotationItemType('foo')).toThrow(err)
+    })
+
+    const cases = [
+      [
+        `Returns ${NER} if the project type is ${PROJECT_TEXT} and there is a task of type ${NER}`,
+        PROJECT_TEXT,
+        [{ type: NER }],
+        NER,
+      ],
+      [
+        `Returns ${TEXT} if the project type is ${TEXT} and there is no task of type ${NER}`,
+        PROJECT_TEXT,
+        [{ type: 'foo' }],
+        TEXT,
+      ],
+      [`Returns ${TEXT} if the project type is ${TEXT} and there is no tasks`, PROJECT_TEXT, null, TEXT],
+      [`Returns ${ZONE} if the project type is ${PROJECT_IMAGE}`, PROJECT_IMAGE, null, ZONE],
+    ]
+    it.each(cases)('%s', (title, projectType, tasks, output) => {
+      expect(findAnnotationItemType(projectType, tasks)).toEqual(output)
     })
   })
 })

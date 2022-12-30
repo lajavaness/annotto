@@ -90,8 +90,10 @@ describe('ImageMarker', () => {
   })
 
   it('triggers onChange callback with mode 2points', () => {
-    const onChange = jest.fn()
-    const { getByTestId } = render(getInstance({ annotations, tasks, selectedSection, mode: TWO_POINTS, onChange }))
+    const onAnnotationChange = jest.fn()
+    const { getByTestId } = render(
+      getInstance({ annotations, tasks, selectedSection, mode: TWO_POINTS, onAnnotationChange })
+    )
 
     const firstMouseup = new MouseEvent('mouseup', { bubbles: true, cancelable: true })
     const secondMouseup = new MouseEvent('mouseup', { bubbles: true, cancelable: true })
@@ -104,6 +106,6 @@ describe('ImageMarker', () => {
     fireEvent(getByTestId('__markers-container__'), firstMouseup)
     fireEvent(getByTestId('__markers-container__'), secondMouseup)
 
-    expect(onChange).toHaveBeenCalled()
+    expect(onAnnotationChange).toHaveBeenCalled()
   })
 })
