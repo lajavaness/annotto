@@ -30,6 +30,11 @@ const ZoneTools = ({
 }) => {
   const { t } = useTranslation('project')
 
+  console.log(
+    'tasks',
+    tasks.map(({ hotkey }) => hotkey)
+  )
+
   const resolvedEntitiesRelationsGroup = useMemo(
     () =>
       !isNil(entitiesRelationsGroup)

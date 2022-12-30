@@ -330,6 +330,8 @@ const AnnotationPage = ({ setHeaderActions }) => {
 
   const _onSettingsChange = useCallback((_, values) => dispatch(putProject(values)), [dispatch])
 
+  console.log(AnnotationItemWrapper.propTypes)
+
   return (
     <Page id="annotation">
       {isReady ? (
