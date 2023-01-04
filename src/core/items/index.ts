@@ -57,7 +57,7 @@ export const transformLineToItem = (
     uuid: line.uuid,
     compositeUuid: `${projectId}_${line.uuid}`,
     data: line.data,
-    type: <'text' | 'image'>((line.type || line.datatype) === 'image' ? 'image' : 'text'),
+    type: <'text' | 'image' | 'video'>(line.type || line.datatype),
     body,
     tags: <string[]>(line.tags ? line.tags : line.markers) || undefIfUpdate([]),
     metadata: line.metadata || undefIfUpdate({}),

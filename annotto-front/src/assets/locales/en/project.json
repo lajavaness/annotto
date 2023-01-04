@@ -182,6 +182,10 @@
     "dataset": "No dataset to annotate",
     "item": "No other item available"
   },
+	"errors": {
+		"videoUnsupported": "Your browser doesn't support HTML video. Here is a <0>link to the video</0> instead.",
+		"videoUnsupportedLink": "link to the video"
+	},
   "guide": {
     "glossary": "Glossary",
     "guidelines": "Annotation guide",

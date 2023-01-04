@@ -22,7 +22,7 @@ import ZoneTools from 'modules/project/components/common/ZoneTools'
 import AnnotationItemWrapper from 'modules/project/components/common/AnnotationItemWrapper'
 
 import { CLASSIFICATIONS, NER, TEXT as ANNOTATION_TEXT, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE, TEXT } from 'shared/enums/projectTypes'
+import { IMAGE, TEXT, VIDEO } from 'shared/enums/projectTypes'
 import { ITEM, PREDICTIONS, RAW } from 'shared/enums/itemTypes'
 import { TASKS } from 'shared/enums/projectStatsTypes'
 import { TWO_POINTS, WORD } from 'shared/enums/markerTypes'
@@ -394,7 +394,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
                           )}
                         />
                       )}
-                      {projectType === TEXT && currentItem && (
+                      {[TEXT, VIDEO].includes(projectType) && currentItem && (
                         <LogsContainer logs={currentItemLogs?.data || []} isProjectContext={false} />
                       )}
                     </Styled.Space>
