@@ -11,8 +11,8 @@ import {
 } from 'modules/project/services/annotationServices'
 
 import { ANNOTATION_ITEMS_SIZE } from 'shared/enums/paginationTypes'
-import { CANCELLED, DONE, NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectTypes'
+import { CANCELLED, DONE, NER, TEXT, ZONE, VIDEO } from 'shared/enums/annotationTypes'
+import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT, VIDEO as PROJECT_VIDEO } from 'shared/enums/projectTypes'
 
 describe('annotationServices', () => {
   describe('filterAndMergeAnnotationItemsService', () => {
@@ -465,6 +465,7 @@ describe('annotationServices', () => {
       ],
       [`Returns ${TEXT} if the project type is ${TEXT} and there is no tasks`, PROJECT_TEXT, null, TEXT],
       [`Returns ${ZONE} if the project type is ${PROJECT_IMAGE}`, PROJECT_IMAGE, null, ZONE],
+      [`Returns ${VIDEO} if the project type is ${PROJECT_VIDEO}`, PROJECT_VIDEO, null, VIDEO],
     ]
     it.each(cases)('%s', (title, projectType, tasks, output) => {
       expect(findAnnotationItemType(projectType, tasks)).toEqual(output)

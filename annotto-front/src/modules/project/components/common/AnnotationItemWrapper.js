@@ -2,13 +2,14 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import projectTypes from 'shared/enums/projectTypes'
-import { NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
+import { NER, TEXT, VIDEO, ZONE } from 'shared/enums/annotationTypes'
 
 import { findAnnotationItemType } from 'modules/project/services/annotationServices'
 
 import NerContainer from 'modules/project/components/common/NerContainer'
 import TextItemContainer from 'modules/project/components/common/TextItemContainer'
 import ImageMarker from 'modules/project/components/common/ImageMarker'
+import VideoItem from 'modules/project/components/common/VideoItem'
 
 const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => {
   const annotationType = findAnnotationItemType(projectType, tasks)
@@ -17,6 +18,11 @@ const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => 
   switch (annotationType) {
     case TEXT: {
       return <TextItemContainer content={body} highlights={highlights} />
+    }
+
+    case VIDEO: {
+      const src = data?.url
+      return <VideoItem content={src} />
     }
 
     case NER: {
