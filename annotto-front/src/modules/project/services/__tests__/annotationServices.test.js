@@ -12,7 +12,7 @@ import {
 
 import { ANNOTATION_ITEMS_SIZE } from 'shared/enums/paginationTypes'
 import { CANCELLED, DONE, NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectType'
+import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectTypes'
 
 describe('annotationServices', () => {
   describe('filterAndMergeAnnotationItemsService', () => {

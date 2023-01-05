@@ -26,7 +26,7 @@ import {
   TYPE,
   USERS,
 } from 'shared/enums/configurationsProjectPropertiesTypes'
-import projectType from 'shared/enums/projectType'
+import projectType from 'shared/enums/projectTypes'
 import tagTypes from 'shared/enums/tagTypes'
 
 import * as Styled from 'modules/configurationProject/components/__styles__/ConfigStepPage.styles'

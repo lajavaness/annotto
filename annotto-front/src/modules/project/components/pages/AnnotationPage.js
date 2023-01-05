@@ -22,7 +22,7 @@ import ZoneTools from 'modules/project/components/common/ZoneTools'
 import AnnotationItemWrapper from 'modules/project/components/common/AnnotationItemWrapper'
 
 import { CLASSIFICATIONS, NER, TEXT as ANNOTATION_TEXT, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE, TEXT } from 'shared/enums/projectType'
+import { IMAGE, TEXT } from 'shared/enums/projectTypes'
 import { ITEM, PREDICTIONS, RAW } from 'shared/enums/itemTypes'
 import { TASKS } from 'shared/enums/projectStatsTypes'
 import { TWO_POINTS, WORD } from 'shared/enums/markerTypes'
@@ -329,8 +329,6 @@ const AnnotationPage = ({ setHeaderActions }) => {
   const _onEditFilterClick = useCallback(() => dispatch(openFilterModal()), [dispatch])
 
   const _onSettingsChange = useCallback((_, values) => dispatch(putProject(values)), [dispatch])
-
-  console.log(AnnotationItemWrapper.propTypes)
 
   return (
     <Page id="annotation">

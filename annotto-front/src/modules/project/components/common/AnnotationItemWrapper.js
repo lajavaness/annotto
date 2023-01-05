@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import projectType from 'shared/enums/projectType'
+import projectTypes from 'shared/enums/projectTypes'
 import { NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
 
 import { findAnnotationItemType } from 'modules/project/services/annotationServices'
@@ -51,7 +51,7 @@ const getProptypes = (props) => {
 }
 
 AnnotationItemWrapper.propTypes = {
-  projectType: PropTypes.oneOf(projectType).isRequired,
+  projectType: PropTypes.oneOf(projectTypes).isRequired,
   currentItem: PropTypes.shape({
     body: PropTypes.oneOfType([TextItemContainer.propTypes.content, NerContainer.propTypes.content]),
     highlights: PropTypes.oneOfType([TextItemContainer.propTypes.highlights, NerContainer.propTypes.highlights]),

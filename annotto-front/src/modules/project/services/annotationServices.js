@@ -2,7 +2,7 @@ import { isArray, isBoolean, isEmpty, isNull, isNumber, pickBy } from 'lodash'
 
 import { ANNOTATION_ITEMS_SIZE } from 'shared/enums/paginationTypes'
 import { DONE, NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectType'
+import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectTypes'
 
 export const mapAnnotationItemsPredictionsKeyResponseService = (input) => {
   if (isEmpty(input)) {

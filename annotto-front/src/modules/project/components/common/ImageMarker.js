@@ -338,7 +338,7 @@ const ImageMarker = ({
   const _onMouseLeave = () => setCurrentHovered(null)
 
   return (
-    <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0}>
+    <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0} data-testid={'__image-item__'}>
       <Styled.Img ref={imgRef} src={src} onLoad={_onLoad} />
       <Styled.Svg
         data-testid="__markers-container__"
