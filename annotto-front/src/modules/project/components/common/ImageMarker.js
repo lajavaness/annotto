@@ -16,7 +16,7 @@ import theme from '__theme__'
 import * as Styled from './__styles__/ImageMarker.styles'
 
 const ImageMarker = ({
-  src,
+  content,
   annotations,
   tasks,
   selectedSection,
@@ -48,7 +48,7 @@ const ImageMarker = ({
     setCurrentHovered(null)
     setCurrentSelected(null)
     setMarkerRefs([])
-  }, [src])
+  }, [content])
 
   const resolveFourPoints = ([{ x: x1, y: y1 }, { x: x2, y: y2 }]) => [
     { x: x1, y: y1 },
@@ -339,7 +339,7 @@ const ImageMarker = ({
 
   return (
     <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0} data-testid={'__image-item__'}>
-      <Styled.Img ref={imgRef} src={src} onLoad={_onLoad} />
+      <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} />
       <Styled.Svg
         data-testid="__markers-container__"
         dimensions={dimensions}
@@ -461,7 +461,7 @@ const TaskSection = PropTypes.shape({
 
 ImageMarker.propTypes = {
   /** Defines the source path of the image that will be displayed. */
-  src: PropTypes.string,
+  content: PropTypes.string,
   /** The list of the annotation that are currently selected. Callees must manage this.
    * list in their state. */
   annotations: PropTypes.arrayOf(
@@ -516,7 +516,7 @@ ImageMarker.propTypes = {
 }
 
 ImageMarker.defaultProps = {
-  src: null,
+  content: null,
   annotations: [],
   selectedSection: null,
   mode: TWO_POINTS,

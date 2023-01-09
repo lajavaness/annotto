@@ -40,7 +40,7 @@ describe('AnnotationItemWrapper component', () => {
     expect(nerContainer).toBeInTheDocument()
   })
 
-  it('should render image marker props for zone annotation type', () => {
+  it('should render image marker component for zone annotation type', () => {
     const props = {
       projectType: PROJECT_IMAGE,
       tasks: [{ type: ZONE, value: 'foo', label: 'foo' }],

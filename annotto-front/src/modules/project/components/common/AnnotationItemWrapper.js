@@ -14,20 +14,19 @@ const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => 
   const annotationType = findAnnotationItemType(projectType, tasks)
   const { body, highlights, data } = currentItem
 
+  const filteredTasks = tasks.filter((task) => task.type === annotationType)
+
   switch (annotationType) {
     case TEXT: {
       return <TextItemContainer content={body} highlights={highlights} />
     }
 
     case NER: {
-      const filteredTasks = tasks.filter((task) => task.type === NER)
-      return <NerContainer content={body} {...options} highlights={highlights} tasks={filteredTasks} />
+      return <NerContainer {...options} content={body} highlights={highlights} tasks={filteredTasks} />
     }
 
     case ZONE: {
-      const src = data?.url
-      const filteredTasks = tasks.filter((task) => task.type === ZONE)
-      return <ImageMarker src={src} tasks={filteredTasks} {...options} />
+      return <ImageMarker {...options} content={data?.url} tasks={filteredTasks} />
     }
     default: {
       return null
@@ -45,8 +44,10 @@ const getProptypes = (props) => {
       return TextItemContainer.propTypes
     case NER:
       return NerContainer.propTypes
-    default:
+    case ZONE:
       return ImageMarker.propTypes
+    default:
+      return null
   }
 }
 
@@ -56,7 +57,7 @@ AnnotationItemWrapper.propTypes = {
     body: PropTypes.oneOfType([TextItemContainer.propTypes.content, NerContainer.propTypes.content]),
     highlights: PropTypes.oneOfType([TextItemContainer.propTypes.highlights, NerContainer.propTypes.highlights]),
     data: PropTypes.shape({
-      url: ImageMarker.propTypes.src,
+      url: ImageMarker.propTypes.content,
     }),
   }),
   tasks: PropTypes.oneOfType([ImageMarker.propTypes.tasks, NerContainer.propTypes.tasks]),
