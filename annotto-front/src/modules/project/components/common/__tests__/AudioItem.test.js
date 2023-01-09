@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import VideoItem from '../VideoItem'
+import AudioItem from 'modules/project/components/common/AudioItem'
 
-const getInstance = (props = {}) => render(<VideoItem {...props} />)
+const getInstance = (props = {}) => render(<AudioItem {...props} />)
 
 jest.mock('react-i18next', () => ({
   Trans: ({ components }) => {
@@ -12,19 +12,19 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key) => key }),
 }))
 
-describe('VideoItem', () => {
-  const content = 'https://example.com/video.mp4'
-  it('renders the video element with the correct src', () => {
+describe('AudioItem', () => {
+  const content = 'https://example.com/audio.mp3'
+  it('renders the audio element with the correct src', () => {
     const { getByTestId } = getInstance({ content })
 
-    const videoElement = getByTestId('__video-item__').firstChild
-    expect(videoElement).toHaveAttribute('src', 'https://example.com/video.mp4')
+    const audioElement = getByTestId('__audio-item__').firstChild
+    expect(audioElement).toHaveAttribute('src', content)
   })
 
-  it('renders a fallback message when the video is not supported', () => {
+  it('renders a fallback message when the audio is not supported', () => {
     const { getByText } = getInstance({ content })
 
-    const fallbackElement = getByText('project:errors.videoUnsupportedLink')
+    const fallbackElement = getByText('project:errors.audioUnsupportedLink')
     expect(fallbackElement).toBeInTheDocument()
     expect(fallbackElement).toHaveAttribute('href', content)
     expect(fallbackElement).toHaveAttribute('rel', 'noreferrer')

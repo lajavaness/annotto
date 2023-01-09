@@ -8,7 +8,7 @@ const VideoItem = ({ content }) => {
   const { t } = useTranslation('project')
 
   return (
-    <Styled.Root data-testid="__video_item__">
+    <Styled.Root data-testid="__video-item__">
       <Styled.Video loop controls src={content}>
         <Trans
           t={t}

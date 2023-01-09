@@ -13,7 +13,7 @@ export type Item = {
   }
   body: string
   description?: string
-  type: 'text' | 'image' | 'video'
+  type: 'text' | 'image' | 'video' | 'audio'
   status: 'todo' | 'done'
   annotated: boolean
   annotatedBy: string[]
@@ -71,7 +71,7 @@ const itemSchema = new Schema<Item>(
     data: { type: Object },
     body: String,
     description: String,
-    type: { type: String, enum: ['text', 'image', 'video'], default: 'text' },
+    type: { type: String, enum: ['text', 'image', 'video', 'audio'], default: 'text' },
     status: { type: String, enum: ['todo', 'done'], default: 'todo' },
     annotated: { type: Boolean, default: false, index: true },
     annotatedBy: { type: [String], default: [], index: true },

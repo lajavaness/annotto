@@ -36,7 +36,8 @@
 		"types": {
 			"text": "Text",
 			"image":"Image",
-			"video": "Video"
+			"video": "Video",
+			"audio": "Audio"
 		},
     "name": "Project name",
     "deadline": "Project deadline",
