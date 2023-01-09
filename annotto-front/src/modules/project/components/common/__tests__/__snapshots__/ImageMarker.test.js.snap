@@ -4,6 +4,7 @@ exports[`ImageMarker matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="sc-ZqGJI jRKgWj"
+    data-testid="__image-item__"
   >
     <img
       class="sc-knEsKG dCWNq"

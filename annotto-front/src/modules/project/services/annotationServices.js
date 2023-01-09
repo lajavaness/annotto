@@ -1,7 +1,8 @@
 import { isArray, isBoolean, isEmpty, isNull, isNumber, pickBy } from 'lodash'
 
 import { ANNOTATION_ITEMS_SIZE } from 'shared/enums/paginationTypes'
-import { DONE } from 'shared/enums/annotationTypes'
+import { DONE, NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
+import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectTypes'
 
 export const mapAnnotationItemsPredictionsKeyResponseService = (input) => {
   if (isEmpty(input)) {
@@ -151,4 +152,23 @@ export const mapAnnotationsRequestService = (input) => {
   }
 
   return input.map((annotation) => mapAnnotationRequestService(annotation))
+}
+
+export const isNerAnnotationItem = (tasks) => !!tasks?.some((task) => task.type === NER)
+
+export const findAnnotationItemType = (projectType, tasks) => {
+  switch (projectType) {
+    case PROJECT_TEXT: {
+      if (isNerAnnotationItem(tasks)) {
+        return NER
+      }
+      return TEXT
+    }
+
+    case PROJECT_IMAGE: {
+      return ZONE
+    }
+    default:
+      throw new Error('No annotation type found')
+  }
 }

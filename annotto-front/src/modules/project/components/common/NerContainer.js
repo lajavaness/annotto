@@ -644,7 +644,7 @@ const NerContainer = ({
 
   if (!isEmpty(entitiesRelationsGroup)) {
     return (
-      <Styled.Root ref={rootRef} hasRelation={!isEmpty(entitiesRelations)}>
+      <Styled.Root ref={rootRef} hasRelation={!isEmpty(entitiesRelations)} data-testid={'__ner-item__'}>
         {rootDimensions?.width && rootDimensions?.height ? (
           <Styled.Svg
             dimensions={contentDimensions?.width && contentDimensions?.height ? contentDimensions : rootDimensions}
@@ -682,7 +682,7 @@ const NerContainer = ({
     )
   }
   return (
-    <Styled.Root ref={rootRef} hasRelation={!isEmpty(entitiesRelations)}>
+    <Styled.Root ref={rootRef} hasRelation={!isEmpty(entitiesRelations)} data-testid={'__ner-item__'}>
       {<Styled.Content ref={contentRef}>{renderedContent}</Styled.Content>}
     </Styled.Root>
   )

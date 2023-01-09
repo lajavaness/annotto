@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, Modal, message } from 'antd'
+import { Button, message, Modal } from 'antd'
 import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons'
 import { GlobalHotKeys } from 'react-hotkeys'
 import { isArray, isEmpty, isNumber } from 'lodash'
@@ -11,20 +11,18 @@ import ActionBar from 'modules/project/components/common/ActionBar'
 import CheckLabelList from 'modules/project/components/common/CheckLabelList'
 import Col from 'shared/components/grid/Col'
 import HeaderItemContainer from 'modules/project/components/common/HeaderItemContainer'
-import ImageMarker from 'modules/project/components/common/ImageMarker'
 import JSONPreview from 'modules/project/components/common/JSONPreview'
 import Loader from 'shared/components/loader/Loader'
 import LogsContainer from 'modules/project/components/common/LogsContainer'
-import NerContainer from 'modules/project/components/common/NerContainer'
 import Page from 'shared/components/page/Page'
 import Row from 'shared/components/grid/Row'
 import TextAnnotationsContainer from 'modules/project/components/common/TextAnnotationsContainer'
-import TextItemContainer from 'modules/project/components/common/TextItemContainer'
 import WarningMessage from 'shared/components/warning/WarningMessage'
 import ZoneTools from 'modules/project/components/common/ZoneTools'
+import AnnotationItemWrapper from 'modules/project/components/common/AnnotationItemWrapper'
 
-import { TEXT as ANNOTATION_TEXT, CLASSIFICATIONS, NER, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE, TEXT } from 'shared/enums/projectType'
+import { CLASSIFICATIONS, NER, TEXT as ANNOTATION_TEXT, ZONE } from 'shared/enums/annotationTypes'
+import { IMAGE, TEXT } from 'shared/enums/projectTypes'
 import { ITEM, PREDICTIONS, RAW } from 'shared/enums/itemTypes'
 import { TASKS } from 'shared/enums/projectStatsTypes'
 import { TWO_POINTS, WORD } from 'shared/enums/markerTypes'
@@ -360,39 +358,23 @@ const AnnotationPage = ({ setHeaderActions }) => {
                           <Styled.ItemContent>
                             {/* eslint-disable-next-line no-nested-ternary */}
                             {selectedDisplay === ITEM ? (
-                              // eslint-disable-next-line no-nested-ternary
-                              projectType === TEXT ? (
-                                projectTasks.some((task) => task.type === NER) ? (
-                                  <NerContainer
-                                    mode={selectedMode}
-                                    content={currentItem.body}
-                                    annotations={annotations}
-                                    selectedSection={selectedSection}
-                                    selectedRelation={selectedRelation}
-                                    entitiesRelations={entitiesRelations}
-                                    tasks={projectTasks?.filter(({ type }) => type === NER)}
-                                    entitiesRelationsGroup={projectEntitiesRelationsGroup}
-                                    highlights={currentItem.highlights}
-                                    predictions={currentItemPredictions}
-                                    showPredictions={projectShowPrediction}
-                                    onAnnotationChange={_onAnnotationChange}
-                                    onEntitiesRelationChange={_onEntitiesRelationChange}
-                                  />
-                                ) : (
-                                  <TextItemContainer content={currentItem.body} highlights={currentItem.highlights} />
-                                )
-                              ) : (
-                                <ImageMarker
-                                  src={currentItem.data?.url}
-                                  selectedSection={selectedSection}
-                                  mode={selectedMode}
-                                  tasks={projectTasks?.filter(({ type }) => type === ZONE)}
-                                  annotations={annotations}
-                                  predictions={currentItemPredictions}
-                                  showPredictions={projectShowPrediction}
-                                  onChange={_onAnnotationChange}
-                                />
-                              )
+                              <AnnotationItemWrapper
+                                tasks={projectTasks}
+                                projectType={projectType}
+                                currentItem={currentItem}
+                                options={{
+                                  mode: selectedMode,
+                                  selectedSection,
+                                  annotations,
+                                  selectedRelation,
+                                  entitiesRelations,
+                                  predictions: currentItemPredictions,
+                                  showPredictions: projectShowPrediction,
+                                  entitiesRelationsGroup: projectEntitiesRelationsGroup,
+                                  onAnnotationChange: _onAnnotationChange,
+                                  onEntitiesRelationChange: _onEntitiesRelationChange,
+                                }}
+                              />
                             ) : (
                               <JSONPreview
                                 json={

@@ -25,7 +25,7 @@ const TextItemContainer = ({ content, highlights }) => {
   const sanitizedHtml = useMemo(() => sanitizer(content), [content])
 
   return (
-    <Styled.Root>
+    <Styled.Root data-testid={'__text-item__'}>
       {!isEmpty(highlights) ? (
         <Styled.Content>
           {resolveContentWithHighlight.map(({ value, isHighlight }, index) =>

@@ -15,7 +15,16 @@ import theme from '__theme__'
 
 import * as Styled from './__styles__/ImageMarker.styles'
 
-const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredictions, predictions, onChange }) => {
+const ImageMarker = ({
+  content,
+  annotations,
+  tasks,
+  selectedSection,
+  mode,
+  showPredictions,
+  predictions,
+  onAnnotationChange,
+}) => {
   const rootRef = useRef()
   const imgRef = useRef()
 
@@ -29,7 +38,7 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
 
   useOutsideClick(rootRef, () => {
     if (!isEmpty(draggedCoords)) {
-      onChange(annotations)
+      onAnnotationChange(annotations)
       setDraggedCoords([])
     }
   })
@@ -39,7 +48,7 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
     setCurrentHovered(null)
     setCurrentSelected(null)
     setMarkerRefs([])
-  }, [src])
+  }, [content])
 
   const resolveFourPoints = ([{ x: x1, y: y1 }, { x: x2, y: y2 }]) => [
     { x: x1, y: y1 },
@@ -114,13 +123,13 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
 
           if (coords.every((coord, i) => i === 0 || isSamePoint(coords[i - 1], coord))) return
 
-          onChange([...annotations, { value: selectedSection.value, zone: coords }])
+          onAnnotationChange([...annotations, { value: selectedSection.value, zone: coords }])
         } else {
           setDraggedCoords(coords)
         }
       }
     },
-    [draggedCoords, selectedSection, onChange, annotations, mode]
+    [draggedCoords, selectedSection, onAnnotationChange, annotations, mode]
   )
 
   const drawingPoints = useMemo(() => {
@@ -231,7 +240,7 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
   const _onDeleteClick = useCallback(
     (index) => (e) => {
       e.stopPropagation()
-      if (!!resolvedAnnotations[index] && !isEmpty(annotations) && !!onChange) {
+      if (!!resolvedAnnotations[index] && !isEmpty(annotations) && !!onAnnotationChange) {
         const filteredAnnotations = annotations.filter(
           (annotation) => !isZoneAnnotationEquivalent(annotation, resolvedAnnotations[index])
         )
@@ -242,16 +251,16 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
         if (index === currentHovered) {
           setCurrentHovered(null)
         }
-        onChange(filteredAnnotations)
+        onAnnotationChange(filteredAnnotations)
       }
     },
-    [onChange, currentSelected, currentHovered, annotations, resolvedAnnotations]
+    [onAnnotationChange, currentSelected, currentHovered, annotations, resolvedAnnotations]
   )
 
   const _onValidateClick = useCallback(
     (index) => (e) => {
       e.stopPropagation()
-      if (!!resolvedPredictions[index] && !!onChange) {
+      if (!!resolvedPredictions[index] && !!onAnnotationChange) {
         if (index === currentSelected) {
           setCurrentSelected(null)
         }
@@ -260,10 +269,10 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
           setCurrentHovered(null)
         }
 
-        onChange([...annotations, resolvedPredictions[index]])
+        onAnnotationChange([...annotations, resolvedPredictions[index]])
       }
     },
-    [annotations, currentSelected, currentHovered, onChange, resolvedPredictions]
+    [annotations, currentSelected, currentHovered, onAnnotationChange, resolvedPredictions]
   )
 
   const resolveBackgroundPredictionPattern = (annotationIndex, predictionIndex, isSelected, isHovered, color) =>
@@ -329,8 +338,8 @@ const ImageMarker = ({ src, annotations, tasks, selectedSection, mode, showPredi
   const _onMouseLeave = () => setCurrentHovered(null)
 
   return (
-    <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0}>
-      <Styled.Img ref={imgRef} src={src} onLoad={_onLoad} />
+    <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0} data-testid={'__image-item__'}>
+      <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} />
       <Styled.Svg
         data-testid="__markers-container__"
         dimensions={dimensions}
@@ -452,7 +461,7 @@ const TaskSection = PropTypes.shape({
 
 ImageMarker.propTypes = {
   /** Defines the source path of the image that will be displayed. */
-  src: PropTypes.string,
+  content: PropTypes.string,
   /** The list of the annotation that are currently selected. Callees must manage this.
    * list in their state. */
   annotations: PropTypes.arrayOf(
@@ -503,15 +512,15 @@ ImageMarker.propTypes = {
   mode: PropTypes.oneOf(markerTypes),
   /** A callback that will be called whenever a zone is created or removed.
    * Contains the updated list of annotation. */
-  onChange: PropTypes.func,
+  onAnnotationChange: PropTypes.func,
 }
 
 ImageMarker.defaultProps = {
-  src: null,
+  content: null,
   annotations: [],
   selectedSection: null,
   mode: TWO_POINTS,
   showPredictions: true,
   predictions: [],
-  onChange: null,
+  onAnnotationChange: null,
 }

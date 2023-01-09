@@ -4,6 +4,7 @@ exports[`TextItemContainer matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="sc-grxQYx iTBcUt"
+    data-testid="__text-item__"
   >
     <p
       class="sc-ZqGJI"
