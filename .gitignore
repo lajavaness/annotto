@@ -28,10 +28,11 @@ yarn-error.log*
 
 # Jest and generic test utilities
 /coverage/
+/annotto-front/coverage/
 
 # Cypress
-/cypress/screenshots
-/cypress/videos
+/annotto-front/cypress/screenshots
+/annotto-front/cypress/videos
 
 # Istanbul
 /.nyc_output/*
@@ -43,5 +44,6 @@ yarn-error.log*
 /.env*local
 
 .data
+storage/
 
 junit.xml
