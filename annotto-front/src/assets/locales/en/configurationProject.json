@@ -33,6 +33,12 @@
     "permissions": "Users permissions",
     "client": "Client",
     "type": "Project type",
+		"types": {
+			"text": "Text",
+			"image":"Image",
+			"video": "Video",
+			"audio": "Audio"
+		},
     "name": "Project name",
     "deadline": "Project deadline",
     "description": "Project description",

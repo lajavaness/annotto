@@ -2,8 +2,8 @@ import React, { Suspense } from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
-import { IMAGE as PROJECT_IMAGE, TEXT as PROJECT_TEXT } from 'shared/enums/projectTypes'
-import { NER, TEXT, ZONE } from 'shared/enums/annotationTypes'
+import { PROJECT_IMAGE, PROJECT_TEXT, PROJECT_VIDEO, PROJECT_AUDIO } from 'shared/enums/projectTypes'
+import { AUDIO, NER, TEXT, VIDEO, ZONE } from 'shared/enums/annotationTypes'
 
 import theme from '__theme__'
 
@@ -22,6 +22,13 @@ const getInstance = (props = {}) => (
     </Suspense>
   </ThemeProvider>
 )
+
+jest.mock('react-i18next', () => ({
+  Trans: ({ components }) => {
+    return components
+  },
+  useTranslation: () => ({ t: (key) => key }),
+}))
 
 describe('AnnotationItemWrapper component', () => {
   it('should render text container for text annotation type', () => {
@@ -52,5 +59,33 @@ describe('AnnotationItemWrapper component', () => {
     const imageMarker = getByTestId('__image-item__')
 
     expect(imageMarker).toBeInTheDocument()
+  })
+
+  it('should render video component for video annotation type', () => {
+    const props = {
+      projectType: PROJECT_VIDEO,
+      tasks: [{ type: VIDEO, value: 'foo', label: 'foo' }],
+      currentItem: { data: { url: 'some video url' }, highlights: [] },
+      options: { someOption: 'some value' },
+    }
+    const { getByTestId } = render(getInstance(props))
+
+    const videoContainer = getByTestId('__video-item__')
+
+    expect(videoContainer).toBeInTheDocument()
+  })
+
+  it('should render audio component for audio annotation type', () => {
+    const props = {
+      projectType: PROJECT_AUDIO,
+      tasks: [{ type: AUDIO, value: 'foo', label: 'foo' }],
+      currentItem: { data: { url: 'some audio url' }, highlights: [] },
+      options: { someOption: 'some value' },
+    }
+    const { getByTestId } = render(getInstance(props))
+
+    const audioContainer = getByTestId('__audio-item__')
+
+    expect(audioContainer).toBeInTheDocument()
   })
 })

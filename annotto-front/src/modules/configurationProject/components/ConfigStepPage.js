@@ -66,7 +66,7 @@ const ConfigStepPage = () => {
     [defaultInitialTags, t]
   )
 
-  const projectOptions = projectType.map((value) => ({ value, label: value }))
+  const projectOptions = projectType.map((value) => ({ value, label: t(`config.types.${value}`) }))
   const userOptions = users?.map(({ email }) => ({ value: email, label: email }))
   const clientOptions = client?.data?.map(({ name }) => ({ value: name, label: name }))
   const today = useMemo(() => moment(), [])

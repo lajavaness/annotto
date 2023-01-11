@@ -46,8 +46,30 @@ export const importJsonLines = async <T extends Record<string, unknown>, U>({
 export const validateItem = <T>(item: T, projectType: string, lineNumber: number) => {
   let validation: Joi.ValidationResult
 
-  if (projectType === 'text') validation = itemSchemas.jsonlinesItemTextSchema.validate(item)
-  else validation = itemSchemas.jsonlinesItemImageSchema.validate(item)
+  switch (projectType) {
+    case 'text': {
+      validation = itemSchemas.jsonlinesItemTextSchema.validate(item)
+      break
+    }
+    case 'image': {
+      validation = itemSchemas.jsonlinesItemImageSchema.validate(item)
+      break
+    }
+    case 'video': {
+      validation = itemSchemas.jsonlinesItemVideoSchema.validate(item)
+      break
+    }
+    case 'audio': {
+      validation = itemSchemas.jsonlinesItemAudioSchema.validate(item)
+      break
+    }
+    default: {
+      throw generateFileError({
+        message: `Invalid project type`,
+        lineNumber,
+      })
+    }
+  }
 
   if (validation && validation.error) {
     throw generateFileError({
