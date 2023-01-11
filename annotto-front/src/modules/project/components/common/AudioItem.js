@@ -9,7 +9,7 @@ const AudioItem = ({ content }) => {
 
   return (
     <Styled.Root data-testid="__audio-item__">
-      <Styled.Audio controls src={content}>
+      <Styled.Audio loop controls src={content}>
         <Trans
           t={t}
           i18nKey="project:errors.audioUnsupported"

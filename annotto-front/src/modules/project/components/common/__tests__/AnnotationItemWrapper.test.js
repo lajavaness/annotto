@@ -2,12 +2,7 @@ import React, { Suspense } from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
-import {
-  IMAGE as PROJECT_IMAGE,
-  TEXT as PROJECT_TEXT,
-  VIDEO as PROJECT_VIDEO,
-  AUDIO as PROJECT_AUDIO,
-} from 'shared/enums/projectTypes'
+import { PROJECT_IMAGE, PROJECT_TEXT, PROJECT_VIDEO, PROJECT_AUDIO } from 'shared/enums/projectTypes'
 import { AUDIO, NER, TEXT, VIDEO, ZONE } from 'shared/enums/annotationTypes'
 
 import theme from '__theme__'

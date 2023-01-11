@@ -22,7 +22,7 @@ import ZoneTools from 'modules/project/components/common/ZoneTools'
 import AnnotationItemWrapper from 'modules/project/components/common/AnnotationItemWrapper'
 
 import { CLASSIFICATIONS, NER, TEXT as ANNOTATION_TEXT, ZONE } from 'shared/enums/annotationTypes'
-import { IMAGE, TEXT, VIDEO, AUDIO } from 'shared/enums/projectTypes'
+import { PROJECT_IMAGE, PROJECT_TEXT, PROJECT_VIDEO, PROJECT_AUDIO } from 'shared/enums/projectTypes'
 import { ITEM, PREDICTIONS, RAW } from 'shared/enums/itemTypes'
 import { TASKS } from 'shared/enums/projectStatsTypes'
 import { TWO_POINTS, WORD } from 'shared/enums/markerTypes'
@@ -184,7 +184,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
 
   useEffect(() => {
     if (!selectedMode) {
-      setSelectedMode(projectType === TEXT ? WORD : TWO_POINTS)
+      setSelectedMode(projectType === PROJECT_TEXT ? WORD : TWO_POINTS)
     }
   }, [projectType, selectedMode])
 
@@ -339,7 +339,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
               <Row gutter={['11', '11']}>
                 <Col span={14}>
                   <Styled.Container>
-                    <Styled.Space direction="vertical" $isTextContent={projectType === TEXT}>
+                    <Styled.Space direction="vertical" $isTextContent={projectType === PROJECT_TEXT}>
                       <ActionBar
                         tags={currentItem?.tags}
                         availableTags={availableTags}
@@ -394,7 +394,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
                           )}
                         />
                       )}
-                      {[TEXT, VIDEO, AUDIO].includes(projectType) && currentItem && (
+                      {[PROJECT_TEXT, PROJECT_VIDEO, PROJECT_AUDIO].includes(projectType) && currentItem && (
                         <LogsContainer logs={currentItemLogs?.data || []} isProjectContext={false} />
                       )}
                     </Styled.Space>
@@ -408,9 +408,11 @@ const AnnotationPage = ({ setHeaderActions }) => {
                           selectedSection={selectedSection}
                           selectedRelation={selectedRelation}
                           selectedMode={selectedMode}
-                          isProjectTypeText={projectType === TEXT}
+                          isProjectTypeText={projectType === PROJECT_TEXT}
                           entitiesRelationsGroup={projectEntitiesRelationsGroup}
-                          tasks={projectTasks.filter(({ type }) => type === (projectType === TEXT ? NER : ZONE))}
+                          tasks={projectTasks.filter(
+                            ({ type }) => type === (projectType === PROJECT_TEXT ? NER : ZONE)
+                          )}
                           onToolChange={_onToolChange}
                           onSelectionChange={_onSelectionChange}
                           onRelationChange={_onRelationChange}
@@ -429,7 +431,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
                         />
                       </Styled.Content>
                     )}
-                    {projectTasks.some((task) => task.type === TEXT) && (
+                    {projectTasks.some((task) => task.type === PROJECT_TEXT) && (
                       <Styled.Content>
                         <TextAnnotationsContainer
                           annotations={annotations}
@@ -440,7 +442,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
                         />
                       </Styled.Content>
                     )}
-                    {projectType === IMAGE && currentItem && projectId && (
+                    {projectType === PROJECT_IMAGE && currentItem && projectId && (
                       <Styled.Content>
                         <LogsContainer logs={currentItemLogs?.data || []} isProjectContext={false} />
                       </Styled.Content>
