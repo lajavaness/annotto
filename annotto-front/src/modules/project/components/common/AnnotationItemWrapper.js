@@ -24,13 +24,11 @@ const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => 
     }
 
     case VIDEO: {
-      const src = data?.url
-      return <VideoItem content={src} />
+      return <VideoItem content={data?.url} />
     }
 
     case AUDIO: {
-      const src = data?.url
-      return <AudioItem content={src} />
+      return <AudioItem content={data?.url} />
     }
 
     case NER: {

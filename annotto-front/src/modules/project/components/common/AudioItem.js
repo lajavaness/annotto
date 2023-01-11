@@ -14,7 +14,7 @@ const AudioItem = ({ content }) => {
           t={t}
           i18nKey="project:errors.audioUnsupported"
           components={[
-            <a key="link" target="_blank" href={content} rel="noreferrer">
+            <a key="link" target="_blank" href={content} rel="noopener noreferrer">
               {t('project:errors.audioUnsupportedLink')}
             </a>,
           ]}

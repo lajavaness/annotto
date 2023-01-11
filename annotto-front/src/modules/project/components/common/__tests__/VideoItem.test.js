@@ -18,7 +18,7 @@ describe('VideoItem', () => {
     const { getByTestId } = getInstance({ content })
 
     const videoElement = getByTestId('__video-item__').firstChild
-    expect(videoElement).toHaveAttribute('src', 'https://example.com/video.mp4')
+    expect(videoElement).toHaveAttribute('src', content)
   })
 
   it('renders a fallback message when the video is not supported', () => {
@@ -27,7 +27,7 @@ describe('VideoItem', () => {
     const fallbackElement = getByText('project:errors.videoUnsupportedLink')
     expect(fallbackElement).toBeInTheDocument()
     expect(fallbackElement).toHaveAttribute('href', content)
-    expect(fallbackElement).toHaveAttribute('rel', 'noreferrer')
+    expect(fallbackElement).toHaveAttribute('rel', 'noopener noreferrer')
     expect(fallbackElement).toHaveAttribute('target', '_blank')
   })
 })

@@ -27,7 +27,7 @@ describe('AudioItem', () => {
     const fallbackElement = getByText('project:errors.audioUnsupportedLink')
     expect(fallbackElement).toBeInTheDocument()
     expect(fallbackElement).toHaveAttribute('href', content)
-    expect(fallbackElement).toHaveAttribute('rel', 'noreferrer')
+    expect(fallbackElement).toHaveAttribute('rel', 'noopener noreferrer')
     expect(fallbackElement).toHaveAttribute('target', '_blank')
   })
 })

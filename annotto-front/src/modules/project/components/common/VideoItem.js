@@ -14,7 +14,7 @@ const VideoItem = ({ content }) => {
           t={t}
           i18nKey="project:errors.videoUnsupported"
           components={[
-            <a key="link" target="_blank" href={content} rel="noreferrer">
+            <a key="link" target="_blank" href={content} rel="noopener noreferrer">
               {t('project:errors.videoUnsupportedLink')}
             </a>,
           ]}
