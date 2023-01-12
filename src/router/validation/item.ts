@@ -86,6 +86,24 @@ const jsonlinesItemTextSchema = Joi.object({
   type: Joi.string().valid('text'),
 }).xor('datatype', 'type')
 
+const jsonlinesItemVideoSchema = Joi.object({
+  ...itemTemplate,
+  data: Joi.object({
+    url: Joi.string().required(),
+  }).required(),
+  datatype: Joi.string().valid('video'), // be compatbile with data scientists expectations
+  type: Joi.string().valid('video'), // but be compatible with annotto's own export format
+}).xor('datatype', 'type')
+
+const jsonlinesItemAudioSchema = Joi.object({
+  ...itemTemplate,
+  data: Joi.object({
+    url: Joi.string().required(),
+  }).required(),
+  datatype: Joi.string().valid('audio'),
+  type: Joi.string().valid('audio'),
+}).xor('datatype', 'type')
+
 const zonePredictionSchema = Joi.object({
   entities: Joi.array()
     .items(
@@ -291,6 +309,8 @@ export default {
   annotationParamSchema,
   jsonlinesItemTextSchema,
   jsonlinesItemImageSchema,
+  jsonlinesItemVideoSchema,
+  jsonlinesItemAudioSchema,
   zonePredictionSchema,
   nerPredictionSchema,
   jsonlinesPredictionsSchema,
