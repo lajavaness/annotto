@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/lajavaness/annotto/compare/v1.0.13...v1.1.0) (2023-01-12)
+
+
+### Features
+
+* Add video and audio datatypes ([#22](https://github.com/lajavaness/annotto/issues/22)) ([5e396ea](https://github.com/lajavaness/annotto/commit/5e396ea9ad3c34671b8fdde0d22584453502ed57))
+
 ## [1.0.13](https://github.com/lajavaness/annotto/compare/v1.0.12...v1.0.13) (2022-12-16)
 
 ## [1.0.12](https://github.com/lajavaness/annotto/compare/v1.0.11...v1.0.12) (2022-12-12)
