@@ -26,7 +26,7 @@ type ProjectPayload = {
     accessKeyId: string
     secretAccessKey: string
   }
-  type?: 'text' | 'image' | 'video' | 'audio'
+  type?: 'text' | 'image' | 'video' | 'audio' | 'html'
   entitiesRelationsGroup?: EntitiesRelationsGroup
   name?: string
   description?: string

@@ -37,7 +37,8 @@
 			"text": "Text",
 			"image":"Image",
 			"video": "Video",
-			"audio": "Audio"
+			"audio": "Audio",
+			"html": "HTML"
 		},
     "name": "Project name",
     "deadline": "Project deadline",

@@ -63,6 +63,10 @@ export const validateItem = <T>(item: T, projectType: string, lineNumber: number
       validation = itemSchemas.jsonlinesItemAudioSchema.validate(item)
       break
     }
+    case 'html': {
+      validation = itemSchemas.jsonlinesItemHtmlSchema.validate(item)
+      break
+    }
     default: {
       throw generateFileError({
         message: `Invalid project type`,

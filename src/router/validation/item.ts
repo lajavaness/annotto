@@ -104,6 +104,15 @@ const jsonlinesItemAudioSchema = Joi.object({
   type: Joi.string().valid('audio'),
 }).xor('datatype', 'type')
 
+const jsonlinesItemHtmlSchema = Joi.object({
+  ...itemTemplate,
+  data: Joi.object({
+    html: Joi.string().required(),
+  }).required(),
+  datatype: Joi.string().valid('html'),
+  type: Joi.string().valid('html'),
+}).xor('datatype', 'type')
+
 const zonePredictionSchema = Joi.object({
   entities: Joi.array()
     .items(
@@ -307,6 +316,7 @@ export default {
   updateItemSchema,
   annotationPayloadSchema,
   annotationParamSchema,
+  jsonlinesItemHtmlSchema,
   jsonlinesItemTextSchema,
   jsonlinesItemImageSchema,
   jsonlinesItemVideoSchema,
