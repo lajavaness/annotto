@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/lajavaness/annotto/compare/v1.1.0...v1.2.0) (2023-01-16)
+
+
+### Features
+
+* Add Html datatype ([#25](https://github.com/lajavaness/annotto/issues/25)) ([a4ab47c](https://github.com/lajavaness/annotto/commit/a4ab47c822488f3ba40cc97270c9ad296336705e))
+
 # [1.1.0](https://github.com/lajavaness/annotto/compare/v1.0.13...v1.1.0) (2023-01-12)
 
 
