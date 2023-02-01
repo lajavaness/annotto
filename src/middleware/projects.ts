@@ -158,7 +158,7 @@ const getUsers = async (
 ) => {
   const { projectId } = req.params
   try {
-    const users = await listUsers({ projectId, token: req.token.token || '' })
+    const users = await listUsers({ projectId })
     res.json(users)
   } catch (error) {
     next(error)

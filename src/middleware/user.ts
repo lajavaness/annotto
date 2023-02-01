@@ -8,7 +8,7 @@ type PasswordResponse = {
 
 const index = async (req: express.Request, res: express.Response<User[]>, next: express.NextFunction) => {
   try {
-    const user = await userService.find(req.token.token || '')
+    const user = await userService.find()
     res.status(200).json(user)
   } catch (error) {
     next(error)
@@ -21,7 +21,7 @@ const getById = async (
   next: express.NextFunction
 ) => {
   try {
-    const user = await userService.findById(req.params.idUser, req.token.token || '')
+    const user = await userService.findById(req.params.idUser)
     res.status(200).json(user)
   } catch (error) {
     next(error)
@@ -34,7 +34,7 @@ const update = async (
   next: express.NextFunction
 ) => {
   try {
-    const user = await userService.update(req.params.idUser, req.body, req.token.token || '')
+    const user = await userService.update(req.params.idUser, req.body)
     res.status(200).json(user)
   } catch (error) {
     next(error)
@@ -47,7 +47,7 @@ const destroy = async (
   next: express.NextFunction
 ) => {
   try {
-    await userService.destroy(req.params.idUser, req.token.token || '')
+    await userService.destroy(req.params.idUser)
     res.status(200).end()
   } catch (error) {
     next(error)
@@ -60,7 +60,7 @@ const register = async (
   next: express.NextFunction
 ) => {
   try {
-    const user = await userService.create(req.body, req.token.token || '')
+    const user = await userService.create(req.body)
     res.status(201).json(user)
   } catch (error) {
     next(error)

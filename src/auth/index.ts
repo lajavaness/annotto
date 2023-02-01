@@ -17,4 +17,13 @@ Keycloak.prototype.redirectToLogin = (req: Request) => {
   return !apiReqMatcher.test(req.originalUrl || req.url)
 }
 
-export const keycloak = new Keycloak({}, config.keycloak)
+export const keycloak = new Keycloak(
+  {},
+  {
+    'confidential-port': config.keycloak['confidential-port'],
+    'auth-server-url': config.keycloak['auth-server-url'],
+    resource: config.keycloak.resource,
+    'ssl-required': config.keycloak['ssl-required'],
+    realm: config.keycloak.realm,
+  }
+)

@@ -14,7 +14,6 @@ const getOauthToken = async (user: { username: string; password: string }): Prom
       username: user.username,
       password: user.password,
       client_id: config.keycloak.resource,
-      client_secret: config.keycloak.clientSecret,
     },
   }
   const result = await request(options)
