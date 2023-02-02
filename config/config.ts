@@ -22,9 +22,12 @@ export default {
     realm: process.env.KEYCLOAK_REALM || 'annotto',
     'auth-server-url': process.env.KEYCLOAK_AUTH_URL || 'http://localhost:8080/auth',
     resource: process.env.KEYCLOAK_CLIENT_ID || 'annotto',
-    clientSecret: process.env.KEYCLOAK_CLIENT_SECRET || 'a7b7a29d-abb0-4e21-abec-bca99a47e40e',
     'confidential-port': 8443,
     'ssl-required': 'external',
+    admin: {
+      resource: 'admin-cli',
+      secret: process.env.KEYCLOAK_ADMIN_CLI_SECRET,
+    },
   },
   swagger: {
     swaggerUi: '/explorer',

@@ -177,7 +177,7 @@ export const updateItemCount = async (projectId: mongoose.Types.ObjectId) => {
   return itemCount
 }
 
-export const listUsers = async ({ projectId, token }: { projectId: ObjectIdOrString; token: string }) => {
+export const listUsers = async ({ projectId }: { projectId: ObjectIdOrString }) => {
   const project = await ProjectModel.findById(projectId).select('users admins dataScientists').lean()
   const emails: string[] = []
   if (project && project.users) emails.push(...project.users)
@@ -188,16 +188,15 @@ export const listUsers = async ({ projectId, token }: { projectId: ObjectIdOrStr
     return []
   }
 
-  const result = await UserService.find(token)
+  const result = await UserService.find()
 
-  const users = result
+  return result
     .filter((oneUser) => emails.some((oneEmail) => oneEmail === oneUser.email))
     .map((user) => ({
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
     }))
-  return users
 }
 
 export const getClient = async (clientName: string, { _user }: { _user: User }) => {
@@ -282,8 +281,7 @@ export const createProjectAndTasks = async ({ config, _user }: { config: Project
     }
 
     const project = new ProjectModel(projectPayload)
-    const retVal = saveProject(project, _user)
-    return retVal
+    return saveProject(project, _user)
   } catch (err) {
     throw new Error(
       `Project cannot be saved: project: ${config.name}\n. Caused by ${

@@ -2,7 +2,8 @@
 ## ![](annotto-front/public/static/images/logo_blue.png)nnotto
 *produced by* [La Javaness](https://www.lajavaness.com/)
 
-![GitHub](https://img.shields.io/github/license/lajavaness/annotto?logo=heartex) ![deploy](https://github.com/lajavaness/annotto-api/actions/workflows/deploy.yml/badge.svg) ![GitHub release](https://img.shields.io/github/v/release/lajavaness/annotto?include_prereleases)
+![GitHub](https://img.shields.io/github/license/lajavaness/annotto?logo=heartex) ![deploy](https://github.com/lajavaness/annotto-api/actions/workflows/deploy.yml/badge.svg) 
+![GitHub release](https://img.shields.io/github/v/release/lajavaness/annotto?include_prereleases)
 [![Dependency-Track](https://dependency-track.ops.lajavaness.com/api/v1/badge/vulns/project/7b01815b-08f2-430e-96a4-1ccb4aa52f40)](https://dependency-track.ops.lajavaness.com/projects/7b01815b-08f2-430e-96a4-1ccb4aa52f40)
 [![Codacy Security Scan](https://github.com/lajavaness/annotto/actions/workflows/codacy.yml/badge.svg)](https://github.com/lajavaness/annotto/actions/workflows/codacy.yml)
 [![CodeQL](https://github.com/lajavaness/annotto/actions/workflows/codeql.yml/badge.svg)](https://github.com/lajavaness/annotto/actions/workflows/codeql.yml)
@@ -14,6 +15,7 @@ Annotto is the only **go to** annotation tool to successfully annotate your docu
 
 # Table of contents
 1. [Start with docker](#start-with-docker)
+2. [Start with docker](#start-with-docker-with-minio)
 2. [Start for local development](#start-for-local-development)
 
 # Start with docker
@@ -51,19 +53,19 @@ yarn start:dev
 ```
 
 ### Environment variables
-| Name                         | Default                                   | Description                                                          |
-|------------------------------|-------------------------------------------|----------------------------------------------------------------------|
-| PORT                         | 5001                                      | Server listening port                                                |
-| NODE_ENV                     | development                               | NODE Environment to use "[development, test]"                        |
-| ENCRYPTION_SECRET_KEY        | aSecretKey                                | A Secret Key used to encrypt AWS creds  (symmetric)                  |
-| MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | Mongo connection string                                              |
-| ANNOTTO_FRONT_URL            | http://localhost:3000                     | Annotto Front base url                                               |
-| KEYCLOAK_REALM               | annotto                                   | Keycloak Realm (preconfigured if started with docker-compose_)       |
-| KEYCLOAK_AUTH_URL            | http://localhost:8080/auth                | Keycloak auth url (preconfigured if started with docker-compose_)    |
-| KEYCLOAK_CLIENT_ID           | annotto                                   | Keycloak client id (preconfigured if started with docker-compose_)   |
-| KEYCLOAK_CLIENT_SECRET       | a7b7a29d-abb0-4e21-abec-bca99a47e40e      | Keycloak client secret (preconfigured if started with docker-compose_) |
-| ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
-| ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | Max file size permitted to upload (default = 1000 * 1024 * 1024)     |
+| Name                         | Default                                   | Description                                                                                                                |
+|------------------------------|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| PORT                         | 5001                                      | Server listening port                                                                                                      |
+| NODE_ENV                     | development                               | NODE Environment to use "[development, test]"                                                                              |
+| ENCRYPTION_SECRET_KEY        | aSecretKey                                | A Secret Key used to encrypt AWS creds  (symmetric)                                                                        |
+| MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | Mongo connection string                                                                                                    |
+| ANNOTTO_FRONT_URL            | http://localhost:3000                     | Annotto Front base url                                                                                                     |
+| KEYCLOAK_REALM               | annotto                                   | Keycloak Realm (preconfigured if started with docker-compose_)                                                             |
+| KEYCLOAK_AUTH_URL            | http://localhost:8080/auth                | Keycloak auth url (preconfigured if started with docker-compose_)                                                          |
+| KEYCLOAK_CLIENT_ID           | annotto                                   | Keycloak client id (preconfigured if started with docker-compose_)                                                         |
+| KEYCLOAK_ADMIN_CLI_SECRET    | a7b7a29d-abb0-4e21-abec-bca99a47e40e      | Keycloak admin-cli secret (preconfigured if started with docker-compose_). This is needed to use admin REST API for keycloak |
+| ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | Max file size permitted to upload (default = 1000 * 1024 * 1024)                                                           |
+| ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | Max file size permitted to upload (default = 1000 * 1024 * 1024)                                                           |
 
 ## Users and Roles
 When starting Annotto, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
