@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/lajavaness/annotto/compare/v1.2.1...v1.2.2) (2023-02-02)
+
+
+### Bug Fixes
+
+* Use admin-cli to make admin calls to Keycloak ([#31](https://github.com/lajavaness/annotto/issues/31)) ([ff29da0](https://github.com/lajavaness/annotto/commit/ff29da0629f6e8ed9b0230e3de6af430e2bc507c)), closes [#30](https://github.com/lajavaness/annotto/issues/30)
+
 ## [1.2.1](https://github.com/lajavaness/annotto/compare/v1.2.0...v1.2.1) (2023-01-17)
 
 # [1.2.0](https://github.com/lajavaness/annotto/compare/v1.1.0...v1.2.0) (2023-01-16)
