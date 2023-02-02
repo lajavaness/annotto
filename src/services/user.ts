@@ -70,7 +70,7 @@ async function _callApi(options: Options) {
 }
 
 /**
- * Fetch an admin cli to be able to use methods reserved for admin on Keycloak.
+ * Fetch an admin cli token to be able to use methods reserved for admin on Keycloak.
  * @return {string} Admin Cli access token.
  */
 const getAdminToken = async () => {
