@@ -90,6 +90,7 @@ class S3Client {
   }
 
   // eslint-disable-next-line class-methods-use-this
+
   getSignedUrl(accessKeyId: string, secretAccessKey: string, url: string): Promise<string> {
     const s3Config = this.parseUrlParams(url)
     const config = {
@@ -98,6 +99,7 @@ class S3Client {
       endpoint: s3Config.endpoint,
       sslEnabled: false,
       s3ForcePathStyle: true,
+      signatureVersion: 'v4',
     }
     AWS.config.update(config)
     const s3 = new AWS.S3()
