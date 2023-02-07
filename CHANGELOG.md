@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/lajavaness/annotto/compare/v1.2.2...v1.2.3) (2023-02-07)
+
+
+### Bug Fixes
+
+* Set the signature version for AWS cli to v4, [#28](https://github.com/lajavaness/annotto/issues/28) ([#34](https://github.com/lajavaness/annotto/issues/34)) ([7bc5590](https://github.com/lajavaness/annotto/commit/7bc5590aadd91f5f15b22dea97b0e71e99813946))
+
 ## [1.2.2](https://github.com/lajavaness/annotto/compare/v1.2.1...v1.2.2) (2023-02-02)
 
 
