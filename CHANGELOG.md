@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/lajavaness/annotto/compare/v1.2.3...v1.2.4) (2023-02-08)
+
+
+### Bug Fixes
+
+* Add region in project so S3 from AWS url works ([#35](https://github.com/lajavaness/annotto/issues/35)) ([9fe464f](https://github.com/lajavaness/annotto/commit/9fe464fed33a851d8a3bc2556eb2a3c938447f29))
+
 ## [1.2.3](https://github.com/lajavaness/annotto/compare/v1.2.2...v1.2.3) (2023-02-07)
 
 
