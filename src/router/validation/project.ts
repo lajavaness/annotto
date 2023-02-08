@@ -55,6 +55,7 @@ export const updateProjectSchema = Joi.object({
   s3: Joi.object({
     accessKeyId: Joi.string().required(),
     secretAccessKey: Joi.string().required(),
+    region: Joi.string(),
   }),
   type: Joi.string().valid('text', 'image', 'video', 'audio', 'html'),
   entitiesRelationsGroup: Joi.array().items(entitiesRelationsGroup),
@@ -90,6 +91,7 @@ export const projectConfigV2Schema = Joi.object({
   s3: Joi.object({
     accessKeyId: Joi.string(),
     secretAccessKey: Joi.string(),
+    region: Joi.string(),
   }),
   client: Joi.string().required(),
   type: Joi.string().valid('text', 'image', 'video', 'audio', 'html').required(),

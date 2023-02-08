@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { InternalEntity, InternalRelation, User } from '../../types'
+import { InternalEntity, InternalRelation, S3, User } from '../../types'
 import { encrypt } from '../../utils/crypto'
 import { generateError } from '../../utils/error'
 import AnnotationModel from '../../db/models/annotations'
@@ -270,13 +270,14 @@ export const createProjectAndTasks = async ({ config, _user }: { config: Project
       filterPredictionsMinimum: config.filterPredictionsMinimum,
       entitiesRelationsGroup: config.entitiesRelationsGroup,
       client,
-      s3: <{ accessKeyId: string; secretAccessKey: string } | undefined>undefined,
+      s3: <S3 | undefined>undefined,
     }
 
     if (config.s3) {
       projectPayload.s3 = {
         accessKeyId: encrypt(config.s3.accessKeyId),
         secretAccessKey: encrypt(config.s3.secretAccessKey),
+        region: config.s3.region,
       }
     }
 

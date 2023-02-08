@@ -147,3 +147,9 @@ export type ImportEntryPayload = {
     createdAt: Date
   }[]
 }
+
+export type S3 = {
+  accessKeyId: string
+  secretAccessKey: string
+  region?: string
+}

@@ -1,10 +1,6 @@
-import AmazonS3URI from 'amazon-s3-uri'
-import AWS from 'aws-sdk'
 import mongoose from 'mongoose'
-import { ItemPayload, User } from '../../types'
+import { ItemPayload, S3, User } from '../../types'
 import { decrypt } from '../../utils/crypto'
-import { generateError } from '../../utils/error'
-import { logger } from '../../utils/logger'
 import queryBuilder, { QueryPayload } from '../../utils/query-builder'
 import { Annotation } from '../../db/models/annotations'
 import ItemModel, { Item, ItemDocument, ItemS3Document } from '../../db/models/items'
@@ -297,11 +293,13 @@ export const updateItemsAfterBulkAnnotation = async (
   )
 }
 
-export const convertToS3Url = async (
-  item: ItemS3Document,
-  s3Config: { accessKeyId: string; secretAccessKey: string }
-) => {
-  return new S3Client().getSignedUrl(decrypt(s3Config.accessKeyId), decrypt(s3Config.secretAccessKey), item.data.url)
+export const convertToS3Url = async (item: ItemS3Document, config: S3) => {
+  return new S3Client().getSignedUrl(
+    decrypt(config.accessKeyId),
+    decrypt(config.secretAccessKey),
+    item.data.url,
+    config.region
+  )
 }
 
 export const saveItem = async (
