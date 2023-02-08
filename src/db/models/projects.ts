@@ -1,6 +1,6 @@
 import { Types, Schema, PopulatedDoc, Document, AnyObject, model } from 'mongoose'
 import dayjs from 'dayjs'
-import { User } from '../../types'
+import {S3, User} from '../../types'
 import { Client } from './clients'
 import { Task } from './tasks'
 
@@ -30,10 +30,7 @@ export type Project = {
   defaultTags: string[]
   itemTags: string[]
   type: string
-  s3?: {
-    accessKeyId: string
-    secretAccessKey: string
-  }
+  s3?: S3
   admins: string[]
   users: string[]
   dataScientists: string[]

@@ -3,7 +3,7 @@ import _ from 'lodash'
 import express from 'express'
 import formidable from 'formidable'
 import tmp from 'tmp'
-import { TaskPayload, User } from '../types'
+import { S3, TaskPayload, User } from '../types'
 import { AnnottoError, generateError } from '../utils/error'
 import { logger } from '../utils/logger'
 import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
@@ -22,10 +22,7 @@ import config from '../../config'
 
 type ProjectPayload = {
   client?: string
-  s3?: {
-    accessKeyId: string
-    secretAccessKey: string
-  }
+  s3?: S3
   type?: 'text' | 'image' | 'video' | 'audio' | 'html'
   entitiesRelationsGroup?: EntitiesRelationsGroup
   name?: string
