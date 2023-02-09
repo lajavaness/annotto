@@ -1,3 +1,5 @@
+## [1.2.5](https://github.com/lajavaness/annotto/compare/v1.2.4...v1.2.5) (2023-02-09)
+
 ## [1.2.4](https://github.com/lajavaness/annotto/compare/v1.2.3...v1.2.4) (2023-02-08)
 
 
