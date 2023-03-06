@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/lajavaness/annotto/compare/v1.2.5...v1.2.6) (2023-03-06)
+
+
+### Bug Fixes
+
+* Remove name of realm to be imported so all realms will be imported from the folder ([#40](https://github.com/lajavaness/annotto/issues/40)) ([48b156f](https://github.com/lajavaness/annotto/commit/48b156f5422fe7f03437982c281c07bd24e7085c))
+
 ## [1.2.5](https://github.com/lajavaness/annotto/compare/v1.2.4...v1.2.5) (2023-02-09)
 
 ## [1.2.4](https://github.com/lajavaness/annotto/compare/v1.2.3...v1.2.4) (2023-02-08)
