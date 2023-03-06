@@ -6,7 +6,6 @@
 -Dkeycloak.migration.dir=/tmp/keycloak-import \
 -Dkeycloak.migration.strategy=IGNORE_EXISTING \
 -Dkeycloak.migration.usersExportStrategy=SAME_FILE \
--Dkeycloak.migration.realmName=annotto \
 -Dkeycloak.profile.feature.upload_scripts=enabled &
 
 /usr/sbin/nginx -g 'daemon off;' &
