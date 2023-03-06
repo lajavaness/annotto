@@ -82,7 +82,7 @@
         "cors": "^2.8.5",
         "crypto-js": "^4.0.0",
         "dayjs": "^1.9.4",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "express-swagger-generator": "^1.1.17",
         "formidable": "^1.2.2",
         "joi": "^17.6.1",
