@@ -86,7 +86,7 @@
         "express-swagger-generator": "^1.1.17",
         "formidable": "^1.2.2",
         "joi": "^17.6.1",
-        "keycloak-connect": "^17.0.0",
+        "keycloak-connect": "^21.0.1",
         "lodash": "^4.17.19",
         "mongoose": "^5.10.0",
         "morgan": "^1.10.0",

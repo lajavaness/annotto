@@ -5782,10 +5782,10 @@ kareem@2.4.1:
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.4.1.tgz#7d81ec518204a48c1cb16554af126806c3cd82b0"
   integrity sha512-aJ9opVoXroQUPfovYP5kaj2lM7Jn02Gw13bL0lg9v0V7SaUc0qavPs0Eue7d2DcC3NjqI6QAUElXNsuZSeM+EA==
 
-keycloak-connect@^17.0.0:
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/keycloak-connect/-/keycloak-connect-17.0.0.tgz#9ac6a619205490cf919a1cbfff4a355f361e010a"
-  integrity sha512-3dlqTUSkiTpmUiGcAFUZbT8k/5sXz94Jj+wIJBrZuqagykth8UVljx1RPcfto+2uextdLiQs2Ujk3Jn4BPrsJA==
+keycloak-connect@^21.0.1:
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/keycloak-connect/-/keycloak-connect-21.0.1.tgz#22ba0bedd131a8ca8001a8501b87fbc502c95c51"
+  integrity sha512-jCLX1sYQpMb2TYK4H1gd2XOwMLXyzMd+ict+Z7295JtFs7GZ0kfBOT7St/RY/3xjen/zd2bHBlnuUBJVZZrciQ==
   dependencies:
     jwk-to-pem "^2.0.0"
   optionalDependencies:
