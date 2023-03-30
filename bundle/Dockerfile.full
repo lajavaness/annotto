@@ -38,6 +38,7 @@ ENV ANNOTTO_FRONT_URL "http://localhost:3000"
 ENV KEYCLOAK_AUTH_URL "http://localhost:3000/auth"
 ENV KEYCLOAK_ADMIN_URL  "http://localhost:3000/auth/realms/master/admin/"
 ENV KEYCLOAK_FRONTEND_URL "http://localhost:3000/auth"
+ENV KEYCLOAK_ADMIN_CLI_SECRET "8acab8c7-31f5-494c-a5a1-0637bb62b096"
 
 WORKDIR /opt
 
