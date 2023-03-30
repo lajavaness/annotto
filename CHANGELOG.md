@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/lajavaness/annotto/compare/v1.2.6...v1.2.7) (2023-03-30)
+
+
+### Bug Fixes
+
+* Add missing secret for Master Realm Admin cli on Keycloak ([#43](https://github.com/lajavaness/annotto/issues/43)) ([146a1cf](https://github.com/lajavaness/annotto/commit/146a1cf9abbe8a1443be4ca284b00e2add0d0eb6))
+
 ## [1.2.6](https://github.com/lajavaness/annotto/compare/v1.2.5...v1.2.6) (2023-03-06)
 
 
