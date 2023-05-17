@@ -1,30 +1,7 @@
-import { isArray, isEmpty, isEqual, isNumber, isObject, isString } from 'lodash'
-
-export const sortAndFilterNerByStart = (input) => {
-  if (!isArray(input) || isEmpty(input)) return input
-  return input.filter(({ ner }) => !!ner).sort(({ ner: { start: a } }, { ner: { start: b } }) => a - b)
-}
+import { isArray, isEqual, isNumber, isObject, isString } from 'lodash'
 
 export const isAnnotationNer = (annotation) =>
   isObject(annotation) && isNumber(annotation?.ner?.start) && isNumber(annotation?.ner?.end)
-
-export const doesOverlapWithCurrentAnnotations = (annotations, start, end) => {
-  if (isArray(annotations) && !isEmpty(annotations) && isNumber(start) && isNumber(end)) {
-    return annotations
-      .filter((a) => isAnnotationNer(a))
-      .filter(
-        ({ ner }) =>
-          (start >= ner.start && start <= ner.end) ||
-          (end >= ner.start && end <= ner.end) ||
-          (ner.start >= start && ner.end <= end) ||
-          (ner.start <= start && ner.end >= end) ||
-          ner.start === end ||
-          ner.end === start
-      )
-  }
-
-  return []
-}
 
 export const _equivalenceWrapper = (isEquivalent) => {
   return (input, other) => {
@@ -42,7 +19,7 @@ export const _isNerAnnotationEquivalent = (input, other) => {
     isNumber(other?.ner?.start) &&
     isNumber(other?.ner?.end)
   ) {
-    return input.ner.start === other.ner.start && input.ner.end === other.ner.end
+    return input.ner.start === other.ner.start && input.ner.end === other.ner.end && input?.value === other.value
   }
   return false
 }

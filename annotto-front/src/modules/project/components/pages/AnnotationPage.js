@@ -60,11 +60,7 @@ import {
 } from 'modules/project/actions/annotationActions'
 import { openFilterModal, openGuideModal, putProject } from 'modules/project/actions/projectActions'
 
-import {
-  doesOverlapWithCurrentAnnotations,
-  isAnnotationNer,
-  isPredictionEquivalentToAnnotation,
-} from 'shared/utils/annotationUtils'
+import { isAnnotationNer, isPredictionEquivalentToAnnotation } from 'shared/utils/annotationUtils'
 
 import SettingsDrawer from 'modules/project/components/common/SettingsDrawer'
 
@@ -142,8 +138,7 @@ const AnnotationPage = ({ setHeaderActions }) => {
           ? currentItemPredictions.reduce(
               (result, prediction) =>
                 !annotations.some((annotation) => isPredictionEquivalentToAnnotation(annotation, prediction)) &&
-                (!isAnnotationNer(prediction) ||
-                  isEmpty(doesOverlapWithCurrentAnnotations(annotations, prediction.ner.start, prediction.ner.end)))
+                !isAnnotationNer(prediction)
                   ? [...result, prediction]
                   : result,
               annotations

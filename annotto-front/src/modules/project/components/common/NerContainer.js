@@ -1,20 +1,26 @@
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
 import { isEmpty, isNil, isNumber } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { WORD, nerMarkerTypes } from 'shared/enums/markerTypes'
 
+import { isEntitiesRelationEquivalent, isNerAnnotationEquivalent } from 'shared/utils/annotationUtils'
+
 import {
-  doesOverlapWithCurrentAnnotations,
-  isEntitiesRelationEquivalent,
-  isNerAnnotationEquivalent,
-  isZoneAnnotationEquivalent,
+  splitContentToAnnotationMarks,
+  doesAnnotationNerAlreadyExist,
+  getAnnotationIndex,
+  getAnnotationMarkNode,
+  getTextNodes,
   sortAndFilterNerByStart,
-} from 'shared/utils/annotationUtils'
+} from 'modules/project/services/nerAnnotationServices'
+
+import useNerDimensions from 'modules/project/hooks/useNerDimensions'
 
 import Loader from 'shared/components/loader/Loader'
 import RelationPath from 'modules/project/components/common/RelationPath'
+import { NerMarkPropTypes, TaskShape } from 'modules/project/components/common/NerMark'
+import NerMarks, { AnnotationShape } from 'modules/project/components/common/NerMarks'
 
 import theme from '__theme__'
 
@@ -37,12 +43,11 @@ const NerContainer = ({
 }) => {
   const contentRef = useRef(null)
   const rootRef = useRef(null)
+  const marksRef = useRef([])
+
   const [currentAnnotationIndexHovered, setCurrentAnnotationIndexHovered] = useState(null)
   const [currentPredictionIndexHovered, setCurrentPredictionIndexHovered] = useState(null)
   const [sourceRelation, setSourceRelation] = useState(null)
-  const [annotationsNodeProperties, setAnnotationsNodeProperties] = useState([])
-  const [contentDimensions, setContentDimensions] = useState()
-  const [rootDimensions, setRootDimensions] = useState()
   const [currentRelationSelected, setCurrentRelationSelected] = useState(null)
 
   const resolvedAnnotations = useMemo(
@@ -57,7 +62,7 @@ const NerContainer = ({
 
   const resolvedAnnotationsAndPredictions = useMemo(() => {
     const resolvePredictionIndex = (predictionToFind) =>
-      resolvedPredictions.findIndex((prediction) => isZoneAnnotationEquivalent(prediction, predictionToFind))
+      resolvedPredictions.findIndex((prediction) => isNerAnnotationEquivalent(prediction, predictionToFind))
 
     const updatedAnnotations = resolvedAnnotations.map((annotation, annotationIndex) => {
       const predictionIndex = resolvedPredictions.findIndex((prediction) =>
@@ -70,87 +75,19 @@ const NerContainer = ({
       }
     })
 
-    // All predictions that overlap an annotation without being equal to it are ignored
     const updatedPredictions = showPredictions
       ? resolvedPredictions
-          .filter(
-            (prediction) =>
-              !resolvedAnnotations.some((annotation) => isNerAnnotationEquivalent(prediction, annotation)) &&
-              isEmpty(doesOverlapWithCurrentAnnotations(resolvedAnnotations, prediction.ner.start, prediction.ner.end))
-          )
+          .filter((prediction) => !doesAnnotationNerAlreadyExist(resolvedAnnotations, prediction))
           .map((prediction) => ({ ...prediction, predictionIndex: resolvePredictionIndex(prediction) }))
       : []
 
     return sortAndFilterNerByStart([...updatedAnnotations, ...updatedPredictions])
   }, [showPredictions, resolvedAnnotations, resolvedPredictions])
 
-  const resolvedMarksValue = (charIndex) =>
-    resolvedAnnotationsAndPredictions.reduce(
-      (result, { value: taskValue, ner: { start, end }, annotationIndex, predictionIndex }) =>
-        start <= charIndex && charIndex < end
-          ? {
-              taskValue,
-              annotationIndex,
-              predictionIndex,
-            }
-          : result,
-      null
-    )
-
-  const isHighlighted = (charIndex) =>
-    !isEmpty(highlights) && highlights.some(({ start, end }) => start <= charIndex && charIndex < end)
-
-  const resolvedContent = useMemo(() => {
-    if (!isEmpty(highlights)) {
-      const result = []
-      let index = 0
-
-      content.split('').forEach((char, charIndex) => {
-        const lastCharIsHighlighted =
-          !isEmpty(result) && isHighlighted(charIndex) && !result[result.length - 1].isHighlight
-        const lastCharIsAnnotated =
-          !isEmpty(result) && resolvedMarksValue(charIndex) && !result[result.length - 1].taskValue
-        const nextCharIsHighlighted = isHighlighted(charIndex) && !isHighlighted(charIndex + 1)
-        const nextCharIsAnnotated = resolvedMarksValue(charIndex) && !resolvedMarksValue(charIndex + 1)
-
-        if (lastCharIsHighlighted || lastCharIsAnnotated) {
-          index++
-        }
-
-        result[index] = {
-          value: `${result[index]?.value ?? ''}${char}`,
-          isHighlight: isHighlighted(charIndex),
-          ...resolvedMarksValue(charIndex),
-        }
-        if (nextCharIsHighlighted || nextCharIsAnnotated) {
-          index++
-        }
-      })
-
-      return result
-    }
-    const result = [{ value: content }]
-    let lastEnd = 0
-
-    resolvedAnnotationsAndPredictions.forEach(
-      ({ value: taskValue, ner: { start, end }, annotationIndex, predictionIndex }) => {
-        const lastValue = result[result.length - 1].value
-        const newStart = start - lastEnd
-        const newEnd = end - lastEnd
-        result[result.length - 1] = { value: lastValue.slice(0, newStart) }
-        result.push({
-          value: lastValue.slice(newStart, newEnd),
-          taskValue,
-          annotationIndex,
-          predictionIndex,
-        })
-        result.push({ value: lastValue.slice(newEnd) })
-        lastEnd = end
-      }
-    )
-
-    return result
-  }, [resolvedAnnotationsAndPredictions, highlights, content])
+  const annotationMarks = useMemo(
+    () => splitContentToAnnotationMarks(content, resolvedAnnotationsAndPredictions, highlights, entitiesRelations),
+    [content, resolvedAnnotationsAndPredictions, entitiesRelations, highlights]
+  )
 
   const resolvedEntitiesRelationsGroup = useMemo(
     () => (!isNil(entitiesRelationsGroup) ? entitiesRelationsGroup.map(({ values }) => values).flat() : []),
@@ -169,18 +106,10 @@ const NerContainer = ({
     return entitiesRelations
   }, [entitiesRelations, currentRelationSelected])
 
-  const resolveTask = useCallback(
-    (taskValue) => {
-      const task = tasks.find(({ value }) => value === taskValue)
-
-      if (task && !task.color) {
-        task.color = theme.colors.defaultAnnotationColors[tasks.findIndex((t) => t.value === task.value)]
-      }
-
-      return task
-    },
-    [tasks]
-  )
+  const [rootDimensions, contentDimensions] = useNerDimensions(rootRef, contentRef, [
+    annotationMarks,
+    resolvedEntitiesRelation,
+  ])
 
   const resolveEntitiesRelationGroup = (entitiesRelationValue) => {
     const entitiesRelationIndex = resolvedEntitiesRelationsGroup.findIndex(
@@ -199,12 +128,6 @@ const NerContainer = ({
     return null
   }
 
-  const resolveAnnotationIndex = useCallback(
-    (annotationToFind) =>
-      resolvedAnnotations.findIndex((annotation) => isNerAnnotationEquivalent(annotation, annotationToFind)),
-    [resolvedAnnotations]
-  )
-
   const isAnnotationHovered = useCallback(
     (index) =>
       isNumber(currentAnnotationIndexHovered) &&
@@ -219,16 +142,6 @@ const NerContainer = ({
     [currentPredictionIndexHovered, resolvedPredictions]
   )
 
-  const isLastMarkSelected = useCallback(
-    (index, key, value) => resolvedContent[index + 1]?.[key] !== value,
-    [resolvedContent]
-  )
-
-  const isFirstMarkSelected = useCallback(
-    (index, key, value) => resolvedContent[index - 1]?.[key] !== value,
-    [resolvedContent]
-  )
-
   const removeEntitiesRelations = useCallback(
     (indexList) => {
       if (!isEmpty(entitiesRelations) && !!onEntitiesRelationChange) {
@@ -238,8 +151,8 @@ const NerContainer = ({
               (index) =>
                 resolvedEntitiesRelation[index] && isEntitiesRelationEquivalent(er, resolvedEntitiesRelation[index])
             ) &&
-            resolveAnnotationIndex(er.src) >= 0 &&
-            resolveAnnotationIndex(er.dest) >= 0
+            getAnnotationIndex(er.src, resolvedAnnotations) >= 0 &&
+            getAnnotationIndex(er.dest, resolvedAnnotations) >= 0
         )
 
         onEntitiesRelationChange(filteredEntitiesRelations)
@@ -247,7 +160,7 @@ const NerContainer = ({
         setCurrentRelationSelected(null)
       }
     },
-    [entitiesRelations, onEntitiesRelationChange, resolvedEntitiesRelation, resolveAnnotationIndex]
+    [entitiesRelations, onEntitiesRelationChange, resolvedEntitiesRelation, resolvedAnnotations]
   )
 
   const resolveEntitiesRelationsEquivalentToAnnotation = useCallback(
@@ -266,177 +179,70 @@ const NerContainer = ({
     [resolvedEntitiesRelation]
   )
 
-  const resizeRootDimensions = (node) => {
-    if (node) {
-      const cs = getComputedStyle(node)
+  const _onMouseUp = () => {
+    const selection = window.getSelection()
+    if (!selection.isCollapsed) {
+      const textNodes = getTextNodes(contentRef.current)
 
-      const paddingX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight)
-      const paddingY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom)
+      const range = selection.getRangeAt(0)
 
-      const borderX = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth)
-      const borderY = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth)
+      let { startOffset, endOffset } = range
+      const { startContainer, endContainer } = range
 
-      const width = node.offsetWidth - paddingX - borderX
-      const height = node.offsetHeight - paddingY - borderY
+      let startChar = startContainer.textContent[startOffset]
+      let endChar = endContainer.textContent[endOffset - 1]
 
-      setRootDimensions({ width, height })
+      while (startChar === ' ') {
+        startOffset++
+        startChar = startContainer.textContent[startOffset]
+      }
+
+      while (endChar === ' ') {
+        endOffset--
+        endChar = endContainer.textContent[endOffset - 1]
+      }
+
+      const getPrevTotalChars = (node) =>
+        textNodes.indexOf(node) > 0
+          ? textNodes.slice(0, textNodes.indexOf(node)).reduce((result, nodeText) => result + nodeText.length, 0)
+          : 0
+
+      let startIndex = getPrevTotalChars(startContainer) + startOffset
+      let endIndex = getPrevTotalChars(endContainer) + endOffset
+
+      if (mode === WORD) {
+        const words = content.split(' ')
+        const isFirstWord = startIndex <= words[0].length
+        const isLastWord = endIndex > content.length - words.at(-1).length
+
+        startIndex = !isFirstWord
+          ? content
+              .slice(0, startIndex)
+              .split('')
+              .reduce((result, char, index) => (char === ' ' ? index : result), 0) + 1
+          : 0
+
+        endIndex = !isLastWord
+          ? content
+              .slice(endIndex)
+              .split('')
+              .findIndex((el) => el === ' ') + endIndex
+          : content.length
+      }
+
+      selection.removeAllRanges()
+
+      const currentSelected = { value: selectedSection.value, ner: { start: startIndex, end: endIndex } }
+
+      if (!doesAnnotationNerAlreadyExist(annotations, currentSelected)) {
+        onAnnotationChange([...annotations, currentSelected])
+      }
     }
   }
 
-  const _onWindowResize = useCallback(() => {
-    if (rootRef.current) {
-      resizeRootDimensions(rootRef.current)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentDimensions(contentRef.current.getBoundingClientRect())
-    }
-  }, [rootDimensions])
-
-  useEffect(() => {
-    if (rootRef.current) {
-      resizeRootDimensions(rootRef.current)
-    }
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('resize', _onWindowResize)
-
-    return () => window.removeEventListener('resize', _onWindowResize)
-  }, [_onWindowResize])
-
-  useEffect(() => {
-    _onWindowResize()
-  }, [resolvedContent, resolvedEntitiesRelation, _onWindowResize])
-
-  useEffect(() => {
-    if (!isEmpty(contentRef.current) && !isEmpty(resolvedAnnotations)) {
-      const annotationsNode = resolvedContent.reduce(
-        (result, { annotationIndex }, index) =>
-          isNumber(annotationIndex) ? [...result, [...(contentRef.current?.childNodes || [])][index]] : result,
-        []
-      )
-
-      const newAnnotationsNodeProperties = annotationsNode.map((node) => node.getBoundingClientRect())
-
-      setAnnotationsNodeProperties(newAnnotationsNodeProperties)
-    }
-  }, [contentRef, resolvedContent, resolvedAnnotations, rootDimensions, contentDimensions])
-
-  const _onMouseUp = useCallback(() => {
-    const selection = window.getSelection()
-
-    const contentChildren = [...contentRef.current.children]
-
-    const resolveNode = (node) => (node.nodeName === 'MARK' ? node.parentNode : node)
-
-    if (
-      !selection.isCollapsed &&
-      selectedSection &&
-      contentChildren.includes(resolveNode(selection.focusNode.parentNode))
-    ) {
-      const range = selection.getRangeAt(0)
-
-      const resolveIndex = (node) => contentChildren.indexOf(node)
-
-      const resolveNbrOfCharBefore = (node) =>
-        resolveIndex(node) > 0
-          ? resolvedContent.slice(0, resolveIndex(node)).reduce((result, { value }) => result + value.length, 0)
-          : 0
-
-      const startChar = resolvedContent[resolveIndex(range.startContainer.parentNode)]?.value[range.startOffset]
-      const endChar = resolvedContent[resolveIndex(range.endContainer.parentNode)]?.value[range.endOffset - 1]
-
-      if (!(startChar === ' ' && endChar === ' ')) {
-        let startIndex = startChar === ' ' ? range.startOffset + 1 : range.startOffset
-        let endIndex = endChar === ' ' ? range.endOffset - 1 : range.endOffset
-
-        if (!isEmpty(resolvedAnnotationsAndPredictions) || !isEmpty(highlights)) {
-          const startParentNode = resolveNode(range.startContainer.parentNode)
-          const endParentNode = resolveNode(range.endContainer.parentNode)
-
-          startIndex += resolveNbrOfCharBefore(startParentNode)
-          endIndex += resolveNbrOfCharBefore(endParentNode)
-        }
-
-        if (startIndex >= 0 && endIndex >= 0 && startIndex <= endIndex) {
-          if (mode === WORD) {
-            const resolvedWords = content.split(' ')
-            const isFirstWord = startIndex <= resolvedWords[0].length
-            const isLastWord = endIndex > content.length - resolvedWords[resolvedWords.length - 1].length
-
-            startIndex = !isFirstWord
-              ? content
-                  .slice(0, startIndex)
-                  .split('')
-                  .reduce((result, char, index) => (char === ' ' ? index : result), 0) + 1
-              : 0
-
-            endIndex = !isLastWord
-              ? content
-                  .slice(endIndex)
-                  .split('')
-                  .findIndex((el) => el === ' ') + endIndex
-              : content.length
-          }
-
-          const overlap = doesOverlapWithCurrentAnnotations(resolvedAnnotations, startIndex, endIndex)
-
-          if (!isEmpty(overlap)) {
-            const isInMiddle = (start, end) => endIndex <= end && startIndex >= start
-            const findAnnotation = (start, end, index) => end >= index && index >= start && !isInMiddle(start, end)
-
-            const start =
-              overlap.find(({ ner }) => findAnnotation(ner.start, ner.end, startIndex))?.ner.start || startIndex
-            const end = overlap.find(({ ner }) => findAnnotation(ner.start, ner.end, endIndex))?.ner.end || endIndex
-
-            const currentSelected = { value: selectedSection.value, ner: { start, end } }
-
-            const filteredAnnotations = annotations.filter((annotation) => !overlap.includes(annotation))
-            if (!isEmpty(resolvedEntitiesRelation)) {
-              const annotationsWithOverlap = annotations.filter((annotation) => overlap.includes(annotation))
-
-              const entitiesRelationsIndexToRemove = annotationsWithOverlap
-                .reduce((acc, annotation) => {
-                  acc.push(
-                    resolveEntitiesRelationsEquivalentToAnnotation(annotation).filter((index) => !acc.includes(index))
-                  )
-                  return acc
-                }, [])
-                .flat()
-
-              removeEntitiesRelations(entitiesRelationsIndexToRemove)
-            }
-
-            onAnnotationChange([...filteredAnnotations, currentSelected])
-          } else {
-            const currentSelected = { value: selectedSection.value, ner: { start: startIndex, end: endIndex } }
-            onAnnotationChange([...annotations, currentSelected])
-          }
-        }
-      }
-      selection.removeAllRanges()
-    }
-  }, [
-    resolvedAnnotations,
-    resolvedAnnotationsAndPredictions,
-    selectedSection,
-    contentRef,
-    onAnnotationChange,
-    annotations,
-    highlights,
-    content,
-    resolvedContent,
-    mode,
-    removeEntitiesRelations,
-    resolveEntitiesRelationsEquivalentToAnnotation,
-    resolvedEntitiesRelation,
-  ])
-
   const _onMouseClick = useCallback(
-    (index) => () => {
+    (index) => (e) => {
+      e.stopPropagation()
       if (isNumber(index) && onEntitiesRelationChange && selectedRelation) {
         if (!sourceRelation) {
           setSourceRelation(resolvedAnnotations[index])
@@ -476,8 +282,10 @@ const NerContainer = ({
 
   const _onMouseOver = useCallback(
     (index, isAnnotation = true) =>
-      () =>
-        isAnnotation ? setCurrentAnnotationIndexHovered(index) : setCurrentPredictionIndexHovered(index),
+      (e) => {
+        e.stopPropagation()
+        return isAnnotation ? setCurrentAnnotationIndexHovered(index) : setCurrentPredictionIndexHovered(index)
+      },
     []
   )
 
@@ -489,7 +297,8 @@ const NerContainer = ({
   )
 
   const _onCloseClick = useCallback(
-    (index) => () => {
+    (index) => (e) => {
+      e.stopPropagation()
       if (!!resolvedAnnotations[index] && !isEmpty(annotations) && !!onAnnotationChange) {
         const filteredAnnotations = annotations.filter(
           (annotation) =>
@@ -519,6 +328,42 @@ const NerContainer = ({
     ]
   )
 
+  useEffect(() => {
+    marksRef.current = annotationMarks.map((_, index) => marksRef.current[index] ?? null)
+  }, [annotationMarks, resolvedAnnotations])
+
+  useEffect(() => {
+    const containNodes = marksRef?.current?.every((mark) => !!mark)
+    if (marksRef?.current && containNodes) {
+      marksRef.current.forEach(({ node, annotationIndex }) => {
+        const srcRelation =
+          (!isNil(annotationIndex) &&
+            resolvedEntitiesRelation.find(({ src }) =>
+              isNerAnnotationEquivalent(src, resolvedAnnotations[annotationIndex])
+            )) ||
+          null
+
+        if (srcRelation) {
+          const destAnnotationIndex = getAnnotationIndex(srcRelation.dest, resolvedAnnotations)
+          const destAnnotationNode = getAnnotationMarkNode(destAnnotationIndex, marksRef.current)
+          const margin =
+            node.getBoundingClientRect().y <= destAnnotationNode?.getBoundingClientRect()?.y ? 'Bottom' : 'Top'
+
+          node.style[`margin${margin}`] = '50px'
+        } else {
+          node.style.marginBottom = null
+          node.style.marginTop = null
+        }
+      })
+    }
+  }, [resolvedEntitiesRelation, resolvedAnnotations, rootDimensions])
+
+  const setMarksRef = (index, annotationIndex) => (node) => {
+    if (!isNil(index)) {
+      marksRef.current[index] = !isNil(annotationIndex) ? { node, annotationIndex } : { node }
+    }
+  }
+
   const _onValidateClick = useCallback(
     (index) => () => {
       if (!!resolvedPredictions[index] && !!onAnnotationChange) {
@@ -536,130 +381,42 @@ const NerContainer = ({
 
   const _onRelationClick = (relation) => () => setCurrentRelationSelected(relation)
 
-  const resolveMargin = useCallback(
-    (srcAnnotationIndex) => {
-      if (!isEmpty(resolvedEntitiesRelation) && isNumber(srcAnnotationIndex) && !isEmpty(annotationsNodeProperties)) {
-        const srcEntitiesRelationsIndex = resolvedEntitiesRelation.findIndex(({ src }) =>
-          isNerAnnotationEquivalent(src, resolvedAnnotations[srcAnnotationIndex])
-        )
-        if (srcEntitiesRelationsIndex >= 0) {
-          const destAnnotationIndex = resolveAnnotationIndex(resolvedEntitiesRelation[srcEntitiesRelationsIndex].dest)
-
-          return annotationsNodeProperties[srcAnnotationIndex]?.y <= annotationsNodeProperties[destAnnotationIndex]?.y
-            ? 'bottom'
-            : 'top'
-        }
-      }
-
-      return null
-    },
-    [resolvedEntitiesRelation, annotationsNodeProperties, resolvedAnnotations, resolveAnnotationIndex]
-  )
-
-  const renderedContent = useMemo(
-    () =>
-      !isEmpty(resolvedContent) &&
-      resolvedContent.map(({ value, taskValue, annotationIndex, predictionIndex, isHighlight }, index) => {
-        if (taskValue) {
-          const task = resolveTask(taskValue)
-          return (
-            <Styled.MarkContainer
-              key={`mark_${index}`}
-              onMouseOver={_onMouseOver(
-                isNumber(annotationIndex) ? annotationIndex : predictionIndex,
-                isNumber(annotationIndex)
-              )}
-              onClick={_onMouseClick(annotationIndex)}
-              onMouseLeave={_onMouseLeave(isNumber(annotationIndex))}
-              backgroundColor={task.color}
-              $isHovered={isAnnotationHovered(annotationIndex)}
-              $isPrediction={!isNumber(annotationIndex) && isNumber(predictionIndex)}
-              margin={resolveMargin(annotationIndex)}
-              isSourceRelation={isNerAnnotationEquivalent(resolvedAnnotations[annotationIndex], sourceRelation)}
-            >
-              <Styled.Mark
-                $isHighlight={isHighlight}
-                $isFirstMarkSelected={isFirstMarkSelected(
-                  index,
-                  annotationIndex ? 'annotationIndex' : 'predictionIndex',
-                  annotationIndex || predictionIndex
-                )}
-                $isHovered={isAnnotationHovered(annotationIndex)}
-              >
-                {value}
-              </Styled.Mark>
-              {isLastMarkSelected(
-                index,
-                annotationIndex ? 'annotationIndex' : 'predictionIndex',
-                annotationIndex || predictionIndex
-              ) && (
-                <Styled.TaskLabel>
-                  {task.label}
-                  {isNumber(predictionIndex) && showPredictions && <Styled.PredictionIcon />}
-                  {isAnnotationHovered(annotationIndex) && (
-                    <Styled.ActionButton
-                      onClick={_onCloseClick(annotationIndex)}
-                      icon={<CloseOutlined />}
-                      type="primary"
-                      shape="circle"
-                    />
-                  )}
-                  {!isNumber(annotationIndex) && isPredictionHovered(predictionIndex) && (
-                    <Styled.ActionButton
-                      onClick={_onValidateClick(predictionIndex)}
-                      icon={<CheckOutlined />}
-                      type="primary"
-                      shape="circle"
-                    />
-                  )}
-                </Styled.TaskLabel>
-              )}
-            </Styled.MarkContainer>
-          )
-        }
-        return (
-          <Styled.Span $isHighlight={isHighlight} key={index}>
-            {value}
-          </Styled.Span>
-        )
-      }),
-    [
-      resolvedContent,
-      isPredictionHovered,
-      isAnnotationHovered,
-      isFirstMarkSelected,
-      isLastMarkSelected,
-      resolveMargin,
-      resolveTask,
-      showPredictions,
-      _onMouseClick,
-      _onMouseLeave,
-      _onCloseClick,
-      _onMouseOver,
-      _onValidateClick,
-      resolvedAnnotations,
-      sourceRelation,
-    ]
-  )
+  const getNodeProperties = (annotation) => {
+    const annotationIndex = getAnnotationIndex(annotation, resolvedAnnotations)
+    const node = getAnnotationMarkNode(annotationIndex, marksRef?.current)
+    return node?.getBoundingClientRect() || null
+  }
 
   if (!isEmpty(entitiesRelationsGroup)) {
     return (
       <Styled.Root ref={rootRef} hasRelation={!isEmpty(entitiesRelations)} data-testid={'__ner-item__'}>
         {rootDimensions?.width && rootDimensions?.height ? (
           <Styled.Svg
-            dimensions={contentDimensions?.width && contentDimensions?.height ? contentDimensions : rootDimensions}
+            dimensions={rootDimensions}
             height={rootDimensions.height}
             width={rootDimensions.width}
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
           >
-            <Styled.ForeignObjectContent
-              width={rootDimensions.width}
-              height={contentDimensions?.height ? contentDimensions.height : rootDimensions.height}
-            >
-              <Styled.Content ref={contentRef}>{renderedContent}</Styled.Content>
+            <Styled.ForeignObjectContent width={rootDimensions.width} height={rootDimensions.height}>
+              <Styled.Content ref={contentRef}>
+                <NerMarks
+                  ref={setMarksRef}
+                  isAnnotationHovered={isAnnotationHovered}
+                  isPredictionHovered={isPredictionHovered}
+                  annotationMarks={annotationMarks}
+                  tasks={tasks}
+                  sourceRelation={sourceRelation}
+                  showPredictions={showPredictions}
+                  onMouseClick={_onMouseClick}
+                  onMouseLeave={_onMouseLeave}
+                  onCloseClick={_onCloseClick}
+                  onMouseOver={_onMouseOver}
+                  onValidateClick={_onValidateClick}
+                />
+              </Styled.Content>
             </Styled.ForeignObjectContent>
-            {!isEmpty(annotationsNodeProperties) &&
+            {!isEmpty(resolvedEntitiesRelation) &&
               resolvedEntitiesRelation.map((er, index) => (
                 <RelationPath
                   key={`${er.value}_${index}`}
@@ -667,8 +424,8 @@ const NerContainer = ({
                   relationIndex={index}
                   value={er.value}
                   onDeleteClick={_onRelationDeleteClick(index)}
-                  srcProperties={annotationsNodeProperties[resolveAnnotationIndex(er.src)]}
-                  destProperties={annotationsNodeProperties[resolveAnnotationIndex(er.dest)]}
+                  srcProperties={getNodeProperties(er.src)}
+                  destProperties={getNodeProperties(er.dest)}
                   parentContainerProperties={contentDimensions}
                   onClick={_onRelationClick(er)}
                   isSelected={isEntitiesRelationEquivalent(er, currentRelationSelected)}
@@ -683,14 +440,29 @@ const NerContainer = ({
   }
   return (
     <Styled.Root ref={rootRef} hasRelation={!isEmpty(entitiesRelations)} data-testid={'__ner-item__'}>
-      {<Styled.Content ref={contentRef}>{renderedContent}</Styled.Content>}
+      {
+        <Styled.Content ref={contentRef}>
+          <NerMarks
+            ref={setMarksRef}
+            isAnnotationHovered={isAnnotationHovered}
+            isPredictionHovered={isPredictionHovered}
+            annotationMarks={annotationMarks}
+            tasks={tasks}
+            sourceRelation={sourceRelation}
+            showPredictions={showPredictions}
+            onMouseClick={_onMouseClick}
+            onMouseLeave={_onMouseLeave}
+            onCloseClick={_onCloseClick}
+            onMouseOver={_onMouseOver}
+            onValidateClick={_onValidateClick}
+          />
+        </Styled.Content>
+      }
     </Styled.Root>
   )
 }
 
 export default NerContainer
-
-const TaskValue = PropTypes.string
 
 const EntitiesRelationShape = PropTypes.shape({
   /** Defines the color of the entitiesRelation object.
@@ -698,36 +470,7 @@ const EntitiesRelationShape = PropTypes.shape({
    * Hexadecimal format.
    * If the color does not exist we use the default colors defined in the theme. */
   color: PropTypes.string,
-  value: PropTypes.value,
-})
-
-const TaskShape = PropTypes.shape({
-  /** A machine-readable key that identifies the label in the backend, and that
-   * is unique among the siblings of the task (but that can be used.
-   * for other child nodes of other tasks). */
-  value: TaskValue.isRequired,
-  /** The text displayed in the list for annotators to recognise. */
-  label: PropTypes.string.isRequired,
-  /** A keyboard shortcut that is bound when the list is displayed to toggle.
-   * this annotation. */
-  hotkey: PropTypes.hotkey,
-  /** If a task is not top-level, it may contain shortcuts to the value.
-   * of its parents to simplify algorithms. */
-  parents: PropTypes.arrayOf(TaskValue),
-})
-
-const AnnotationShape = PropTypes.shape({
-  /** A machine-readable key that identifies the label in the backend, and that
-   * is unique among the siblings of the task (but that can be used.
-   * for other child nodes of other tasks). */
-  value: TaskValue.isRequired,
-  /** Contains data used to display selections on words. */
-  ner: PropTypes.shape({
-    /** Number indicating the beginning of the word. */
-    start: PropTypes.number.isRequired,
-    /** Number indicating the end of the word. */
-    end: PropTypes.number.isRequired,
-  }),
+  value: PropTypes.string,
 })
 
 NerContainer.propTypes = {
@@ -756,7 +499,7 @@ NerContainer.propTypes = {
       /** A machine-readable key that identifies the label of the entitiesRelations
        * in the backend, and that is unique among the siblings of the.
        * entitiesRelations (but that can be used for other child nodes of other entitiesRelations). */
-      value: TaskValue.isRequired,
+      value: PropTypes.string.isRequired,
       /* Defines the source of the entitiesRelations, this is the annotation
        * from which the link should start. */
       src: AnnotationShape,
@@ -784,18 +527,10 @@ NerContainer.propTypes = {
    * two annotations and create a link between them. */
   selectedRelation: EntitiesRelationShape,
   /** Defines if predictions should appear. */
-  showPredictions: PropTypes.bool,
+  showPredictions: NerMarkPropTypes.showPredictions,
   /** Defines The list of the predictions of the current item. This is used to display the predictions.
    * but also to find the annotations which are also predictions. */
-  predictions: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string,
-      ner: PropTypes.shape({
-        start: PropTypes.number,
-        end: PropTypes.number,
-      }),
-    })
-  ),
+  predictions: PropTypes.arrayOf(AnnotationShape),
   /** A callback that will be called whenever words is selected, unselected.
    * or if delete button on selected word is clicked. */
   onAnnotationChange: PropTypes.func,
