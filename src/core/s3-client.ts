@@ -83,12 +83,7 @@ class S3Client {
    * @param url A url to be parsed to find all necessary object for AWS to signed a url.
    * @param region The region where the bucket resides.
    */
-  async getSignedUrl(
-    accessKeyId: string,
-    secretAccessKey: string,
-    url: string,
-    region: string | null = null
-  ): Promise<string> {
+  async getSignedUrl(accessKeyId: string, secretAccessKey: string, url: string): Promise<string> {
     const s3Config = this.parseUrlParams(url)
 
     const config = {
@@ -101,7 +96,7 @@ class S3Client {
     }
 
     AWS.config.update(config)
-    const s3 = new AWS.S3({ region: s3Config.region || region || 'us-central-1' })
+    const s3 = new AWS.S3({ region: s3Config.region || 'us-central-1' })
 
     return s3.getSignedUrlPromise('getObject', {
       Bucket: s3Config.bucket,

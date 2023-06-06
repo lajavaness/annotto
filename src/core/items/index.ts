@@ -294,12 +294,7 @@ export const updateItemsAfterBulkAnnotation = async (
 }
 
 export const convertToS3Url = async (item: ItemS3Document, config: S3) => {
-  return new S3Client().getSignedUrl(
-    decrypt(config.accessKeyId),
-    decrypt(config.secretAccessKey),
-    item.data.url,
-    config.region
-  )
+  return new S3Client().getSignedUrl(decrypt(config.accessKeyId), decrypt(config.secretAccessKey), item.data.url)
 }
 
 export const saveItem = async (
