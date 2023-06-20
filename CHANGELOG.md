@@ -1,3 +1,18 @@
+## [1.2.8](https://github.com/lajavaness/annotto/compare/v1.2.7...v1.2.8) (2023-06-20)
+
+
+### Bug Fixes
+
+* Missing keycloak config secrets to make sure admin calls can be made from local development ([3e48072](https://github.com/lajavaness/annotto/commit/3e48072b665c9891959ff11a18fd601d8cc8f5d1))
+* Remove the region in the S3 specs as its already included into the given URL ([1acbbd8](https://github.com/lajavaness/annotto/commit/1acbbd8c1640f7703ff850e2a73798dbf692be8e))
+* Specify latest version for semantic-release github action ([15aab99](https://github.com/lajavaness/annotto/commit/15aab997b3d6a70dbf13b10fbca7aa7f2e10059f))
+* Specify semantic-version for  semantic-release github action ([a2c63a2](https://github.com/lajavaness/annotto/commit/a2c63a2a95d29d201ede93e1a8600dcbfef0baa8))
+* Specify version for semantic-release github action ([3eded64](https://github.com/lajavaness/annotto/commit/3eded64987fdd6af0a68a07dad38816f3f925ebd))
+* Try using node-version 14 for semantic-release ([06c39ac](https://github.com/lajavaness/annotto/commit/06c39ac81df13e2a9b3187ac785cd57e301441f0))
+* Trying with node 18 and v 3.4.1 semantic-version for  semantic-release github action ([864a5cc](https://github.com/lajavaness/annotto/commit/864a5ccb163bcdbe6780ddc9346daa1597e86d15))
+* Upgrade to Node18 ([2d53b66](https://github.com/lajavaness/annotto/commit/2d53b66ad9a1f588a8f96637bd50fa05d870941e))
+* Upgrade to Node18 github workflows ([38e8ed7](https://github.com/lajavaness/annotto/commit/38e8ed71e3e8401e15c9d2f0c12de87c2a1f3b37))
+
 ## [1.2.7](https://github.com/lajavaness/annotto/compare/v1.2.6...v1.2.7) (2023-03-30)
 
 
