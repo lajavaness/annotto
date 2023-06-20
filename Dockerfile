@@ -1,4 +1,4 @@
-FROM node:16-alpine as builder
+FROM node:18-alpine as builder
 
 RUN apk update && apk add bash && apk add curl
 
@@ -23,7 +23,7 @@ RUN npm prune --omit=dev
 # run node prune
 RUN /usr/local/bin/node-prune
 
-FROM node:16-alpine
+FROM node:18-alpine
 
 WORKDIR /usr/src/app
 

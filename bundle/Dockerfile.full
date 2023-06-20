@@ -1,4 +1,4 @@
-FROM node:16-alpine as builder-annotto-front
+FROM node:18-alpine as builder-annotto-front
 
 WORKDIR /app
 COPY ./annotto-front .
@@ -6,7 +6,7 @@ COPY ./annotto-front .
 RUN yarn install && \
     yarn build
 
-FROM node:16-alpine as builder-annotto-api
+FROM node:18-alpine as builder-annotto-api
 
 RUN apk update && apk add bash && apk add curl
 
