@@ -79,7 +79,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Semantic Release
         id: version
-        uses: cycjimmy/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v3.4.1
         with:
           extra_plugins: |
             @semantic-release/changelog
