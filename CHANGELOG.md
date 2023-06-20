@@ -1,3 +1,10 @@
+## [1.2.9](https://github.com/lajavaness/annotto/compare/v1.2.8...v1.2.9) (2023-06-20)
+
+
+### Bug Fixes
+
+* Upgrade node version in dockerfile ([1072179](https://github.com/lajavaness/annotto/commit/1072179c56b040a34ac02f7dad76c6eb920252ab))
+
 ## [1.2.8](https://github.com/lajavaness/annotto/compare/v1.2.7...v1.2.8) (2023-06-20)
 
 
