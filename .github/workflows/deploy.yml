@@ -62,6 +62,9 @@ jobs:
     needs:
       - unit-tests-api
       - integration-tests
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
     outputs:
       is-new-version: ${{ steps.version.outputs.new_release_published }}
       version: ${{ steps.version.outputs.new_release_version }}
@@ -76,7 +79,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Semantic Release
         id: version
-        uses: cycjimmy/semantic-release-action@v3.4.2
+        uses: cycjimmy/semantic-release-action@v3.4.1
         with:
           semantic_version: 18
           extra_plugins: |
