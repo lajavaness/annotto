@@ -1,3 +1,10 @@
+## [1.2.10](https://github.com/lajavaness/annotto/compare/v1.2.9...v1.2.10) (2023-06-21)
+
+
+### Bug Fixes
+
+* Upgrade semantic-release to match peer dependencies ([2f47915](https://github.com/lajavaness/annotto/commit/2f47915e7b905e30d3ec5d3bd8231b6980bacdc6))
+
 ## [1.2.9](https://github.com/lajavaness/annotto/compare/v1.2.8...v1.2.9) (2023-06-20)
 
 
