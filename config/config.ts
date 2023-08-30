@@ -20,7 +20,7 @@ export default {
   },
   keycloak: {
     realm: process.env.KEYCLOAK_REALM || 'annotto',
-    'auth-server-url': process.env.KEYCLOAK_AUTH_URL || 'http://localhost:8080/auth',
+    'auth-server-url': process.env.KEYCLOAK_AUTH_URL || 'http://localhost:8080',
     resource: process.env.KEYCLOAK_CLIENT_ID || 'annotto',
     'confidential-port': 8443,
     'ssl-required': 'external',
@@ -28,6 +28,7 @@ export default {
       resource: 'admin-cli',
       secret: process.env.KEYCLOAK_ADMIN_CLI_SECRET,
     },
+    groupId: process.env.KEYCLOAK_GROUP_ID,
   },
   swagger: {
     swaggerUi: '/explorer',

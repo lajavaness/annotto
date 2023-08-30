@@ -4,14 +4,15 @@ volumes:
   postgres_data:
 
 services:
-  postgres:
-    image: postgres:13
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+  postgresql:
+    image: docker.io/bitnami/postgresql:11
     environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: password
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_USERNAME=bn_keycloak
+      - POSTGRESQL_DATABASE=bitnami_keycloak
+    volumes:
+      - postgres_data:/bitnami/postgresql
     healthcheck:
       test: [ "CMD", "psql", "-U", "postgres", "-c", "SELECT 1;" ]
       interval: 1m
@@ -19,29 +20,22 @@ services:
       retries: 5
 
   keycloak:
-    image: jboss/keycloak:15.0.1
-    command:
-      - "-Dkeycloak.migration.action=import"
-      - "-Dkeycloak.migration.provider=dir"
-      - "-Dkeycloak.migration.dir=/tmp/keycloak-import"
-      - "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
-      - "-Dkeycloak.migration.usersExportStrategy=SAME_FILE"
-      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+    image: bitnami/keycloak:22.0.1-debian-11-r25
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_SCHEMA: public
-      DB_PASSWORD: password
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_LOGLEVEL: DEBUG
+      KEYCLOAK_EXTRA_ARGS: "-Dkeycloak.migration.action=import
+                            -Dkeycloak.migration.realmName=annotto
+                            -Dkeycloak.migration.provider=dir
+                            -Dkeycloak.migration.dir=/opt/bitnami/keycloak/data/import
+                            -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+                            -Dkeycloak.migration.usersExportStrategy=SAME_FILE
+                            -Dkeycloak.profile.feature.upload_scripts=enabled"
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
     volumes:
       # To pre-configured keycloak with data
-      - ./statics/keycloak:/tmp/keycloak-import
+      - ./statics/keycloak:/opt/bitnami/keycloak/data/import
     depends_on:
-      - postgres
+      - postgresql
     restart: always
     ports:
       - "8080:8080"
