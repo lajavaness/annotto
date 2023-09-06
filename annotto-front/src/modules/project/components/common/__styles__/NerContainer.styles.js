@@ -1,6 +1,5 @@
 import { Button } from 'antd'
 import { TagsOutlined } from '@ant-design/icons'
-import { isNil } from 'lodash'
 import styled from '@xstyled/styled-components'
 
 export const Root = styled.div`
@@ -32,10 +31,9 @@ export const Svg = styled.svg`
 export const MarkContainer = styled.span`
   cursor: pointer;
   ${(props) => ({ ...props.theme.fonts.regular })};
-  background-color: ${({ $isPrediction, backgroundColor }) => ($isPrediction ? '#00000024' : backgroundColor)};
+  background-color: ${({ $isPrediction, backgroundColor }) => ($isPrediction ? '#00000024' : `${backgroundColor}80`)};
   outline: ${({ $isPrediction, backgroundColor }) => $isPrediction && `1px dashed ${backgroundColor}`};
   outline-offset: ${({ $isPrediction }) => $isPrediction && `-1px`};
-  padding: 2px 0;
   line-height: 20px;
   background-image: ${({ $isPrediction }) =>
     $isPrediction &&
@@ -46,7 +44,7 @@ export const MarkContainer = styled.span`
   ${({ $isHovered, theme, backgroundColor }) =>
     $isHovered && `color: ${theme.fonts.regular.color}; background-color: ${backgroundColor}CC`};
   display: inline-block;
-  ${({ margin }) => !isNil(margin) && `margin-${margin}: 50px;`};
+  height: 24px;
   ${({ isSourceRelation, theme }) => isSourceRelation && `box-shadow: inset 0px 0px 0px 1px ${theme.colors.primary};`};
 `
 
@@ -62,11 +60,12 @@ export const Span = styled.span`
   ${({ $isHighlight, theme }) => $isHighlight && `background-color: ${theme.colors.highlight}; padding: 2px 0;`};
 `
 
-export const TaskLabel = styled.span`
+export const TaskLabel = styled.sup`
   position: relative;
   user-select: none;
   margin: 0 2px;
-  ${({ theme }) => ({ ...theme.fonts.superscript })}
+  top: 0;
+  ${({ theme }) => ({ ...theme.fonts.superscript })};
 `
 
 export const Space = styled.span`

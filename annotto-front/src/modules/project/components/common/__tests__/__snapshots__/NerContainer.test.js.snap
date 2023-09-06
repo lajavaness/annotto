@@ -8,11 +8,7 @@ exports[`NerContainer matches snapshot 1`] = `
   >
     <p
       class="sc-iWOQzb bBzUZr"
-    >
-      <span
-        class="sc-dTjBdT fHgdjK"
-      />
-    </p>
+    />
   </div>
 </DocumentFragment>
 `;

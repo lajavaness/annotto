@@ -4,80 +4,15 @@ import {
   _isNerAnnotationEquivalent,
   _isTextAnnotationEquivalent,
   _isZoneEquivalent,
-  doesOverlapWithCurrentAnnotations,
   isAnnotationNer,
   isClassificationAnnotationEquivalent,
   isEntitiesRelationEquivalent,
   isNerAnnotationEquivalent,
   isPredictionEquivalentToAnnotation,
   isZoneAnnotationEquivalent,
-  sortAndFilterNerByStart,
 } from 'shared/utils/annotationUtils'
 
 describe('annotationUtils', () => {
-  describe('sortNerByStart', () => {
-    const cases = [
-      {
-        title: 'returns input if input is a number',
-        input: 1,
-      },
-      { title: 'returns input if input is null', input: null },
-      {
-        title: 'returns input if input is undefined',
-        input: undefined,
-      },
-      {
-        title: 'returns input if input is an empty object',
-        input: {},
-      },
-      {
-        title: 'returns input if input is an empty array',
-        input: [],
-      },
-      {
-        title: 'returns input if input is a string',
-        input: 'toto',
-      },
-      {
-        title: 'returns input if input an empty string',
-        input: '',
-      },
-    ]
-
-    cases.forEach(({ title, input }) => {
-      it(title, () => {
-        expect(sortAndFilterNerByStart(input)).toEqual(input)
-      })
-    })
-
-    it('returns filtered input', () => {
-      const input = [{ name: 'bar' }, { name: 'foo', ner: { start: 1 } }]
-      const output = [{ name: 'foo', ner: { start: 1 } }]
-      expect(sortAndFilterNerByStart(input)).toEqual(output)
-    })
-
-    it('returns sorted input', () => {
-      const input = [
-        { name: 'bar', ner: { start: 2 } },
-        { name: 'foo', ner: { start: 1 } },
-      ]
-      const output = [
-        { name: 'foo', ner: { start: 1 } },
-        { name: 'bar', ner: { start: 2 } },
-      ]
-      expect(sortAndFilterNerByStart(input)).toEqual(output)
-    })
-
-    it('returns filtered and sorted input', () => {
-      const input = [{ name: 'bar', ner: { start: 2 } }, { name: 'foo', ner: { start: 1 } }, { name: 'zog' }]
-      const output = [
-        { name: 'foo', ner: { start: 1 } },
-        { name: 'bar', ner: { start: 2 } },
-      ]
-      expect(sortAndFilterNerByStart(input)).toEqual(output)
-    })
-  })
-
   describe('isAnnotationNer', () => {
     const falsyCases = [
       {
@@ -134,139 +69,6 @@ describe('annotationUtils', () => {
     it('returns true if ner prediction', () => {
       const input = { value: 'foo', ner: { start: 4, end: 8 } }
       expect(isAnnotationNer(input)).toBeTruthy()
-    })
-  })
-
-  describe('doesOverlapWithCurrentAnnotations', () => {
-    const annotations = [{ value: 'foo', ner: { start: 2, end: 5 } }]
-
-    const emptyArrayCases = [
-      {
-        title: 'returns an empty array if annotations is a number',
-        annotations: 1,
-      },
-      { title: 'returns an empty array if annotations is null', annotations: null },
-      {
-        title: 'returns an empty array if annotations is undefined',
-        annotations: undefined,
-      },
-      {
-        title: 'returns an empty array if annotations is an empty object',
-        annotations: {},
-      },
-      {
-        title: 'returns an empty array if annotations is an empty array',
-        annotations: [],
-      },
-      {
-        title: 'returns an empty array if annotations is a string',
-        annotations: 'foo',
-      },
-      {
-        title: 'returns an empty array if annotations is an empty string',
-        annotations: '',
-      },
-      {
-        title: 'returns an empty array if start is not a number',
-        annotations,
-        start: 'foo',
-      },
-      {
-        title: 'returns an empty array if end is not a number',
-        annotations,
-        start: 1,
-        end: 'foo',
-      },
-      {
-        title: 'returns an empty array if start and end do not overlap current annotations',
-        annotations,
-        start: 8,
-        end: 10,
-      },
-    ]
-
-    emptyArrayCases.forEach(({ title, annotations: newAnnotations, start, end }) => {
-      it(title, () => {
-        expect(doesOverlapWithCurrentAnnotations(newAnnotations, start, end)).toEqual([])
-      })
-    })
-
-    const overlapCases = [
-      {
-        title:
-          'return an array with the overlapping annotation if the start is greater than the start of the annotation and less than the end of the annotation ',
-        annotations,
-        start: 3,
-        end: 4,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the start is equal than to start of the annotation and less than the end of the annotation ',
-        annotations,
-        start: 2,
-        end: 4,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the start is greater than the start of the annotation and equal to the end of the annotation ',
-        annotations,
-        start: 3,
-        end: 5,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the end is greater than the start of the annotation and less than the end of the annotation ',
-        annotations,
-        start: 3,
-        end: 4,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the end is equal to the start of the annotation and less than the end of the annotation ',
-        annotations,
-        start: 1,
-        end: 2,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the end is greater than the start of the annotation and equal to the end of the annotation ',
-        annotations,
-        start: 1,
-        end: 5,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the start is less than the start of the annotation and the end is less than the end of the annotation ',
-        annotations,
-        start: 1,
-        end: 6,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the start is greater than the start of the annotation and the end is less than the end of the annotation ',
-        annotations,
-        start: 3,
-        end: 4,
-      },
-      {
-        title: 'return an array with the overlapping annotation if the end is equal to the start of the annotation',
-        annotations,
-        start: 1,
-        end: 5,
-      },
-      {
-        title:
-          'return an array with the overlapping annotation if the start is equal to than the end of the annotation',
-        annotations,
-        start: 5,
-        end: 8,
-      },
-    ]
-
-    overlapCases.forEach(({ title, annotations: newAnnotations, start, end }) => {
-      it(title, () => {
-        expect(doesOverlapWithCurrentAnnotations(newAnnotations, start, end)).toEqual(annotations)
-      })
     })
   })
 
