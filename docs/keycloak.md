@@ -46,7 +46,7 @@ docker run --rm\
     -Dkeycloak.migration.provider=dir\
     -Dkeycloak.migration.dir=/tmp/keycloak-export\
     -Dkeycloak.migration.usersExportStrategy=SAME_FILE\
-    -Dkeycloak.migration.realmName=Cincity-Realm
+    -Dkeycloak.migration.realmName=annotto
 ```
 **IMPORT**
 This will import data to keycloak postgresql database:
@@ -66,7 +66,7 @@ docker run --rm\
     -Dkeycloak.migration.dir=/tmp/keycloak-import\
     -Dkeycloak.migration.strategy=IGNORE_EXISTING\
     -Dkeycloak.migration.usersExportStrategy=SAME_FILE\
-    -Dkeycloak.migration.realmName=therealm
+    -Dkeycloak.migration.realmName=annotto
 ```
 
 
