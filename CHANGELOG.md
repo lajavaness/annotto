@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/lajavaness/annotto/compare/v1.2.10...v1.3.0) (2023-09-06)
+
+
+### Features
+
+* Add management of overlaps on NER annotations, 45 ([#46](https://github.com/lajavaness/annotto/issues/46)) ([7c726f2](https://github.com/lajavaness/annotto/commit/7c726f2e5c566e5dfa13f626059d6fd8f3c3ba15)), closes [#45](https://github.com/lajavaness/annotto/issues/45)
+
 ## [1.2.10](https://github.com/lajavaness/annotto/compare/v1.2.9...v1.2.10) (2023-06-21)
 
 
