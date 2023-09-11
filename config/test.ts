@@ -5,7 +5,7 @@ export default {
   },
   keycloak: {
     admin: {
-      secret: '8acab8c7-31f5-494c-a5a1-0637bb62b096',
+      secret: 'n4i0V9jD9LVQAYxBeldCYFGucoTPUKaa',
     },
   },
 }
