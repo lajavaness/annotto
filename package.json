@@ -7,7 +7,7 @@
     "license": "apache-2.0",
     "main": "src/index.ts",
     "engines": {
-        "node": ">=16.x"
+        "node": ">=18.x"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.0.3",

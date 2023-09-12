@@ -45,7 +45,7 @@ export const haveAccessRole = (projectRole: string, email: string, project: Proj
  */
 const _getProfile = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
-    let profile = await ProfileModel.findOne({ user: req._user._id })
+    let profile = await ProfileModel.findOne({ user: req._user.email })
     const tokenRole = req.token.content && req.token.content.resource_access[config.keycloak.realm].roles[0]
 
     if (!profile) {

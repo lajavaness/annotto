@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/opt/keycloak/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
+/opt/keycloak/bin/kc.sh start-dev \
 -Dkeycloak.migration.action=import \
 -Dkeycloak.migration.provider=dir \
 -Dkeycloak.migration.realmName=annotto \

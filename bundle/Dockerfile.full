@@ -3,6 +3,8 @@ FROM node:18-alpine as builder-annotto-front
 WORKDIR /app
 COPY ./annotto-front .
 
+ENV REACT_APP_KEYCLOAK_URL "http://localhost:8080"
+
 RUN yarn install && \
     yarn build
 
@@ -35,20 +37,22 @@ FROM ubuntu:18.04
 
 ## Install Keycloak, annotto-front, annotto-api
 ENV ANNOTTO_FRONT_URL "http://localhost:3000"
-ENV KEYCLOAK_AUTH_URL "http://localhost:3000/auth"
-ENV KEYCLOAK_ADMIN_URL  "http://localhost:3000/auth/realms/master/admin/"
-ENV KEYCLOAK_FRONTEND_URL "http://localhost:3000/auth"
+ENV KEYCLOAK_AUTH_URL "http://localhost:8080"
+#ENV KEYCLOAK_ADMIN_URL  "http://localhost:8080/realms/master/admin/"
+#ENV KEYCLOAK_FRONTEND_URL "http://localhost:8080/auth"
 ENV KEYCLOAK_ADMIN_CLI_SECRET "n4i0V9jD9LVQAYxBeldCYFGucoTPUKaa"
 ENV KEYCLOAK_GROUP_ID "892e9f41-abae-4080-95b9-a29945c73352"
+ENV KEYCLOAK_ADMIN "admin"
+ENV KEYCLOAK_ADMIN_PASSWORD "admin"
 
 WORKDIR /opt
 
 RUN apt clean && \
     apt-get update && \
-    apt-get install -y wget curl gnupg default-jdk nginx
+    apt-get install -y wget curl vim zip unzip gnupg openjdk-17-jdk nginx
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
 RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-RUN curl -sL https://deb.nodesource.com/setup_16.x  | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x  | bash -
 RUN apt-get update && \
     apt-get install -y mongodb-org nodejs
 RUN mkdir -p /data/db
@@ -58,10 +62,9 @@ COPY --from=builder-annotto-api /app/dist annotto-api
 COPY --from=builder-annotto-api /app/node_modules annotto-api/node_modules
 
 ############ -------  Install Keycloak ------ ##########
-RUN wget https://github.com/keycloak/keycloak/releases/download/22.0.1/keycloak-22.0.1.tar.gz && \
-    tar -xvzf keycloak-22.0.1.tar.gz && \
-    mv keycloak-22.0.1 keycloak && \
-    keycloak/bin/add-user-keycloak.sh -r master -u admin -p admin
+RUN wget https://github.com/keycloak/keycloak/releases/download/22.0.2/keycloak-22.0.2.zip && \
+    unzip keycloak-22.0.2.zip && \
+    mv keycloak-22.0.2 keycloak
 COPY ./statics/keycloak /tmp/keycloak-import
 COPY ./bundle/conf/standalone.xml keycloak/standalone/configuration/standalone.xml
 

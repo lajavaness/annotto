@@ -19,13 +19,18 @@ Annotto is the only **go to** annotation tool to successfully annotate your docu
 
 # Start with docker
 ```
-  docker run --rm -d --name annotto -p 3000:3000 ljnrepo/annotto:latest
+  docker run --rm -d --name annotto -p 3000:3000 -p 8080:8080 ljnrepo/annotto:latest
 ```
 ***
 **Annotto** will be available at [http://localhost:3000](http://localhost:3000) with default credentials
 ```
 username: admin
 password: test
+```
+**Keycloak** will be available at [http://localhost:8080](http://localhost:8080) with default credentials
+```
+username: admin
+password: admin
 ```
 
 # Start for local development
