@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import expressSwaggerGenerator from 'express-swagger-generator'
+import { rateLimit } from 'express-rate-limit'
 import { loggerMiddleware } from './utils/logger'
 import { errorHandlerMiddleware, generateError } from './utils/error'
 import getRouter from './router'
@@ -53,6 +54,15 @@ const createServer = async (cfg: Config) => {
   app.set('config', cfg)
 
   const swaggerOptions = getSwaggerOptions(cfg)
+  // Add rate limiter to prevent DoS attack:
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+    // store: ... , // Use an external store for more precise rate limiting
+  })
+  app.use(limiter)
 
   app.use('/api', getRouter())
 
