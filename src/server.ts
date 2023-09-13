@@ -45,7 +45,6 @@ const routeNotFoundHandler = (req: express.Request, res: express.Response, next:
 
 const createServer = async (cfg: Config) => {
   const app = express()
-    .enable('trust proxy')
     .use(loggerMiddleware)
     .use(cors(cfg.cors))
     .use(express.json())
@@ -57,14 +56,13 @@ const createServer = async (cfg: Config) => {
   // Add rate limiter to prevent DoS attack:
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    limit: 300, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
     // store: ... , // Use an external store for more precise rate limiting
   })
-  app.use(limiter)
 
-  app.use('/api', getRouter())
+  app.use('/api', limiter, getRouter())
 
   app.use(cfg.swagger.swaggerUi, (req, res, next) => next())
   app.use(cfg.swagger.apiDocs, (req, res, next) => next())
