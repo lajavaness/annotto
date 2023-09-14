@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/lajavaness/annotto/compare/v1.3.0...v1.4.0) (2023-09-14)
+
+
+### Features
+
+* Upgrade to keycloak 22 ([#48](https://github.com/lajavaness/annotto/issues/48)) ([035ccc6](https://github.com/lajavaness/annotto/commit/035ccc68665a260ead788d6d3edf237eeb3785ab))
+
 # [1.3.0](https://github.com/lajavaness/annotto/compare/v1.2.10...v1.3.0) (2023-09-06)
 
 
