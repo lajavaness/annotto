@@ -19,7 +19,7 @@ export const parse = (opts?: split.Options & { strict?: boolean }) => {
     } catch (e) {
       if (opts && opts.strict) {
         const error = generateFileError({
-          message: `Could not parse row ${row.slice(0, 50)}...`,
+          message: `Could not parse row ${row.slice(0, 50)}...Message: ${(e as Error).message}`,
           lineNumber: count,
         })
         this.emit('error', error)

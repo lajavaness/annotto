@@ -24,7 +24,7 @@
       "annotto" : [ "admin" ]
     },
     "notBefore" : 0,
-    "groups" : [ ]
+    "groups" : [ "/annotto" ]
   }, {
     "id" : "1361167b-7892-4b92-8fdb-4d55ba553cd3",
     "createdTimestamp" : 1646837033964,
@@ -47,6 +47,23 @@
     "realmRoles" : [ "default-roles-annotto" ],
     "clientRoles" : {
       "annotto" : [ "dataScientist" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ "/annotto" ]
+  }, {
+    "id" : "d74bc961-0c2d-4bf7-91ea-f4cd26301ee8",
+    "createdTimestamp" : 1693298325017,
+    "username" : "service-account-admin-cli",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "admin-cli",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-annotto" ],
+    "clientRoles" : {
+      "realm-management" : [ "realm-admin" ]
     },
     "notBefore" : 0,
     "groups" : [ ]
@@ -91,6 +108,6 @@
       "annotto" : [ "user" ]
     },
     "notBefore" : 0,
-    "groups" : [ ]
+    "groups" : [ "/annotto" ]
   } ]
 }

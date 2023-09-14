@@ -7,7 +7,7 @@
     "license": "apache-2.0",
     "main": "src/index.ts",
     "engines": {
-        "node": ">=16.x"
+        "node": ">=18.x"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.0.3",
@@ -83,6 +83,7 @@
         "crypto-js": "^4.0.0",
         "dayjs": "^1.9.4",
         "express": "^4.17.1",
+        "express-rate-limit": "^7.0.0",
         "express-swagger-generator": "^1.1.17",
         "formidable": "^1.2.2",
         "joi": "^17.6.1",

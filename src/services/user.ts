@@ -65,8 +65,7 @@ async function _callApi(options: Options) {
       ...(options.body && { body: JSON.stringify(options.body) }),
     }
   )
-  const json = await response.json()
-  return json
+  return response.json()
 }
 
 /**
@@ -80,24 +79,27 @@ const getAdminToken = async () => {
     client_secret: config.keycloak.admin.secret,
   })
 
-  const resp = await fetch(`${config.keycloak['auth-server-url']}/realms/master/protocol/openid-connect/token`, {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: data,
-  })
+  const resp = await fetch(
+    `${config.keycloak['auth-server-url']}/realms/${config.keycloak.realm}/protocol/openid-connect/token`,
+    {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: data,
+    }
+  )
   const json = await resp.json()
   return json.access_token
 }
 
 /**
- * Find all users. This will call keycloak Admin Rest API and fetch all users.
+ * Find all users.
  * @returns {Promise<Array<KCUserRepresentation>>}.
  */
 const find = async (): Promise<User[]> => {
   const token = await getAdminToken()
-  return _callApi({ path: '/users', method: 'GET', token })
+  return _callApi({ path: `/groups/${config.keycloak.groupId}/members`, method: 'GET', token })
 }
 
 /**

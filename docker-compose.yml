@@ -19,27 +19,25 @@ services:
       retries: 5
 
   keycloak:
-    image: jboss/keycloak:15.0.1
-    command:
-      - "-Dkeycloak.migration.action=import"
-      - "-Dkeycloak.migration.provider=dir"
-      - "-Dkeycloak.migration.dir=/tmp/keycloak-import"
-      - "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
-      - "-Dkeycloak.migration.usersExportStrategy=SAME_FILE"
-      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+    image: bitnami/keycloak:22.0.1-debian-11-r25
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_SCHEMA: public
-      DB_PASSWORD: password
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_LOGLEVEL: DEBUG
+      KEYCLOAK_EXTRA_ARGS: "-Dkeycloak.migration.action=import
+                            -Dkeycloak.migration.realmName=annotto
+                            -Dkeycloak.migration.provider=dir
+                            -Dkeycloak.migration.dir=/opt/bitnami/keycloak/data/import
+                            -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+                            -Dkeycloak.migration.usersExportStrategy=SAME_FILE
+                            -Dkeycloak.profile.feature.upload_scripts=enabled"
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_DATABASE_HOST: postgres
+      KEYCLOAK_DATABASE_PORT: 5432
+      KEYCLOAK_DATABASE_NAME: keycloak
+      KEYCLOAK_DATABASE_USER: keycloak
+      KEYCLOAK_DATABASE_PASSWORD: password
     volumes:
       # To pre-configured keycloak with data
-      - ./statics/keycloak:/tmp/keycloak-import
+      - ./statics/keycloak:/opt/bitnami/keycloak/data/import
     depends_on:
       - postgres
     restart: always

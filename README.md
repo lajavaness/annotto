@@ -15,18 +15,22 @@ Annotto is the only **go to** annotation tool to successfully annotate your docu
 
 # Table of contents
 1. [Start with docker](#start-with-docker)
-2. [Start with docker](#start-with-docker-with-minio)
 2. [Start for local development](#start-for-local-development)
 
 # Start with docker
 ```
-  docker run --rm -d --name annotto -p 3000:3000 ljnrepo/annotto:latest
+  docker run --rm -d --name annotto -p 3000:3000 -p 8080:8080 ljnrepo/annotto:latest
 ```
 ***
 **Annotto** will be available at [http://localhost:3000](http://localhost:3000) with default credentials
 ```
 username: admin
 password: test
+```
+**Keycloak** will be available at [http://localhost:8080](http://localhost:8080) with default credentials
+```
+username: admin
+password: admin
 ```
 
 # Start for local development
@@ -53,19 +57,20 @@ yarn start:dev
 ```
 
 ### Environment variables
-| Name                         | Default                                   | Description                                                                                                                |
-|------------------------------|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| PORT                         | 5001                                      | Server listening port                                                                                                      |
-| NODE_ENV                     | development                               | NODE Environment to use "[development, test]"                                                                              |
-| ENCRYPTION_SECRET_KEY        | aSecretKey                                | A Secret Key used to encrypt AWS creds  (symmetric)                                                                        |
-| MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | Mongo connection string                                                                                                    |
-| ANNOTTO_FRONT_URL            | http://localhost:3000                     | Annotto Front base url                                                                                                     |
-| KEYCLOAK_REALM               | annotto                                   | Keycloak Realm (preconfigured if started with docker-compose_)                                                             |
-| KEYCLOAK_AUTH_URL            | http://localhost:8080/auth                | Keycloak auth url (preconfigured if started with docker-compose_)                                                          |
-| KEYCLOAK_CLIENT_ID           | annotto                                   | Keycloak client id (preconfigured if started with docker-compose_)                                                         |
-| KEYCLOAK_ADMIN_CLI_SECRET    | a7b7a29d-abb0-4e21-abec-bca99a47e40e      | Keycloak admin-cli secret (preconfigured if started with docker-compose_). This is needed to use admin REST API for keycloak |
-| ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | Max file size permitted to upload (default = 1000 * 1024 * 1024)                                                           |
-| ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | Max file size permitted to upload (default = 1000 * 1024 * 1024)                                                           |
+| Name                         | Default                                   | Description                                                                                                                   |
+|------------------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| PORT                         | 5001                                      | Server listening port                                                                                                         |
+| NODE_ENV                     | development                               | NODE Environment to use "[development, test]"                                                                                 |
+| ENCRYPTION_SECRET_KEY        | aSecretKey                                | A Secret Key used to encrypt AWS creds  (symmetric)                                                                           |
+| MONGO_URL                    | mongodb://localhost:27017/ljn_annotto_dev | Mongo connection string                                                                                                       |
+| ANNOTTO_FRONT_URL            | http://localhost:3000                     | Annotto Front base url                                                                                                        |
+| KEYCLOAK_REALM               | annotto                                   | Keycloak Realm (preconfigured if started with docker-compose_)                                                                |
+| KEYCLOAK_AUTH_URL            | http://localhost:8080                     | Keycloak auth url (preconfigured if started with docker-compose_)                                                             |
+| KEYCLOAK_CLIENT_ID           | annotto                                   | Keycloak client id (preconfigured if started with docker-compose_)                                                            |
+| KEYCLOAK_ADMIN_CLI_SECRET    | n4i0V9jD9LVQAYxBeldCYFGucoTPUKaa          | Keycloak admin-cli secret (preconfigured if started with docker-compose_). This is needed to use admin REST API for keycloak  |
+| KEYCLOAK_GROUP_ID            | 892e9f41-abae-4080-95b9-a29945c73352      | Keycloak annotto group's (preconfigured if started with docker-compose_).  This is needed to use admin REST API for keycloak  |
+| ANNOTTO_UPLOAD_MAX_FILE_SIZE | 1048576000                                | Max file size permitted to upload (default = 1000 * 1024 * 1024)                                                              |
+| ANNOTTO_UPLOAD_BATCH_SIZE    | 50000                                     | Max file size permitted to upload (default = 1000 * 1024 * 1024)                                                              |
 
 ## Users and Roles
 When starting Annotto, you will get 3 users preconfigured with three different role (`"admin"|"user"|"dataScientist'`)
