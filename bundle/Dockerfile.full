@@ -33,7 +33,7 @@ RUN npm prune --omit=dev
 # run node prune
 RUN /usr/local/bin/node-prune
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ## Install Keycloak, annotto-front, annotto-api
 ENV ANNOTTO_FRONT_URL "http://localhost:3000"
