@@ -169,7 +169,9 @@ jobs:
           push: true
           tags: ${{ env.IMAGE }}:latest , ${{ env.IMAGE }}:${{ needs.semantic-release.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
-
+          build-args: |
+            "KEYCLOAK_URL=${{ secrets.KEYCLOAK_URL }}"
+          
   bundle-release:
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request' && needs.semantic-release.outputs.is-new-version == 'true'
