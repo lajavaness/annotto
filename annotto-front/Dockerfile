@@ -1,4 +1,4 @@
-FROM node:lts as builder
+FROM node:18-alpine as builder
 
 ARG BASE_URL
 ARG KEYCLOAK_URL
