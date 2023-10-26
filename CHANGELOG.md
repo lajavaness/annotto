@@ -1,3 +1,10 @@
+## [1.4.7](https://github.com/lajavaness/annotto/compare/v1.4.6...v1.4.7) (2023-10-26)
+
+
+### Performance Improvements
+
+* Trigger release ([574941e](https://github.com/lajavaness/annotto/commit/574941e09306e661b6b9fa863ac7d9ec82539889))
+
 ## [1.4.6](https://github.com/lajavaness/annotto/compare/v1.4.5...v1.4.6) (2023-10-26)
 
 
