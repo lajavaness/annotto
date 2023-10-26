@@ -1,3 +1,10 @@
+## [1.4.8](https://github.com/lajavaness/annotto/compare/v1.4.7...v1.4.8) (2023-10-26)
+
+
+### Bug Fixes
+
+* Wrong usage to find roles in the JWT Token provided by keycloak ([de51f91](https://github.com/lajavaness/annotto/commit/de51f91ab52a91aedd1b0ae43e80e3924acf1b87))
+
 ## [1.4.7](https://github.com/lajavaness/annotto/compare/v1.4.6...v1.4.7) (2023-10-26)
 
 
