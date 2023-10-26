@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/lajavaness/annotto/compare/v1.4.3...v1.4.4) (2023-10-26)
+
+
+### Bug Fixes
+
+* Missing secrets references in actions ([46b9085](https://github.com/lajavaness/annotto/commit/46b9085d3042f9644c26877fffc29ac578621f64))
+
 ## [1.4.3](https://github.com/lajavaness/annotto/compare/v1.4.2...v1.4.3) (2023-10-26)
 
 
