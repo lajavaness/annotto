@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/lajavaness/annotto/compare/v1.4.5...v1.4.6) (2023-10-26)
+
+
+### Bug Fixes
+
+* Add keycloak realm as env var ([f695a50](https://github.com/lajavaness/annotto/commit/f695a50b3824cbb7c486bc1cc37746fc14699925))
+
 ## [1.4.5](https://github.com/lajavaness/annotto/compare/v1.4.4...v1.4.5) (2023-10-26)
 
 
