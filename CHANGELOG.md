@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/lajavaness/annotto/compare/v1.4.2...v1.4.3) (2023-10-26)
+
+
+### Bug Fixes
+
+* Node engine used in dockerrization for frontend was not optimal ([510674c](https://github.com/lajavaness/annotto/commit/510674c515352d9410d3485e9adf5e393c683258))
+
 ## [1.4.2](https://github.com/lajavaness/annotto/compare/v1.4.1...v1.4.2) (2023-10-26)
 
 
