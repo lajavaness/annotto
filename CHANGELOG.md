@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/lajavaness/annotto/compare/v1.4.4...v1.4.5) (2023-10-26)
+
+
+### Bug Fixes
+
+* Use vars and not secrets ([98da4d3](https://github.com/lajavaness/annotto/commit/98da4d31ae4fcaaa1252a81b0891673a948d3f1e))
+
 ## [1.4.4](https://github.com/lajavaness/annotto/compare/v1.4.3...v1.4.4) (2023-10-26)
 
 
