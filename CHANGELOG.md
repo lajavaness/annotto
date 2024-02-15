@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/lajavaness/annotto/compare/v1.4.8...v1.4.9) (2024-02-15)
+
+
+### Bug Fixes
+
+* Development configuration is overriding the process env ([418f229](https://github.com/lajavaness/annotto/commit/418f229e4b00a712a0bcf97d48b4fbcd88ddefff))
+
 ## [1.4.8](https://github.com/lajavaness/annotto/compare/v1.4.7...v1.4.8) (2023-10-26)
 
 
