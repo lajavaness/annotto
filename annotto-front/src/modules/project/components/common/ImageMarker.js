@@ -35,6 +35,7 @@ const ImageMarker = ({
   const [draggedCoords, setDraggedCoords] = useState([])
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const [zoomFactor, setZoomFactor] = useState(1)
 
   useOutsideClick(rootRef, () => {
     if (!isEmpty(draggedCoords)) {
@@ -94,7 +95,7 @@ const ImageMarker = ({
       : []
 
     return [...updatedAnnotations, ...updatedPredictions]
-  }, [showPredictions, resolvedAnnotations, resolvedPredictions])
+  }, [showPredictions, resolvedAnnotations, resolvedPredictions, zoomFactor])
 
   useEffect(() => {
     setMarkerRefs((previousMarkerRefs) =>
@@ -166,16 +167,13 @@ const ImageMarker = ({
     return rightmostPoint - leftmostPoint
   }
 
-  const resolveSplitedPoints = (points) => points.split(' ').map((point) => point.split(',').map((p) => Number(p)))
+  const resolveSplittedPoints = (points) => points.split(' ').map((point) => point.split(',').map((p) => Number(p)))
 
-  const resolvePoints = useCallback(
-    (values) =>
-      values
-        .map(({ x, y }) => [x * dimensions.width, y * dimensions.height])
-        .map((x) => `${Number(x[0])},${Number(x[1])}`)
-        .join(' '),
-    [dimensions]
-  )
+  const resolvePoints = (values) =>
+    values
+      .map(({ x, y }) => [x * dimensions.width * zoomFactor, y * dimensions.height * zoomFactor])
+      .map((x) => `${Number(x[0])},${Number(x[1])}`)
+      .join(' ')
 
   const resolveTask = useCallback(
     (value) => {
@@ -339,7 +337,11 @@ const ImageMarker = ({
 
   return (
     <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0} data-testid={'__image-item__'}>
-      <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} />
+      <button onClick={() => setZoomFactor((old) => old + 0.1)}>plus</button>
+      <button onClick={() => setZoomFactor((old) => old - 0.1)}>minus</button>
+
+      <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} style={{ width: `${zoomFactor * 100}%` }} />
+
       <Styled.Svg
         data-testid="__markers-container__"
         dimensions={dimensions}
@@ -349,7 +351,7 @@ const ImageMarker = ({
         {resolvedAnnotationsAndPredictions.map(({ annotationIndex, predictionIndex, zone, value }, index) => {
           const isHovered = currentHovered === index
           const isSelected = currentSelected === index
-          const points = resolveSplitedPoints(resolvePoints(zone))
+          const points = resolveSplittedPoints(resolvePoints(zone))
           const textPosition = resolveTextPosition(points)
           const markerWidth = resolveMarkerWidth(points)
           const task = resolveTask(value)

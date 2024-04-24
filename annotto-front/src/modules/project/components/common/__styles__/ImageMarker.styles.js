@@ -13,7 +13,6 @@ export const Img = styled.img`
   position: absolute;
   width: 100%;
   height: auto;
-  user-drag: none;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
