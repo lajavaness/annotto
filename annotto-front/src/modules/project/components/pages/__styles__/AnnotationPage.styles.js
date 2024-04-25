@@ -68,6 +68,8 @@ export const Container = styled.div`
 `
 
 export const RightContainer = styled(Container)`
+  overflow: auto;
+  max-height: calc(100vh - 64px - 40px);
   & > div:last-child {
     margin-bottom: 0;
   }

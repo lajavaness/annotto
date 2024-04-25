@@ -49,6 +49,7 @@ const ImageMarker = ({
     setCurrentHovered(null)
     setCurrentSelected(null)
     setMarkerRefs([])
+    setZoomFactor(1)
   }, [content])
 
   const resolveFourPoints = ([{ x: x1, y: y1 }, { x: x2, y: y2 }]) => [
@@ -231,7 +232,7 @@ const ImageMarker = ({
       if (isEmpty(selectedSection)) return
       if (markerRefs.some(({ current }) => current === target.parentElement)) return
       if (markerRefs.some(({ current }) => isMarkerContainsTarget(current, target))) return
-      console.log({ target, nativeEvent })
+
       addPoint({
         x: nativeEvent.offsetX / (dimensions.width * zoomFactor),
         y: nativeEvent.offsetY / (dimensions.height * zoomFactor),
@@ -346,9 +347,13 @@ const ImageMarker = ({
         <button onClick={() => setZoomFactor((old) => old - 0.1)}>minus</button>
         <button onClick={() => setZoomFactor((old) => old + 0.1)}>plus</button>
       </div>
-      <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0} data-testid={'__image-item__'}>
+      <Styled.Root
+        onWheel={(e) => console.log('yoo', e, e.deltaY)}
+        ref={rootRef}
+        $haveDraggedMarker={draggedCoords.length > 0}
+        data-testid={'__image-item__'}
+      >
         <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} style={{ width: `${zoomFactor * 100}%` }} />
-
         <Styled.Svg
           data-testid="__markers-container__"
           dimensions={dimensions}

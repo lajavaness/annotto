@@ -3,7 +3,6 @@ import { TagsOutlined } from '@ant-design/icons'
 import styled from '@xstyled/styled-components'
 
 export const Root = styled.div`
-  overflow: auto;
   position: relative;
   height: 100%;
   cursor: ${({ $haveDraggedMarker }) => ($haveDraggedMarker ? 'move' : 'auto')};
