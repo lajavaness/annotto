@@ -40,7 +40,6 @@ export const Space = styled(_Space)`
 
 export const ItemContent = styled.div`
   flex: 1;
-  overflow: auto;
   height: 0;
 `
 

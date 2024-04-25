@@ -25,7 +25,7 @@ const ImageMarker = ({
   predictions,
   onAnnotationChange,
 }) => {
-  const rootRef = useRef()
+  const imageWrapperRef = useRef()
   const imgRef = useRef()
 
   const [markerRefs, setMarkerRefs] = useState([])
@@ -36,8 +36,9 @@ const ImageMarker = ({
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const [zoomFactor, setZoomFactor] = useState(1)
+  const [panStart, setPanStart] = useState(null)
 
-  useOutsideClick(rootRef, () => {
+  useOutsideClick(imageWrapperRef, () => {
     if (!isEmpty(draggedCoords)) {
       onAnnotationChange(annotations)
       setDraggedCoords([])
@@ -212,23 +213,28 @@ const ImageMarker = ({
 
   const _onLoad = () => setIsImageLoaded(true)
 
-  const _onMouseMove = useCallback(
-    ({ target, nativeEvent }) => {
-      return (
-        !isEmpty(selectedSection) &&
-        !markerRefs.some(({ current }) => current === target.parentElement) &&
-        !markerRefs.some(({ current }) => isMarkerContainsTarget(current, target)) &&
-        setMousePosition({
-          x: nativeEvent.offsetX / (dimensions.width * zoomFactor),
-          y: nativeEvent.offsetY / (dimensions.height * zoomFactor),
-        })
-      )
-    },
-    [selectedSection, markerRefs, isMarkerContainsTarget, dimensions, zoomFactor]
-  )
+  const _onMouseMove = ({ target, nativeEvent }) => {
+    if (panStart && isEmpty(selectedSection)) {
+      const x = nativeEvent.clientX - panStart.x
+      const y = nativeEvent.clientY - panStart.y
+      const imgScrollX = imageWrapperRef.current.scrollLeft
+      const imgScrollY = imageWrapperRef.current.scrollTop
+      imageWrapperRef.current.scrollTo(imgScrollX - x, imgScrollY - y, { behavior: 'smooth' })
+    }
+    return (
+      !isEmpty(selectedSection) &&
+      !markerRefs.some(({ current }) => current === target.parentElement) &&
+      !markerRefs.some(({ current }) => isMarkerContainsTarget(current, target)) &&
+      setMousePosition({
+        x: nativeEvent.offsetX / (dimensions.width * zoomFactor),
+        y: nativeEvent.offsetY / (dimensions.height * zoomFactor),
+      })
+    )
+  }
 
   const _onMouseUp = useCallback(
     ({ target, nativeEvent }) => {
+      setPanStart(null)
       if (isEmpty(selectedSection)) return
       if (markerRefs.some(({ current }) => current === target.parentElement)) return
       if (markerRefs.some(({ current }) => isMarkerContainsTarget(current, target))) return
@@ -342,14 +348,15 @@ const ImageMarker = ({
   const _onMouseLeave = () => setCurrentHovered(null)
 
   return (
-    <>
-      <div style={{ display: 'flex' }}>
-        <button onClick={() => setZoomFactor((old) => old - 0.1)}>minus</button>
-        <button onClick={() => setZoomFactor((old) => old + 0.1)}>plus</button>
-      </div>
-      <Styled.Root
-        onWheel={(e) => console.log('yoo', e, e.deltaY)}
-        ref={rootRef}
+    <Styled.Root>
+      <Styled.ZoomActions>
+        <Styled.ZoomSlider
+          onChange={(value) => setZoomFactor(1 + value / 50)}
+          tooltip={{ formatter: (value) => `${(1 + value / 50).toFixed(2)}` }}
+        />
+      </Styled.ZoomActions>
+      <Styled.ImageWrapper
+        ref={imageWrapperRef}
         $haveDraggedMarker={draggedCoords.length > 0}
         data-testid={'__image-item__'}
       >
@@ -357,8 +364,11 @@ const ImageMarker = ({
         <Styled.Svg
           data-testid="__markers-container__"
           dimensions={dimensions}
+          onMouseDown={(e) => setPanStart({ x: e.clientX, y: e.clientY })}
+          onMouseLeave={() => setPanStart(null)}
           onMouseUp={_onMouseUp}
           onMouseMove={_onMouseMove}
+          style={{ width: `${dimensions.width * zoomFactor}px` }}
         >
           {resolvedAnnotationsAndPredictions.map(({ annotationIndex, predictionIndex, zone, value }, index) => {
             const isHovered = currentHovered === index
@@ -445,8 +455,8 @@ const ImageMarker = ({
           )}
         </Styled.Svg>
         {!isImageLoaded && <Loader />}
-      </Styled.Root>
-    </>
+      </Styled.ImageWrapper>
+    </Styled.Root>
   )
 }
 

@@ -1,10 +1,31 @@
-import { Button } from 'antd'
+import { Button, Slider } from 'antd'
 import { TagsOutlined } from '@ant-design/icons'
 import styled from '@xstyled/styled-components'
 
 export const Root = styled.div`
-  position: relative;
   height: 100%;
+`
+
+export const ZoomActions = styled.div`
+  position: sticky;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`
+
+export const ZoomSlider = styled(Slider)`
+  width: 100%;
+`
+
+export const ImageWrapper = styled.div`
+  overflow: auto;
+  position: relative;
+  height: 97%;
   cursor: ${({ $haveDraggedMarker }) => ($haveDraggedMarker ? 'move' : 'auto')};
 `
 
