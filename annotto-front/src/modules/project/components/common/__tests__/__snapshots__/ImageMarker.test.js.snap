@@ -42,9 +42,9 @@ exports[`ImageMarker matches snapshot 1`] = `
         style="width: 100%;"
       />
       <svg
-        class="sc-fxTzYC jXRoBK"
+        class="sc-fxTzYC cwBKFr"
         data-testid="__markers-container__"
-        style="width: 0px;"
+        style="width: 0px; height: 0px;"
       />
       <div
         class="sc-bcXHqe obZLm"
