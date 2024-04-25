@@ -363,12 +363,11 @@ const ImageMarker = ({
         <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} style={{ width: `${zoomFactor * 100}%` }} />
         <Styled.Svg
           data-testid="__markers-container__"
-          dimensions={dimensions}
           onMouseDown={(e) => setPanStart({ x: e.clientX, y: e.clientY })}
           onMouseLeave={() => setPanStart(null)}
           onMouseUp={_onMouseUp}
           onMouseMove={_onMouseMove}
-          style={{ width: `${dimensions.width * zoomFactor}px` }}
+          style={{ width: `${dimensions.width * zoomFactor}px`, height: `${dimensions.height * zoomFactor}px` }}
         >
           {resolvedAnnotationsAndPredictions.map(({ annotationIndex, predictionIndex, zone, value }, index) => {
             const isHovered = currentHovered === index

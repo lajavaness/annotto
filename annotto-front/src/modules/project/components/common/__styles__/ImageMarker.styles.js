@@ -42,8 +42,6 @@ export const Img = styled.img`
 
 export const Svg = styled.svg`
   position: absolute;
-  height: ${({ dimensions }) => `${dimensions.height}px`};
-  width: ${({ dimensions }) => `${dimensions.width}px`};
 `
 
 export const Polygon = styled.polygon`
