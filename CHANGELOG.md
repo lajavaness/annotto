@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/lajavaness/annotto/compare/v1.4.9...v1.5.0) (2024-05-03)
+
+
+### Features
+
+* Add ipv6 support ([#51](https://github.com/lajavaness/annotto/issues/51)) ([1945a13](https://github.com/lajavaness/annotto/commit/1945a13105c2427036537e9164ad9788c5309c6a))
+
 ## [1.4.9](https://github.com/lajavaness/annotto/compare/v1.4.8...v1.4.9) (2024-02-15)
 
 
