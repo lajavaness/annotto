@@ -40,7 +40,6 @@ export const Space = styled(_Space)`
 
 export const ItemContent = styled.div`
   flex: 1;
-  overflow: auto;
   height: 0;
 `
 
@@ -68,6 +67,10 @@ export const Container = styled.div`
 `
 
 export const RightContainer = styled(Container)`
+  overflow: auto;
+  max-height: calc(
+    100vh - 64px - 40px
+  ); // 64px is ant default header height. 40px is the padding of the root container.
   & > div:last-child {
     margin-bottom: 0;
   }

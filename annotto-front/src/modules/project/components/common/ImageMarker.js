@@ -25,7 +25,7 @@ const ImageMarker = ({
   predictions,
   onAnnotationChange,
 }) => {
-  const rootRef = useRef()
+  const imageWrapperRef = useRef()
   const imgRef = useRef()
 
   const [markerRefs, setMarkerRefs] = useState([])
@@ -35,8 +35,10 @@ const ImageMarker = ({
   const [draggedCoords, setDraggedCoords] = useState([])
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const [zoomFactor, setZoomFactor] = useState(1)
+  const [panStart, setPanStart] = useState(null)
 
-  useOutsideClick(rootRef, () => {
+  useOutsideClick(imageWrapperRef, () => {
     if (!isEmpty(draggedCoords)) {
       onAnnotationChange(annotations)
       setDraggedCoords([])
@@ -48,6 +50,7 @@ const ImageMarker = ({
     setCurrentHovered(null)
     setCurrentSelected(null)
     setMarkerRefs([])
+    setZoomFactor(1)
   }, [content])
 
   const resolveFourPoints = ([{ x: x1, y: y1 }, { x: x2, y: y2 }]) => [
@@ -94,7 +97,7 @@ const ImageMarker = ({
       : []
 
     return [...updatedAnnotations, ...updatedPredictions]
-  }, [showPredictions, resolvedAnnotations, resolvedPredictions])
+  }, [showPredictions, resolvedAnnotations, resolvedPredictions, zoomFactor])
 
   useEffect(() => {
     setMarkerRefs((previousMarkerRefs) =>
@@ -166,16 +169,13 @@ const ImageMarker = ({
     return rightmostPoint - leftmostPoint
   }
 
-  const resolveSplitedPoints = (points) => points.split(' ').map((point) => point.split(',').map((p) => Number(p)))
+  const resolveSplittedPoints = (points) => points.split(' ').map((point) => point.split(',').map((p) => Number(p)))
 
-  const resolvePoints = useCallback(
-    (values) =>
-      values
-        .map(({ x, y }) => [x * dimensions.width, y * dimensions.height])
-        .map((x) => `${Number(x[0])},${Number(x[1])}`)
-        .join(' '),
-    [dimensions]
-  )
+  const resolvePoints = (values) =>
+    values
+      .map(({ x, y }) => [x * dimensions.width * zoomFactor, y * dimensions.height * zoomFactor])
+      .map((x) => `${Number(x[0])},${Number(x[1])}`)
+      .join(' ')
 
   const resolveTask = useCallback(
     (value) => {
@@ -213,28 +213,38 @@ const ImageMarker = ({
 
   const _onLoad = () => setIsImageLoaded(true)
 
-  const _onMouseMove = useCallback(
-    ({ target, nativeEvent }) => {
-      return (
-        !isEmpty(selectedSection) &&
-        !markerRefs.some(({ current }) => current === target.parentElement) &&
-        !markerRefs.some(({ current }) => isMarkerContainsTarget(current, target)) &&
-        setMousePosition({ x: nativeEvent.offsetX / dimensions.width, y: nativeEvent.offsetY / dimensions.height })
-      )
-    },
-    [selectedSection, markerRefs, isMarkerContainsTarget, dimensions]
-  )
-
-  const _onMouseUp = useCallback(
-    ({ target, nativeEvent }) =>
+  const _onMouseMove = ({ target, nativeEvent }) => {
+    if (panStart && isEmpty(selectedSection)) {
+      const x = nativeEvent.clientX - panStart.x
+      const y = nativeEvent.clientY - panStart.y
+      const imgScrollX = imageWrapperRef.current.scrollLeft
+      const imgScrollY = imageWrapperRef.current.scrollTop
+      imageWrapperRef.current.scrollTo(imgScrollX - x, imgScrollY - y, { behavior: 'smooth' })
+    }
+    return (
       !isEmpty(selectedSection) &&
       !markerRefs.some(({ current }) => current === target.parentElement) &&
       !markerRefs.some(({ current }) => isMarkerContainsTarget(current, target)) &&
+      setMousePosition({
+        x: nativeEvent.offsetX / (dimensions.width * zoomFactor),
+        y: nativeEvent.offsetY / (dimensions.height * zoomFactor),
+      })
+    )
+  }
+
+  const _onMouseUp = useCallback(
+    ({ target, nativeEvent }) => {
+      setPanStart(null)
+      if (isEmpty(selectedSection)) return
+      if (markerRefs.some(({ current }) => current === target.parentElement)) return
+      if (markerRefs.some(({ current }) => isMarkerContainsTarget(current, target))) return
+
       addPoint({
-        x: nativeEvent.offsetX / dimensions.width,
-        y: nativeEvent.offsetY / dimensions.height,
-      }),
-    [addPoint, markerRefs, dimensions, isMarkerContainsTarget, selectedSection]
+        x: nativeEvent.offsetX / (dimensions.width * zoomFactor),
+        y: nativeEvent.offsetY / (dimensions.height * zoomFactor),
+      })
+    },
+    [addPoint, markerRefs, dimensions, isMarkerContainsTarget, selectedSection, zoomFactor]
   )
 
   const _onDeleteClick = useCallback(
@@ -338,93 +348,113 @@ const ImageMarker = ({
   const _onMouseLeave = () => setCurrentHovered(null)
 
   return (
-    <Styled.Root ref={rootRef} $haveDraggedMarker={draggedCoords.length > 0} data-testid={'__image-item__'}>
-      <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} />
-      <Styled.Svg
-        data-testid="__markers-container__"
-        dimensions={dimensions}
-        onMouseUp={_onMouseUp}
-        onMouseMove={_onMouseMove}
+    <Styled.Root>
+      <Styled.ZoomActions>
+        <Styled.ZoomSlider
+          onChange={(value) => setZoomFactor(1 + value / 50)}
+          tooltip={{ formatter: (value) => `${(1 + value / 50).toFixed(2)}` }}
+        />
+      </Styled.ZoomActions>
+      <Styled.ImageWrapper
+        ref={imageWrapperRef}
+        $haveDraggedMarker={draggedCoords.length > 0}
+        data-testid={'__image-item__'}
       >
-        {resolvedAnnotationsAndPredictions.map(({ annotationIndex, predictionIndex, zone, value }, index) => {
-          const isHovered = currentHovered === index
-          const isSelected = currentSelected === index
-          const points = resolveSplitedPoints(resolvePoints(zone))
-          const textPosition = resolveTextPosition(points)
-          const markerWidth = resolveMarkerWidth(points)
-          const task = resolveTask(value)
-          const isPrefill = isNumber(annotationIndex) && isNumber(predictionIndex)
-          const isPrediction = isNumber(predictionIndex) && !isNumber(annotationIndex)
+        <Styled.Img ref={imgRef} src={content} onLoad={_onLoad} style={{ width: `${zoomFactor * 100}%` }} />
+        <Styled.Svg
+          data-testid="__markers-container__"
+          onMouseDown={(e) => setPanStart({ x: e.clientX, y: e.clientY })}
+          onMouseLeave={() => setPanStart(null)}
+          onMouseUp={_onMouseUp}
+          onMouseMove={_onMouseMove}
+          style={{ width: `${dimensions.width * zoomFactor}px`, height: `${dimensions.height * zoomFactor}px` }}
+        >
+          {resolvedAnnotationsAndPredictions.map(({ annotationIndex, predictionIndex, zone, value }, index) => {
+            const isHovered = currentHovered === index
+            const isSelected = currentSelected === index
+            const points = resolveSplittedPoints(resolvePoints(zone))
+            const textPosition = resolveTextPosition(points)
+            const markerWidth = resolveMarkerWidth(points)
+            const task = resolveTask(value)
+            const isPrefill = isNumber(annotationIndex) && isNumber(predictionIndex)
+            const isPrediction = isNumber(predictionIndex) && !isNumber(annotationIndex)
 
-          return (
-            <g
-              key={index}
-              ref={markerRefs[index]}
-              onMouseOver={_onMouseOver(index)}
-              onMouseLeave={_onMouseLeave}
-              onClick={_onMarkerClick(index)}
-            >
-              <Styled.Polygon
-                data-testid="__markers__"
-                points={resolvePoints(zone)}
-                stroke={task.color}
-                fill={task.color}
-                $isHovered={isHovered}
-                index={annotationIndex || predictionIndex}
-                $isSelected={isSelected}
-                $isPrediction={isPrediction}
-                $isPrefill={isPrefill}
-              />
-              {resolveBackgroundPredictionPattern(annotationIndex, predictionIndex, isSelected, isHovered, task.color)}
-              {(isSelected || isHovered) && (
-                <Styled.MarkerHeaderContainer
-                  x={textPosition.x}
-                  y={textPosition.y}
-                  width={markerWidth}
+            return (
+              <g
+                key={index}
+                ref={markerRefs[index]}
+                onMouseOver={_onMouseOver(index)}
+                onMouseLeave={_onMouseLeave}
+                onClick={_onMarkerClick(index)}
+              >
+                <Styled.Polygon
+                  data-testid="__markers__"
+                  points={resolvePoints(zone)}
+                  stroke={task.color}
+                  fill={task.color}
                   $isHovered={isHovered}
+                  index={annotationIndex || predictionIndex}
                   $isSelected={isSelected}
-                >
-                  {!textPosition.isRect ? (
-                    <Styled.MarkerLabelContainer>
-                      {resolveMarkerHeader(
+                  $isPrediction={isPrediction}
+                  $isPrefill={isPrefill}
+                />
+                {resolveBackgroundPredictionPattern(
+                  annotationIndex,
+                  predictionIndex,
+                  isSelected,
+                  isHovered,
+                  task.color
+                )}
+                {(isSelected || isHovered) && (
+                  <Styled.MarkerHeaderContainer
+                    x={textPosition.x}
+                    y={textPosition.y}
+                    width={markerWidth}
+                    $isHovered={isHovered}
+                    $isSelected={isSelected}
+                  >
+                    {!textPosition.isRect ? (
+                      <Styled.MarkerLabelContainer>
+                        {resolveMarkerHeader(
+                          task.label,
+                          task.color,
+                          textPosition.isRect,
+                          isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex,
+                          isPrediction && showPredictions,
+                          isPrefill
+                        )}
+                      </Styled.MarkerLabelContainer>
+                    ) : (
+                      resolveMarkerHeader(
                         task.label,
                         task.color,
                         textPosition.isRect,
                         isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex,
                         isPrediction && showPredictions,
                         isPrefill
-                      )}
-                    </Styled.MarkerLabelContainer>
-                  ) : (
-                    resolveMarkerHeader(
-                      task.label,
-                      task.color,
-                      textPosition.isRect,
-                      isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex,
-                      isPrediction && showPredictions,
-                      isPrefill
-                    )
-                  )}
-                </Styled.MarkerHeaderContainer>
-              )}
-              {!isHovered && !isSelected && (isPrediction || isPrefill) && (
-                <Styled.PredictionIconContainer x={textPosition.x} y={textPosition.y} width={markerWidth}>
-                  <Styled.PredictionIcon color={task.color} />
-                </Styled.PredictionIconContainer>
-              )}
+                      )
+                    )}
+                  </Styled.MarkerHeaderContainer>
+                )}
+                {!isHovered && !isSelected && (isPrediction || isPrefill) && (
+                  <Styled.PredictionIconContainer x={textPosition.x} y={textPosition.y} width={markerWidth}>
+                    <Styled.PredictionIcon color={task.color} />
+                  </Styled.PredictionIconContainer>
+                )}
+              </g>
+            )
+          })}
+          {draggedCoords.length > 0 && (
+            <g>
+              <Styled.DraggedPolygon
+                fill={resolveTask(selectedSection.value).color}
+                points={resolvePoints(drawingPoints)}
+              />
             </g>
-          )
-        })}
-        {draggedCoords.length > 0 && (
-          <g>
-            <Styled.DraggedPolygon
-              fill={resolveTask(selectedSection.value).color}
-              points={resolvePoints(drawingPoints)}
-            />
-          </g>
-        )}
-      </Styled.Svg>
-      {!isImageLoaded && <Loader />}
+          )}
+        </Styled.Svg>
+        {!isImageLoaded && <Loader />}
+      </Styled.ImageWrapper>
     </Styled.Root>
   )
 }
