@@ -2,7 +2,7 @@ export default {
   development: true,
   encryptSecretKey: process.env.ENCRYPTION_SECRET_KEY || 'aSecretKey',
   cors: {
-    origin: 'http://localhost:3000',
+    origin: process.env.ANNOTTO_FRONT_URL || 'http://localhost:3000',
   },
   keycloak: {
     admin: {
