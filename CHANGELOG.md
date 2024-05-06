@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/lajavaness/annotto/compare/v1.5.0...v1.6.0) (2024-05-06)
+
+
+### Features
+
+* **front:** Zoom on images ([#50](https://github.com/lajavaness/annotto/issues/50)) ([37d36a6](https://github.com/lajavaness/annotto/commit/37d36a6ecdca994de9d7718af940cb21505eb843))
+
 # [1.5.0](https://github.com/lajavaness/annotto/compare/v1.4.9...v1.5.0) (2024-05-03)
 
 
