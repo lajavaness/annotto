@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/lajavaness/annotto/compare/v1.6.0...v1.6.1) (2024-05-06)
+
+
+### Bug Fixes
+
+* Enable CORS config from env for dev mode ([#52](https://github.com/lajavaness/annotto/issues/52)) ([d21518e](https://github.com/lajavaness/annotto/commit/d21518ebb9db9cec62f6a03c3fc3bb2e40b4611a))
+
 # [1.6.0](https://github.com/lajavaness/annotto/compare/v1.5.0...v1.6.0) (2024-05-06)
 
 
