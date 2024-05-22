@@ -60,16 +60,6 @@ export default {
         max: true,
       },
     },
-    user: {
-      orderBy: ['lastName'],
-      fields: {
-        idUser: { key: '_id', type: 'number' },
-        firstName: { key: 'firstName', type: 'text' },
-        lastName: { key: 'lastName', type: 'text' },
-        email: { key: 'email', type: 'text' },
-      },
-      limit: LIMIT,
-    },
     client: {
       orderBy: ['name'],
       fields: {
@@ -105,15 +95,6 @@ export default {
         name: true,
         updatedAt: true,
       },
-    },
-    batch: {
-      orderBy: ['name'],
-      fields: {
-        name: { key: 'name', type: 'string' },
-        description: { key: 'description', type: 'text' },
-        projectId: { key: 'project', type: 'string' },
-      },
-      limit: LIMIT,
     },
     item: {
       orderBy: ['updatedAt'],
