@@ -1,8 +1,9 @@
 import express from 'express'
-import queryBuilder, { Paginate, ParamsPayload } from '../utils/query-builder'
+import queryBuilder, { Paginate, CriteriaPayload } from '../utils/query-builder'
 import CommentModel, { Comment } from '../db/models/comments'
 import { saveComment } from '../core/comments'
-import config from '../../config'
+import { setParams } from '../utils/paginate'
+import type { ParamsPayload } from '../utils/paginate'
 
 type CreatePayload = {
   comment: string
@@ -10,16 +11,21 @@ type CreatePayload = {
   batch?: string
 }
 
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
-
+const { paginate, setQuery } = queryBuilder('mongo')
 const index = async (
-  req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
+  req: express.Request<{ projectId: string }, {}, {}, CriteriaPayload>,
   res: express.Response<Paginate<Comment>>,
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.params }, config.search.comment)
-    const params = setParams(req.query, config.search.comment)
+    const criteria: Record<string, unknown> = {
+      comment: Array.isArray(req.query.comment) ? { $in: req.query.comment } : req.query.comment,
+      item: Array.isArray(req.query.itemId) ? { $in: req.query.item } : req.query.item,
+      batch: Array.isArray(req.query.batchId) ? { $in: req.query.itemId } : req.query.itemId,
+      user: Array.isArray(req.query.userId) ? { $in: req.query.userId } : { $in: req.query.userId },
+      createdAt: Array.isArray(req.query.createdAt) ? { $in: req.query.createdAt } : { $in: req.query.createdAt },
+    }
+    const params = setParams(<ParamsPayload>req.query, { limit: 100, orderBy: ['-createdAt'] })
 
     const [total, data] = await Promise.all([
       CommentModel.countDocuments(criteria),
