@@ -7,7 +7,6 @@ import { pipeline } from 'stream/promises'
 import { InternalEntity, InternalRelation } from '../types'
 import { generateError } from '../utils/error'
 import { logger } from '../utils/logger'
-import queryBuilder, { CriteriaPayload, Paginate, ParamsPayload } from '../utils/query-builder'
 import AnnotationModel, { Annotation } from '../db/models/annotations'
 import FilterModel from '../db/models/filters'
 import ItemModel, { Item, ItemDocument, ItemS3Document } from '../db/models/items'
@@ -16,7 +15,7 @@ import { handleItemStream, handleItemPredictionStream } from '../core/file-uploa
 import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/items'
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
-import config from '../../config'
+import { setParams, paginate, Paginate, CriteriaPayload, ParamsPayload } from '../utils/paginate'
 
 type NextItemQuery = {
   filterId: string
@@ -49,15 +48,27 @@ type PredictionUploadResponse = {
   inserted: number
 }
 
-const { paginate, setCriteria, setParams } = queryBuilder('mongo')
-
 const _indexByFilter = async (
-  req: express.Request<{}, {}, {}, ParamsPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{}, {}, {}, CriteriaPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
   try {
-    const params = setParams(req.query, config.search.item)
+    const params = setParams(<ParamsPayload>req.query, {
+      orderBy: ['updatedAt'],
+      limit: 100,
+      select: {
+        tags: true,
+        commentCount: true,
+        logCount: true,
+        lastAnnotator: true,
+        annotationValues: true,
+        annotatedAt: true,
+        velocity: true,
+        body: true,
+        annotated: true,
+      },
+    })
 
     const [total, data] = await Promise.all([
       ItemModel.countDocuments(req.filterCriteria || {}),
@@ -92,8 +103,45 @@ const index = async (
         return
       }
     }
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.item)
-    const params = setParams(req.query, config.search.item)
+    const criteria = {
+      project: Array.isArray(req.query.projectId) ? { $in: req.query.projectId } : req.query.projectId,
+      status: Array.isArray(req.query.status) ? { $in: req.query.status } : req.query.status,
+      _id: Array.isArray(req.query.itemId) ? { $in: req.query.itemId } : req.query.itemId,
+      type: Array.isArray(req.query.type) ? { $in: req.query.type } : req.query.type,
+      /* eslint-disable no-nested-ternary */
+      tags: Array.isArray(req.query.tags)
+        ? { $in: req.query.tags }
+        : typeof req.query.tags !== 'undefined'
+        ? { $in: [req.query.tags] }
+        : undefined,
+      body: Array.isArray(req.query.body)
+        ? { $in: req.query.body }
+        : typeof req.query.body === 'string'
+        ? new RegExp(req.query.body.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
+        : undefined,
+      annotated: Array.isArray(req.query.annotated) ? { $in: req.query.annotated } : req.query.annotated,
+      uuid: Array.isArray(req.query.uuid) ? { $in: req.query.uuid } : req.query.uuid,
+      compositeUuid: Array.isArray(req.query.compositeUuid)
+        ? { $in: req.query.compositeUuid }
+        : req.query.compositeUuid,
+      updatedAt: Array.isArray(req.query.updatedAt) ? { $in: req.query.updatedAt } : req.query.updatedAt,
+    }
+    //    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.item)
+    const params = setParams(<ParamsPayload>req.query, {
+      limit: 100,
+      orderBy: ['updatedAt'],
+      select: {
+        tags: true,
+        commentCount: true,
+        logCount: true,
+        lastAnnotator: true,
+        annotationValues: true,
+        annotatedAt: true,
+        velocity: true,
+        body: true,
+        annotated: true,
+      },
+    })
 
     const data = await browse(criteria, params)
 
