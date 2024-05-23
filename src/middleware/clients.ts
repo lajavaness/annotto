@@ -4,11 +4,7 @@ import { generateError } from '../utils/error'
 import queryBuilder, { Paginate } from '../utils/query-builder'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
 import config from '../../config'
-
-type IndexQuery = {
-  query?: string
-  limit?: string
-}
+import type { CriteriaPayload } from '../utils/query-builder'
 
 type CreatePayload = {
   name: string
@@ -22,7 +18,7 @@ type UpdatePayload = {
   isActive?: boolean
 }
 
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
+const { paginate, setParams, setQuery } = queryBuilder('mongo')
 
 const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
   const q = ClientModel.findById(clientId)
@@ -38,12 +34,22 @@ const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
 }
 
 const index = async (
-  req: express.Request<{}, {}, {}, IndexQuery>,
+  req: express.Request<{}, {}, {}, CriteriaPayload>,
   res: express.Response<Paginate<Client>>,
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query }, config.search.client)
+    const criteria: Record<string, unknown> = {
+      _id: Array.isArray(req.query.clientId) ? { $in: req.query.clientId } : req.query.clientId,
+      name: Array.isArray(req.query.name) ? { $in: req.query.name } : req.query.name,
+      isActive: Array.isArray(req.query.isActive) ? { $in: req.query.isActive } : req.query.name,
+      /* eslint-disable no-nested-ternary */
+      description: Array.isArray(req.query.description)
+        ? { $in: req.query.description }
+        : typeof req.query.description === 'string'
+        ? new RegExp(req.query.description.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
+        : undefined,
+    }
     const params = setParams(req.query, config.search.client)
 
     const [total, data] = await Promise.all([
