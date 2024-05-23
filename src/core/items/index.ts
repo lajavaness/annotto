@@ -8,11 +8,12 @@ import { logTags } from '../logs'
 import { updateProjectStats } from '../projects'
 import { updateClassificationStats } from '../tasks'
 import S3Client from '../s3-client'
-import { setQuery, QueryPayload } from '../../utils/paginate'
+import type { Params } from '../../utils/query'
+import { applyParamsToQuery } from '../../utils/query'
 
-export const browse = (criteria: Record<string, unknown> = {}, params: QueryPayload = {}) => {
+export const browse = (criteria: Record<string, unknown> = {}, params: Params = { sort: {} }) => {
   const q = ItemModel.find(criteria)
-  setQuery(q, params)
+  applyParamsToQuery(q, params)
 
   return q.lean()
 }

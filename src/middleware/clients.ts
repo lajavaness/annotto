@@ -2,8 +2,10 @@ import express from 'express'
 import _ from 'lodash'
 import { generateError } from '../utils/error'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
-import type { ParamsPayload } from '../utils/paginate'
-import { setParams, paginate, setQuery, Paginate, CriteriaPayload } from '../utils/paginate'
+import { applyParamsToQuery, setParams } from '../utils/query'
+import type { ParamsPayload } from '../utils/query'
+
+import { Paginate, paginate } from '../utils/paginate'
 
 type CreatePayload = {
   name: string
@@ -31,7 +33,7 @@ const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
 }
 
 const index = async (
-  req: express.Request<{}, {}, {}, CriteriaPayload>,
+  req: express.Request<{}, {}, {}, ParamsPayload>,
   res: express.Response<Paginate<Client>>,
   next: express.NextFunction
 ) => {
@@ -51,7 +53,7 @@ const index = async (
 
     const [total, data] = await Promise.all([
       ClientModel.countDocuments(criteria),
-      setQuery(ClientModel.find(criteria), params).lean(),
+      applyParamsToQuery(ClientModel.find(criteria), params).lean(),
     ])
 
     res.status(200).json(paginate({ ...params, total }, data))

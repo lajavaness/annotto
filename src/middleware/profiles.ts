@@ -1,37 +1,23 @@
 import express from 'express'
 import { generateError } from '../utils/error'
 import ProfileModel, { Profile } from '../db/models/profiles'
-import {
-  paginate,
-  setParams,
-  setQuery,
-  Paginate,
-  ParamsDefaults,
-  ParamsPayload,
-  CriteriaPayload,
-} from '../utils/paginate'
+import { paginate } from '../utils/paginate'
+import type { Paginate } from '../utils/paginate'
+import { setParams, applyParamsToQuery } from '../utils/query'
+import type { ParamsDefaults, ParamsPayload } from '../utils/query'
 
 type UpdatePayload = { role: 'admin' | 'user' | 'dataScientist' }
 
 const index = async (
-  req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload>,
+  req: express.Request<ParamsPayload, {}, {}, ParamsPayload>,
   res: express.Response<Paginate<Profile>>,
   next: express.NextFunction
 ) => {
   try {
-    // Incohérent
     const queryParams = {
       ...req.query,
       ...req.params,
     }
-    /*
-        comment: { key: 'comment', type: 'string' },
-        itemId: { key: 'item', type: 'string' },
-        projectId: { key: 'project', type: 'string' },
-        batchId: { key: 'batch', type: 'string' },
-        userId: { key: 'user', type: 'string' },
-        createdAt: { key: 'createdAt', type: 'string' },
-    */
     const criteria: Record<string, unknown> = {
       role: Array.isArray(queryParams.role) ? { $in: queryParams.role } : queryParams.role,
       createdAt: Array.isArray(queryParams.createdAt) ? { $in: queryParams.createdAt } : queryParams.createdAt,
@@ -46,7 +32,7 @@ const index = async (
 
     const [total, data] = await Promise.all([
       ProfileModel.countDocuments(criteria),
-      setQuery(ProfileModel.find(criteria), params),
+      applyParamsToQuery(ProfileModel.find(criteria), params),
     ])
 
     res.status(200).json(paginate({ ...params, total }, data))

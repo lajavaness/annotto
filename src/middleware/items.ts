@@ -15,7 +15,9 @@ import { handleItemStream, handleItemPredictionStream } from '../core/file-uploa
 import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/items'
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
-import { setParams, paginate, Paginate, CriteriaPayload, ParamsPayload } from '../utils/paginate'
+import { paginate, Paginate } from '../utils/paginate'
+import { setParams } from '../utils/query'
+import type { ParamsPayload } from '../utils/query'
 
 type NextItemQuery = {
   filterId: string
@@ -49,7 +51,7 @@ type PredictionUploadResponse = {
 }
 
 const _indexByFilter = async (
-  req: express.Request<{}, {}, {}, CriteriaPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{}, {}, {}, ParamsPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
@@ -82,7 +84,7 @@ const _indexByFilter = async (
 }
 
 const index = async (
-  req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{}, {}, {}, ParamsPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {

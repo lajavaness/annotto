@@ -18,7 +18,9 @@ import downloadCore from '../core/projects/download'
 import { importAllFromFiles } from '../core/projects/import'
 import tasks from '../core/tasks'
 import config from '../../config'
-import { ParamsPayload, paginate, setParams, setQuery, CriteriaPayload, Paginate } from '../utils/paginate'
+import { paginate, Paginate } from '../utils/paginate'
+import { applyParamsToQuery, setParams } from '../utils/query'
+import type { ParamsPayload } from '../utils/query'
 
 type ProjectPayload = {
   client?: string
@@ -79,7 +81,7 @@ const {
   Returns DEMO projects and active projects with stats, filtered for non admin users by project config
 */
 const index = async (
-  req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload>,
+  req: express.Request<ParamsPayload, {}, {}, ParamsPayload>,
   res: express.Response<Paginate<Project>>,
   next: express.NextFunction
 ) => {
@@ -110,7 +112,7 @@ const index = async (
   }
   logger.debug(JSON.stringify(criteria))
 
-  const params = setParams(<ParamsPayload>req.query, {
+  const params = setParams(req.query, {
     orderBy: ['name'],
     limit: 100,
     select: {
@@ -132,7 +134,7 @@ const index = async (
   try {
     const [total, projects] = await Promise.all([
       ProjectModel.countDocuments(criteria),
-      setQuery(ProjectModel.find(criteria), params),
+      applyParamsToQuery(ProjectModel.find(criteria), params),
     ])
 
     res.status(200).json(paginate({ ...params, total }, projects))
@@ -363,10 +365,14 @@ const stats = async (
   try {
     switch (req.params.view) {
       case 'tasks':
-        await classificationMiddleware.index(req, res, next)
+        await classificationMiddleware.index(
+          <express.Request<{ projectId: string }, {}, {}, ParamsPayload>>req,
+          res,
+          next
+        )
         return
       case 'items':
-        await itemMiddleware.index(req, res, next)
+        await itemMiddleware.index(<express.Request<{ projectId: string }, {}, {}, ParamsPayload>>req, res, next)
         return
       default:
         next('route')

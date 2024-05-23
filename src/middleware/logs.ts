@@ -3,15 +3,18 @@ import mongoose from 'mongoose'
 import AnnotationModel from '../db/models/annotations'
 import LogModel, { Log } from '../db/models/logs'
 import TaskModel from '../db/models/tasks'
-import { CriteriaPayload, ParamsPayload, Paginate, paginate, setParams } from '../utils/paginate'
+import { paginate } from '../utils/paginate'
+import type { Paginate } from '../utils/paginate'
+import type { ParamsPayload } from '../utils/query'
+import { setParams } from '../utils/query'
 
 const index = async (
-  req: express.Request<{ projectId: string }, {}, {}, CriteriaPayload>,
+  req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
   res: express.Response<Paginate<Log>>,
   next: express.NextFunction
 ) => {
   try {
-    const queryParams: CriteriaPayload = {
+    const queryParams: ParamsPayload = {
       ...req.query,
       ...req.params,
     }
@@ -57,7 +60,7 @@ const index = async (
     if (params.sort) {
       const sort: { [field: string]: 1 | -1 } = {}
       Object.keys(params.sort).forEach((key) => {
-        if (params.sort[key] === 'desc') sort[key] = -1
+        if (params?.sort[key] === 'desc') sort[key] = -1
         else if (params.sort[key] === 'asc') sort[key] = 1
       })
 

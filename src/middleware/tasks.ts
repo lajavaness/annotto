@@ -1,15 +1,18 @@
 import express from 'express'
 import { Task } from '../db/models/tasks'
 import { browse } from '../core/tasks'
-import { paginate, setParams, CriteriaPayload, ParamsPayload, Paginate } from '../utils/paginate'
+import { paginate } from '../utils/paginate'
+import type { Paginate } from '../utils/paginate'
+import { setParams } from '../utils/query'
+import type { ParamsPayload } from '../utils/query'
 
 const index = async (
-  req: express.Request<{ projectId: string }, {}, {}, CriteriaPayload>,
+  req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
   res: express.Response<Paginate<Task>>,
   next: express.NextFunction
 ) => {
   try {
-    const queryParams: { projectId: string } & CriteriaPayload = { ...req.query, ...req.params }
+    const queryParams: { projectId: string } & ParamsPayload = { ...req.query, ...req.params }
     const criteria: Record<string, unknown> = {
       _id: Array.isArray(queryParams.classificationId)
         ? { $in: queryParams.classificationId }
