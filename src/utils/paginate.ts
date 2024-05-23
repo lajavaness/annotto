@@ -1,8 +1,11 @@
+import mongoose from 'mongoose'
+
 export type PaginatePayload = {
   limit?: number
   index?: number
   total: number
 }
+export type CriteriaPayload = Record<string, unknown>
 
 export type Paginate<T> = {
   count: number
@@ -38,6 +41,8 @@ export type Params = {
   skip?: number
   limit?: number
 }
+
+export type QueryPayload = Partial<Params>
 
 const _getLimit = (argLimit?: number | string, defaultLimit?: number): number | undefined => {
   if (typeof argLimit === 'string') return parseInt(argLimit)
@@ -105,7 +110,18 @@ export const paginate = <T>(params: PaginatePayload, data: T[]): Paginate<T> => 
   }
 }
 
+export const setQuery = <T>(query: T, params: QueryPayload): T => {
+  if (!(query instanceof mongoose.Query)) return query
+
+  if (params.sort) query.sort(params.sort)
+  if (params.limit) query.limit(params.limit)
+  if (params.skip) query.skip(params.skip)
+  if (params.select) query.select(params.select)
+  return query
+}
+
 export default {
   setParams,
   paginate,
+  setQuery,
 }
