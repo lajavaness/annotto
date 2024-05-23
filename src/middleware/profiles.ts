@@ -1,12 +1,17 @@
 import express from 'express'
 import { generateError } from '../utils/error'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import ProfileModel, { Profile } from '../db/models/profiles'
-import config from '../../config'
+import {
+  paginate,
+  setParams,
+  setQuery,
+  Paginate,
+  ParamsDefaults,
+  ParamsPayload,
+  CriteriaPayload,
+} from '../utils/paginate'
 
 type UpdatePayload = { role: 'admin' | 'user' | 'dataScientist' }
-
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
 
 const index = async (
   req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload>,
@@ -14,8 +19,30 @@ const index = async (
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.comment)
-    const params = setParams(req.query, config.search.comment)
+    // Incohérent
+    const queryParams = {
+      ...req.query,
+      ...req.params,
+    }
+    /*
+        comment: { key: 'comment', type: 'string' },
+        itemId: { key: 'item', type: 'string' },
+        projectId: { key: 'project', type: 'string' },
+        batchId: { key: 'batch', type: 'string' },
+        userId: { key: 'user', type: 'string' },
+        createdAt: { key: 'createdAt', type: 'string' },
+    */
+    const criteria: Record<string, unknown> = {
+      role: Array.isArray(queryParams.role) ? { $in: queryParams.role } : queryParams.role,
+      createdAt: Array.isArray(queryParams.createdAt) ? { $in: queryParams.createdAt } : queryParams.createdAt,
+    }
+    const params = setParams(
+      <ParamsPayload>req.query,
+      <ParamsDefaults>{
+        orderBy: ['-createdAt'],
+        limit: 100,
+      }
+    )
 
     const [total, data] = await Promise.all([
       ProfileModel.countDocuments(criteria),

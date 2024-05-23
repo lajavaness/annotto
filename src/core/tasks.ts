@@ -1,12 +1,10 @@
 import mongoose from 'mongoose'
 import { TaskPayload } from '../types'
 import { generateError } from '../utils/error'
-import queryBuilder, { QueryPayload } from '../utils/query-builder'
 import TaskModel, { Task } from '../db/models/tasks'
 import ProjectModel, { Project } from '../db/models/projects'
 import { Annotation } from '../db/models/annotations'
-
-const { setQuery } = queryBuilder('mongo')
+import { setQuery, QueryPayload } from '../utils/paginate'
 
 export const browse = (criteria: Record<string, unknown> = {}, params: QueryPayload = {}) => {
   const q = TaskModel.find(criteria)

@@ -1,12 +1,9 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import AnnotationModel from '../db/models/annotations'
 import LogModel, { Log } from '../db/models/logs'
 import TaskModel from '../db/models/tasks'
-import config from '../../config'
-
-const { paginate, setCriteria, setParams } = queryBuilder('mongo')
+import { CriteriaPayload, ParamsPayload, Paginate, paginate, setParams } from '../utils/paginate'
 
 const index = async (
   req: express.Request<{ projectId: string }, {}, {}, CriteriaPayload>,
@@ -14,8 +11,31 @@ const index = async (
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.log)
-    const params = setParams(req.query, config.search.log)
+    const queryParams: CriteriaPayload = {
+      ...req.query,
+      ...req.params,
+    }
+    const criteria: Record<string, unknown> = {
+      comment: Array.isArray(queryParams.comment) ? { $in: queryParams.comment } : queryParams.comment,
+      commentType: Array.isArray(queryParams.commentType) ? { $in: queryParams.commentType } : queryParams.commentType,
+      projectType: Array.isArray(queryParams.projectType) ? { $in: queryParams.projectType } : queryParams.projectType,
+      missionType: Array.isArray(queryParams.missionType) ? { $in: queryParams.missionType } : queryParams.missionType,
+      createdAt: Array.isArray(queryParams.createdAt) ? { $in: queryParams.createdAt } : queryParams.createdAt,
+      item: Array.isArray(queryParams.itemId) ? { $in: queryParams.itemId } : queryParams.itemId,
+      project: Array.isArray(queryParams.projectId) ? { $in: queryParams.projectId } : queryParams.projectId,
+      batch: Array.isArray(queryParams.batchId) ? { $in: queryParams.batchId } : queryParams.batchId,
+      user: Array.isArray(queryParams.userId) ? { $in: queryParams.userId } : queryParams.userId,
+      /* eslint-disable no-nested-ternary */
+      type: Array.isArray(queryParams.type)
+        ? { $in: queryParams.type }
+        : typeof queryParams.type === 'string'
+        ? new RegExp(queryParams.type.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
+        : undefined,
+    }
+    const params = setParams(<ParamsPayload>req.query, {
+      orderBy: ['-createdAt'],
+      limit: 100,
+    })
 
     Object.keys(criteria)
       .filter((key) => typeof criteria[key] === 'string' && mongoose.Types.ObjectId.isValid(<string>criteria[key]))

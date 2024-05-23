@@ -48,6 +48,7 @@ const _getLimit = (argLimit?: number | string, defaultLimit?: number): number | 
   if (typeof argLimit === 'string') return parseInt(argLimit)
   if (typeof argLimit === 'number') return Math.floor(argLimit)
   if (typeof defaultLimit === 'number') return Math.floor(defaultLimit)
+  return undefined
 }
 
 const _getIndex = (argIndex?: string, limit?: number): number | undefined => {
@@ -59,6 +60,7 @@ const _getSkip = (index?: number, limit?: number): number | undefined => {
   if (index && limit) {
     return index * limit
   }
+  return undefined
 }
 
 const _sortField = (args: string) => {

@@ -1,10 +1,7 @@
 import express from 'express'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import { Task } from '../db/models/tasks'
 import { browse } from '../core/tasks'
-import config from '../../config'
-
-const { paginate, setCriteria, setParams } = queryBuilder('mongo')
+import { paginate, setParams, CriteriaPayload, ParamsPayload, Paginate } from '../utils/paginate'
 
 const index = async (
   req: express.Request<{ projectId: string }, {}, {}, CriteriaPayload>,
@@ -12,8 +9,27 @@ const index = async (
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.tasks)
-    const params = setParams(req.query, config.search.tasks)
+    const queryParams: { projectId: string } & CriteriaPayload = { ...req.query, ...req.params }
+    const criteria: Record<string, unknown> = {
+      _id: Array.isArray(queryParams.classificationId)
+        ? { $in: queryParams.classificationId }
+        : queryParams.classificationId,
+      project: Array.isArray(queryParams.projectId) ? { $in: queryParams.projectId } : queryParams.projectId,
+    }
+    const params = setParams(<ParamsPayload>req.query, {
+      orderBy: ['label'],
+      limit: 100,
+      select: {
+        annotationCount: true,
+        annotationPourcent: true,
+        category: true,
+        value: true,
+        type: true,
+        label: true,
+        min: true,
+        max: true,
+      },
+    })
 
     const data = await browse(criteria, params)
 

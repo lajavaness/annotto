@@ -6,7 +6,6 @@ import tmp from 'tmp'
 import { S3, TaskPayload, User } from '../types'
 import { AnnottoError, generateError } from '../utils/error'
 import { logger } from '../utils/logger'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import { Item } from '../db/models/items'
 import ProjectModel, { Project, EntitiesRelationsGroup } from '../db/models/projects'
 import { Task } from '../db/models/tasks'
@@ -19,6 +18,7 @@ import downloadCore from '../core/projects/download'
 import { importAllFromFiles } from '../core/projects/import'
 import tasks from '../core/tasks'
 import config from '../../config'
+import { ParamsPayload, paginate, setParams, setQuery, CriteriaPayload, Paginate } from '../utils/paginate'
 
 type ProjectPayload = {
   client?: string
@@ -74,7 +74,6 @@ type DownloadQuery = {
 const {
   fileUpload: { maxFileSize },
 } = config
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
 
 /*
   Returns DEMO projects and active projects with stats, filtered for non admin users by project config
@@ -84,14 +83,23 @@ const index = async (
   res: express.Response<Paginate<Project>>,
   next: express.NextFunction
 ) => {
-  const criteria = setCriteria(
-    {
-      ...req.query,
-      ...req.params,
-      active: true,
-    },
-    config.search.project
-  )
+  const queryParams = { ...req.query, ...req.params }
+  const criteria: Record<string, unknown> = {
+    _id: Array.isArray(queryParams.projectId) ? { $in: queryParams.projectId } : queryParams.projectId,
+    client: Array.isArray(queryParams.clientId) ? { $in: queryParams.clientId } : queryParams.clientId,
+    /* eslint-disable no-nested-ternary */
+    name: Array.isArray(req.query.name)
+      ? { $in: req.query.name }
+      : typeof req.query.name === 'string'
+      ? new RegExp(req.query.name.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
+      : undefined,
+    description: Array.isArray(req.query.description)
+      ? { $in: req.query.description }
+      : typeof req.query.description === 'string'
+      ? new RegExp(req.query.description.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
+      : undefined,
+    active: true,
+  }
 
   if (req._user && req._user.profile && req._user.profile.role !== 'admin') {
     criteria.$or = [
@@ -102,7 +110,25 @@ const index = async (
   }
   logger.debug(JSON.stringify(criteria))
 
-  const params = setParams(req.query, config.search.project)
+  const params = setParams(<ParamsPayload>req.query, {
+    orderBy: ['name'],
+    limit: 100,
+    select: {
+      client: true,
+      admins: true,
+      users: true,
+      dataScientists: true,
+      itemCount: true,
+      commentCount: true,
+      deadline: true,
+      progress: true,
+      velocity: true,
+      remainingWork: true,
+      lastAnnotationTime: true,
+      name: true,
+      updatedAt: true,
+    },
+  })
   try {
     const [total, projects] = await Promise.all([
       ProjectModel.countDocuments(criteria),
