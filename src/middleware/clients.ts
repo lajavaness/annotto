@@ -1,10 +1,10 @@
 import express from 'express'
 import _ from 'lodash'
 import { generateError } from '../utils/error'
-import queryBuilder, { Paginate } from '../utils/query-builder'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
-import config from '../../config'
 import type { CriteriaPayload } from '../utils/query-builder'
+import type { ParamsPayload } from '../utils/paginate'
+import { setParams, paginate, setQuery, Paginate } from '../utils/paginate'
 
 type CreatePayload = {
   name: string
@@ -17,8 +17,6 @@ type UpdatePayload = {
   description?: string
   isActive?: boolean
 }
-
-const { paginate, setParams, setQuery } = queryBuilder('mongo')
 
 const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
   const q = ClientModel.findById(clientId)
@@ -50,7 +48,7 @@ const index = async (
         ? new RegExp(req.query.description.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
         : undefined,
     }
-    const params = setParams(req.query, config.search.client)
+    const params = setParams(<ParamsPayload>req.query, { limit: 100, orderBy: ['name'] })
 
     const [total, data] = await Promise.all([
       ClientModel.countDocuments(criteria),
