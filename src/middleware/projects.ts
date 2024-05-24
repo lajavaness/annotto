@@ -20,14 +20,9 @@ import tasks from '../core/tasks'
 import config from '../../config'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import {
-  applyParamsToQuery,
-  setParams,
-  stringToRegExpOrUndefined,
-  singleValueOrArrayToMongooseSelector,
-  cleanRecord,
-} from '../utils/query'
+import { applyParamsToQuery, setParams, cleanRecord } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
+import { mongooseEq, mongooseRegexp } from '../utils/mongoose'
 
 type ProjectPayload = {
   client?: string
@@ -94,10 +89,10 @@ const index = async (
 ) => {
   const queryParams = { ...req.query, ...req.params }
   const criteria = cleanRecord({
-    _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectId),
-    client: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.clientId),
-    name: stringToRegExpOrUndefined(<string | undefined>queryParams.name),
-    description: stringToRegExpOrUndefined(<string | undefined>queryParams.description),
+    _id: mongooseEq(queryParams.projectId),
+    client: mongooseEq(queryParams.clientId),
+    name: mongooseRegexp(queryParams.name),
+    description: mongooseRegexp(queryParams.description),
     active: true,
   })
   if (req._user && req._user.profile && req._user.profile.role !== 'admin') {

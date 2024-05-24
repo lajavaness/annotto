@@ -3,8 +3,9 @@ import { generateError } from '../utils/error'
 import ProfileModel, { Profile } from '../db/models/profiles'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import { setParams, cleanRecord, applyParamsToQuery, singleValueOrArrayToMongooseSelector } from '../utils/query'
+import { setParams, cleanRecord, applyParamsToQuery } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
+import { mongooseEq } from '../utils/mongoose'
 
 type UpdatePayload = { role: 'admin' | 'user' | 'dataScientist' }
 
@@ -19,8 +20,8 @@ const index = async (
       ...req.params,
     }
     const criteria = cleanRecord({
-      role: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.role),
-      createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.createdAt),
+      role: mongooseEq(queryParams.role),
+      createdAt: mongooseEq(queryParams.createdAt),
     })
     const params = setParams(req.query, {
       orderBy: ['-createdAt'],

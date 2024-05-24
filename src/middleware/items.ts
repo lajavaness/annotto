@@ -16,14 +16,9 @@ import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/item
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
 import { paginate, Paginate } from '../utils/paginate'
-import {
-  setParams,
-  cleanRecord,
-  singleValueOrArrayToMongooseSelector,
-  stringToRegExpOrUndefined,
-  valueToMongooseArraySelector,
-} from '../utils/query'
+import { setParams, cleanRecord } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
+import { mongooseEq, mongooseIn, mongooseBool, mongooseRegexp } from '../utils/mongoose'
 
 type NextItemQuery = {
   filterId: string
@@ -112,16 +107,16 @@ const index = async (
       }
     }
     const criteria = cleanRecord({
-      project: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.projectId),
-      status: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.status),
-      _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.itemId),
-      type: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.type),
-      body: stringToRegExpOrUndefined(<string | undefined>req.query.body),
-      tags: valueToMongooseArraySelector(<string | string[] | undefined>req.query.tags),
-      annotated: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.annotated),
-      uuid: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.uuid),
-      compositeUuid: valueToMongooseArraySelector(<string | string[] | undefined>req.query.compositeUuid),
-      updatedAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.updatedAt),
+      project: mongooseEq(req.query.projectId),
+      status: mongooseEq(req.query.status),
+      _id: mongooseEq(req.query.itemId),
+      type: mongooseEq(req.query.type),
+      body: mongooseRegexp(req.query.body),
+      tags: mongooseIn(req.query.tags),
+      annotated: mongooseEq(req.query.annotated),
+      uuid: mongooseEq(req.query.uuid),
+      compositeUuid: mongooseIn(req.query.compositeUuid),
+      updatedAt: mongooseEq(req.query.updatedAt),
     })
     const params = setParams(<ParamsPayload>req.query, {
       limit: 100,

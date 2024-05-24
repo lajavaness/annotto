@@ -2,16 +2,10 @@ import express from 'express'
 import _ from 'lodash'
 import { generateError } from '../utils/error'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
-import {
-  applyParamsToQuery,
-  cleanRecord,
-  setParams,
-  singleValueOrArrayToMongooseSelector,
-  stringToRegExpOrUndefined,
-} from '../utils/query'
+import { applyParamsToQuery, cleanRecord, setParams } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
 import { Paginate, paginate } from '../utils/paginate'
-import { booleanStringToBooleanOrUndefined } from '../utils/lfn'
+import { mongooseBool, mongooseEq, mongooseRegexp } from '../utils/mongoose'
 
 type CreatePayload = {
   name: string
@@ -45,10 +39,10 @@ const index = async (
 ) => {
   try {
     const criteria = cleanRecord({
-      _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.clientId),
-      name: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.name),
-      isActive: booleanStringToBooleanOrUndefined(<string | undefined>req.query.isActive),
-      description: stringToRegExpOrUndefined(<string | undefined>req.query.description),
+      _id: mongooseEq(req.query.clientId),
+      name: mongooseEq(req.query.name),
+      isActive: mongooseBool(req.query.isActive),
+      description: mongooseRegexp(req.query.description),
     })
     const params = setParams(req.query, { limit: 100, orderBy: ['name'] })
 

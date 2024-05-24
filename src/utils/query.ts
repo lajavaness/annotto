@@ -6,7 +6,7 @@ export type ParamsPayload = {
   limit?: string
   sort?: string | string[]
   index?: string
-  [field: string]: number | number[] | string | string[] | undefined
+  [field: string]: string | string[] | undefined
 }
 
 export type ParamsDefaults = {
@@ -104,27 +104,6 @@ export const applyParamsToQuery = <T>(query: T, params: Params): T => {
   if (params.skip) query.skip(params.skip)
   if (params.select) query.select(params.select)
   return query
-}
-
-export const stringToRegExpOrUndefined = (str?: string): RegExp | undefined => {
-  if (typeof str === 'undefined') return undefined
-  return new RegExp(str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
-}
-
-export const singleValueOrArrayToMongooseSelector = (
-  str?: string | string[]
-): undefined | string | { $in: string[] } => {
-  if (typeof str === 'undefined') return undefined
-  if (typeof str === 'string') return str
-  return { $in: str }
-}
-
-export const valueToMongooseArraySelector = (val?: string | string[]): { $in: string[] } | undefined => {
-  if (typeof val === 'undefined') return undefined
-  if (typeof val === 'string') return { $in: [val] }
-  return {
-    $in: val,
-  }
 }
 
 export const cleanRecord = (obj: Record<string, unknown>): Record<string, unknown> => {

@@ -6,7 +6,8 @@ import TaskModel from '../db/models/tasks'
 import type { Paginate } from '../utils/paginate'
 import { paginate } from '../utils/paginate'
 import type { ParamsPayload } from '../utils/query'
-import { setParams, cleanRecord, singleValueOrArrayToMongooseSelector, stringToRegExpOrUndefined } from '../utils/query'
+import { setParams, cleanRecord } from '../utils/query'
+import { mongooseEq, mongooseRegexp } from '../utils/mongoose'
 
 const index = async (
   req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
@@ -19,16 +20,16 @@ const index = async (
       ...req.params,
     }
     const criteria = cleanRecord({
-      comment: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.comment),
-      commentType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.commentType),
-      projectType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectType),
-      missionType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.missionType),
-      createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.createdAt),
-      item: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.itemId),
-      project: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectId),
-      batch: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.batchId),
-      user: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.userId),
-      type: stringToRegExpOrUndefined(<string | undefined>queryParams.type),
+      comment: mongooseEq(queryParams.comment),
+      commentType: mongooseEq(queryParams.commentType),
+      projectType: mongooseEq(queryParams.projectType),
+      missionType: mongooseEq(queryParams.missionType),
+      createdAt: mongooseEq(queryParams.createdAt),
+      item: mongooseEq(queryParams.itemId),
+      project: mongooseEq(queryParams.projectId),
+      batch: mongooseEq(queryParams.batchId),
+      user: mongooseEq(queryParams.userId),
+      type: mongooseRegexp(queryParams.type),
     })
     const params = setParams(<ParamsPayload>req.query, {
       orderBy: ['-createdAt'],

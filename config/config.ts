@@ -1,5 +1,3 @@
-const LIMIT = 100
-
 export default {
   demo: true, // Enable this to create demo projects at startup
   port: process.env.PORT || 5001,

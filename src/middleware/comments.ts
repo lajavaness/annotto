@@ -3,8 +3,9 @@ import CommentModel, { Comment } from '../db/models/comments'
 import { saveComment } from '../core/comments'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import { applyParamsToQuery, setParams, singleValueOrArrayToMongooseSelector, cleanRecord } from '../utils/query'
+import { applyParamsToQuery, setParams, cleanRecord } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
+import { mongooseEq } from '../utils/mongoose'
 
 type CreatePayload = {
   comment: string
@@ -19,11 +20,11 @@ const index = async (
 ) => {
   try {
     const criteria = cleanRecord({
-      comment: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.comment),
-      item: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.itemId),
-      batch: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.batchId),
-      user: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.userId),
-      createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.createdAt),
+      comment: mongooseEq(req.query.comment),
+      item: mongooseEq(req.query.itemId),
+      batch: mongooseEq(req.query.batchId),
+      user: mongooseEq(req.query.userId),
+      createdAt: mongooseEq(req.query.createdAt),
     })
     const params = setParams(<ParamsPayload>req.query, { limit: 100, orderBy: ['-createdAt'] })
 
