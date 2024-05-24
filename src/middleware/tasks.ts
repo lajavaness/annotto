@@ -3,7 +3,7 @@ import { Task } from '../db/models/tasks'
 import { browse } from '../core/tasks'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import { setParams, singleValueOrArrayToMongooseSelector } from '../utils/query'
+import { cleanRecord, setParams, singleValueOrArrayToMongooseSelector } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
 
 const index = async (
@@ -13,10 +13,10 @@ const index = async (
 ) => {
   try {
     const queryParams: { projectId: string } & ParamsPayload = { ...req.query, ...req.params }
-    const criteria: Record<string, unknown> = {
+    const criteria = cleanRecord({
       _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.classificationId),
       project: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectId),
-    }
+    })
     const params = setParams(<ParamsPayload>req.query, {
       orderBy: ['label'],
       limit: 100,

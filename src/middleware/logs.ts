@@ -6,7 +6,7 @@ import TaskModel from '../db/models/tasks'
 import type { Paginate } from '../utils/paginate'
 import { paginate } from '../utils/paginate'
 import type { ParamsPayload } from '../utils/query'
-import { setParams, singleValueOrArrayToMongooseSelector, stringToRegExpOrUndefined } from '../utils/query'
+import { setParams, cleanRecord, singleValueOrArrayToMongooseSelector, stringToRegExpOrUndefined } from '../utils/query'
 
 const index = async (
   req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
@@ -18,7 +18,7 @@ const index = async (
       ...req.query,
       ...req.params,
     }
-    const criteria: Record<string, unknown> = {
+    const criteria = cleanRecord({
       comment: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.comment),
       commentType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.commentType),
       projectType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectType),
@@ -29,7 +29,7 @@ const index = async (
       batch: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.batchId),
       user: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.userId),
       type: stringToRegExpOrUndefined(<string | undefined>queryParams.type),
-    }
+    })
     const params = setParams(<ParamsPayload>req.query, {
       orderBy: ['-createdAt'],
       limit: 100,

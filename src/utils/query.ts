@@ -36,13 +36,14 @@ const _getLimit = (argLimit?: number | string, defaultLimit?: number): number | 
   return undefined
 }
 
-const _getIndex = (argIndex?: string, limit?: number): number | undefined => {
-  if (typeof argIndex === 'string' && typeof limit === 'number') return parseInt(argIndex)
+const _getIndex = (argIndex?: string | number): number | undefined => {
+  if (typeof argIndex === 'string') return parseInt(argIndex)
+  if (typeof argIndex === 'number') return Math.floor(argIndex)
   return undefined
 }
 
 const _getSkip = (index?: number, limit?: number): number | undefined => {
-  if (index && limit) {
+  if (typeof index !== 'undefined' && typeof limit !== 'undefined') {
     return index * limit
   }
   return undefined
@@ -55,7 +56,7 @@ const _sortField = (args: string) => {
   return { [column]: order }
 }
 
-const _getSortObj = (argSort: string | string[] | undefined) => {
+const _getSortObj = (argSort: string | string[] | undefined, _defaultsOrderBy: string[]) => {
   if (Array.isArray(argSort)) {
     argSort.map(_sortField).reduce((prev, current) => {
       return { ...prev, ...current }
@@ -64,7 +65,12 @@ const _getSortObj = (argSort: string | string[] | undefined) => {
   if (typeof argSort === 'string') {
     return _sortField(argSort)
   }
-  return {}
+  return _defaultsOrderBy.map(_sortField).reduce((prev, current) => {
+    return {
+      ...prev,
+      ...current,
+    }
+  }, {})
 }
 
 /**
@@ -76,10 +82,10 @@ const _getSortObj = (argSort: string | string[] | undefined) => {
 export const setParams = (args: ParamsPayload, _defaults: ParamsDefaults): Params => {
   const params: Params = {
     select: { ...(_defaults.select || {}) },
-    sort: _getSortObj(args.sort),
+    sort: _getSortObj(args.sort, _defaults.orderBy),
     limit: _getLimit(args.limit, _defaults.limit),
+    index: _getIndex(args.index),
   }
-  params.index = _getIndex(args.limit, _defaults.limit)
   params.skip = _getSkip(params.index, params.limit)
   return params
 }
@@ -119,6 +125,15 @@ export const valueToMongooseArraySelector = (val?: string | string[]): { $in: st
   return {
     $in: val,
   }
+}
+
+export const cleanRecord = (obj: Record<string, unknown>): Record<string, unknown> => {
+  return Object.entries(obj).reduce((acc, [key, value]) => {
+    if (value !== undefined) {
+      acc[key] = value
+    }
+    return acc
+  }, {} as Record<string, unknown>)
 }
 
 export default {

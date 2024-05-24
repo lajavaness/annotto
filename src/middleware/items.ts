@@ -18,6 +18,7 @@ import { getProjectTags } from '../core/projects'
 import { paginate, Paginate } from '../utils/paginate'
 import {
   setParams,
+  cleanRecord,
   singleValueOrArrayToMongooseSelector,
   stringToRegExpOrUndefined,
   valueToMongooseArraySelector,
@@ -110,19 +111,7 @@ const index = async (
         return
       }
     }
-    /**
-     *  projectId: { key: 'project', type: 'number' },
-     *  status: { key: 'status', type: 'string' },
-     *  itemId: { key: '_id', type: 'number' },
-     *  type: { key: 'type', type: 'string' },
-     *  body: { key: 'body', type: 'text' },
-     *  tags: { key: 'tags', type: 'array' },
-     *  annotated: { key: 'annotated', type: 'boolean' },
-     *  uuid: { key: 'uuid', type: 'string' },
-     *  compositeUuid: { key: 'compositeUuid', type: 'string' },
-     *  updatedAt: { key: 'updatedAt', type: 'string' },
-     */
-    const criteria = {
+    const criteria = cleanRecord({
       project: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.projectId),
       status: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.status),
       _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.itemId),
@@ -133,7 +122,7 @@ const index = async (
       uuid: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.uuid),
       compositeUuid: valueToMongooseArraySelector(<string | string[] | undefined>req.query.compositeUuid),
       updatedAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.updatedAt),
-    }
+    })
     const params = setParams(<ParamsPayload>req.query, {
       limit: 100,
       orderBy: ['updatedAt'],

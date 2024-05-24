@@ -3,8 +3,8 @@ import { generateError } from '../utils/error'
 import ProfileModel, { Profile } from '../db/models/profiles'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import { setParams, applyParamsToQuery, singleValueOrArrayToMongooseSelector } from '../utils/query'
-import type { ParamsDefaults, ParamsPayload } from '../utils/query'
+import { setParams, cleanRecord, applyParamsToQuery, singleValueOrArrayToMongooseSelector } from '../utils/query'
+import type { ParamsPayload } from '../utils/query'
 
 type UpdatePayload = { role: 'admin' | 'user' | 'dataScientist' }
 
@@ -18,17 +18,14 @@ const index = async (
       ...req.query,
       ...req.params,
     }
-    const criteria: Record<string, unknown> = {
+    const criteria = cleanRecord({
       role: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.role),
       createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.createdAt),
-    }
-    const params = setParams(
-      <ParamsPayload>req.query,
-      <ParamsDefaults>{
-        orderBy: ['-createdAt'],
-        limit: 100,
-      }
-    )
+    })
+    const params = setParams(req.query, {
+      orderBy: ['-createdAt'],
+      limit: 100,
+    })
 
     const [total, data] = await Promise.all([
       ProfileModel.countDocuments(criteria),

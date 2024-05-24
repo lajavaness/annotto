@@ -25,6 +25,7 @@ import {
   setParams,
   stringToRegExpOrUndefined,
   singleValueOrArrayToMongooseSelector,
+  cleanRecord,
 } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
 
@@ -92,14 +93,13 @@ const index = async (
   next: express.NextFunction
 ) => {
   const queryParams = { ...req.query, ...req.params }
-  const criteria: Record<string, unknown> = {
+  const criteria = cleanRecord({
     _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectId),
     client: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.clientId),
     name: stringToRegExpOrUndefined(<string | undefined>queryParams.name),
     description: stringToRegExpOrUndefined(<string | undefined>queryParams.description),
     active: true,
-  }
-
+  })
   if (req._user && req._user.profile && req._user.profile.role !== 'admin') {
     criteria.$or = [
       { admins: { $in: [req._user.email] } },

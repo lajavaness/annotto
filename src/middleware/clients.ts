@@ -4,6 +4,7 @@ import { generateError } from '../utils/error'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
 import {
   applyParamsToQuery,
+  cleanRecord,
   setParams,
   singleValueOrArrayToMongooseSelector,
   stringToRegExpOrUndefined,
@@ -43,12 +44,12 @@ const index = async (
   next: express.NextFunction
 ) => {
   try {
-    const criteria: Record<string, unknown> = {
+    const criteria = cleanRecord({
       _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.clientId),
       name: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.name),
       isActive: booleanStringToBooleanOrUndefined(<string | undefined>req.query.isActive),
       description: stringToRegExpOrUndefined(<string | undefined>req.query.description),
-    }
+    })
     const params = setParams(req.query, { limit: 100, orderBy: ['name'] })
 
     const [total, data] = await Promise.all([

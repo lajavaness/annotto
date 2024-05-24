@@ -3,7 +3,7 @@ import CommentModel, { Comment } from '../db/models/comments'
 import { saveComment } from '../core/comments'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import { applyParamsToQuery, setParams, singleValueOrArrayToMongooseSelector } from '../utils/query'
+import { applyParamsToQuery, setParams, singleValueOrArrayToMongooseSelector, cleanRecord } from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
 
 type CreatePayload = {
@@ -18,13 +18,13 @@ const index = async (
   next: express.NextFunction
 ) => {
   try {
-    const criteria: Record<string, unknown> = {
+    const criteria = cleanRecord({
       comment: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.comment),
       item: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.itemId),
       batch: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.batchId),
       user: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.userId),
       createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.createdAt),
-    }
+    })
     const params = setParams(<ParamsPayload>req.query, { limit: 100, orderBy: ['-createdAt'] })
 
     const [total, data] = await Promise.all([
