@@ -16,7 +16,12 @@ import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/item
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
 import { paginate, Paginate } from '../utils/paginate'
-import { setParams } from '../utils/query'
+import {
+  setParams,
+  singleValueOrArrayToMongooseSelector,
+  stringToRegExpOrUndefined,
+  valueToMongooseArraySelector,
+} from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
 
 type NextItemQuery = {
@@ -56,7 +61,7 @@ const _indexByFilter = async (
   next: express.NextFunction
 ) => {
   try {
-    const params = setParams(<ParamsPayload>req.query, {
+    const params = setParams(req.query, {
       orderBy: ['updatedAt'],
       limit: 100,
       select: {
@@ -105,30 +110,30 @@ const index = async (
         return
       }
     }
+    /**
+     *  projectId: { key: 'project', type: 'number' },
+     *  status: { key: 'status', type: 'string' },
+     *  itemId: { key: '_id', type: 'number' },
+     *  type: { key: 'type', type: 'string' },
+     *  body: { key: 'body', type: 'text' },
+     *  tags: { key: 'tags', type: 'array' },
+     *  annotated: { key: 'annotated', type: 'boolean' },
+     *  uuid: { key: 'uuid', type: 'string' },
+     *  compositeUuid: { key: 'compositeUuid', type: 'string' },
+     *  updatedAt: { key: 'updatedAt', type: 'string' },
+     */
     const criteria = {
-      project: Array.isArray(req.query.projectId) ? { $in: req.query.projectId } : req.query.projectId,
-      status: Array.isArray(req.query.status) ? { $in: req.query.status } : req.query.status,
-      _id: Array.isArray(req.query.itemId) ? { $in: req.query.itemId } : req.query.itemId,
-      type: Array.isArray(req.query.type) ? { $in: req.query.type } : req.query.type,
-      /* eslint-disable no-nested-ternary */
-      tags: Array.isArray(req.query.tags)
-        ? { $in: req.query.tags }
-        : typeof req.query.tags !== 'undefined'
-        ? { $in: [req.query.tags] }
-        : undefined,
-      body: Array.isArray(req.query.body)
-        ? { $in: req.query.body }
-        : typeof req.query.body === 'string'
-        ? new RegExp(req.query.body.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
-        : undefined,
-      annotated: Array.isArray(req.query.annotated) ? { $in: req.query.annotated } : req.query.annotated,
-      uuid: Array.isArray(req.query.uuid) ? { $in: req.query.uuid } : req.query.uuid,
-      compositeUuid: Array.isArray(req.query.compositeUuid)
-        ? { $in: req.query.compositeUuid }
-        : req.query.compositeUuid,
-      updatedAt: Array.isArray(req.query.updatedAt) ? { $in: req.query.updatedAt } : req.query.updatedAt,
+      project: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.projectId),
+      status: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.status),
+      _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.itemId),
+      type: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.type),
+      body: stringToRegExpOrUndefined(<string | undefined>req.query.body),
+      tags: valueToMongooseArraySelector(<string | string[] | undefined>req.query.tags),
+      annotated: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.annotated),
+      uuid: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.uuid),
+      compositeUuid: valueToMongooseArraySelector(<string | string[] | undefined>req.query.compositeUuid),
+      updatedAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.updatedAt),
     }
-    //    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.item)
     const params = setParams(<ParamsPayload>req.query, {
       limit: 100,
       orderBy: ['updatedAt'],

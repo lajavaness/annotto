@@ -2,10 +2,15 @@ import express from 'express'
 import _ from 'lodash'
 import { generateError } from '../utils/error'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
-import { applyParamsToQuery, setParams } from '../utils/query'
+import {
+  applyParamsToQuery,
+  setParams,
+  singleValueOrArrayToMongooseSelector,
+  stringToRegExpOrUndefined,
+} from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
-
 import { Paginate, paginate } from '../utils/paginate'
+import { booleanStringToBooleanOrUndefined } from '../utils/lfn'
 
 type CreatePayload = {
   name: string
@@ -39,17 +44,12 @@ const index = async (
 ) => {
   try {
     const criteria: Record<string, unknown> = {
-      _id: Array.isArray(req.query.clientId) ? { $in: req.query.clientId } : req.query.clientId,
-      name: Array.isArray(req.query.name) ? { $in: req.query.name } : req.query.name,
-      isActive: Array.isArray(req.query.isActive) ? { $in: req.query.isActive } : req.query.name,
-      /* eslint-disable no-nested-ternary */
-      description: Array.isArray(req.query.description)
-        ? { $in: req.query.description }
-        : typeof req.query.description === 'string'
-        ? new RegExp(req.query.description.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
-        : undefined,
+      _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.clientId),
+      name: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>req.query.name),
+      isActive: booleanStringToBooleanOrUndefined(<string | undefined>req.query.isActive),
+      description: stringToRegExpOrUndefined(<string | undefined>req.query.description),
     }
-    const params = setParams(<ParamsPayload>req.query, { limit: 100, orderBy: ['name'] })
+    const params = setParams(req.query, { limit: 100, orderBy: ['name'] })
 
     const [total, data] = await Promise.all([
       ClientModel.countDocuments(criteria),

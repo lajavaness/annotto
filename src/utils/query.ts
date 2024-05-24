@@ -100,6 +100,27 @@ export const applyParamsToQuery = <T>(query: T, params: Params): T => {
   return query
 }
 
+export const stringToRegExpOrUndefined = (str?: string): RegExp | undefined => {
+  if (typeof str === 'undefined') return undefined
+  return new RegExp(str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
+}
+
+export const singleValueOrArrayToMongooseSelector = (
+  str?: string | string[]
+): undefined | string | { $in: string[] } => {
+  if (typeof str === 'undefined') return undefined
+  if (typeof str === 'string') return str
+  return { $in: str }
+}
+
+export const valueToMongooseArraySelector = (val?: string | string[]): { $in: string[] } | undefined => {
+  if (typeof val === 'undefined') return undefined
+  if (typeof val === 'string') return { $in: [val] }
+  return {
+    $in: val,
+  }
+}
+
 export default {
   setParams,
   applyParamsToQuery,

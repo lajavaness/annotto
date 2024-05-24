@@ -18,8 +18,14 @@ import downloadCore from '../core/projects/download'
 import { importAllFromFiles } from '../core/projects/import'
 import tasks from '../core/tasks'
 import config from '../../config'
-import { paginate, Paginate } from '../utils/paginate'
-import { applyParamsToQuery, setParams } from '../utils/query'
+import { paginate } from '../utils/paginate'
+import type { Paginate } from '../utils/paginate'
+import {
+  applyParamsToQuery,
+  setParams,
+  stringToRegExpOrUndefined,
+  singleValueOrArrayToMongooseSelector,
+} from '../utils/query'
 import type { ParamsPayload } from '../utils/query'
 
 type ProjectPayload = {
@@ -87,19 +93,10 @@ const index = async (
 ) => {
   const queryParams = { ...req.query, ...req.params }
   const criteria: Record<string, unknown> = {
-    _id: Array.isArray(queryParams.projectId) ? { $in: queryParams.projectId } : queryParams.projectId,
-    client: Array.isArray(queryParams.clientId) ? { $in: queryParams.clientId } : queryParams.clientId,
-    /* eslint-disable no-nested-ternary */
-    name: Array.isArray(req.query.name)
-      ? { $in: req.query.name }
-      : typeof req.query.name === 'string'
-      ? new RegExp(req.query.name.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
-      : undefined,
-    description: Array.isArray(req.query.description)
-      ? { $in: req.query.description }
-      : typeof req.query.description === 'string'
-      ? new RegExp(req.query.description.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
-      : undefined,
+    _id: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectId),
+    client: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.clientId),
+    name: stringToRegExpOrUndefined(<string | undefined>queryParams.name),
+    description: stringToRegExpOrUndefined(<string | undefined>queryParams.description),
     active: true,
   }
 

@@ -3,7 +3,7 @@ import { generateError } from '../utils/error'
 import ProfileModel, { Profile } from '../db/models/profiles'
 import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
-import { setParams, applyParamsToQuery } from '../utils/query'
+import { setParams, applyParamsToQuery, singleValueOrArrayToMongooseSelector } from '../utils/query'
 import type { ParamsDefaults, ParamsPayload } from '../utils/query'
 
 type UpdatePayload = { role: 'admin' | 'user' | 'dataScientist' }
@@ -19,8 +19,8 @@ const index = async (
       ...req.params,
     }
     const criteria: Record<string, unknown> = {
-      role: Array.isArray(queryParams.role) ? { $in: queryParams.role } : queryParams.role,
-      createdAt: Array.isArray(queryParams.createdAt) ? { $in: queryParams.createdAt } : queryParams.createdAt,
+      role: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.role),
+      createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.createdAt),
     }
     const params = setParams(
       <ParamsPayload>req.query,

@@ -3,10 +3,10 @@ import mongoose from 'mongoose'
 import AnnotationModel from '../db/models/annotations'
 import LogModel, { Log } from '../db/models/logs'
 import TaskModel from '../db/models/tasks'
-import { paginate } from '../utils/paginate'
 import type { Paginate } from '../utils/paginate'
+import { paginate } from '../utils/paginate'
 import type { ParamsPayload } from '../utils/query'
-import { setParams } from '../utils/query'
+import { setParams, singleValueOrArrayToMongooseSelector, stringToRegExpOrUndefined } from '../utils/query'
 
 const index = async (
   req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
@@ -19,21 +19,16 @@ const index = async (
       ...req.params,
     }
     const criteria: Record<string, unknown> = {
-      comment: Array.isArray(queryParams.comment) ? { $in: queryParams.comment } : queryParams.comment,
-      commentType: Array.isArray(queryParams.commentType) ? { $in: queryParams.commentType } : queryParams.commentType,
-      projectType: Array.isArray(queryParams.projectType) ? { $in: queryParams.projectType } : queryParams.projectType,
-      missionType: Array.isArray(queryParams.missionType) ? { $in: queryParams.missionType } : queryParams.missionType,
-      createdAt: Array.isArray(queryParams.createdAt) ? { $in: queryParams.createdAt } : queryParams.createdAt,
-      item: Array.isArray(queryParams.itemId) ? { $in: queryParams.itemId } : queryParams.itemId,
-      project: Array.isArray(queryParams.projectId) ? { $in: queryParams.projectId } : queryParams.projectId,
-      batch: Array.isArray(queryParams.batchId) ? { $in: queryParams.batchId } : queryParams.batchId,
-      user: Array.isArray(queryParams.userId) ? { $in: queryParams.userId } : queryParams.userId,
-      /* eslint-disable no-nested-ternary */
-      type: Array.isArray(queryParams.type)
-        ? { $in: queryParams.type }
-        : typeof queryParams.type === 'string'
-        ? new RegExp(queryParams.type.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i')
-        : undefined,
+      comment: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.comment),
+      commentType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.commentType),
+      projectType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectType),
+      missionType: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.missionType),
+      createdAt: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.createdAt),
+      item: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.itemId),
+      project: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.projectId),
+      batch: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.batchId),
+      user: singleValueOrArrayToMongooseSelector(<string | string[] | undefined>queryParams.userId),
+      type: stringToRegExpOrUndefined(<string | undefined>queryParams.type),
     }
     const params = setParams(<ParamsPayload>req.query, {
       orderBy: ['-createdAt'],
@@ -60,7 +55,7 @@ const index = async (
     if (params.sort) {
       const sort: { [field: string]: 1 | -1 } = {}
       Object.keys(params.sort).forEach((key) => {
-        if (params?.sort[key] === 'desc') sort[key] = -1
+        if (params.sort[key] === 'desc') sort[key] = -1
         else if (params.sort[key] === 'asc') sort[key] = 1
       })
 
