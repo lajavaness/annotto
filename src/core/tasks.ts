@@ -4,11 +4,11 @@ import { generateError } from '../utils/error'
 import TaskModel, { Task } from '../db/models/tasks'
 import ProjectModel, { Project } from '../db/models/projects'
 import { Annotation } from '../db/models/annotations'
-import type { Params } from '../utils/paginate'
+import type { PaginationParams } from '../utils/paginate'
 
 export const browse = (
   criteria: Record<string, unknown> = {},
-  params: Params = {
+  params: PaginationParams = {
     sort: {},
     limit: 0,
     select: {},

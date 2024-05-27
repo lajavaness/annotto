@@ -8,11 +8,11 @@ import { logTags } from '../logs'
 import { updateProjectStats } from '../projects'
 import { updateClassificationStats } from '../tasks'
 import S3Client from '../s3-client'
-import type { Params } from '../../utils/paginate'
+import type { PaginationParams } from '../../utils/paginate'
 
 export const browse = (
   criteria: Record<string, unknown> = {},
-  params: Params = { sort: {}, limit: 0, select: {}, index: 0, skip: 0 }
+  params: PaginationParams = { sort: {}, limit: 0, select: {}, index: 0, skip: 0 }
 ) => {
   const q = ItemModel.find(criteria)
   q.sort(params.sort)

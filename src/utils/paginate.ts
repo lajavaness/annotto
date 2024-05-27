@@ -27,7 +27,7 @@ export type PaginationParamsDefaults = {
   }
 }
 
-export type Params = {
+export type PaginationParams = {
   select: {
     [field: string]: boolean
   }
@@ -87,10 +87,10 @@ const _getSortObj = (argSort: string | string[] | undefined, _defaultsOrderBy: s
  * Build Params from args values and defaults.
  * @param {QueryPayload} args Values from express.req.query to used to build pagination params.
  * @param {PaginationParamsDefaults} _defaults Default value to apply if not provided in args.
- * @returns {Params} Params to use in ORM query.
+ * @returns {PaginationParams} Params to use in ORM query.
  */
-export const getPaginationParams = (args: QueryPayload, _defaults: PaginationParamsDefaults): Params => {
-  const params: Params = {
+export const getPaginationParams = (args: QueryPayload, _defaults: PaginationParamsDefaults): PaginationParams => {
+  const params: PaginationParams = {
     select: { ...(_defaults.select || {}) },
     sort: _getSortObj(args.sort, _defaults.orderBy),
     limit: _getLimit(args.limit, _defaults.limit),
