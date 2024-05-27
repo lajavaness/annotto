@@ -162,6 +162,38 @@ describe('items', () => {
       })
   })
 
+  test('GET /projects/:_id/items with filters', async () => {
+    const { _id } = await createSeedProject(JWT)
+
+    return supertest(app)
+      .get(`/api/projects/${_id}/items?tags=tagsdoesnotexists`)
+      .set('Authorization', `Bearer ${JWT}`)
+      .expect(200)
+      .then((res) => {
+        expect(res.body.data.length).toEqual(0)
+        expect(res.body.count).toBeDefined()
+        expect(res.body.limit).toBeDefined()
+        expect(res.body.pageCount).toBeDefined()
+        expect(res.body.total).toBeDefined()
+      })
+  })
+
+  test('GET /projects/:_id/items with invalid filters', async () => {
+    const { _id } = await createSeedProject(JWT)
+
+    return supertest(app)
+      .get(`/api/projects/${_id}/items?invalidFilterFieldTags=tagsdoesnotexists`)
+      .set('Authorization', `Bearer ${JWT}`)
+      .expect(200)
+      .then((res) => {
+        expect(res.body.data.length).toBeGreaterThan(0)
+        expect(res.body.count).toBeDefined()
+        expect(res.body.limit).toBeDefined()
+        expect(res.body.pageCount).toBeDefined()
+        expect(res.body.total).toBeDefined()
+      })
+  })
+
   test('PUT /projects/:_id/items', async () => {
     const { _id } = await createSeedProject(JWT)
 
