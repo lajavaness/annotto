@@ -52,13 +52,6 @@ const _getIndex = (argIndex?: string | number): number => {
   return 0
 }
 
-const _getSkip = (index: number, limit: number): number => {
-  if (typeof index !== 'undefined' && typeof limit !== 'undefined') {
-    return index * limit
-  }
-  return 0
-}
-
 const _sortField = (args: string) => {
   const order = args[0] === '-' ? 'desc' : 'asc'
   const column = args.replace(/^-/, '')
@@ -97,7 +90,7 @@ export const getPaginationParams = (args: QueryPayload, _defaults: PaginationPar
     index: _getIndex(args.index) || 0,
     skip: 0,
   }
-  params.skip = _getSkip(params.index, params.limit)
+  params.skip = params.index * params.limit
   return params
 }
 
