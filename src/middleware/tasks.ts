@@ -1,24 +1,22 @@
 import express from 'express'
 import { Task } from '../db/models/tasks'
 import { browse } from '../core/tasks'
-import { paginate } from '../utils/paginate'
-import type { Paginate } from '../utils/paginate'
-import { cleanRecord, setParams } from '../utils/query'
-import type { ParamsPayload } from '../utils/query'
-import { mongooseEq } from '../utils/mongoose'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import type { Paginate, QueryPayload } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 const index = async (
-  req: express.Request<{ projectId: string }, {}, {}, ParamsPayload>,
+  req: express.Request<{ projectId: string }, {}, {}, QueryPayload>,
   res: express.Response<Paginate<Task>>,
   next: express.NextFunction
 ) => {
   try {
-    const queryParams: { projectId: string } & ParamsPayload = { ...req.query, ...req.params }
-    const criteria = cleanRecord({
-      _id: mongooseEq(queryParams.classificationId),
-      project: mongooseEq(queryParams.projectId),
+    const queryParams: QueryPayload = { ...req.query, ...req.params }
+    const criteria = mongooseUtils.removeUndefinedFields({
+      _id: mongooseUtils.eq(queryParams.classificationId),
+      project: mongooseUtils.eq(queryParams.projectId),
     })
-    const params = setParams(<ParamsPayload>req.query, {
+    const params = getPaginationParams(req.query, {
       orderBy: ['label'],
       limit: 100,
       select: {

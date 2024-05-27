@@ -2,10 +2,9 @@ import express from 'express'
 import _ from 'lodash'
 import { generateError } from '../utils/error'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
-import { applyParamsToQuery, cleanRecord, setParams } from '../utils/query'
-import type { ParamsPayload } from '../utils/query'
-import { Paginate, paginate } from '../utils/paginate'
-import { mongooseBool, mongooseEq, mongooseRegexp } from '../utils/mongoose'
+import type { QueryPayload, Paginate } from '../utils/paginate'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 type CreatePayload = {
   name: string
@@ -33,22 +32,22 @@ const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
 }
 
 const index = async (
-  req: express.Request<{}, {}, {}, ParamsPayload>,
+  req: express.Request<{}, {}, {}, QueryPayload>,
   res: express.Response<Paginate<Client>>,
   next: express.NextFunction
 ) => {
   try {
-    const criteria = cleanRecord({
-      _id: mongooseEq(req.query.clientId),
-      name: mongooseEq(req.query.name),
-      isActive: mongooseBool(req.query.isActive),
-      description: mongooseRegexp(req.query.description),
+    const criteria = mongooseUtils.removeUndefinedFields({
+      _id: mongooseUtils.eq(req.query.clientId),
+      name: mongooseUtils.eq(req.query.name),
+      isActive: mongooseUtils.bool(req.query.isActive),
+      description: mongooseUtils.regExp(req.query.description),
     })
-    const params = setParams(req.query, { limit: 100, orderBy: ['name'] })
+    const params = getPaginationParams(req.query, { limit: 100, orderBy: ['name'] })
 
     const [total, data] = await Promise.all([
       ClientModel.countDocuments(criteria),
-      applyParamsToQuery(ClientModel.find(criteria), params).lean(),
+      ClientModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select).lean(),
     ])
 
     res.status(200).json(paginate({ ...params, total }, data))

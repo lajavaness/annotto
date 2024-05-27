@@ -14,6 +14,8 @@ export const createDemo = async () => {
   try {
     // Creating demos in series to check duplicate index errors mistake
     await demoFiles.reduce((promiseChain, [demoName, files]: (string | string[])[]) => {
+      logger.info('createDemo reduce')
+
       return promiseChain.then(async () => {
         if (!files.includes('config.json')) {
           logger.info(`Ignoring Demo (${demoName}) missing config.json`)
@@ -26,6 +28,7 @@ export const createDemo = async () => {
         const demo = path.join(demoPath, Array.isArray(demoName) ? demoName[0] : demoName)
         const config = await import(path.join(demo, 'config.json'))
         const existingProject = await ProjectModel.findOne({ name: config.name })
+        logger.info('existing project', existingProject)
         if (existingProject) return
 
         await importAllFromFiles({

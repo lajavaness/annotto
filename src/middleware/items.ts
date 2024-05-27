@@ -15,10 +15,9 @@ import { handleItemStream, handleItemPredictionStream } from '../core/file-uploa
 import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/items'
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
-import { paginate, Paginate } from '../utils/paginate'
-import { setParams, cleanRecord } from '../utils/query'
-import type { ParamsPayload } from '../utils/query'
-import { mongooseEq, mongooseIn, mongooseBool, mongooseRegexp } from '../utils/mongoose'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import type { Paginate, QueryPayload } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 type NextItemQuery = {
   filterId: string
@@ -52,12 +51,12 @@ type PredictionUploadResponse = {
 }
 
 const _indexByFilter = async (
-  req: express.Request<{}, {}, {}, ParamsPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{}, {}, {}, QueryPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
   try {
-    const params = setParams(req.query, {
+    const params = getPaginationParams(req.query, {
       orderBy: ['updatedAt'],
       limit: 100,
       select: {
@@ -85,7 +84,7 @@ const _indexByFilter = async (
 }
 
 const index = async (
-  req: express.Request<{}, {}, {}, ParamsPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{}, {}, {}, QueryPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
@@ -106,19 +105,19 @@ const index = async (
         return
       }
     }
-    const criteria = cleanRecord({
-      project: mongooseEq(req.query.projectId),
-      status: mongooseEq(req.query.status),
-      _id: mongooseEq(req.query.itemId),
-      type: mongooseEq(req.query.type),
-      body: mongooseRegexp(req.query.body),
-      tags: mongooseIn(req.query.tags),
-      annotated: mongooseEq(req.query.annotated),
-      uuid: mongooseEq(req.query.uuid),
-      compositeUuid: mongooseIn(req.query.compositeUuid),
-      updatedAt: mongooseEq(req.query.updatedAt),
+    const criteria = mongooseUtils.removeUndefinedFields({
+      project: mongooseUtils.eq(req.query.projectId),
+      status: mongooseUtils.eq(req.query.status),
+      _id: mongooseUtils.eq(req.query.itemId),
+      type: mongooseUtils.eq(req.query.type),
+      body: mongooseUtils.regExp(req.query.body),
+      tags: mongooseUtils.eq(req.query.tags),
+      annotated: mongooseUtils.eq(req.query.annotated),
+      uuid: mongooseUtils.eq(req.query.uuid),
+      compositeUuid: mongooseUtils.eq(req.query.compositeUuid),
+      updatedAt: mongooseUtils.eq(req.query.updatedAt),
     })
-    const params = setParams(<ParamsPayload>req.query, {
+    const params = getPaginationParams(req.query, {
       limit: 100,
       orderBy: ['updatedAt'],
       select: {

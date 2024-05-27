@@ -4,12 +4,23 @@ import { generateError } from '../utils/error'
 import TaskModel, { Task } from '../db/models/tasks'
 import ProjectModel, { Project } from '../db/models/projects'
 import { Annotation } from '../db/models/annotations'
-import { applyParamsToQuery } from '../utils/query'
-import type { Params } from '../utils/query'
+import type { Params } from '../utils/paginate'
 
-export const browse = (criteria: Record<string, unknown> = {}, params: Params = { sort: {} }) => {
+export const browse = (
+  criteria: Record<string, unknown> = {},
+  params: Params = {
+    sort: {},
+    limit: 0,
+    select: {},
+    index: 0,
+    skip: 0,
+  }
+) => {
   const q = TaskModel.find(criteria)
-  applyParamsToQuery(q, params)
+  q.sort(params.sort)
+  q.limit(params.limit)
+  q.skip(params.skip)
+  q.select(params.select)
 
   return q.lean()
 }

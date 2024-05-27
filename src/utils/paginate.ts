@@ -12,6 +12,95 @@ export type Paginate<T> = {
   data: T[]
 }
 
+export type QueryPayload = {
+  limit?: string
+  sort?: string | string[]
+  index?: string
+  [field: string]: string | string[] | undefined
+}
+
+export type PaginationParamsDefaults = {
+  limit: number
+  orderBy: string[]
+  select?: {
+    [field: string]: boolean
+  }
+}
+
+export type Params = {
+  select: {
+    [field: string]: boolean
+  }
+  sort: {
+    [field: string]: string
+  }
+  index: number
+  skip: number
+  limit: number
+}
+
+const _getLimit = (argLimit?: number | string, defaultLimit?: number): number => {
+  if (typeof argLimit === 'string') return parseInt(argLimit)
+  if (typeof argLimit === 'number') return Math.floor(argLimit)
+  if (typeof defaultLimit === 'number') return Math.floor(defaultLimit)
+  return 0
+}
+
+const _getIndex = (argIndex?: string | number): number => {
+  if (typeof argIndex === 'string') return parseInt(argIndex)
+  if (typeof argIndex === 'number') return Math.floor(argIndex)
+  return 0
+}
+
+const _getSkip = (index: number, limit: number): number => {
+  if (typeof index !== 'undefined' && typeof limit !== 'undefined') {
+    return index * limit
+  }
+  return 0
+}
+
+const _sortField = (args: string) => {
+  const order = args[0] === '-' ? 'desc' : 'asc'
+  const column = args.replace(/^-/, '')
+
+  return { [column]: order }
+}
+
+const _getSortObj = (argSort: string | string[] | undefined, _defaultsOrderBy: string[]): Record<string, string> => {
+  if (Array.isArray(argSort)) {
+    argSort.map(_sortField).reduce((prev, current) => {
+      return { ...prev, ...current }
+    }, {})
+  }
+  if (typeof argSort === 'string') {
+    return _sortField(argSort)
+  }
+  return _defaultsOrderBy.map(_sortField).reduce((prev, current) => {
+    return {
+      ...prev,
+      ...current,
+    }
+  }, {})
+}
+
+/**
+ * Build Params from args values and defaults.
+ * @param {QueryPayload} args Values from express.req.query to used to build pagination params.
+ * @param {PaginationParamsDefaults} _defaults Default value to apply if not provided in args.
+ * @returns {Params} Params to use in ORM query.
+ */
+export const getPaginationParams = (args: QueryPayload, _defaults: PaginationParamsDefaults): Params => {
+  const params: Params = {
+    select: { ...(_defaults.select || {}) },
+    sort: _getSortObj(args.sort, _defaults.orderBy),
+    limit: _getLimit(args.limit, _defaults.limit),
+    index: _getIndex(args.index) || 0,
+    skip: 0,
+  }
+  params.skip = _getSkip(params.index, params.limit)
+  return params
+}
+
 /**
  * Builds a standardized payload for paginated queries.
  * @param {*} params Params passed to the query or build from query context.
@@ -33,4 +122,5 @@ export const paginate = <T>(params: PaginatePayload, data: T[]): Paginate<T> => 
 
 export default {
   paginate,
+  getPaginationParams,
 }
