@@ -39,7 +39,7 @@ export const removeUndefinedFields = (obj: Record<string, unknown>): Record<stri
       acc[key] = value
     }
     return acc
-  }, {} as Record<string, unknown>)
+  }, <Record<string, unknown>>{})
 }
 
 export default {
