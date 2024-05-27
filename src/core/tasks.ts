@@ -16,13 +16,7 @@ export const browse = (
     skip: 0,
   }
 ) => {
-  const q = TaskModel.find(criteria)
-  q.sort(params.sort)
-  q.limit(params.limit)
-  q.skip(params.skip)
-  q.select(params.select)
-
-  return q.lean()
+  return TaskModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select).lean()
 }
 
 /**

@@ -14,12 +14,7 @@ export const browse = (
   criteria: Record<string, unknown> = {},
   params: PaginationParams = { sort: {}, limit: 0, select: {}, index: 0, skip: 0 }
 ) => {
-  const q = ItemModel.find(criteria)
-  q.sort(params.sort)
-  q.limit(params.limit)
-  q.skip(params.skip)
-  q.select(params.select)
-  return q.lean()
+  return ItemModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select).lean()
 }
 
 export const toCompositeUuid = (project: Project | string, item: { uuid?: string }) =>
