@@ -350,10 +350,7 @@ const ImageMarker = ({
   return (
     <Styled.Root>
       <Styled.ZoomActions>
-        <Styled.ZoomSlider
-          onChange={(value) => setZoomFactor(1 + value / 50)}
-          tooltip={{ formatter: (value) => `${(1 + value / 50).toFixed(2)}` }}
-        />
+        <Styled.ZoomSlider step={0.01} min={0.1} max={3} value={zoomFactor} onChange={setZoomFactor} />
       </Styled.ZoomActions>
       <Styled.ImageWrapper
         ref={imageWrapperRef}
