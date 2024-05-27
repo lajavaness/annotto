@@ -84,7 +84,7 @@ const _indexByFilter = async (
 }
 
 const index = async (
-  req: express.Request<{}, {}, {}, QueryPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{ projectId?: string }, {}, {}, QueryPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
@@ -105,18 +105,23 @@ const index = async (
         return
       }
     }
+    const queryParams: QueryPayload = {
+      ...req.query,
+      ...req.params,
+    }
     const criteria = mongooseUtils.removeUndefinedFields({
-      project: mongooseUtils.eq(req.query.projectId),
-      status: mongooseUtils.eq(req.query.status),
-      _id: mongooseUtils.eq(req.query.itemId),
-      type: mongooseUtils.eq(req.query.type),
-      body: mongooseUtils.regExp(req.query.body),
-      tags: mongooseUtils.eq(req.query.tags),
-      annotated: mongooseUtils.eq(req.query.annotated),
-      uuid: mongooseUtils.eq(req.query.uuid),
-      compositeUuid: mongooseUtils.eq(req.query.compositeUuid),
-      updatedAt: mongooseUtils.eq(req.query.updatedAt),
+      project: mongooseUtils.eq(queryParams.projectId),
+      status: mongooseUtils.eq(queryParams.status),
+      _id: mongooseUtils.eq(queryParams.itemId),
+      type: mongooseUtils.eq(queryParams.type),
+      body: mongooseUtils.regExp(queryParams.body),
+      tags: mongooseUtils.eq(queryParams.tags),
+      annotated: mongooseUtils.eq(queryParams.annotated),
+      uuid: mongooseUtils.eq(queryParams.uuid),
+      compositeUuid: mongooseUtils.eq(queryParams.compositeUuid),
+      updatedAt: mongooseUtils.eq(queryParams.updatedAt),
     })
+
     const params = getPaginationParams(req.query, {
       limit: 100,
       orderBy: ['updatedAt'],
@@ -247,7 +252,6 @@ const getById = async (
 ) => {
   try {
     const { projectId, itemId } = req.params
-
     let item = await ItemModel.findById(itemId)
     if (!item) {
       throw generateError({
@@ -255,7 +259,6 @@ const getById = async (
         message: 'ERROR_ITEM_NOT_FOUND',
       })
     }
-
     if (item.project.toString() !== projectId) {
       throw generateError({
         code: 404,
