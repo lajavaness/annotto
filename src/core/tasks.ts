@@ -1,18 +1,22 @@
 import mongoose from 'mongoose'
 import { TaskPayload } from '../types'
 import { generateError } from '../utils/error'
-import queryBuilder, { QueryPayload } from '../utils/query-builder'
 import TaskModel, { Task } from '../db/models/tasks'
 import ProjectModel, { Project } from '../db/models/projects'
 import { Annotation } from '../db/models/annotations'
+import type { PaginationParams } from '../utils/paginate'
 
-const { setQuery } = queryBuilder('mongo')
-
-export const browse = (criteria: Record<string, unknown> = {}, params: QueryPayload = {}) => {
-  const q = TaskModel.find(criteria)
-  setQuery(q, params)
-
-  return q.lean()
+export const browse = (
+  criteria: Record<string, unknown> = {},
+  params: PaginationParams = {
+    sort: {},
+    limit: 0,
+    select: {},
+    index: 0,
+    skip: 0,
+  }
+) => {
+  return TaskModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select).lean()
 }
 
 /**

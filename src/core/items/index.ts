@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 import { ItemPayload, S3, User } from '../../types'
 import { decrypt } from '../../utils/crypto'
-import queryBuilder, { QueryPayload } from '../../utils/query-builder'
 import { Annotation } from '../../db/models/annotations'
 import ItemModel, { Item, ItemDocument, ItemS3Document } from '../../db/models/items'
 import { Project } from '../../db/models/projects'
@@ -9,14 +8,13 @@ import { logTags } from '../logs'
 import { updateProjectStats } from '../projects'
 import { updateClassificationStats } from '../tasks'
 import S3Client from '../s3-client'
+import type { PaginationParams } from '../../utils/paginate'
 
-const { setQuery } = queryBuilder('mongo')
-
-export const browse = (criteria: Record<string, unknown> = {}, params: QueryPayload = {}) => {
-  const q = ItemModel.find(criteria)
-  setQuery(q, params)
-
-  return q.lean()
+export const browse = (
+  criteria: Record<string, unknown> = {},
+  params: PaginationParams = { sort: {}, limit: 0, select: {}, index: 0, skip: 0 }
+) => {
+  return ItemModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select).lean()
 }
 
 export const toCompositeUuid = (project: Project | string, item: { uuid?: string }) =>

@@ -1,6 +1,6 @@
 import { Types, Schema, PopulatedDoc, Document, AnyObject, model } from 'mongoose'
 import dayjs from 'dayjs'
-import {S3, User} from '../../types'
+import { S3, User } from '../../types'
 import { Client } from './clients'
 import { Task } from './tasks'
 

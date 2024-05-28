@@ -1,21 +1,38 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import AnnotationModel from '../db/models/annotations'
 import LogModel, { Log } from '../db/models/logs'
 import TaskModel from '../db/models/tasks'
-import config from '../../config'
-
-const { paginate, setCriteria, setParams } = queryBuilder('mongo')
+import type { Paginate, QueryPayload } from '../utils/paginate'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 const index = async (
-  req: express.Request<{ projectId: string }, {}, {}, CriteriaPayload>,
+  req: express.Request<{ projectId: string }, {}, {}, QueryPayload>,
   res: express.Response<Paginate<Log>>,
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.log)
-    const params = setParams(req.query, config.search.log)
+    const queryParams: QueryPayload = {
+      ...req.query,
+      ...req.params,
+    }
+    const criteria = mongooseUtils.removeUndefinedFields({
+      comment: mongooseUtils.eq(queryParams.comment),
+      commentType: mongooseUtils.eq(queryParams.commentType),
+      projectType: mongooseUtils.eq(queryParams.projectType),
+      missionType: mongooseUtils.eq(queryParams.missionType),
+      createdAt: mongooseUtils.eq(queryParams.createdAt),
+      item: mongooseUtils.eq(queryParams.itemId),
+      project: mongooseUtils.eq(queryParams.projectId),
+      batch: mongooseUtils.eq(queryParams.batchId),
+      user: mongooseUtils.eq(queryParams.userId),
+      type: mongooseUtils.regExp(queryParams.type),
+    })
+    const params = getPaginationParams(req.query, {
+      orderBy: ['-createdAt'],
+      limit: 100,
+    })
 
     Object.keys(criteria)
       .filter((key) => typeof criteria[key] === 'string' && mongoose.Types.ObjectId.isValid(<string>criteria[key]))

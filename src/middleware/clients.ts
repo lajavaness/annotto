@@ -1,14 +1,10 @@
 import express from 'express'
 import _ from 'lodash'
 import { generateError } from '../utils/error'
-import queryBuilder, { Paginate } from '../utils/query-builder'
 import ClientModel, { Client, ClientDocument } from '../db/models/clients'
-import config from '../../config'
-
-type IndexQuery = {
-  query?: string
-  limit?: string
-}
+import type { QueryPayload, Paginate } from '../utils/paginate'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 type CreatePayload = {
   name: string
@@ -21,8 +17,6 @@ type UpdatePayload = {
   description?: string
   isActive?: boolean
 }
-
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
 
 const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
   const q = ClientModel.findById(clientId)
@@ -38,17 +32,22 @@ const findClient = async <T extends boolean>(clientId: string, lean?: T) => {
 }
 
 const index = async (
-  req: express.Request<{}, {}, {}, IndexQuery>,
+  req: express.Request<{}, {}, {}, QueryPayload>,
   res: express.Response<Paginate<Client>>,
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query }, config.search.client)
-    const params = setParams(req.query, config.search.client)
+    const criteria = mongooseUtils.removeUndefinedFields({
+      _id: mongooseUtils.eq(req.query.clientId),
+      name: mongooseUtils.eq(req.query.name),
+      isActive: mongooseUtils.bool(req.query.isActive),
+      description: mongooseUtils.regExp(req.query.description),
+    })
+    const params = getPaginationParams(req.query, { limit: 100, orderBy: ['name'] })
 
     const [total, data] = await Promise.all([
       ClientModel.countDocuments(criteria),
-      setQuery(ClientModel.find(criteria), params).lean(),
+      ClientModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select).lean(),
     ])
 
     res.status(200).json(paginate({ ...params, total }, data))

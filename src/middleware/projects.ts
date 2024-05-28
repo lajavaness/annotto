@@ -6,7 +6,6 @@ import tmp from 'tmp'
 import { S3, TaskPayload, User } from '../types'
 import { AnnottoError, generateError } from '../utils/error'
 import { logger } from '../utils/logger'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import { Item } from '../db/models/items'
 import ProjectModel, { Project, EntitiesRelationsGroup } from '../db/models/projects'
 import { Task } from '../db/models/tasks'
@@ -19,6 +18,9 @@ import downloadCore from '../core/projects/download'
 import { importAllFromFiles } from '../core/projects/import'
 import tasks from '../core/tasks'
 import config from '../../config'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import type { Paginate, QueryPayload } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 type ProjectPayload = {
   client?: string
@@ -74,25 +76,23 @@ type DownloadQuery = {
 const {
   fileUpload: { maxFileSize },
 } = config
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
 
 /*
   Returns DEMO projects and active projects with stats, filtered for non admin users by project config
 */
 const index = async (
-  req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload>,
+  req: express.Request<QueryPayload, {}, {}, QueryPayload>,
   res: express.Response<Paginate<Project>>,
   next: express.NextFunction
 ) => {
-  const criteria = setCriteria(
-    {
-      ...req.query,
-      ...req.params,
-      active: true,
-    },
-    config.search.project
-  )
-
+  const queryParams = { ...req.query, ...req.params }
+  const criteria = mongooseUtils.removeUndefinedFields({
+    _id: mongooseUtils.eq(queryParams.projectId),
+    client: mongooseUtils.eq(queryParams.clientId),
+    name: mongooseUtils.regExp(queryParams.name),
+    description: mongooseUtils.regExp(queryParams.description),
+    active: true,
+  })
   if (req._user && req._user.profile && req._user.profile.role !== 'admin') {
     criteria.$or = [
       { admins: { $in: [req._user.email] } },
@@ -102,11 +102,29 @@ const index = async (
   }
   logger.debug(JSON.stringify(criteria))
 
-  const params = setParams(req.query, config.search.project)
+  const params = getPaginationParams(req.query, {
+    orderBy: ['name'],
+    limit: 100,
+    select: {
+      client: true,
+      admins: true,
+      users: true,
+      dataScientists: true,
+      itemCount: true,
+      commentCount: true,
+      deadline: true,
+      progress: true,
+      velocity: true,
+      remainingWork: true,
+      lastAnnotationTime: true,
+      name: true,
+      updatedAt: true,
+    },
+  })
   try {
     const [total, projects] = await Promise.all([
       ProjectModel.countDocuments(criteria),
-      setQuery(ProjectModel.find(criteria), params),
+      ProjectModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select),
     ])
 
     res.status(200).json(paginate({ ...params, total }, projects))
@@ -337,10 +355,14 @@ const stats = async (
   try {
     switch (req.params.view) {
       case 'tasks':
-        await classificationMiddleware.index(req, res, next)
+        await classificationMiddleware.index(
+          <express.Request<{ projectId: string }, {}, {}, QueryPayload>>req,
+          res,
+          next
+        )
         return
       case 'items':
-        await itemMiddleware.index(req, res, next)
+        await itemMiddleware.index(<express.Request<{ projectId: string }, {}, {}, QueryPayload>>req, res, next)
         return
       default:
         next('route')

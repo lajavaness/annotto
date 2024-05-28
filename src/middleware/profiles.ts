@@ -1,25 +1,34 @@
 import express from 'express'
 import { generateError } from '../utils/error'
-import queryBuilder, { CriteriaPayload, Paginate } from '../utils/query-builder'
 import ProfileModel, { Profile } from '../db/models/profiles'
-import config from '../../config'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import type { Paginate, QueryPayload } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 type UpdatePayload = { role: 'admin' | 'user' | 'dataScientist' }
 
-const { paginate, setCriteria, setParams, setQuery } = queryBuilder('mongo')
-
 const index = async (
-  req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload>,
+  req: express.Request<QueryPayload, {}, {}, QueryPayload>,
   res: express.Response<Paginate<Profile>>,
   next: express.NextFunction
 ) => {
   try {
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.comment)
-    const params = setParams(req.query, config.search.comment)
+    const queryParams = {
+      ...req.query,
+      ...req.params,
+    }
+    const criteria = mongooseUtils.removeUndefinedFields({
+      role: mongooseUtils.eq(queryParams.role),
+      createdAt: mongooseUtils.eq(queryParams.createdAt),
+    })
+    const params = getPaginationParams(req.query, {
+      orderBy: ['-createdAt'],
+      limit: 100,
+    })
 
     const [total, data] = await Promise.all([
       ProfileModel.countDocuments(criteria),
-      setQuery(ProfileModel.find(criteria), params),
+      ProfileModel.find(criteria).sort(params.sort).limit(params.limit).skip(params.skip).select(params.select),
     ])
 
     res.status(200).json(paginate({ ...params, total }, data))

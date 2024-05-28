@@ -7,7 +7,6 @@ import { pipeline } from 'stream/promises'
 import { InternalEntity, InternalRelation } from '../types'
 import { generateError } from '../utils/error'
 import { logger } from '../utils/logger'
-import queryBuilder, { CriteriaPayload, Paginate, ParamsPayload } from '../utils/query-builder'
 import AnnotationModel, { Annotation } from '../db/models/annotations'
 import FilterModel from '../db/models/filters'
 import ItemModel, { Item, ItemDocument, ItemS3Document } from '../db/models/items'
@@ -16,7 +15,9 @@ import { handleItemStream, handleItemPredictionStream } from '../core/file-uploa
 import { browse, updateHighlights, convertToS3Url, saveItem } from '../core/items'
 import annotateItem from '../core/items/annotateItem'
 import { getProjectTags } from '../core/projects'
-import config from '../../config'
+import { paginate, getPaginationParams } from '../utils/paginate'
+import type { Paginate, QueryPayload } from '../utils/paginate'
+import * as mongooseUtils from '../utils/mongoose'
 
 type NextItemQuery = {
   filterId: string
@@ -49,15 +50,27 @@ type PredictionUploadResponse = {
   inserted: number
 }
 
-const { paginate, setCriteria, setParams } = queryBuilder('mongo')
-
 const _indexByFilter = async (
-  req: express.Request<{}, {}, {}, ParamsPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{}, {}, {}, QueryPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
   try {
-    const params = setParams(req.query, config.search.item)
+    const params = getPaginationParams(req.query, {
+      orderBy: ['updatedAt'],
+      limit: 100,
+      select: {
+        tags: true,
+        commentCount: true,
+        logCount: true,
+        lastAnnotator: true,
+        annotationValues: true,
+        annotatedAt: true,
+        velocity: true,
+        body: true,
+        annotated: true,
+      },
+    })
 
     const [total, data] = await Promise.all([
       ItemModel.countDocuments(req.filterCriteria || {}),
@@ -71,7 +84,7 @@ const _indexByFilter = async (
 }
 
 const index = async (
-  req: express.Request<CriteriaPayload, {}, {}, CriteriaPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
+  req: express.Request<{ projectId?: string }, {}, {}, QueryPayload> & { filterCriteria?: mongoose.FilterQuery<Item> },
   res: express.Response<Paginate<Item>>,
   next: express.NextFunction
 ) => {
@@ -92,8 +105,38 @@ const index = async (
         return
       }
     }
-    const criteria = setCriteria({ ...req.query, ...req.params }, config.search.item)
-    const params = setParams(req.query, config.search.item)
+    const queryParams: QueryPayload = {
+      ...req.query,
+      ...req.params,
+    }
+    const criteria = mongooseUtils.removeUndefinedFields({
+      project: mongooseUtils.eq(queryParams.projectId),
+      status: mongooseUtils.eq(queryParams.status),
+      _id: mongooseUtils.eq(queryParams.itemId),
+      type: mongooseUtils.eq(queryParams.type),
+      body: mongooseUtils.regExp(queryParams.body),
+      tags: mongooseUtils.eq(queryParams.tags),
+      annotated: mongooseUtils.eq(queryParams.annotated),
+      uuid: mongooseUtils.eq(queryParams.uuid),
+      compositeUuid: mongooseUtils.eq(queryParams.compositeUuid),
+      updatedAt: mongooseUtils.eq(queryParams.updatedAt),
+    })
+
+    const params = getPaginationParams(req.query, {
+      limit: 100,
+      orderBy: ['updatedAt'],
+      select: {
+        tags: true,
+        commentCount: true,
+        logCount: true,
+        lastAnnotator: true,
+        annotationValues: true,
+        annotatedAt: true,
+        velocity: true,
+        body: true,
+        annotated: true,
+      },
+    })
 
     const data = await browse(criteria, params)
 
@@ -209,7 +252,6 @@ const getById = async (
 ) => {
   try {
     const { projectId, itemId } = req.params
-
     let item = await ItemModel.findById(itemId)
     if (!item) {
       throw generateError({
@@ -217,7 +259,6 @@ const getById = async (
         message: 'ERROR_ITEM_NOT_FOUND',
       })
     }
-
     if (item.project.toString() !== projectId) {
       throw generateError({
         code: 404,
