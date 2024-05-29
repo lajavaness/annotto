@@ -4,7 +4,6 @@ import { RightCircleFilled } from '@ant-design/icons'
 import { isEmpty } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import * as Styled from 'modules/project/components/common/__styles__/ActionBar.styles'
 

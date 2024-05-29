@@ -1,6 +1,5 @@
 import { Form } from 'antd'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 import {
   renderInputFormItem,

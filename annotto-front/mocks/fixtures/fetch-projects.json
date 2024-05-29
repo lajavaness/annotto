@@ -1,330 +1,254 @@
 [
-	{
-		"admins": [
-			"admin@test.com"
-		],
-		"users": [],
-		"dataScientists": [],
-		"itemCount": 0,
-		"commentCount": 0,
-		"deadline": "2025-07-03T10:04:28.992Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62bec6e158692c001c2bb941",
-		"name": "Annotation",
-		"client": "62bebec420a3a8001cde0ff3",
-		"updatedAt": "2022-07-01T10:05:21.489Z",
-		"status": "Ongoing",
-		"id": "62bec6e158692c001c2bb941"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [],
-		"dataScientists": [],
-		"itemCount": 1,
-		"commentCount": 0,
-		"deadline": "2023-03-19T19:37:55.097Z",
-		"progress": 100,
-		"velocity": 7043488,
-		"remainingWork": 0,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea842995e9001db8f8c7",
-		"name": "Annotations Trucs/MACHINS/Bidules",
-		"client": "62c3ea842995e9001db8f8d0",
-		"updatedAt": "2022-07-05T07:38:44.822Z",
-		"status": "Ongoing",
-		"id": "62c3ea842995e9001db8f8c7"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin-42@lajavaness.com"
-		],
-		"users": [
-			"user-42@lajavaness.com",
-			"user@test.com"
-		],
-		"dataScientists": [
-			"datascientist-42@lajavaness.com",
-			"data@test.com"
-		],
-		"itemCount": 3,
-		"commentCount": 0,
-		"deadline": "2025-11-30T13:57:20.355Z",
-		"progress": 33,
-		"velocity": 13,
-		"remainingWork": 1,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea852995e9001db8f942",
-		"name": "DEMO Zone and Text : CV - Extraction",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:45.075Z",
-		"status": "Ongoing",
-		"id": "62c3ea852995e9001db8f942"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin-42@lajavaness.com"
-		],
-		"users": [
-			"user-42@lajavaness.com"
-		],
-		"dataScientists": [
-			"datascientist-42@lajavaness.com"
-		],
-		"itemCount": 5,
-		"commentCount": 0,
-		"deadline": "2025-08-30T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea822995e9001db8d1ee",
-		"name": "DEMO: Classification public image",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:42.456Z",
-		"status": "Ongoing",
-		"id": "62c3ea822995e9001db8d1ee"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 5,
-		"commentCount": 0,
-		"deadline": "2025-03-02T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea822995e9001db8d211",
-		"name": "DEMO: Classification text 1",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:42.520Z",
-		"status": "Ongoing",
-		"id": "62c3ea822995e9001db8d211"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 3,
-		"commentCount": 0,
-		"deadline": "2023-05-30T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea822995e9001db8d241",
-		"name": "DEMO: Classification text 2 - test annotators",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:42.610Z",
-		"status": "Ongoing",
-		"id": "62c3ea822995e9001db8d241"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 3,
-		"commentCount": 0,
-		"deadline": "2023-04-30T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea822995e9001db8d269",
-		"name": "DEMO: Classification text 3 - emails",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:42.710Z",
-		"status": "Ongoing",
-		"id": "62c3ea822995e9001db8d269"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 9484,
-		"commentCount": 0,
-		"deadline": "2023-03-02T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea822995e9001db8d2dd",
-		"name": "DEMO: Classification text 4 - 100k items",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:42.898Z",
-		"status": "Ongoing",
-		"id": "62c3ea822995e9001db8d2dd"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 4,
-		"commentCount": 0,
-		"deadline": "2023-04-30T13:57:20.355Z",
-		"progress": 75,
-		"velocity": 102,
-		"remainingWork": 1,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea842995e9001db8f85a",
-		"name": "DEMO: NER and Classification text",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:44.614Z",
-		"status": "Ongoing",
-		"id": "62c3ea842995e9001db8f85a"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 3,
-		"commentCount": 0,
-		"deadline": "2023-11-30T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea842995e9001db8f8ac",
-		"name": "DEMO: NER with relations",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:44.749Z",
-		"status": "Ongoing",
-		"id": "62c3ea842995e9001db8f8ac"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com",
-			"admin@test.com"
-		],
-		"users": [
-			"user@test.com"
-		],
-		"dataScientists": [
-			"data@test.com"
-		],
-		"itemCount": 3,
-		"commentCount": 0,
-		"deadline": "2023-04-30T13:57:20.355Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea842995e9001db8f91a",
-		"name": "DEMO: Zone and Classification image2",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:44.999Z",
-		"status": "Ongoing",
-		"id": "62c3ea842995e9001db8f91a"
-	},
-	{
-		"admins": [
-			"userProfile-42@lajavaness.com"
-		],
-		"users": [],
-		"dataScientists": [],
-		"itemCount": 1,
-		"commentCount": 0,
-		"deadline": "2025-07-31T07:35:52.373Z",
-		"progress": 100,
-		"velocity": 26699,
-		"remainingWork": 0,
-		"lastAnnotationTime": null,
-		"_id": "62c3ea842995e9001db8f8e4",
-		"name": "Generic Document Segmentation",
-		"client": "62c3ea822995e9001db8d209",
-		"updatedAt": "2022-07-05T07:38:44.901Z",
-		"status": "Ongoing",
-		"id": "62c3ea842995e9001db8f8e4"
-	},
-	{
-		"admins": [
-			"admin@test.com"
-		],
-		"users": [],
-		"dataScientists": [],
-		"itemCount": 0,
-		"commentCount": 0,
-		"deadline": "2023-07-06T09:28:23.154Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62bebec420a3a8001cde0ff0",
-		"name": "annot poste",
-		"client": "62bebec420a3a8001cde0ff3",
-		"updatedAt": "2022-07-01T09:30:44.551Z",
-		"status": "Ongoing",
-		"id": "62bebec420a3a8001cde0ff0"
-	},
-	{
-		"admins": [
-			"admin@test.com"
-		],
-		"users": [],
-		"dataScientists": [],
-		"itemCount": 3,
-		"commentCount": 0,
-		"deadline": "2023-10-12T09:45:04.810Z",
-		"progress": null,
-		"velocity": null,
-		"remainingWork": null,
-		"lastAnnotationTime": null,
-		"_id": "62bec23a58692c001c2bb939",
-		"name": "annotation poste",
-		"client": "62bebec420a3a8001cde0ff3",
-		"updatedAt": "2022-07-01T09:45:30.742Z",
-		"status": "Ongoing",
-		"id": "62bec23a58692c001c2bb939"
-	}
+  {
+    "admins": ["admin@test.com"],
+    "users": [],
+    "dataScientists": [],
+    "itemCount": 0,
+    "commentCount": 0,
+    "deadline": "2025-07-03T10:04:28.992Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62bec6e158692c001c2bb941",
+    "name": "Annotation",
+    "client": "62bebec420a3a8001cde0ff3",
+    "updatedAt": "2022-07-01T10:05:21.489Z",
+    "status": "Ongoing",
+    "id": "62bec6e158692c001c2bb941"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": [],
+    "dataScientists": [],
+    "itemCount": 1,
+    "commentCount": 0,
+    "deadline": "2023-03-19T19:37:55.097Z",
+    "progress": 100,
+    "velocity": 7043488,
+    "remainingWork": 0,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea842995e9001db8f8c7",
+    "name": "Annotations Trucs/MACHINS/Bidules",
+    "client": "62c3ea842995e9001db8f8d0",
+    "updatedAt": "2022-07-05T07:38:44.822Z",
+    "status": "Ongoing",
+    "id": "62c3ea842995e9001db8f8c7"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin-42@lajavaness.com"],
+    "users": ["user-42@lajavaness.com", "user@test.com"],
+    "dataScientists": ["datascientist-42@lajavaness.com", "data@test.com"],
+    "itemCount": 3,
+    "commentCount": 0,
+    "deadline": "2025-11-30T13:57:20.355Z",
+    "progress": 33,
+    "velocity": 13,
+    "remainingWork": 1,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea852995e9001db8f942",
+    "name": "DEMO Zone and Text : CV - Extraction",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:45.075Z",
+    "status": "Ongoing",
+    "id": "62c3ea852995e9001db8f942"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin-42@lajavaness.com"],
+    "users": ["user-42@lajavaness.com"],
+    "dataScientists": ["datascientist-42@lajavaness.com"],
+    "itemCount": 5,
+    "commentCount": 0,
+    "deadline": "2025-08-30T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea822995e9001db8d1ee",
+    "name": "DEMO: Classification public image",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:42.456Z",
+    "status": "Ongoing",
+    "id": "62c3ea822995e9001db8d1ee"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 5,
+    "commentCount": 0,
+    "deadline": "2025-03-02T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea822995e9001db8d211",
+    "name": "DEMO: Classification text 1",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:42.520Z",
+    "status": "Ongoing",
+    "id": "62c3ea822995e9001db8d211"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 3,
+    "commentCount": 0,
+    "deadline": "2023-05-30T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea822995e9001db8d241",
+    "name": "DEMO: Classification text 2 - test annotators",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:42.610Z",
+    "status": "Ongoing",
+    "id": "62c3ea822995e9001db8d241"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 3,
+    "commentCount": 0,
+    "deadline": "2023-04-30T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea822995e9001db8d269",
+    "name": "DEMO: Classification text 3 - emails",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:42.710Z",
+    "status": "Ongoing",
+    "id": "62c3ea822995e9001db8d269"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 9484,
+    "commentCount": 0,
+    "deadline": "2023-03-02T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea822995e9001db8d2dd",
+    "name": "DEMO: Classification text 4 - 100k items",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:42.898Z",
+    "status": "Ongoing",
+    "id": "62c3ea822995e9001db8d2dd"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 4,
+    "commentCount": 0,
+    "deadline": "2023-04-30T13:57:20.355Z",
+    "progress": 75,
+    "velocity": 102,
+    "remainingWork": 1,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea842995e9001db8f85a",
+    "name": "DEMO: NER and Classification text",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:44.614Z",
+    "status": "Ongoing",
+    "id": "62c3ea842995e9001db8f85a"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 3,
+    "commentCount": 0,
+    "deadline": "2023-11-30T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea842995e9001db8f8ac",
+    "name": "DEMO: NER with relations",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:44.749Z",
+    "status": "Ongoing",
+    "id": "62c3ea842995e9001db8f8ac"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com", "admin@test.com"],
+    "users": ["user@test.com"],
+    "dataScientists": ["data@test.com"],
+    "itemCount": 3,
+    "commentCount": 0,
+    "deadline": "2023-04-30T13:57:20.355Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea842995e9001db8f91a",
+    "name": "DEMO: Zone and Classification image2",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:44.999Z",
+    "status": "Ongoing",
+    "id": "62c3ea842995e9001db8f91a"
+  },
+  {
+    "admins": ["userProfile-42@lajavaness.com"],
+    "users": [],
+    "dataScientists": [],
+    "itemCount": 1,
+    "commentCount": 0,
+    "deadline": "2025-07-31T07:35:52.373Z",
+    "progress": 100,
+    "velocity": 26699,
+    "remainingWork": 0,
+    "lastAnnotationTime": null,
+    "_id": "62c3ea842995e9001db8f8e4",
+    "name": "Generic Document Segmentation",
+    "client": "62c3ea822995e9001db8d209",
+    "updatedAt": "2022-07-05T07:38:44.901Z",
+    "status": "Ongoing",
+    "id": "62c3ea842995e9001db8f8e4"
+  },
+  {
+    "admins": ["admin@test.com"],
+    "users": [],
+    "dataScientists": [],
+    "itemCount": 0,
+    "commentCount": 0,
+    "deadline": "2023-07-06T09:28:23.154Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62bebec420a3a8001cde0ff0",
+    "name": "annot poste",
+    "client": "62bebec420a3a8001cde0ff3",
+    "updatedAt": "2022-07-01T09:30:44.551Z",
+    "status": "Ongoing",
+    "id": "62bebec420a3a8001cde0ff0"
+  },
+  {
+    "admins": ["admin@test.com"],
+    "users": [],
+    "dataScientists": [],
+    "itemCount": 3,
+    "commentCount": 0,
+    "deadline": "2023-10-12T09:45:04.810Z",
+    "progress": null,
+    "velocity": null,
+    "remainingWork": null,
+    "lastAnnotationTime": null,
+    "_id": "62bec23a58692c001c2bb939",
+    "name": "annotation poste",
+    "client": "62bebec420a3a8001cde0ff3",
+    "updatedAt": "2022-07-01T09:45:30.742Z",
+    "status": "Ongoing",
+    "id": "62bec23a58692c001c2bb939"
+  }
 ]

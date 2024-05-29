@@ -1,6 +1,6 @@
 import { isEmpty, isNil, isNumber } from 'lodash'
 import PropTypes from 'prop-types'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { WORD, nerMarkerTypes } from 'shared/enums/markerTypes'
 

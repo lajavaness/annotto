@@ -3,7 +3,7 @@ import { Typography } from 'antd'
 import { isEmpty, isNil } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React, { useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 
 import { CHAR, FOUR_POINTS, POLYGON, TWO_POINTS, WORD, nerMarkerTypes, zoneMarkerTypes } from 'shared/enums/markerTypes'
 

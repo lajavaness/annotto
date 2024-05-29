@@ -1,6 +1,6 @@
 import { Button, Result } from 'antd'
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 class ErrorBoundary extends Component {
   state = {

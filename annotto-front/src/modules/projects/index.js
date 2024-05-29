@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { DynamicModuleLoader } from 'redux-dynamic-modules'
 
 import { startup } from 'modules/projects/actions/projectsActions'

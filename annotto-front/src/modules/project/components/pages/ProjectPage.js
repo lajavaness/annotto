@@ -2,7 +2,7 @@ import { isEmpty, merge, omit } from 'lodash'
 import { message } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import {

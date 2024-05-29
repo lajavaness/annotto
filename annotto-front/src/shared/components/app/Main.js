@@ -11,7 +11,7 @@ import { match } from '@reach/router/lib/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React, { Suspense, useCallback, useEffect, useState } from 'react'
+import { Suspense, useCallback, useEffect, useState } from 'react'
 
 import { selectConfigProjectName } from 'modules/configurationProject/selectors/configurationProjectSelectors'
 import { selectProjectId, selectProjectName } from 'modules/project/selectors/projectSelectors'

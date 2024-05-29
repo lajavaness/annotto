@@ -1,6 +1,6 @@
 import CloseOutlined from '@ant-design/icons/lib/icons/CloseOutlined'
 import PropTypes from 'prop-types'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import * as Styled from 'modules/project/components/common/__styles__/RelationPath.styles'
 

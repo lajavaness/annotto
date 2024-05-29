@@ -3,8 +3,7 @@
  * `src/setupTestsLocal.js`, and they'll be automatically included.
  * Please note that React Apps use a different setupTests file structure.
  * than other projects due to tooling limitations. */
-import '@testing-library/jest-dom/extend-expect'
-
+import '@testing-library/jest-dom'
 import 'jest-extended'
 import './setupTestsLocal'
 

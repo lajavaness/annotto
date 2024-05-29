@@ -2,7 +2,7 @@ import 'github-markdown-css'
 import { Col, Input, Row, Switch } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 // TODO  this is an example of temporary markdown, we need an example specific to Annotto

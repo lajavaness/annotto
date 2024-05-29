@@ -1,5 +1,5 @@
 import { isEmpty, isNumber } from 'lodash'
-import React, { forwardRef, useCallback } from 'react'
+import { forwardRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import { isNerAnnotationEquivalent } from 'shared/utils/annotationUtils'

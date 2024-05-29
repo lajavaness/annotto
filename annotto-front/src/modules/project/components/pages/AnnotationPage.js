@@ -5,7 +5,7 @@ import { GlobalHotKeys } from 'react-hotkeys'
 import { isArray, isEmpty, isNumber } from 'lodash'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import ActionBar from 'modules/project/components/common/ActionBar'
 import CheckLabelList from 'modules/project/components/common/CheckLabelList'

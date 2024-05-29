@@ -2,7 +2,7 @@ import { Form, Input, Select } from 'antd'
 import { debounce, isEmpty } from 'lodash'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import moment from 'moment'
 
 import { fetchClients, fetchUsers } from 'modules/root/actions/rootActions'

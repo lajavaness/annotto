@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components'
 import { configure } from 'react-hotkeys'
 import { createStore } from 'redux-dynamic-modules'
 import { getSagaExtension } from 'redux-dynamic-modules-saga'
-import React from 'react'
 
 import rootModule from 'modules/root'
 

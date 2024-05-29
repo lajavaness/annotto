@@ -1,5 +1,5 @@
 import { UnControlled as CodeMirror } from 'react-codemirror2'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import jsonlint from 'jsonlint-mod'
 
 import 'codemirror/addon/fold/brace-fold.js'

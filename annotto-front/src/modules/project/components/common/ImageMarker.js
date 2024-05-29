@@ -1,7 +1,7 @@
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
 import { isEmpty, isNumber } from 'lodash'
 import PropTypes from 'prop-types'
-import React, { createRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { createRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import useOutsideClick from 'shared/hooks/useOutsideClick'
 
@@ -98,7 +98,7 @@ const ImageMarker = ({
 
     return [...updatedAnnotations, ...updatedPredictions]
   }, [showPredictions, resolvedAnnotations, resolvedPredictions, zoomFactor])
-
+  console.log(resolvedAnnotationsAndPredictions, 123)
   useEffect(() => {
     setMarkerRefs((previousMarkerRefs) =>
       Array(resolvedAnnotationsAndPredictions.length)

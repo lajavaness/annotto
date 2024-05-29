@@ -1,6 +1,5 @@
 import { DatePicker, Form, Input, InputNumber, Radio, Select } from 'antd'
 import { isEmpty } from 'lodash'
-import React from 'react'
 
 export const renderRadioGroupFormItem = (label, key, formField, radios, name, restProps = {}) => (
   <Form.Item {...formField} name={name || [formField.name, key]} key={key} label={label} {...restProps}>

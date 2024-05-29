@@ -1,1528 +1,1528 @@
 [
-	{
-		"_id": "5f6a1b72420b84001bde5bca",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>",
-						"create_at": "2017-08-07 09:59:02",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59881dc713047d11503c26f9"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59881dc713047d11503c26f9",
-		"data": {
-			"dataset": "validation",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>",
-					"create_at": "2017-08-07 09:59:02",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>"
-		},
-		"body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>",
-		"updatedAt": "2020-10-06T08:33:55.533Z",
-		"createdAt": "2020-09-22T15:42:42.904Z",
-		"__v": 0,
-		"seenAt": "2020-10-06T08:33:55.531Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bcd",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>",
-						"create_at": "2017-11-30 11:49:52",
-						"type": "Tweet"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
-						"create_at": "2017-11-30 11:50:47",
-						"type": "Tweet"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
-						"create_at": "2017-11-30 11:53:10",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>\n<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>\n<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a1fe29a799fc2b5e56472d3"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a1fe29a799fc2b5e56472d3",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>",
-					"create_at": "2017-11-30 11:49:52",
-					"type": "Tweet"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
-					"create_at": "2017-11-30 11:50:47",
-					"type": "Tweet"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
-					"create_at": "2017-11-30 11:53:10",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>\n<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>\n<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>"
-		},
-		"body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>\n<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>\n<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
-		"updatedAt": "2020-10-02T15:18:02.164Z",
-		"createdAt": "2020-09-22T15:42:42.905Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:18:02.164Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bcc",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>",
-						"create_at": "2017-11-15 10:22:09",
-						"type": "Tweet privé"
-					}
-				],
-				"body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a0c077fe203117df8e77fb5"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a0c077fe203117df8e77fb5",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>",
-					"create_at": "2017-11-15 10:22:09",
-					"type": "Tweet privé"
-				}
-			],
-			"body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>"
-		},
-		"body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>",
-		"updatedAt": "2020-10-02T15:18:00.224Z",
-		"createdAt": "2020-09-22T15:42:42.905Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:18:00.223Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bcb",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>",
-						"create_at": "2017-12-29 20:36:24",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a469963eb7025609f38ecfa"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a469963eb7025609f38ecfa",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>",
-					"create_at": "2017-12-29 20:36:24",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>"
-		},
-		"body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>",
-		"updatedAt": "2020-10-02T15:17:58.634Z",
-		"createdAt": "2020-09-22T15:42:42.905Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:58.634Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bc9",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>",
-						"create_at": "2018-02-07 19:40:58",
-						"type": "Tweet"
-					},
-					{
-						"author_name": "Author 1",
-						"body": "<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>",
-						"create_at": "2018-02-07 19:45:12",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>\n<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a7b4966d6cb00aa624412ea"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a7b4966d6cb00aa624412ea",
-		"data": {
-			"dataset": "validation",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>",
-					"create_at": "2018-02-07 19:40:58",
-					"type": "Tweet"
-				},
-				{
-					"author_name": "Author 1",
-					"body": "<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>",
-					"create_at": "2018-02-07 19:45:12",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>\n<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>"
-		},
-		"body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>\n<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>",
-		"updatedAt": "2020-10-02T15:17:57.000Z",
-		"createdAt": "2020-09-22T15:42:42.904Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:57.000Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bdc",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>",
-						"create_at": "2018-03-21 17:37:54",
-						"type": "Tweet privé"
-					}
-				],
-				"body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5ab28b1cd6cb009e52dbacdf"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5ab28b1cd6cb009e52dbacdf",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>",
-					"create_at": "2018-03-21 17:37:54",
-					"type": "Tweet privé"
-				}
-			],
-			"body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>"
-		},
-		"body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>",
-		"updatedAt": "2020-10-02T15:17:55.203Z",
-		"createdAt": "2020-09-22T15:42:42.908Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:55.202Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bdd",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>",
-						"create_at": "2019-06-24 20:29:04",
-						"type": "Tweet"
-					},
-					{
-						"author_name": "Author 1",
-						"body": "<p>À l'image de notre pays...</p>",
-						"create_at": "2019-06-24 20:31:14",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>\n<p>À l'image de notre pays...</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5d111882e203110df0e6594c"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5d111882e203110df0e6594c",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>",
-					"create_at": "2019-06-24 20:29:04",
-					"type": "Tweet"
-				},
-				{
-					"author_name": "Author 1",
-					"body": "<p>À l'image de notre pays...</p>",
-					"create_at": "2019-06-24 20:31:14",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>\n<p>À l'image de notre pays...</p>"
-		},
-		"body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>\n<p>À l'image de notre pays...</p>",
-		"updatedAt": "2020-10-02T15:17:53.185Z",
-		"createdAt": "2020-09-22T15:42:42.909Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:53.184Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bc8",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>",
-						"create_at": "2017-10-12 09:21:45",
-						"type": "Message privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>comment je peut faire esque je doit vous telephoner?</p>",
-						"create_at": "2017-10-12 09:22:15",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>\n<p>comment je peut faire esque je doit vous telephoner?</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59df180bd6cb00089a8c74ab"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59df180bd6cb00089a8c74ab",
-		"data": {
-			"dataset": "validation",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>",
-					"create_at": "2017-10-12 09:21:45",
-					"type": "Message privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>comment je peut faire esque je doit vous telephoner?</p>",
-					"create_at": "2017-10-12 09:22:15",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>\n<p>comment je peut faire esque je doit vous telephoner?</p>"
-		},
-		"body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>\n<p>comment je peut faire esque je doit vous telephoner?</p>",
-		"updatedAt": "2020-10-02T15:17:51.097Z",
-		"createdAt": "2020-09-22T15:42:42.904Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:51.097Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bde",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": ["marker"],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>",
-						"create_at": "2019-05-03 11:51:32",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5ccc0f40eb7025801d9debe3"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5ccc0f40eb7025801d9debe3",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>",
-					"create_at": "2019-05-03 11:51:32",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>"
-		},
-		"body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>",
-		"updatedAt": "2020-10-02T15:17:48.285Z",
-		"createdAt": "2020-09-22T15:42:42.909Z",
-		"__v": 1,
-		"seenAt": "2020-10-02T15:17:48.284Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd2",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>",
-						"create_at": "2017-11-22 12:51:50",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a1564e4799fc29874f432e1"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a1564e4799fc29874f432e1",
-		"data": {
-			"dataset": "validation",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>",
-					"create_at": "2017-11-22 12:51:50",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>"
-		},
-		"body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>",
-		"updatedAt": "2020-10-02T15:17:33.398Z",
-		"createdAt": "2020-09-22T15:42:42.906Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:33.397Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bdf",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>",
-						"create_at": "2019-05-15 00:49:04",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5cdb47dceb70251ed5f28035"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5cdb47dceb70251ed5f28035",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>",
-					"create_at": "2019-05-15 00:49:04",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>"
-		},
-		"body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>",
-		"updatedAt": "2020-10-02T15:17:23.107Z",
-		"createdAt": "2020-09-22T15:42:42.910Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:23.107Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5be2",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>",
-						"create_at": "2018-07-05 15:31:52",
-						"type": "Tweet privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>",
-						"create_at": "2018-07-05 15:33:41",
-						"type": "Tweet privé"
-					}
-				],
-				"body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>\n<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5b3e1e7dd6cb00f59288f601"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5b3e1e7dd6cb00f59288f601",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>",
-					"create_at": "2018-07-05 15:31:52",
-					"type": "Tweet privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>",
-					"create_at": "2018-07-05 15:33:41",
-					"type": "Tweet privé"
-				}
-			],
-			"body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>\n<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>"
-		},
-		"body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>\n<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>",
-		"updatedAt": "2020-10-02T15:17:21.660Z",
-		"createdAt": "2020-09-22T15:42:42.911Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:21.660Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5be0",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>",
-						"create_at": "2018-04-11 15:13:12",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5ace0a32eb7025b19a38b454"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5ace0a32eb7025b19a38b454",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>",
-					"create_at": "2018-04-11 15:13:12",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>"
-		},
-		"body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>",
-		"updatedAt": "2020-10-02T15:17:20.318Z",
-		"createdAt": "2020-09-22T15:42:42.911Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:20.318Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5be1",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>",
-						"create_at": "2018-09-03 15:57:13",
-						"type": "Message privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>J pour la brasserie des docs</p>",
-						"create_at": "2018-09-03 15:57:22",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>\n<p>J pour la brasserie des docs</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5b8d3dbbe2031189271b0c35"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5b8d3dbbe2031189271b0c35",
-		"data": {
-			"dataset": "train",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>",
-					"create_at": "2018-09-03 15:57:13",
-					"type": "Message privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>J pour la brasserie des docs</p>",
-					"create_at": "2018-09-03 15:57:22",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>\n<p>J pour la brasserie des docs</p>"
-		},
-		"body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>\n<p>J pour la brasserie des docs</p>",
-		"updatedAt": "2020-10-02T15:17:18.684Z",
-		"createdAt": "2020-09-22T15:42:42.911Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:18.684Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5be5",
-		"type": "text",
-		"status": "todo",
-		"annotated": true,
-		"annotatedBy": ["admin@lajavaness.com"],
-		"annotationValues": ["RC", "COM"],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>",
-						"create_at": "2018-05-31 08:59:25",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5b0f9d4fe203114d48ef6bec"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5b0f9d4fe203114d48ef6bec",
-		"data": {
-			"dataset": "train",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>",
-					"create_at": "2018-05-31 08:59:25",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>"
-		},
-		"body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>",
-		"updatedAt": "2020-10-02T15:17:17.242Z",
-		"createdAt": "2020-09-22T15:42:42.912Z",
-		"__v": 2,
-		"seenAt": "2020-10-02T15:17:17.241Z",
-		"annotatedAt": "2020-09-30T16:12:50.753Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5be4",
-		"type": "text",
-		"status": "todo",
-		"annotated": true,
-		"annotatedBy": ["admin@lajavaness.com"],
-		"annotationValues": ["RC"],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>",
-						"create_at": "2019-03-09 16:04:30",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5c83d60feb7025a6a2bcb09d"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5c83d60feb7025a6a2bcb09d",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>",
-					"create_at": "2019-03-09 16:04:30",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>"
-		},
-		"body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>",
-		"updatedAt": "2020-10-02T15:17:15.267Z",
-		"createdAt": "2020-09-22T15:42:42.912Z",
-		"__v": 1,
-		"seenAt": "2020-10-02T15:17:15.267Z",
-		"annotatedAt": "2020-09-30T15:56:47.796Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5be3",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour</p>",
-						"create_at": "2019-04-24 13:31:54",
-						"type": "Message privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>",
-						"create_at": "2019-04-24 13:32:13",
-						"type": "Message privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>",
-						"create_at": "2019-04-24 13:32:25",
-						"type": "Message privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>",
-						"create_at": "2019-04-24 13:32:45",
-						"type": "Message privé"
-					},
-					{
-						"author_name": "Author 0",
-						"body": "<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>",
-						"create_at": "2019-04-24 13:33:12",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour</p>\n<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>\n<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>\n<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>\n<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5cc0492cd6cb000141102116"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5cc0492cd6cb000141102116",
-		"data": {
-			"dataset": "train",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour</p>",
-					"create_at": "2019-04-24 13:31:54",
-					"type": "Message privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>",
-					"create_at": "2019-04-24 13:32:13",
-					"type": "Message privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>",
-					"create_at": "2019-04-24 13:32:25",
-					"type": "Message privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>",
-					"create_at": "2019-04-24 13:32:45",
-					"type": "Message privé"
-				},
-				{
-					"author_name": "Author 0",
-					"body": "<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>",
-					"create_at": "2019-04-24 13:33:12",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour</p>\n<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>\n<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>\n<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>\n<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>"
-		},
-		"body": "<p>Bonjour</p>\n<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>\n<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>\n<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>\n<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>",
-		"updatedAt": "2020-10-02T15:17:13.592Z",
-		"createdAt": "2020-09-22T15:42:42.911Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:13.591Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd6",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>",
-						"create_at": "2017-10-17 19:27:10",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59e63d81799fc22418e17e99"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59e63d81799fc22418e17e99",
-		"data": {
-			"dataset": "validation",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>",
-					"create_at": "2017-10-17 19:27:10",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>"
-		},
-		"body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>",
-		"updatedAt": "2020-10-02T15:17:10.403Z",
-		"createdAt": "2020-09-22T15:42:42.907Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:17:10.402Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd5",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": ["marker"],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>",
-						"create_at": "2017-12-08 20:14:57",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a2ae4b2e2031118001a084a"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a2ae4b2e2031118001a084a",
-		"data": {
-			"dataset": "train",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>",
-					"create_at": "2017-12-08 20:14:57",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>"
-		},
-		"body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>",
-		"updatedAt": "2020-10-02T15:17:01.935Z",
-		"createdAt": "2020-09-22T15:42:42.907Z",
-		"__v": 1,
-		"seenAt": "2020-10-02T15:16:59.200Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd4",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>",
-						"create_at": "2017-10-07 21:14:43",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59d927aa7a8beb5561951273"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59d927aa7a8beb5561951273",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>",
-					"create_at": "2017-10-07 21:14:43",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>"
-		},
-		"body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>",
-		"updatedAt": "2020-10-02T15:16:57.284Z",
-		"createdAt": "2020-09-22T15:42:42.907Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:16:57.283Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd3",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>",
-						"create_at": "2017-07-02 19:00:37",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>"
-			},
-			"datatype": "text",
-			"uuid": "A595926cf13047d8da27a7358"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A595926cf13047d8da27a7358",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>",
-					"create_at": "2017-07-02 19:00:37",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>"
-		},
-		"body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>",
-		"updatedAt": "2020-10-02T15:16:55.746Z",
-		"createdAt": "2020-09-22T15:42:42.906Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:16:55.746Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd1",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>",
-						"create_at": "2017-07-21 19:30:26",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59723a7713047d2697fd5f32"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59723a7713047d2697fd5f32",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>",
-					"create_at": "2017-07-21 19:30:26",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>"
-		},
-		"body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>",
-		"updatedAt": "2020-10-02T15:15:11.658Z",
-		"createdAt": "2020-09-22T15:42:42.906Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:15:11.657Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd0",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>",
-						"create_at": "2018-02-17 08:07:50",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a87d5127a8beb71de5197b8"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a87d5127a8beb71de5197b8",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>",
-					"create_at": "2018-02-17 08:07:50",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>"
-		},
-		"body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>",
-		"updatedAt": "2020-10-02T15:15:09.693Z",
-		"createdAt": "2020-09-22T15:42:42.906Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:15:09.692Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bcf",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>",
-						"create_at": "2017-10-18 12:16:08",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59e729f0eb70255432acef30"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59e729f0eb70255432acef30",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>",
-					"create_at": "2017-10-18 12:16:08",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>"
-		},
-		"body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>",
-		"updatedAt": "2020-10-02T15:15:07.319Z",
-		"createdAt": "2020-09-22T15:42:42.906Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:15:07.318Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bce",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>",
-						"create_at": "2017-12-07 11:42:04",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a291afe14bf8ab756b8c6ca"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a291afe14bf8ab756b8c6ca",
-		"data": {
-			"dataset": "validation",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>",
-					"create_at": "2017-12-07 11:42:04",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>"
-		},
-		"body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>",
-		"updatedAt": "2020-10-02T15:15:04.646Z",
-		"createdAt": "2020-09-22T15:42:42.905Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:15:04.645Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd7",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>",
-						"create_at": "2017-08-01 16:47:58",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>"
-			},
-			"datatype": "text",
-			"uuid": "A598094b1eb7025bca662b7fb"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A598094b1eb7025bca662b7fb",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>",
-					"create_at": "2017-08-01 16:47:58",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>"
-		},
-		"body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>",
-		"updatedAt": "2020-10-02T15:15:01.984Z",
-		"createdAt": "2020-09-22T15:42:42.907Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:15:01.984Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd8",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "Messenger Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>",
-						"create_at": "2017-09-13 18:37:42",
-						"type": "Message privé"
-					}
-				],
-				"body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>"
-			},
-			"datatype": "text",
-			"uuid": "A59b95ed714bf8a454b6bfd77"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A59b95ed714bf8a454b6bfd77",
-		"data": {
-			"dataset": "train",
-			"source": "Messenger Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>",
-					"create_at": "2017-09-13 18:37:42",
-					"type": "Message privé"
-				}
-			],
-			"body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>"
-		},
-		"body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>",
-		"updatedAt": "2020-10-02T15:14:57.098Z",
-		"createdAt": "2020-09-22T15:42:42.908Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:14:57.098Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bd9",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>",
-						"create_at": "2018-02-12 14:23:43",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a8198f6e20311a5cfc2aa96"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a8198f6e20311a5cfc2aa96",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>",
-					"create_at": "2018-02-12 14:23:43",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>"
-		},
-		"body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>",
-		"updatedAt": "2020-10-02T15:14:53.450Z",
-		"createdAt": "2020-09-22T15:42:42.908Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:14:53.450Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bda",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "train",
-				"source": "@Enedis",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>",
-						"create_at": "2018-01-08 17:36:10",
-						"type": "Tweet"
-					},
-					{
-						"author_name": "Author 1",
-						"body": "<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>",
-						"create_at": "2018-01-08 17:38:52",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>\n<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a539e4192002603d6a0da17"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a539e4192002603d6a0da17",
-		"data": {
-			"dataset": "train",
-			"source": "@Enedis",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>",
-					"create_at": "2018-01-08 17:36:10",
-					"type": "Tweet"
-				},
-				{
-					"author_name": "Author 1",
-					"body": "<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>",
-					"create_at": "2018-01-08 17:38:52",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>\n<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>"
-		},
-		"body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>\n<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>",
-		"updatedAt": "2020-10-02T15:14:49.768Z",
-		"createdAt": "2020-09-22T15:42:42.908Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:14:49.768Z"
-	},
-	{
-		"_id": "5f6a1b72420b84001bde5bdb",
-		"type": "text",
-		"status": "todo",
-		"annotated": false,
-		"annotatedBy": [],
-		"annotationValues": [],
-		"tags": [],
-		"raw": {
-			"data": {
-				"dataset": "validation",
-				"source": "@Enedis.Client",
-				"msgs": [
-					{
-						"author_name": "Author 0",
-						"body": "<p>Cc @enedis_clients</p>",
-						"create_at": "2017-11-29 10:15:25",
-						"type": "Tweet"
-					}
-				],
-				"body": "<p>Cc @enedis_clients</p>"
-			},
-			"datatype": "text",
-			"uuid": "A5a1e7adad6cb004464702fd3"
-		},
-		"project": "5f69faa7420b84001bde5ad6",
-		"uuid": "A5a1e7adad6cb004464702fd3",
-		"data": {
-			"dataset": "validation",
-			"source": "@Enedis.Client",
-			"msgs": [
-				{
-					"author_name": "Author 0",
-					"body": "<p>Cc @enedis_clients</p>",
-					"create_at": "2017-11-29 10:15:25",
-					"type": "Tweet"
-				}
-			],
-			"body": "<p>Cc @enedis_clients</p>"
-		},
-		"body": "<p>Cc @enedis_clients</p>",
-		"updatedAt": "2020-10-02T15:14:46.446Z",
-		"createdAt": "2020-09-22T15:42:42.908Z",
-		"__v": 0,
-		"seenAt": "2020-10-02T15:14:46.445Z"
-	}
+  {
+    "_id": "5f6a1b72420b84001bde5bca",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>",
+            "create_at": "2017-08-07 09:59:02",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59881dc713047d11503c26f9"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59881dc713047d11503c26f9",
+    "data": {
+      "dataset": "validation",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>",
+          "create_at": "2017-08-07 09:59:02",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>"
+    },
+    "body": "<p>Bonjour j'aimerai demander des informations concernant une regularisation suite à un changement de compteur</p>",
+    "updatedAt": "2020-10-06T08:33:55.533Z",
+    "createdAt": "2020-09-22T15:42:42.904Z",
+    "__v": 0,
+    "seenAt": "2020-10-06T08:33:55.531Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bcd",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>",
+            "create_at": "2017-11-30 11:49:52",
+            "type": "Tweet"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
+            "create_at": "2017-11-30 11:50:47",
+            "type": "Tweet"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
+            "create_at": "2017-11-30 11:53:10",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>\n<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>\n<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a1fe29a799fc2b5e56472d3"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a1fe29a799fc2b5e56472d3",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>",
+          "create_at": "2017-11-30 11:49:52",
+          "type": "Tweet"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
+          "create_at": "2017-11-30 11:50:47",
+          "type": "Tweet"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
+          "create_at": "2017-11-30 11:53:10",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>\n<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>\n<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>"
+    },
+    "body": "<p>@HerveChevreau Bonjour Mr le maire désolé de vous solliciter par ce biais mais je suis confronté à une situation d'urgence absolue. Nous avons fait construire une maison à Epinay-sur-Seine et nous devons emménager le 20/12.Le problème @enedis_clients ne peux nous raccorder 1/3</p>\n<p>notre coffret electrique car une personne au conseil général (Mr Mathouraparsad) ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>\n<p>notre coffret electrique car une personne au conseil général ne traite pas ses mails et ne veux pas traiter les dossier d'arrêté de voirie depuis plusieurs mois. Je precise que notre chauffage est électrique et que nous avons 2 enfants en bas âge 2/3</p>",
+    "updatedAt": "2020-10-02T15:18:02.164Z",
+    "createdAt": "2020-09-22T15:42:42.905Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:18:02.164Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bcc",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>",
+            "create_at": "2017-11-15 10:22:09",
+            "type": "Tweet privé"
+          }
+        ],
+        "body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a0c077fe203117df8e77fb5"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a0c077fe203117df8e77fb5",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>",
+          "create_at": "2017-11-15 10:22:09",
+          "type": "Tweet privé"
+        }
+      ],
+      "body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>"
+    },
+    "body": "<p>Bonjour, je n’est pas linky mais pourtant lol <a href=\"https://t.co/zQXoYxlr8w\" rel=\"nofollow\" target=\"_blank\">https://t.co/zQXoYxlr8w</a></p>",
+    "updatedAt": "2020-10-02T15:18:00.224Z",
+    "createdAt": "2020-09-22T15:42:42.905Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:18:00.223Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bcb",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>",
+            "create_at": "2017-12-29 20:36:24",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a469963eb7025609f38ecfa"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a469963eb7025609f38ecfa",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>",
+          "create_at": "2017-12-29 20:36:24",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>"
+    },
+    "body": "<p>Bonjour @enedis maintenant que je dispose d'un beau compteur communiquant, pouvez-vous m'indiquer les démarches à suivres pour consulter ma consommation en \"direct\" ?</p>",
+    "updatedAt": "2020-10-02T15:17:58.634Z",
+    "createdAt": "2020-09-22T15:42:42.905Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:58.634Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bc9",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>",
+            "create_at": "2018-02-07 19:40:58",
+            "type": "Tweet"
+          },
+          {
+            "author_name": "Author 1",
+            "body": "<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>",
+            "create_at": "2018-02-07 19:45:12",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>\n<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a7b4966d6cb00aa624412ea"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a7b4966d6cb00aa624412ea",
+    "data": {
+      "dataset": "validation",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>",
+          "create_at": "2018-02-07 19:40:58",
+          "type": "Tweet"
+        },
+        {
+          "author_name": "Author 1",
+          "body": "<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>",
+          "create_at": "2018-02-07 19:45:12",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>\n<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>"
+    },
+    "body": "<p>Je suis en discussion en ce moment avec @enedis ...</p>\n<p>Merci M. le Maire. Peut on faire quelque chose? @enedis @enedis_clients @enedis_idf_o  comment vous expliquer que couper l’électricité par ces temps peut être très dangereux???</p>",
+    "updatedAt": "2020-10-02T15:17:57.000Z",
+    "createdAt": "2020-09-22T15:42:42.904Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:57.000Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bdc",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>",
+            "create_at": "2018-03-21 17:37:54",
+            "type": "Tweet privé"
+          }
+        ],
+        "body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5ab28b1cd6cb009e52dbacdf"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5ab28b1cd6cb009e52dbacdf",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>",
+          "create_at": "2018-03-21 17:37:54",
+          "type": "Tweet privé"
+        }
+      ],
+      "body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>"
+    },
+    "body": "<p>bonjour , j’aurais besoin de renseignement pour l’ajout d’un compteur mais ne trouvant pas de réponse sur le site et que personne répond à enedis 31 (haute garonne) je vous contacte ici , merci de me répondre ou de me telephoné au 0612341234</p>",
+    "updatedAt": "2020-10-02T15:17:55.203Z",
+    "createdAt": "2020-09-22T15:42:42.908Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:55.202Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bdd",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>",
+            "create_at": "2019-06-24 20:29:04",
+            "type": "Tweet"
+          },
+          {
+            "author_name": "Author 1",
+            "body": "<p>À l'image de notre pays...</p>",
+            "create_at": "2019-06-24 20:31:14",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>\n<p>À l'image de notre pays...</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5d111882e203110df0e6594c"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5d111882e203110df0e6594c",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>",
+          "create_at": "2019-06-24 20:29:04",
+          "type": "Tweet"
+        },
+        {
+          "author_name": "Author 1",
+          "body": "<p>À l'image de notre pays...</p>",
+          "create_at": "2019-06-24 20:31:14",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>\n<p>À l'image de notre pays...</p>"
+    },
+    "body": "<p>MERCI @enedis @enedis_clients : vs êtes sympas\r\n<br />✅Vs creusez un trou devant mon Etude\r\n<br />✅Vs disparaissez Pdt 10 jours \r\n<br />✅ une phase « tombe » alors qu’on est abonné TRIPHASÉ \r\n<br />❌on a donc plus de Clim dans TOUT L’immeuble\r\n<br />....Délai d’intervention annoncé : INCONNU 👹\r\n<br />VS ÊTES AU TOP</p>\n<p>À l'image de notre pays...</p>",
+    "updatedAt": "2020-10-02T15:17:53.185Z",
+    "createdAt": "2020-09-22T15:42:42.909Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:53.184Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bc8",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>",
+            "create_at": "2017-10-12 09:21:45",
+            "type": "Message privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>comment je peut faire esque je doit vous telephoner?</p>",
+            "create_at": "2017-10-12 09:22:15",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>\n<p>comment je peut faire esque je doit vous telephoner?</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59df180bd6cb00089a8c74ab"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59df180bd6cb00089a8c74ab",
+    "data": {
+      "dataset": "validation",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>",
+          "create_at": "2017-10-12 09:21:45",
+          "type": "Message privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>comment je peut faire esque je doit vous telephoner?</p>",
+          "create_at": "2017-10-12 09:22:15",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>\n<p>comment je peut faire esque je doit vous telephoner?</p>"
+    },
+    "body": "<p>Bonjour, je souhaite pouvoir changer mes heures creuse heure pleine j'ai verifier sur le site ENEdis pour ma commune 85410 saint cyr des gats et il est proposé 4 plage horaire je souhaite pouvoir beneficier de la plage 3</p>\n<p>comment je peut faire esque je doit vous telephoner?</p>",
+    "updatedAt": "2020-10-02T15:17:51.097Z",
+    "createdAt": "2020-09-22T15:42:42.904Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:51.097Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bde",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": ["marker"],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>",
+            "create_at": "2019-05-03 11:51:32",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5ccc0f40eb7025801d9debe3"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5ccc0f40eb7025801d9debe3",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>",
+          "create_at": "2019-05-03 11:51:32",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>"
+    },
+    "body": "<p>[Article partenaire @Enedis] Et si le soleil rechargeait les véhicules électriques ? <a href=\"https://t.co/yYfo4mreh2\" rel=\"nofollow\" target=\"_blank\">https://t.co/yYfo4mreh2</a> #energie</p>",
+    "updatedAt": "2020-10-02T15:17:48.285Z",
+    "createdAt": "2020-09-22T15:42:42.909Z",
+    "__v": 1,
+    "seenAt": "2020-10-02T15:17:48.284Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd2",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>",
+            "create_at": "2017-11-22 12:51:50",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a1564e4799fc29874f432e1"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a1564e4799fc29874f432e1",
+    "data": {
+      "dataset": "validation",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>",
+          "create_at": "2017-11-22 12:51:50",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>"
+    },
+    "body": "<p>Table ronde sur le #BatimentIntelligent dans la #smartcity avec @enedis @CapIngelec @EDFofficiel @Bouygues_C @SPIEgroup et le #CATIE</p>",
+    "updatedAt": "2020-10-02T15:17:33.398Z",
+    "createdAt": "2020-09-22T15:42:42.906Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:33.397Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bdf",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>",
+            "create_at": "2019-05-15 00:49:04",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5cdb47dceb70251ed5f28035"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5cdb47dceb70251ed5f28035",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>",
+          "create_at": "2019-05-15 00:49:04",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>"
+    },
+    "body": "<p>@enedis_clients @enedis_centre @CdiscountEnrgie @enedis Depuis 2 semaines j'ai moins de 180V à la place des 230V contractuel. Enedis me demande de débrancher mes appareils. Déjà un four et un onduleur HS. Qui va payer ?</p>",
+    "updatedAt": "2020-10-02T15:17:23.107Z",
+    "createdAt": "2020-09-22T15:42:42.910Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:23.107Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5be2",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>",
+            "create_at": "2018-07-05 15:31:52",
+            "type": "Tweet privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>",
+            "create_at": "2018-07-05 15:33:41",
+            "type": "Tweet privé"
+          }
+        ],
+        "body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>\n<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5b3e1e7dd6cb00f59288f601"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5b3e1e7dd6cb00f59288f601",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>",
+          "create_at": "2018-07-05 15:31:52",
+          "type": "Tweet privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>",
+          "create_at": "2018-07-05 15:33:41",
+          "type": "Tweet privé"
+        }
+      ],
+      "body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>\n<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>"
+    },
+    "body": "<p>Bonjour, pour mon contrat d'éléctricite je viens de passer de direct energie a cdiscount energie. mon ancien fournisseur me dit que la facture de cloture sera faite sur des estimation fournis par enedis. or l'appartement étant vide depuis mars les estimations seront totalement fausses;  comment faire pour que les vrais index que j'ai relevé soient pris en compte ??? merci de votre réponse rapide car j'ai souscrit depuis le 24/06 et la bascule est effective depuis le 28/06. cdlt</p>\n<p>de plus le nouveau fournisseur cdiscount ne m a pas demander les index pour l'ouverture du contrat le 28/06 ? je viens de leur envoyer par email mais je pense que c'est trop tard ??? non ???</p>",
+    "updatedAt": "2020-10-02T15:17:21.660Z",
+    "createdAt": "2020-09-22T15:42:42.911Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:21.660Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5be0",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>",
+            "create_at": "2018-04-11 15:13:12",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5ace0a32eb7025b19a38b454"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5ace0a32eb7025b19a38b454",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>",
+          "create_at": "2018-04-11 15:13:12",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>"
+    },
+    "body": "<p>Cet après-midi, découverte du fast lab, l'incubateur d'@enedis à @TheSchoolab , avec des cinquantaines de salariés conquis !</p>",
+    "updatedAt": "2020-10-02T15:17:20.318Z",
+    "createdAt": "2020-09-22T15:42:42.911Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:20.318Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5be1",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>",
+            "create_at": "2018-09-03 15:57:13",
+            "type": "Message privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>J pour la brasserie des docs</p>",
+            "create_at": "2018-09-03 15:57:22",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>\n<p>J pour la brasserie des docs</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5b8d3dbbe2031189271b0c35"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5b8d3dbbe2031189271b0c35",
+    "data": {
+      "dataset": "train",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>",
+          "create_at": "2018-09-03 15:57:13",
+          "type": "Message privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>J pour la brasserie des docs</p>",
+          "create_at": "2018-09-03 15:57:22",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>\n<p>J pour la brasserie des docs</p>"
+    },
+    "body": "<p>Bonjour, \r\n<br />j'ai une question concernant les heures creuses/heures pleines; j'habite alissas 07210 et je vais être prochainement raccordé mais je ne peux pas choisir car je ne sais pas quelle est la plage dont je dépends.\r\n<br />Bien à vous,</p>\n<p>J pour la brasserie des docs</p>",
+    "updatedAt": "2020-10-02T15:17:18.684Z",
+    "createdAt": "2020-09-22T15:42:42.911Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:18.684Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5be5",
+    "type": "text",
+    "status": "todo",
+    "annotated": true,
+    "annotatedBy": ["admin@lajavaness.com"],
+    "annotationValues": ["RC", "COM"],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>",
+            "create_at": "2018-05-31 08:59:25",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5b0f9d4fe203114d48ef6bec"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5b0f9d4fe203114d48ef6bec",
+    "data": {
+      "dataset": "train",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>",
+          "create_at": "2018-05-31 08:59:25",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>"
+    },
+    "body": "<p>Bonjour, j'habite au 123 rue Georges picot, 13010 Marseille et je n'ai plus d'électricité. Y a-t-il une coupure dans le quartier? Merci</p>",
+    "updatedAt": "2020-10-02T15:17:17.242Z",
+    "createdAt": "2020-09-22T15:42:42.912Z",
+    "__v": 2,
+    "seenAt": "2020-10-02T15:17:17.241Z",
+    "annotatedAt": "2020-09-30T16:12:50.753Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5be4",
+    "type": "text",
+    "status": "todo",
+    "annotated": true,
+    "annotatedBy": ["admin@lajavaness.com"],
+    "annotationValues": ["RC"],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>",
+            "create_at": "2019-03-09 16:04:30",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5c83d60feb7025a6a2bcb09d"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5c83d60feb7025a6a2bcb09d",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>",
+          "create_at": "2019-03-09 16:04:30",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>"
+    },
+    "body": "<p>@enedis_clients  coupure de courant sur Beauvais, c’est normal ??</p>",
+    "updatedAt": "2020-10-02T15:17:15.267Z",
+    "createdAt": "2020-09-22T15:42:42.912Z",
+    "__v": 1,
+    "seenAt": "2020-10-02T15:17:15.267Z",
+    "annotatedAt": "2020-09-30T15:56:47.796Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5be3",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour</p>",
+            "create_at": "2019-04-24 13:31:54",
+            "type": "Message privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>",
+            "create_at": "2019-04-24 13:32:13",
+            "type": "Message privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>",
+            "create_at": "2019-04-24 13:32:25",
+            "type": "Message privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>",
+            "create_at": "2019-04-24 13:32:45",
+            "type": "Message privé"
+          },
+          {
+            "author_name": "Author 0",
+            "body": "<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>",
+            "create_at": "2019-04-24 13:33:12",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour</p>\n<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>\n<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>\n<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>\n<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5cc0492cd6cb000141102116"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5cc0492cd6cb000141102116",
+    "data": {
+      "dataset": "train",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour</p>",
+          "create_at": "2019-04-24 13:31:54",
+          "type": "Message privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>",
+          "create_at": "2019-04-24 13:32:13",
+          "type": "Message privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>",
+          "create_at": "2019-04-24 13:32:25",
+          "type": "Message privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>",
+          "create_at": "2019-04-24 13:32:45",
+          "type": "Message privé"
+        },
+        {
+          "author_name": "Author 0",
+          "body": "<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>",
+          "create_at": "2019-04-24 13:33:12",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour</p>\n<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>\n<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>\n<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>\n<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>"
+    },
+    "body": "<p>Bonjour</p>\n<p>Je viens de recevoir un texto d'enedis. Je ne comprends pas pourriez vous m'expliquer ?</p>\n<p>\"Enedis bonjour. Depuis un an, votre releveur n'a plus accès à votre installation dans la commune de Paris no de PDL : 07510123456789. Par avance, nous vous remercions de bien vouloir lui donner accès lors de son prochain passage, dont la date vous a été communiquée. En cas d'absence, un rendez-vous, pouvant etre facturé par votre fournisseur sera nécessaire. Nous comptons sur votre compréhension.\"</p>\n<p>Jai communiqué plusieurs fois les chiffres de mon compteur en une annee au moins 2 fois.</p>\n<p>Quand est prevu le nouveau passage ? Je ne souhaite pas etre facture un deplacement. Je vis au 123 rue guy moquet à Paris 17</p>",
+    "updatedAt": "2020-10-02T15:17:13.592Z",
+    "createdAt": "2020-09-22T15:42:42.911Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:13.591Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd6",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>",
+            "create_at": "2017-10-17 19:27:10",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59e63d81799fc22418e17e99"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59e63d81799fc22418e17e99",
+    "data": {
+      "dataset": "validation",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>",
+          "create_at": "2017-10-17 19:27:10",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>"
+    },
+    "body": "<p>@SmartCityMag_FR @SmartCityPlus @SmartCityBru @REWorld @REFocusmag @EthanolRFA @DirectEnergie @PlaneteEnergies @enedis @MonsterEnergyF</p>",
+    "updatedAt": "2020-10-02T15:17:10.403Z",
+    "createdAt": "2020-09-22T15:42:42.907Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:17:10.402Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd5",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": ["marker"],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>",
+            "create_at": "2017-12-08 20:14:57",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a2ae4b2e2031118001a084a"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a2ae4b2e2031118001a084a",
+    "data": {
+      "dataset": "train",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>",
+          "create_at": "2017-12-08 20:14:57",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>"
+    },
+    "body": "<p>Bonjour, j'ai reçu le mot de passe de connection de votre part, mais impossible de me connecter avec, je ne trouve pas la rubrique \"suivre mes consommations\" sur votre site. Merci de votre aide. Mr ABC 77500 CHELLES</p>",
+    "updatedAt": "2020-10-02T15:17:01.935Z",
+    "createdAt": "2020-09-22T15:42:42.907Z",
+    "__v": 1,
+    "seenAt": "2020-10-02T15:16:59.200Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd4",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>",
+            "create_at": "2017-10-07 21:14:43",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59d927aa7a8beb5561951273"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59d927aa7a8beb5561951273",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>",
+          "create_at": "2017-10-07 21:14:43",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>"
+    },
+    "body": "<p>Les délais sont très longs pour obtenir un RDV avec un technicien @enedis. Heureusement que j'ai acheté des bougies.</p>",
+    "updatedAt": "2020-10-02T15:16:57.284Z",
+    "createdAt": "2020-09-22T15:42:42.907Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:16:57.283Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd3",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>",
+            "create_at": "2017-07-02 19:00:37",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>"
+      },
+      "datatype": "text",
+      "uuid": "A595926cf13047d8da27a7358"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A595926cf13047d8da27a7358",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>",
+          "create_at": "2017-07-02 19:00:37",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>"
+    },
+    "body": "<p>Sur le #TDF2017 @enedis fait la promotion du compteur Linky et de l'autoconsommation PV</p>",
+    "updatedAt": "2020-10-02T15:16:55.746Z",
+    "createdAt": "2020-09-22T15:42:42.906Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:16:55.746Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd1",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>",
+            "create_at": "2017-07-21 19:30:26",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59723a7713047d2697fd5f32"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59723a7713047d2697fd5f32",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>",
+          "create_at": "2017-07-21 19:30:26",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>"
+    },
+    "body": "<p>Non respect des clients par @enedis_clients et @EDFofficiel : soustraitance des releves compteurs a Ensiema non assumé 2 fois en 1an!!!</p>",
+    "updatedAt": "2020-10-02T15:15:11.658Z",
+    "createdAt": "2020-09-22T15:42:42.906Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:15:11.657Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd0",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>",
+            "create_at": "2018-02-17 08:07:50",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a87d5127a8beb71de5197b8"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a87d5127a8beb71de5197b8",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>",
+          "create_at": "2018-02-17 08:07:50",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>"
+    },
+    "body": "<p>#EnedisSurGlace Je pense que #GuillaumePley est le parrain de l’Enedis Trophée Andros Electrique 2018. @enedis\r\n<br /><a href=\"https://t.co/dzHyAwtQ4A\" rel=\"nofollow\" target=\"_blank\">https://t.co/dzHyAwtQ4A</a></p>",
+    "updatedAt": "2020-10-02T15:15:09.693Z",
+    "createdAt": "2020-09-22T15:42:42.906Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:15:09.692Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bcf",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>",
+            "create_at": "2017-10-18 12:16:08",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59e729f0eb70255432acef30"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59e729f0eb70255432acef30",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>",
+          "create_at": "2017-10-18 12:16:08",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>"
+    },
+    "body": "<p>@enedis vs prenez rendez-vous avec moi et vous venez pas. J’ai perdu 40€ en prenant ma 1/2 journée. -40€ en moins sur la prochaine facture.</p>",
+    "updatedAt": "2020-10-02T15:15:07.319Z",
+    "createdAt": "2020-09-22T15:42:42.906Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:15:07.318Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bce",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>",
+            "create_at": "2017-12-07 11:42:04",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a291afe14bf8ab756b8c6ca"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a291afe14bf8ab756b8c6ca",
+    "data": {
+      "dataset": "validation",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>",
+          "create_at": "2017-12-07 11:42:04",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>"
+    },
+    "body": "<p>Bonjour nous sommes entrain de faire bâtir une maison et je voudrais quelques renseignements sur le prix de raccordement  électricité. Compteur à moins de 30 mètres de la maison...</p>\r\n<p>Commune de st puy 32310 ( gers) </p>\r\n<p>Cordialement Mr Haute Mickael</p>",
+    "updatedAt": "2020-10-02T15:15:04.646Z",
+    "createdAt": "2020-09-22T15:42:42.905Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:15:04.645Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd7",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>",
+            "create_at": "2017-08-01 16:47:58",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>"
+      },
+      "datatype": "text",
+      "uuid": "A598094b1eb7025bca662b7fb"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A598094b1eb7025bca662b7fb",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>",
+          "create_at": "2017-08-01 16:47:58",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>"
+    },
+    "body": "<p>@enedis_clients Bjour\r\n<br />13/06/17 1 ligne électrique a pris feu rue dechavanne villefranche/Saône \r\n<br />au dessus de mon auto, l'assu dde 1 constat</p>",
+    "updatedAt": "2020-10-02T15:15:01.984Z",
+    "createdAt": "2020-09-22T15:42:42.907Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:15:01.984Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd8",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "Messenger Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>",
+            "create_at": "2017-09-13 18:37:42",
+            "type": "Message privé"
+          }
+        ],
+        "body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>"
+      },
+      "datatype": "text",
+      "uuid": "A59b95ed714bf8a454b6bfd77"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A59b95ed714bf8a454b6bfd77",
+    "data": {
+      "dataset": "train",
+      "source": "Messenger Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>",
+          "create_at": "2017-09-13 18:37:42",
+          "type": "Message privé"
+        }
+      ],
+      "body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>"
+    },
+    "body": "<p>Bonsoir \r\n<br />S'il vous plaît,j'ai un mail adresse :\r\n<br />Erdf-grdf-ucfpdl-rev@erdf-grdf ,ça ne passe pas! Pourriez-vous m'aider svp. Merci</p>",
+    "updatedAt": "2020-10-02T15:14:57.098Z",
+    "createdAt": "2020-09-22T15:42:42.908Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:14:57.098Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bd9",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>",
+            "create_at": "2018-02-12 14:23:43",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a8198f6e20311a5cfc2aa96"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a8198f6e20311a5cfc2aa96",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>",
+          "create_at": "2018-02-12 14:23:43",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>"
+    },
+    "body": "<p>Non, il faut plus de 4 mois...\r\n<br />Le miens mis en service en octobre ne communique toujours pas.</p>",
+    "updatedAt": "2020-10-02T15:14:53.450Z",
+    "createdAt": "2020-09-22T15:42:42.908Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:14:53.450Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bda",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "train",
+        "source": "@Enedis",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>",
+            "create_at": "2018-01-08 17:36:10",
+            "type": "Tweet"
+          },
+          {
+            "author_name": "Author 1",
+            "body": "<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>",
+            "create_at": "2018-01-08 17:38:52",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>\n<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a539e4192002603d6a0da17"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a539e4192002603d6a0da17",
+    "data": {
+      "dataset": "train",
+      "source": "@Enedis",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>",
+          "create_at": "2018-01-08 17:36:10",
+          "type": "Tweet"
+        },
+        {
+          "author_name": "Author 1",
+          "body": "<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>",
+          "create_at": "2018-01-08 17:38:52",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>\n<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>"
+    },
+    "body": "<p>La startup @WaryMeFr présente sur le stand d'@enedis au #CES2018 : <a href=\"https://t.co/JRaFfyH1hf\" rel=\"nofollow\" target=\"_blank\">https://t.co/JRaFfyH1hf</a> \r\n<br />Parmi les startups qui ont été accompagnées par l'incubateur au CES de Las Vegas cette année : @BescentOfficial @blacknut_ @energiency @facettsapp @SmartViser @wi6labs @YoGoKoFR</p>\n<p>Merci de votre mention ! Nous y sommes en tant que visiteurs, très bonne semaine aux entreprises qui y seront !</p>",
+    "updatedAt": "2020-10-02T15:14:49.768Z",
+    "createdAt": "2020-09-22T15:42:42.908Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:14:49.768Z"
+  },
+  {
+    "_id": "5f6a1b72420b84001bde5bdb",
+    "type": "text",
+    "status": "todo",
+    "annotated": false,
+    "annotatedBy": [],
+    "annotationValues": [],
+    "tags": [],
+    "raw": {
+      "data": {
+        "dataset": "validation",
+        "source": "@Enedis.Client",
+        "msgs": [
+          {
+            "author_name": "Author 0",
+            "body": "<p>Cc @enedis_clients</p>",
+            "create_at": "2017-11-29 10:15:25",
+            "type": "Tweet"
+          }
+        ],
+        "body": "<p>Cc @enedis_clients</p>"
+      },
+      "datatype": "text",
+      "uuid": "A5a1e7adad6cb004464702fd3"
+    },
+    "project": "5f69faa7420b84001bde5ad6",
+    "uuid": "A5a1e7adad6cb004464702fd3",
+    "data": {
+      "dataset": "validation",
+      "source": "@Enedis.Client",
+      "msgs": [
+        {
+          "author_name": "Author 0",
+          "body": "<p>Cc @enedis_clients</p>",
+          "create_at": "2017-11-29 10:15:25",
+          "type": "Tweet"
+        }
+      ],
+      "body": "<p>Cc @enedis_clients</p>"
+    },
+    "body": "<p>Cc @enedis_clients</p>",
+    "updatedAt": "2020-10-02T15:14:46.446Z",
+    "createdAt": "2020-09-22T15:42:42.908Z",
+    "__v": 0,
+    "seenAt": "2020-10-02T15:14:46.445Z"
+  }
 ]

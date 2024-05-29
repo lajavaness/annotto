@@ -1,7 +1,5 @@
 import Icon from '@ant-design/icons'
 
-import React from 'react'
-
 import theme from '__theme__'
 
 const FourPointsIcon = () => {

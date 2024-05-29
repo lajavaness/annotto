@@ -1,6 +1,6 @@
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
 import { isNumber } from 'lodash'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 import * as Styled from 'modules/project/components/common/__styles__/NerContainer.styles'

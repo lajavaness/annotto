@@ -38,7 +38,13 @@ module.exports = {
       ...config,
       coverageReporters: ['text', 'cobertura', 'lcov'],
       reporters: ['default', 'jest-junit'],
+      transformIgnorePatterns: ['node_modules/(?!(konva)/)'],
       modulePaths: [...(config.modulePaths || []), `<rootDir>/src`],
+      moduleNameMapper: {
+        '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
+        canvas: 'identity-obj-proxy',
+        'github-markdown-css': 'identity-obj-proxy',
+      },
     }
   },
 }

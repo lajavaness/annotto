@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components'
 import { render } from '@testing-library/react'
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 
 import 'assets/locales'
 

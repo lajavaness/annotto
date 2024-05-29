@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+
 import { Trans, useTranslation } from 'react-i18next'
 
 import * as Styled from 'modules/project/components/common/__styles__/AudioItem.styles'

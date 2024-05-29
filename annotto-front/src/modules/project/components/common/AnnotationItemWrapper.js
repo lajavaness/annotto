@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import projectTypes from 'shared/enums/projectTypes'
 import { AUDIO, HTML, NER, TEXT, VIDEO, ZONE } from 'shared/enums/annotationTypes'
@@ -12,6 +11,7 @@ import ImageMarker from 'modules/project/components/common/ImageMarker'
 import VideoItem from 'modules/project/components/common/VideoItem'
 import AudioItem from 'modules/project/components/common/AudioItem'
 import HtmlItem from 'modules/project/components/common/HtmlItem'
+import ImageContainer from 'modules/project/components/common/image/ImageContainer'
 
 const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => {
   const annotationType = findAnnotationItemType(projectType, tasks)
@@ -37,7 +37,12 @@ const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => 
     }
 
     case ZONE: {
-      return <ImageMarker {...options} content={data?.url} tasks={filteredTasks} />
+      console.log(options.mode === '2points', data?.url, data?.url)
+      return options.mode === '2points' ? (
+        <ImageContainer {...options} content={data?.url} tasks={filteredTasks} />
+      ) : (
+        <ImageMarker {...options} content={data?.url} tasks={filteredTasks} />
+      )
     }
 
     case HTML: {

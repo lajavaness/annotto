@@ -1,6 +1,6 @@
 import { Tooltip } from 'antd'
 import PropTypes from 'prop-types'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import * as Styled from './__styles__/Table.styles'
 

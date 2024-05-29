@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components'
 import { fireEvent, render } from '@testing-library/react'
-import React from 'react'
 
 import { TWO_POINTS } from 'shared/enums/markerTypes'
 
