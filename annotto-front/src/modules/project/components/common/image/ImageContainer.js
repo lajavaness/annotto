@@ -1,17 +1,18 @@
-import { flatten, min } from 'lodash'
+import { isEmpty, isNumber } from 'lodash'
 import PropTypes from 'prop-types'
-import { useCallback, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import useImage from 'use-image'
-import { Stage, Layer, Image, Group, Line } from 'react-konva'
+import { Stage, Layer, Image, Rect } from 'react-konva'
 
 import markerTypes, { TWO_POINTS } from 'shared/enums/markerTypes'
 
 import Loader from 'shared/components/loader/Loader'
+import ZoomMarker from 'modules/project/components/common/image/ZoomMark'
 
 import useResolvedAnnotationsAndPredictions from 'shared/hooks/useResolvedAnnotationsAndPredictions'
 import useZoomImage from 'shared/hooks/useZoomImage'
 
-import theme from '__theme__'
+import { isZoneAnnotationEquivalent } from 'shared/utils/annotationUtils'
 
 import * as Styled from './__styles__/ImageContainer.styles'
 
@@ -23,81 +24,135 @@ const ImageContainer = ({
   // mode,
   showPredictions,
   predictions,
-  // onAnnotationChange,
+  onAnnotationChange,
 }) => {
+  const [currentAnnotations, setAnnotations] = useState([])
+  const [newAnnotation, setNewAnnotation] = useState([])
+
   const [imageWidth, setImageWidth] = useState(0)
   const [imageHeight, setImageHeight] = useState(0)
 
   const observedDiv = useRef(null)
   const stageRef = useRef()
-  const imageRef = useRef()
 
   const [image, status] = useImage(content)
-  const [tagIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/tag.svg`)
 
-  useZoomImage(observedDiv.current, stageRef.current)
+  useZoomImage(observedDiv.current, stageRef.current, status, imageWidth, imageHeight)
+
   const resolvedAnnotationsAndPredictions = useResolvedAnnotationsAndPredictions(
     annotations,
     predictions,
     showPredictions
   )
-  const resolvePoints = (values) => flatten(values.map(({ x, y }) => [x * imageHeight, y * imageWidth]))
-
-  console.log(resolvedAnnotationsAndPredictions, 123, imageRef.current?.attrs?.image, status, imageHeight, imageWidth)
 
   const _onImageRefChange = (ref) => {
     if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
     if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
   }
 
-  const resolveTask = useCallback(
-    (value) => {
-      const task = tasks.find((t) => t.value === value)
-
-      if (task && !task?.color) {
-        task.color = theme.colors.defaultAnnotationColors[tasks.indexOf(task)]
-      }
-
-      return task
-    },
-    [tasks]
+  const resolvedAnnotations = useMemo(
+    () => (!isEmpty(annotations) ? annotations.filter(({ zone }) => !!zone) : []),
+    [annotations]
   )
+
+  const _onDeleteClick = (index) => () => {
+    if (!!resolvedAnnotations[index] && !isEmpty(annotations) && !!onAnnotationChange) {
+      const filteredAnnotations = annotations.filter(
+        (annotation) => !isZoneAnnotationEquivalent(annotation, resolvedAnnotations[index])
+      )
+
+      onAnnotationChange(filteredAnnotations)
+    }
+  }
+
+  const handleMouseDown = (event) => {
+    if (event.target.attrs.name === 'delete') {
+      return
+    }
+
+    if (newAnnotation.length === 0) {
+      const { x, y } = event.target.getStage().getPointerPosition()
+
+      setNewAnnotation([{ x, y, width: 0, height: 0, key: '0' }])
+    }
+  }
+
+  const handleMouseUp = (event) => {
+    if (newAnnotation.length === 1) {
+      const sx = newAnnotation[0].x
+      const sy = newAnnotation[0].y
+      const { x, y } = event.target.getStage().getPointerPosition()
+      const annotationToAdd = {
+        x: sx,
+        y: sy,
+        width: x - sx,
+        height: y - sy,
+        key: currentAnnotations.length + 1,
+      }
+      currentAnnotations.push(annotationToAdd)
+      setNewAnnotation([])
+      setAnnotations(currentAnnotations)
+    }
+  }
+
+  const handleMouseMove = (event) => {
+    if (newAnnotation.length === 1) {
+      const sx = newAnnotation[0].x
+      const sy = newAnnotation[0].y
+      const { x, y } = event.target.getStage().getPointerPosition()
+      setNewAnnotation([
+        {
+          x: sx,
+          y: sy,
+          width: x - sx,
+          height: y - sy,
+          key: '0',
+        },
+      ])
+    }
+  }
+  const annotationsToDraw = [...currentAnnotations, ...newAnnotation]
 
   return (
     <Styled.Root ref={observedDiv}>
       <div>
-        <Stage ref={stageRef}>
-          <Layer draggable>
+        <Stage ref={stageRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}>
+          <Layer>
             <Image image={image} ref={_onImageRefChange} />
-            <Group>
-              {resolvedAnnotationsAndPredictions.map(({ zone, value }, index) => {
-                // const isHovered = index === 11
-                // const isSelected = index === 11
+            {resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => (
+              <ZoomMarker
+                key={index}
+                index={index}
+                tasks={tasks}
+                imageHeight={imageHeight}
+                imageWidth={imageWidth}
+                annotationIndex={annotationIndex}
+                predictionIndex={predictionIndex}
+                zone={zone}
+                value={value}
+                stage={stageRef.current}
+                onDeleteClick={_onDeleteClick(
+                  isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
+                )}
+              />
+            ))}
+            {annotationsToDraw
+              .filter((v) => v.width)
+              .map((value, i) => {
+                const ratio = imageWidth / stageRef.current.attrs.width || 1
 
-                const task = resolveTask(value)
-                // const isPrefill = isNumber(annotationIndex) && isNumber(predictionIndex)
-                // const isPrediction = isNumber(predictionIndex) && !isNumber(annotationIndex)
                 return (
-                  <Group key={index} position="relative" draggable>
-                    <Image
-                      width={24}
-                      height={24}
-                      image={tagIcon}
-                      position="absolute"
-                      x={min(zone.map(({ x }) => x * imageHeight))}
-                      y={min(zone.map(({ y }) => y * imageWidth))}
-                    />
-                    <Line
-                      stroke={task.color}
-                      dash={[33, 10]}
-                      fill="transparent"
-                      closed={true}
-                      points={resolvePoints(zone)}
-                    />
-                  </Group>
+                  <Rect
+                    key={i}
+                    x={value.x * ratio}
+                    y={value.y * ratio}
+                    width={value.width * ratio}
+                    height={value.height * ratio}
+                    fill="transparent"
+                    stroke="black"
+                  />
                 )
               })}
-            </Group>
           </Layer>
         </Stage>
       </div>

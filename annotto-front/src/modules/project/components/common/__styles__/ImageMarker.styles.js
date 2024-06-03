@@ -50,7 +50,7 @@ export const Polygon = styled.polygon`
   stroke-width: 2px;
   fill: ${({ $isHovered, $isSelected, $isPrediction, $isPrefill, fill, index }) => {
     if ($isPrediction && !$isPrefill) {
-      return `${`url(#pattern_${index})`}`
+      return `url(#pattern_${index})`
     }
     return `${$isHovered || $isSelected ? fill : 'transparent'}`
   }};
