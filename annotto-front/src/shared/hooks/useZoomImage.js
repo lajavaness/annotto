@@ -1,20 +1,24 @@
 import { useEffect } from 'react'
 
-const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
-  useEffect(() => {
-    if (stage && status === 'loaded' && observedDiv.offsetWidth / imageWidth) {
-      const oldScale = stage.scaleX()
-      if (oldScale !== observedDiv.offsetWidth / imageWidth) {
-        stage.scale({ x: observedDiv.offsetWidth / imageWidth, y: observedDiv.offsetWidth / imageWidth })
-      }
-    }
-  }, [stage, status, imageWidth, observedDiv])
+import useOnceCall from 'shared/hooks/useOnceCall'
 
-  useEffect(() => {
-    if (imageHeight) {
+const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
+  useOnceCall(
+    () => {
+      const newScale = observedDiv.offsetWidth / imageWidth
+      stage.scale({ x: newScale, y: newScale })
+    },
+    imageWidth && observedDiv && status === 'loaded',
+    status === 'loading'
+  )
+
+  useOnceCall(
+    () => {
       stage.height(imageHeight * (observedDiv.offsetWidth / imageWidth))
-    }
-  }, [stage, imageHeight, observedDiv, imageWidth])
+    },
+    imageWidth && observedDiv && imageHeight,
+    status === 'loading'
+  )
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
@@ -46,7 +50,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
 
         const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy
 
-        if (newScale < 0.5 || newScale > 2) {
+        if (newScale < 0.4 || newScale > 2) {
           return
         }
 

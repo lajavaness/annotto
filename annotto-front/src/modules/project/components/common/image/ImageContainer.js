@@ -20,14 +20,13 @@ const ImageContainer = ({
   content,
   annotations,
   tasks,
-  // selectedSection,
+  selectedSection,
   // mode,
   showPredictions,
   predictions,
   onAnnotationChange,
 }) => {
-  const [currentAnnotations, setAnnotations] = useState([])
-  const [newAnnotation, setNewAnnotation] = useState([])
+  const [moveAnnotation, setMoveAnnotation] = useState([])
 
   const [imageWidth, setImageWidth] = useState(0)
   const [imageHeight, setImageHeight] = useState(0)
@@ -66,58 +65,63 @@ const ImageContainer = ({
   }
 
   const handleMouseDown = (event) => {
-    if (event.target.attrs.name === 'delete') {
+    if (event.target.attrs.name === 'delete' || !selectedSection) {
       return
     }
 
-    if (newAnnotation.length === 0) {
+    if (moveAnnotation.length === 0) {
       const { x, y } = event.target.getStage().getPointerPosition()
 
-      setNewAnnotation([{ x, y, width: 0, height: 0, key: '0' }])
+      setMoveAnnotation([{ x, y, width: 0, height: 0, key: '0' }])
     }
   }
 
   const handleMouseUp = (event) => {
-    if (newAnnotation.length === 1) {
-      const sx = newAnnotation[0].x
-      const sy = newAnnotation[0].y
+    if (moveAnnotation.length === 1) {
+      const sx = moveAnnotation[0].x
+      const sy = moveAnnotation[0].y
       const { x, y } = event.target.getStage().getPointerPosition()
+      const ratio = event.target.getStage().scaleX()
       const annotationToAdd = {
-        x: sx,
-        y: sy,
-        width: x - sx,
-        height: y - sy,
-        key: currentAnnotations.length + 1,
+        zone: [
+          { x: sx / imageWidth / ratio, y: sy / imageHeight / ratio },
+          { x: x / imageWidth / ratio, y: sy / imageHeight / ratio },
+          { x: x / imageWidth / ratio, y: y / imageHeight / ratio },
+          { x: sx / imageWidth / ratio, y: y / imageHeight / ratio },
+        ],
+        value: selectedSection?.value,
       }
-      currentAnnotations.push(annotationToAdd)
-      setNewAnnotation([])
-      setAnnotations(currentAnnotations)
+
+      onAnnotationChange([...annotations, annotationToAdd])
+      setMoveAnnotation([])
     }
   }
 
   const handleMouseMove = (event) => {
-    if (newAnnotation.length === 1) {
-      const sx = newAnnotation[0].x
-      const sy = newAnnotation[0].y
+    if (moveAnnotation.length === 1) {
+      const sx = moveAnnotation[0].x
+      const sy = moveAnnotation[0].y
       const { x, y } = event.target.getStage().getPointerPosition()
-      setNewAnnotation([
+      setMoveAnnotation([
         {
           x: sx,
           y: sy,
           width: x - sx,
           height: y - sy,
-          key: '0',
         },
       ])
     }
   }
-  const annotationsToDraw = [...currentAnnotations, ...newAnnotation]
 
   return (
     <Styled.Root ref={observedDiv}>
       <div>
-        <Stage ref={stageRef} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}>
-          <Layer>
+        <Stage
+          ref={stageRef}
+          onMouseDown={handleMouseDown}
+          {...(selectedSection ? { onMouseUp: handleMouseUp, onMouseMove: handleMouseMove } : {})}
+        >
+          <Layer draggable={!selectedSection}>
             <Image image={image} ref={_onImageRefChange} />
             {resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => (
               <ZoomMarker
@@ -136,20 +140,20 @@ const ImageContainer = ({
                 )}
               />
             ))}
-            {annotationsToDraw
+            {moveAnnotation
               .filter((v) => v.width)
               .map((value, i) => {
-                const ratio = imageWidth / stageRef.current.attrs.width || 1
+                const ratio = stageRef.current.scaleX()
 
                 return (
                   <Rect
                     key={i}
-                    x={value.x * ratio}
-                    y={value.y * ratio}
-                    width={value.width * ratio}
-                    height={value.height * ratio}
+                    x={value.x / ratio}
+                    y={value.y / ratio}
+                    width={value.width / ratio}
+                    height={value.height / ratio}
                     fill="transparent"
-                    stroke="black"
+                    stroke={selectedSection?.color}
                   />
                 )
               })}
