@@ -1,8 +1,8 @@
-import { isEmpty, isNumber } from 'lodash'
+import { isEmpty, isNumber, chunk } from 'lodash'
 import PropTypes from 'prop-types'
 import { useMemo, useRef, useState } from 'react'
 import useImage from 'use-image'
-import { Stage, Layer, Image, Rect } from 'react-konva'
+import { Stage, Layer, Image, Rect, Line } from 'react-konva'
 
 import markerTypes, { TWO_POINTS } from 'shared/enums/markerTypes'
 
@@ -21,15 +21,18 @@ const ImageContainer = ({
   annotations,
   tasks,
   selectedSection,
-  // mode,
+  mode,
   showPredictions,
   predictions,
   onAnnotationChange,
 }) => {
-  const [moveAnnotation, setMoveAnnotation] = useState([])
-
   const [imageWidth, setImageWidth] = useState(0)
   const [imageHeight, setImageHeight] = useState(0)
+  const [isFinished, setIsFinished] = useState(false)
+  const [curMousePos, setCurMousePos] = useState([0, 0])
+  const [moveAnnotation, setMoveAnnotation] = useState([])
+  const [polygonPoints, setPolygonPoints] = useState([])
+  const [isMouseOverStartPoint, setMouseOverStartPoint] = useState(false)
 
   const observedDiv = useRef(null)
   const stageRef = useRef()
@@ -44,15 +47,15 @@ const ImageContainer = ({
     showPredictions
   )
 
-  const _onImageRefChange = (ref) => {
-    if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
-    if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
-  }
-
   const resolvedAnnotations = useMemo(
     () => (!isEmpty(annotations) ? annotations.filter(({ zone }) => !!zone) : []),
     [annotations]
   )
+
+  const _onImageRefChange = (ref) => {
+    if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
+    if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
+  }
 
   const _onDeleteClick = (index) => () => {
     if (!!resolvedAnnotations[index] && !isEmpty(annotations) && !!onAnnotationChange) {
@@ -69,10 +72,25 @@ const ImageContainer = ({
       return
     }
 
-    if (moveAnnotation.length === 0) {
-      const { x, y } = event.target.getStage().getPointerPosition()
+    if (mode === TWO_POINTS) {
+      if (moveAnnotation.length === 0) {
+        const { x, y } = event.target.getStage().getPointerPosition()
 
-      setMoveAnnotation([{ x, y, width: 0, height: 0, key: '0' }])
+        setMoveAnnotation([{ x, y, width: 0, height: 0, key: '0' }])
+      }
+    } else {
+      const { x, y } = event.target.getStage().getPointerPosition()
+      const ratio = event.target.getStage().scaleX()
+
+      if (isFinished) {
+        return
+      }
+
+      if (isMouseOverStartPoint || polygonPoints.length >= 12) {
+        setIsFinished(true)
+      } else {
+        setPolygonPoints([...polygonPoints, x / ratio, y / ratio])
+      }
     }
   }
 
@@ -98,7 +116,7 @@ const ImageContainer = ({
   }
 
   const handleMouseMove = (event) => {
-    if (moveAnnotation.length === 1) {
+    if (mode === TWO_POINTS && moveAnnotation.length === 1) {
       const sx = moveAnnotation[0].x
       const sy = moveAnnotation[0].y
       const { x, y } = event.target.getStage().getPointerPosition()
@@ -111,7 +129,29 @@ const ImageContainer = ({
         },
       ])
     }
+
+    if (mode !== TWO_POINTS && !isFinished) {
+      const { x, y } = event.target.getStage().getPointerPosition()
+      const ratio = event.target.getStage().scaleX()
+
+      setCurMousePos([x / ratio, y / ratio])
+    }
   }
+
+  const handleMouseOverStartPoint = (event) => {
+    if (isFinished || polygonPoints.length < 8) return
+    event.target.scale({ x: 2, y: 2 })
+    setMouseOverStartPoint(true)
+  }
+
+  const handleMouseOutStartPoint = (event) => {
+    event.target.scale({ x: 1, y: 1 })
+    setMouseOverStartPoint(false)
+  }
+
+  const flattenedPoints = polygonPoints
+    .concat(isFinished || polygonPoints.length === 2 ? [] : curMousePos)
+    .reduce((a, b) => a.concat(b), [])
 
   return (
     <Styled.Root ref={observedDiv}>
@@ -157,6 +197,44 @@ const ImageContainer = ({
                   />
                 )
               })}
+            {selectedSection && mode !== TWO_POINTS && (
+              <Line
+                points={flattenedPoints}
+                closed={isFinished}
+                stroke={selectedSection?.color}
+                strokeWidth={4}
+                lineCap="round"
+                lineJoin="round"
+              />
+            )}
+
+            {chunk(polygonPoints, 2).map((point, index) => {
+              const width = 6
+              const x = point[0] - width / 2
+              const y = point[1] - width / 2
+              const startPointAttr =
+                index === 0
+                  ? {
+                      hitStrokeWidth: 12,
+                      onMouseOver: handleMouseOverStartPoint,
+                      onMouseOut: handleMouseOutStartPoint,
+                    }
+                  : null
+
+              return (
+                <Rect
+                  key={index}
+                  x={x}
+                  y={y}
+                  width={width}
+                  height={width}
+                  fill="white"
+                  stroke={selectedSection?.color}
+                  strokeWidth={2}
+                  {...startPointAttr}
+                />
+              )
+            })}
           </Layer>
         </Stage>
       </div>

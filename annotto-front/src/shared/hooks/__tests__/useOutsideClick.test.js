@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks/dom'
 import { createRef } from 'react'
 
 import useOutsideClick from 'shared/hooks/useOutsideClick'

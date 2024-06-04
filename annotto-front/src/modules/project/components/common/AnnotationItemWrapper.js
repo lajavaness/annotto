@@ -7,7 +7,6 @@ import { findAnnotationItemType } from 'modules/project/services/annotationServi
 
 import NerContainer from 'modules/project/components/common/NerContainer'
 import TextItemContainer from 'modules/project/components/common/TextItemContainer'
-import ImageMarker from 'modules/project/components/common/ImageMarker'
 import VideoItem from 'modules/project/components/common/VideoItem'
 import AudioItem from 'modules/project/components/common/AudioItem'
 import HtmlItem from 'modules/project/components/common/HtmlItem'
@@ -37,12 +36,7 @@ const AnnotationItemWrapper = ({ projectType, tasks, currentItem, options }) => 
     }
 
     case ZONE: {
-      console.log(options.mode === '2points', data?.url, data?.url)
-      return options.mode === '2points' ? (
-        <ImageContainer {...options} content={data?.url} tasks={filteredTasks} />
-      ) : (
-        <ImageMarker {...options} content={data?.url} tasks={filteredTasks} />
-      )
+      return <ImageContainer {...options} content={data?.url} tasks={filteredTasks} />
     }
 
     case HTML: {
@@ -66,7 +60,7 @@ const getProptypes = (props) => {
     case NER:
       return NerContainer.propTypes
     case ZONE:
-      return ImageMarker.propTypes
+      return ImageContainer.propTypes
     case VIDEO:
       return VideoItem.propTypes
     case AUDIO:
@@ -89,13 +83,13 @@ AnnotationItemWrapper.propTypes = {
     highlights: PropTypes.oneOfType([TextItemContainer.propTypes.highlights, NerContainer.propTypes.highlights]),
     data: PropTypes.shape({
       url: PropTypes.oneOfType([
-        ImageMarker.propTypes.content,
+        ImageContainer.propTypes.content,
         VideoItem.propTypes.content,
         AudioItem.propTypes.content,
       ]),
       html: HtmlItem.propTypes.content,
     }),
   }),
-  tasks: PropTypes.oneOfType([ImageMarker.propTypes.tasks, NerContainer.propTypes.tasks]),
+  tasks: PropTypes.oneOfType([ImageContainer.propTypes.tasks, NerContainer.propTypes.tasks]),
   options: PropTypes.shape(getProptypes),
 }
