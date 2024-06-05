@@ -52,22 +52,11 @@ const ZoomMark = ({
   const styleZoom = useMemo(() => {
     switch (true) {
       case isHovered:
-        return {
-          fill: task?.color,
-          opacity: 0.3,
-        }
+        return { fill: task?.color, opacity: 0.3 }
       case isPrediction:
-        return {
-          fillPatternImage: patternIcon,
-          opacity: 0.5,
-          dash: [4, 4],
-        }
+        return { fillPatternImage: patternIcon, opacity: 0.5, dash: [4, 4] }
       case isPrefill:
-        return {
-          fill: 'transparent',
-          opacity: 0.5,
-          dash: [4, 4],
-        }
+        return { fill: 'transparent', opacity: 0.5, dash: [4, 4] }
 
       default:
         return { fill: 'transparent', opacity: 1 }
@@ -86,14 +75,14 @@ const ZoomMark = ({
     <Group draggable onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave}>
       <Group position="relative">
         {(isPrediction || isPrefill) && (
-          <Image width={24} height={24} image={tagIcon} position="absolute" x={tagPosition.minX} y={tagPosition.minY} />
+          <Image position="absolute" width={24} height={24} image={tagIcon} x={tagPosition.minX} y={tagPosition.minY} />
         )}
         {isHovered && (
           <Text
+            position="absolute"
             fontSize={16}
             text={task?.label}
-            position="absolute"
-            x={tagPosition.minX + 30}
+            x={isPrediction || isPrefill ? tagPosition.minX + 30 : tagPosition.minX + 4}
             y={tagPosition.minY + 4}
           />
         )}
@@ -102,10 +91,10 @@ const ZoomMark = ({
       {isHovered && (
         <Image
           name="delete"
+          position="absolute"
           width={12}
           height={12}
           image={closeIcon}
-          position="absolute"
           x={tagPosition.maxX - 16}
           y={tagPosition.minY + 4}
           onMouseEnter={(e) => {

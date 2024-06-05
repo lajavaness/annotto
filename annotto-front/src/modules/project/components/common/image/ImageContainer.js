@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from 'react'
 import useImage from 'use-image'
 import { Stage, Layer, Image, Rect, Line } from 'react-konva'
 
-import markerTypes, { TWO_POINTS } from 'shared/enums/markerTypes'
+import markerTypes, { FOUR_POINTS, POLYGON, TWO_POINTS } from 'shared/enums/markerTypes'
 
 import Loader from 'shared/components/loader/Loader'
 import ZoomMarker from 'modules/project/components/common/image/ZoomMark'
@@ -28,9 +28,8 @@ const ImageContainer = ({
 }) => {
   const [imageWidth, setImageWidth] = useState(0)
   const [imageHeight, setImageHeight] = useState(0)
-  const [isFinished, setIsFinished] = useState(false)
-  const [curMousePos, setCurMousePos] = useState([0, 0])
-  const [moveAnnotation, setMoveAnnotation] = useState([])
+  const [curMousePolygonPos, setCurMousePolygonPos] = useState([0, 0])
+  const [curMouseRectPos, setCurMouseRectPos] = useState([])
   const [polygonPoints, setPolygonPoints] = useState([])
   const [isMouseOverStartPoint, setMouseOverStartPoint] = useState(false)
 
@@ -52,6 +51,22 @@ const ImageContainer = ({
     [annotations]
   )
 
+  const flattenedPoints = useMemo(
+    () => polygonPoints.concat(polygonPoints.length === 2 ? [] : curMousePolygonPos).reduce((a, b) => a.concat(b), []),
+    [polygonPoints, curMousePolygonPos]
+  )
+
+  const createPolygon = () => {
+    const annotationToAdd = {
+      zone: chunk(polygonPoints, 2).map((point) => ({ x: point[0] / imageWidth, y: point[1] / imageHeight })),
+      value: selectedSection.value,
+    }
+    onAnnotationChange([...annotations, annotationToAdd])
+    setPolygonPoints([])
+    setCurMousePolygonPos([0, 0])
+    setMouseOverStartPoint(false)
+  }
+
   const _onImageRefChange = (ref) => {
     if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
     if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
@@ -71,87 +86,98 @@ const ImageContainer = ({
     if (event.target.attrs.name === 'delete' || !selectedSection) {
       return
     }
+    const ratio = event.target.getStage().scaleX()
+    const { x, y } = {
+      x: event.target.getStage().getPointerPosition().x / ratio,
+      y: event.target.getStage().getPointerPosition().y / ratio,
+    }
+    const { attrsX, attrsY } = {
+      attrsX: event.target.getStage().attrs.x / ratio || 0,
+      attrsY: event.target.getStage().attrs.y / ratio || 0,
+    }
 
-    if (mode === TWO_POINTS) {
-      if (moveAnnotation.length === 0) {
-        const { x, y } = event.target.getStage().getPointerPosition()
+    if (mode === TWO_POINTS && curMouseRectPos.length === 0) {
+      setCurMouseRectPos([{ x: x - attrsX, y: y - attrsY, width: 0, height: 0 }])
+    }
 
-        setMoveAnnotation([{ x, y, width: 0, height: 0, key: '0' }])
-      }
-    } else {
-      const { x, y } = event.target.getStage().getPointerPosition()
-      const ratio = event.target.getStage().scaleX()
-
-      if (isFinished) {
-        return
-      }
-
-      if (isMouseOverStartPoint || polygonPoints.length >= 12) {
-        setIsFinished(true)
+    if (mode === FOUR_POINTS) {
+      if (polygonPoints.length === 8) {
+        createPolygon()
       } else {
-        setPolygonPoints([...polygonPoints, x / ratio, y / ratio])
+        setPolygonPoints((prevState) => [...prevState, x - attrsX, y - attrsY])
+      }
+    }
+
+    if (mode === POLYGON) {
+      if (isMouseOverStartPoint && polygonPoints.length >= 8) {
+        createPolygon()
+      } else {
+        setPolygonPoints((prevState) => [...prevState, x - attrsX, y - attrsY])
       }
     }
   }
 
-  const handleMouseUp = (event) => {
-    if (moveAnnotation.length === 1) {
-      const sx = moveAnnotation[0].x
-      const sy = moveAnnotation[0].y
-      const { x, y } = event.target.getStage().getPointerPosition()
+  const _handleMouseUp = (event) => {
+    if (curMouseRectPos.length === 1) {
       const ratio = event.target.getStage().scaleX()
+
+      const { x: firstX, y: firstY } = curMouseRectPos[0]
+      const { secondX, secondY } = {
+        secondX: event.target.getStage().getPointerPosition().x / ratio,
+        secondY: event.target.getStage().getPointerPosition().y / ratio,
+      }
+      const { attrsX, attrsY } = {
+        attrsX: event.target.getStage().attrs.x / ratio || 0,
+        attrsY: event.target.getStage().attrs.y / ratio || 0,
+      }
+
       const annotationToAdd = {
         zone: [
-          { x: sx / imageWidth / ratio, y: sy / imageHeight / ratio },
-          { x: x / imageWidth / ratio, y: sy / imageHeight / ratio },
-          { x: x / imageWidth / ratio, y: y / imageHeight / ratio },
-          { x: sx / imageWidth / ratio, y: y / imageHeight / ratio },
+          { x: firstX / imageWidth, y: firstY / imageHeight },
+          { x: (secondX - attrsX) / imageWidth, y: firstY / imageHeight },
+          { x: (secondX - attrsX) / imageWidth, y: (secondY - attrsY) / imageHeight },
+          { x: firstX / imageWidth, y: (secondY - attrsY) / imageHeight },
         ],
-        value: selectedSection?.value,
+        value: selectedSection.value,
       }
 
       onAnnotationChange([...annotations, annotationToAdd])
-      setMoveAnnotation([])
+      setCurMouseRectPos([])
     }
   }
 
-  const handleMouseMove = (event) => {
-    if (mode === TWO_POINTS && moveAnnotation.length === 1) {
-      const sx = moveAnnotation[0].x
-      const sy = moveAnnotation[0].y
-      const { x, y } = event.target.getStage().getPointerPosition()
-      setMoveAnnotation([
-        {
-          x: sx,
-          y: sy,
-          width: x - sx,
-          height: y - sy,
-        },
-      ])
+  const _handleMouseMove = (event) => {
+    const ratio = event.target.getStage().scaleX()
+    const { x, y } = {
+      x: event.target.getStage().getPointerPosition().x / ratio,
+      y: event.target.getStage().getPointerPosition().y / ratio,
+    }
+    const { attrsX, attrsY } = {
+      attrsX: event.target.getStage().attrs.x / ratio || 0,
+      attrsY: event.target.getStage().attrs.y / ratio || 0,
     }
 
-    if (mode !== TWO_POINTS && !isFinished) {
-      const { x, y } = event.target.getStage().getPointerPosition()
-      const ratio = event.target.getStage().scaleX()
+    if (mode === TWO_POINTS && curMouseRectPos.length === 1) {
+      const { x: firstX, y: firstY } = curMouseRectPos[0]
 
-      setCurMousePos([x / ratio, y / ratio])
+      setCurMouseRectPos([{ x: firstX, y: firstY, width: x - firstX - attrsX, height: y - firstY - attrsY }])
+    }
+
+    if (mode !== TWO_POINTS && polygonPoints.length >= 2) {
+      setCurMousePolygonPos([x - attrsX, y - attrsY])
     }
   }
 
-  const handleMouseOverStartPoint = (event) => {
-    if (isFinished || polygonPoints.length < 8) return
+  const _handleMouseOverStartPoint = (event) => {
+    if (polygonPoints.length < 8) return
     event.target.scale({ x: 2, y: 2 })
     setMouseOverStartPoint(true)
   }
 
-  const handleMouseOutStartPoint = (event) => {
+  const _handleMouseOutStartPoint = (event) => {
     event.target.scale({ x: 1, y: 1 })
     setMouseOverStartPoint(false)
   }
-
-  const flattenedPoints = polygonPoints
-    .concat(isFinished || polygonPoints.length === 2 ? [] : curMousePos)
-    .reduce((a, b) => a.concat(b), [])
 
   return (
     <Styled.Root ref={observedDiv}>
@@ -159,7 +185,7 @@ const ImageContainer = ({
         <Stage
           ref={stageRef}
           onMouseDown={handleMouseDown}
-          {...(selectedSection ? { onMouseUp: handleMouseUp, onMouseMove: handleMouseMove } : {})}
+          {...(selectedSection ? { onMouseUp: _handleMouseUp, onMouseMove: _handleMouseMove } : {})}
         >
           <Layer draggable={!selectedSection}>
             <Image image={image} ref={_onImageRefChange} />
@@ -180,31 +206,28 @@ const ImageContainer = ({
                 )}
               />
             ))}
-            {moveAnnotation
+            {curMouseRectPos
               .filter((v) => v.width)
-              .map((value, i) => {
-                const ratio = stageRef.current.scaleX()
-
+              .map((value, index) => {
                 return (
                   <Rect
-                    key={i}
-                    x={value.x / ratio}
-                    y={value.y / ratio}
-                    width={value.width / ratio}
-                    height={value.height / ratio}
                     fill="transparent"
+                    key={index}
+                    x={value.x}
+                    y={value.y}
+                    width={value.width}
+                    height={value.height}
                     stroke={selectedSection?.color}
                   />
                 )
               })}
             {selectedSection && mode !== TWO_POINTS && (
               <Line
-                points={flattenedPoints}
-                closed={isFinished}
-                stroke={selectedSection?.color}
-                strokeWidth={4}
                 lineCap="round"
                 lineJoin="round"
+                strokeWidth={4}
+                points={flattenedPoints}
+                stroke={selectedSection?.color}
               />
             )}
 
@@ -216,19 +239,19 @@ const ImageContainer = ({
                 index === 0
                   ? {
                       hitStrokeWidth: 12,
-                      onMouseOver: handleMouseOverStartPoint,
-                      onMouseOut: handleMouseOutStartPoint,
+                      onMouseOver: _handleMouseOverStartPoint,
+                      onMouseOut: _handleMouseOutStartPoint,
                     }
                   : null
 
               return (
                 <Rect
+                  fill="white"
                   key={index}
                   x={x}
                   y={y}
                   width={width}
                   height={width}
-                  fill="white"
                   stroke={selectedSection?.color}
                   strokeWidth={2}
                   {...startPointAttr}
