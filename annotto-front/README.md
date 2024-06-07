@@ -194,4 +194,3 @@ If you plan to deploy those services elsewhere, you'll have to set the base urls
 | REACT_APP_API_ROUTE      | Optional route from the origin where the API is installed (E.g. "/api")   |
 | REACT_APP_KEYCLOAK_URL   | Origin from where Keycloak is accessible (E.g. "http://localhost:8080")   |
 | REACT_APP_KEYCLOAK_ROUTE | Optional route from the origin where Keycloak is installed (E.g. "/auth") |
-
