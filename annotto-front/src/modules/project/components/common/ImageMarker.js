@@ -98,7 +98,7 @@ const ImageMarker = ({
 
     return [...updatedAnnotations, ...updatedPredictions]
   }, [showPredictions, resolvedAnnotations, resolvedPredictions, zoomFactor])
-  console.log(resolvedAnnotationsAndPredictions, 123)
+
   useEffect(() => {
     setMarkerRefs((previousMarkerRefs) =>
       Array(resolvedAnnotationsAndPredictions.length)

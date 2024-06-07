@@ -1,4 +1,4 @@
-import { isEmpty, isNumber, chunk } from 'lodash'
+import { isEmpty, isNumber, chunk, find, isEqual } from 'lodash'
 import PropTypes from 'prop-types'
 import { useMemo, useRef, useState } from 'react'
 import useImage from 'use-image'
@@ -32,6 +32,7 @@ const ImageContainer = ({
   const [curMouseRectPos, setCurMouseRectPos] = useState([])
   const [polygonPoints, setPolygonPoints] = useState([])
   const [isMouseOverStartPoint, setMouseOverStartPoint] = useState(false)
+  const [selectRoomId, setSelectRoomId] = useState()
 
   const observedDiv = useRef(null)
   const stageRef = useRef()
@@ -67,6 +68,10 @@ const ImageContainer = ({
     setMouseOverStartPoint(false)
   }
 
+  const _onSelectRoomId = (id) => () => {
+    setSelectRoomId(id)
+  }
+
   const _onImageRefChange = (ref) => {
     if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
     if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
@@ -82,10 +87,21 @@ const ImageContainer = ({
     }
   }
 
-  const handleMouseDown = (event) => {
-    if (event.target.attrs.name === 'delete' || !selectedSection) {
+  const _onValidateClick = (index) => () => {
+    if (!isEmpty(annotations) && !!onAnnotationChange) {
+      onAnnotationChange([...annotations, predictions.filter(({ zone }) => !!zone)?.[index]])
+    }
+  }
+
+  const _handleMouseDown = (event) => {
+    if (!event.target.attrs.name) {
+      setSelectRoomId()
+    }
+
+    if (event.target.attrs.name === 'action_icon' || !selectedSection) {
       return
     }
+
     const ratio = event.target.getStage().scaleX()
     const { x, y } = {
       x: event.target.getStage().getPointerPosition().x / ratio,
@@ -179,12 +195,48 @@ const ImageContainer = ({
     setMouseOverStartPoint(false)
   }
 
+  const _onDragImageEnd = (zone, value) => (event) => {
+    const { x, y } = event.target.attrs
+    const currentAnnotation = find(annotations, (v) => isEqual(v.value, value) && isEqual(v.zone, zone))
+
+    const annotationToAdd = {
+      zone: currentAnnotation.zone.map((point) => ({ x: point.x + x / imageWidth, y: point.y + y / imageHeight })),
+      value,
+    }
+    onAnnotationChange([
+      ...annotations.filter((v) => !(isEqual(v.value, value) && isEqual(v.zone, zone))),
+      annotationToAdd,
+    ])
+  }
+
+  const _onTransformEnd = (zone, value) => (event) => {
+    const points = event.target.getPoints()
+    const { scaleX, scaleY } = event.target.attrs
+    if (!scaleX && !scaleY) {
+      return
+    }
+
+    const annotationToAdd = {
+      zone: chunk(points, 2).map((point) => ({
+        x: (point[0] / imageWidth) * scaleX,
+        y: (point[1] / imageHeight) * scaleY,
+      })),
+      value,
+    }
+    console.log(event.target.getStage(), scaleX, scaleY, zone, points, 123123, annotationToAdd, event.target)
+
+    onAnnotationChange([
+      ...annotations.filter((v) => !(isEqual(v.value, value) && isEqual(v.zone, zone))),
+      annotationToAdd,
+    ])
+  }
+
   return (
     <Styled.Root ref={observedDiv}>
       <div>
         <Stage
           ref={stageRef}
-          onMouseDown={handleMouseDown}
+          onMouseDown={_handleMouseDown}
           {...(selectedSection ? { onMouseUp: _handleMouseUp, onMouseMove: _handleMouseMove } : {})}
         >
           <Layer draggable={!selectedSection}>
@@ -201,9 +253,14 @@ const ImageContainer = ({
                 zone={zone}
                 value={value}
                 stage={stageRef.current}
+                isSelected={selectRoomId === index}
                 onDeleteClick={_onDeleteClick(
                   isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
                 )}
+                onValidateClick={_onValidateClick(predictionIndex)}
+                onDragEnd={_onDragImageEnd(zone, value)}
+                onTransformEnd={_onTransformEnd(zone, value)}
+                onSelectClick={_onSelectRoomId(index)}
               />
             ))}
             {curMouseRectPos

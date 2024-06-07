@@ -1,7 +1,7 @@
 import { flatten, isNumber, min, max } from 'lodash'
 import PropTypes from 'prop-types'
-import { useMemo, useState } from 'react'
-import { Group, Image, Line, Text } from 'react-konva'
+import { useMemo, useRef, useState, useEffect } from 'react'
+import { Group, Image, Line, Text, Transformer } from 'react-konva'
 import useImage from 'use-image'
 
 import theme from '__theme__'
@@ -15,16 +15,26 @@ const ZoomMark = ({
   value,
   imageWidth,
   imageHeight,
+  isSelected,
+  onValidateClick,
   onDeleteClick,
+  onSelectClick,
+  onTransformEnd,
+  ...props
 }) => {
+  const lineRef = useRef()
+  const trRef = useRef()
+
   const [isHovered, setIsHovered] = useState(false)
 
   const [tagIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/tag.svg`)
   const [patternIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/pattern.svg`)
   const [closeIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/close.svg`)
+  const [validateIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/validate.svg`)
 
   const isPrefill = isNumber(annotationIndex) && isNumber(predictionIndex)
   const isPrediction = isNumber(predictionIndex) && !isNumber(annotationIndex)
+  const isEditable = !isPrediction && !isPrefill
 
   const points = useMemo(
     () => flatten(zone.map(({ x, y }) => [x * imageWidth, y * imageHeight])),
@@ -63,6 +73,13 @@ const ZoomMark = ({
     }
   }, [isHovered, task, isPrediction, isPrefill])
 
+  useEffect(() => {
+    if (isSelected && trRef.current && lineRef.current) {
+      trRef.current.nodes([lineRef.current])
+      trRef.current.getLayer().batchDraw()
+    }
+  }, [isSelected, trRef.current, lineRef.current])
+
   const _onMouseEnter = () => setIsHovered(true)
 
   const _onMouseLeave = () => setIsHovered(false)
@@ -72,9 +89,9 @@ const ZoomMark = ({
   }
 
   return (
-    <Group draggable onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave}>
+    <Group draggable={isEditable} onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave} {...props}>
       <Group position="relative">
-        {(isPrediction || isPrefill) && (
+        {!isEditable && (
           <Image position="absolute" width={24} height={24} image={tagIcon} x={tagPosition.minX} y={tagPosition.minY} />
         )}
         {isHovered && (
@@ -82,19 +99,28 @@ const ZoomMark = ({
             position="absolute"
             fontSize={16}
             text={task?.label}
-            x={isPrediction || isPrefill ? tagPosition.minX + 30 : tagPosition.minX + 4}
+            x={!isEditable ? tagPosition.minX + 30 : tagPosition.minX + 4}
             y={tagPosition.minY + 4}
           />
         )}
-        <Line name={`zoom_${index}`} stroke={task.color} {...styleZoom} closed={true} points={points} />
+        <Line
+          name={`zoom_${index}`}
+          stroke={task.color}
+          closed={true}
+          points={points}
+          ref={lineRef}
+          {...styleZoom}
+          onClick={isEditable && onSelectClick}
+          onTransformEnd={onTransformEnd}
+        />
       </Group>
       {isHovered && (
         <Image
-          name="delete"
+          name="action_icon"
           position="absolute"
           width={12}
           height={12}
-          image={closeIcon}
+          image={isPrediction && !isPrefill ? validateIcon : closeIcon}
           x={tagPosition.maxX - 16}
           y={tagPosition.minY + 4}
           onMouseEnter={(e) => {
@@ -105,7 +131,19 @@ const ZoomMark = ({
             const container = e.target.getStage().container()
             container.style.cursor = 'default'
           }}
-          onClick={onDeleteClick}
+          onClick={isPrediction && !isPrefill ? onValidateClick : onDeleteClick}
+        />
+      )}
+      {isSelected && (
+        <Transformer
+          ref={trRef}
+          flipEnabled={false}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (Math.abs(newBox.width) < 5 || Math.abs(newBox.height) < 5) {
+              return oldBox
+            }
+            return newBox
+          }}
         />
       )}
     </Group>
@@ -158,11 +196,15 @@ ZoomMark.propTypes = {
       y: PropTypes.number.isRequired,
     })
   ),
+  isSelected: PropTypes.bool,
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,
   annotationIndex: PropTypes.number,
   predictionIndex: PropTypes.number,
   index: PropTypes.number,
   stage: PropTypes.object,
+  onValidateClick: PropTypes.func,
   onDeleteClick: PropTypes.func,
+  onSelectClick: PropTypes.func,
+  onTransformEnd: PropTypes.func,
 }
