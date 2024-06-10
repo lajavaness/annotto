@@ -7,7 +7,7 @@ import { Stage, Layer, Image, Rect, Line } from 'react-konva'
 import markerTypes, { FOUR_POINTS, POLYGON, TWO_POINTS } from 'shared/enums/markerTypes'
 
 import Loader from 'shared/components/loader/Loader'
-import ZoomMarker from 'modules/project/components/common/image/ZoomMark'
+import ZoneMarker from 'modules/project/components/common/image/ZoneMarker'
 
 import useResolvedAnnotationsAndPredictions from 'shared/hooks/useResolvedAnnotationsAndPredictions'
 import useZoomImage from 'shared/hooks/useZoomImage'
@@ -34,7 +34,7 @@ const ImageContainer = ({
   const [isMouseOverStartPoint, setMouseOverStartPoint] = useState(false)
   const [selectRoomId, setSelectRoomId] = useState()
 
-  const observedDiv = useRef(null)
+  const observedDiv = useRef()
   const stageRef = useRef()
 
   const [image, status] = useImage(content)
@@ -98,7 +98,7 @@ const ImageContainer = ({
       setSelectRoomId()
     }
 
-    if (event.target.attrs.name === 'action_icon' || !selectedSection) {
+    if (event.target.attrs.name === 'actionIcon' || !selectedSection) {
       return
     }
 
@@ -236,92 +236,90 @@ const ImageContainer = ({
   }
 
   return (
-    <Styled.Root ref={observedDiv}>
-      <div>
-        <Stage
-          ref={stageRef}
-          onMouseDown={_handleMouseDown}
-          {...(selectedSection ? { onMouseUp: _handleMouseUp, onMouseMove: _handleMouseMove } : {})}
-        >
-          <Layer draggable={!selectedSection}>
-            <Image image={image} ref={_onImageRefChange} />
-            {resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => (
-              <ZoomMarker
-                key={index}
-                index={index}
-                tasks={tasks}
-                imageHeight={imageHeight}
-                imageWidth={imageWidth}
-                annotationIndex={annotationIndex}
-                predictionIndex={predictionIndex}
-                zone={zone}
-                value={value}
-                stage={stageRef.current}
-                isSelected={selectRoomId === index}
-                onDeleteClick={_onDeleteClick(
-                  isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
-                )}
-                onValidateClick={_onValidateClick(predictionIndex)}
-                onDragEnd={_onDragImageEnd(zone, value)}
-                onTransformEnd={_onTransformEnd(zone, value)}
-                onSelectClick={_onSelectRoomId(index)}
-              />
-            ))}
-            {curMouseRectPos
-              .filter((v) => v.width)
-              .map((value, index) => {
-                return (
-                  <Rect
-                    fill="transparent"
-                    key={index}
-                    x={value.x}
-                    y={value.y}
-                    width={value.width}
-                    height={value.height}
-                    stroke={selectedSection?.color}
-                  />
-                )
-              })}
-            {selectedSection && mode !== TWO_POINTS && (
-              <Line
-                lineCap="round"
-                lineJoin="round"
-                strokeWidth={4}
-                points={flattenedPoints}
-                stroke={selectedSection?.color}
-              />
-            )}
-
-            {chunk(polygonPoints, 2).map((point, index) => {
-              const width = 6
-              const x = point[0] - width / 2
-              const y = point[1] - width / 2
-              const startPointAttr =
-                index === 0
-                  ? {
-                      hitStrokeWidth: 12,
-                      onMouseOver: _handleMouseOverStartPoint,
-                      onMouseOut: _handleMouseOutStartPoint,
-                    }
-                  : null
-
+    <Styled.Root ref={observedDiv} data-testid={'__image-item__'}>
+      <Stage
+        ref={stageRef}
+        onMouseDown={_handleMouseDown}
+        {...(selectedSection ? { onMouseUp: _handleMouseUp, onMouseMove: _handleMouseMove } : {})}
+      >
+        <Layer draggable={!selectedSection}>
+          <Image image={image} ref={_onImageRefChange} />
+          {resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => (
+            <ZoneMarker
+              key={index}
+              index={index}
+              tasks={tasks}
+              imageHeight={imageHeight}
+              imageWidth={imageWidth}
+              annotationIndex={annotationIndex}
+              predictionIndex={predictionIndex}
+              zone={zone}
+              value={value}
+              scale={stageRef.current?.scaleX()}
+              isSelected={selectRoomId === index}
+              onDeleteClick={_onDeleteClick(
+                isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
+              )}
+              onValidateClick={_onValidateClick(predictionIndex)}
+              onDragEnd={_onDragImageEnd(zone, value)}
+              onTransformEnd={_onTransformEnd(zone, value)}
+              onSelectClick={_onSelectRoomId(index)}
+            />
+          ))}
+          {curMouseRectPos
+            .filter((v) => v.width)
+            .map((value, index) => {
               return (
                 <Rect
-                  fill="white"
+                  fill="transparent"
                   key={index}
-                  x={x}
-                  y={y}
-                  width={width}
-                  height={width}
+                  x={value.x}
+                  y={value.y}
+                  width={value.width}
+                  height={value.height}
                   stroke={selectedSection?.color}
-                  strokeWidth={2}
-                  {...startPointAttr}
                 />
               )
             })}
-          </Layer>
-        </Stage>
-      </div>
+          {selectedSection && mode !== TWO_POINTS && (
+            <Line
+              lineCap="round"
+              lineJoin="round"
+              strokeWidth={4}
+              points={flattenedPoints}
+              stroke={selectedSection?.color}
+            />
+          )}
+
+          {chunk(polygonPoints, 2).map((point, index) => {
+            const width = 6
+            const x = point[0] - width / 2
+            const y = point[1] - width / 2
+            const startPointAttr =
+              index === 0
+                ? {
+                    hitStrokeWidth: 12,
+                    onMouseOver: _handleMouseOverStartPoint,
+                    onMouseOut: _handleMouseOutStartPoint,
+                  }
+                : null
+
+            return (
+              <Rect
+                fill="white"
+                key={index}
+                x={x}
+                y={y}
+                width={width}
+                height={width}
+                stroke={selectedSection?.color}
+                strokeWidth={2}
+                {...startPointAttr}
+              />
+            )
+          })}
+        </Layer>
+      </Stage>
       {status !== 'loaded' && <Loader />}
     </Styled.Root>
   )

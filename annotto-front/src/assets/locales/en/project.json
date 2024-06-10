@@ -97,6 +97,7 @@
       "tool": "Tool",
       "mode": "Mode",
       "sections": "Sections",
+      "resetSections": "Reset Section",
       "relations": "Relations",
       "char": "Character",
       "word": "Word"

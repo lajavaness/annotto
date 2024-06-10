@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
-import { PROJECT_TEXT, PROJECT_VIDEO, PROJECT_AUDIO, PROJECT_HTML } from 'shared/enums/projectTypes'
-import { AUDIO, NER, TEXT, VIDEO } from 'shared/enums/annotationTypes'
+import { PROJECT_IMAGE, PROJECT_TEXT, PROJECT_VIDEO, PROJECT_AUDIO, PROJECT_HTML } from 'shared/enums/projectTypes'
+import { AUDIO, NER, TEXT, VIDEO, ZONE } from 'shared/enums/annotationTypes'
 
 import theme from '__theme__'
 
@@ -30,6 +30,13 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key) => key }),
 }))
 
+jest.mock('react-konva', () => ({
+  Stage: ({ components }) => components,
+  Line: ({ components }) => components,
+}))
+
+class ResizeObserver {}
+
 describe('AnnotationItemWrapper component', () => {
   it('should render text container for text annotation type', () => {
     const { getByTestId } = render(getInstance())
@@ -45,6 +52,21 @@ describe('AnnotationItemWrapper component', () => {
     const nerContainer = getByTestId('__ner-item__')
 
     expect(nerContainer).toBeInTheDocument()
+  })
+
+  it('should render image marker component for zone annotation type', () => {
+    window.ResizeObserver = ResizeObserver
+    const props = {
+      projectType: PROJECT_IMAGE,
+      tasks: [{ type: ZONE, value: 'foo', label: 'foo' }],
+      currentItem: { data: { url: 'some image url' }, highlights: [] },
+      options: { someOption: 'some value' },
+    }
+    const { getByTestId } = render(getInstance(props))
+
+    const imageMarker = getByTestId('__image-item__')
+
+    expect(imageMarker).toBeInTheDocument()
   })
 
   it('should render video component for video annotation type', () => {

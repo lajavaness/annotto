@@ -1,12 +1,12 @@
-import { flatten, isNumber, min, max } from 'lodash'
+import { flatten, isNumber } from 'lodash'
 import PropTypes from 'prop-types'
 import { useMemo, useRef, useState, useEffect } from 'react'
-import { Group, Image, Line, Text, Transformer } from 'react-konva'
+import { Group, Image, Line, Text, Transformer, Tag, Label } from 'react-konva'
 import useImage from 'use-image'
 
 import theme from '__theme__'
 
-const ZoomMark = ({
+const ZoneMarker = ({
   index,
   tasks,
   annotationIndex,
@@ -16,6 +16,7 @@ const ZoomMark = ({
   imageWidth,
   imageHeight,
   isSelected,
+  scale,
   onValidateClick,
   onDeleteClick,
   onSelectClick,
@@ -23,7 +24,7 @@ const ZoomMark = ({
   ...props
 }) => {
   const lineRef = useRef()
-  const trRef = useRef()
+  const transformerRef = useRef()
 
   const [isHovered, setIsHovered] = useState(false)
 
@@ -34,7 +35,6 @@ const ZoomMark = ({
 
   const isPrefill = isNumber(annotationIndex) && isNumber(predictionIndex)
   const isPrediction = isNumber(predictionIndex) && !isNumber(annotationIndex)
-  const isEditable = !isPrediction && !isPrefill
 
   const points = useMemo(
     () => flatten(zone.map(({ x, y }) => [x * imageWidth, y * imageHeight])),
@@ -50,14 +50,10 @@ const ZoomMark = ({
     return currentTask
   }, [tasks, value])
 
-  const tagPosition = useMemo(
-    () => ({
-      minX: min(zone.map(({ x }) => x * imageWidth)),
-      minY: min(zone.map(({ y }) => y * imageHeight)),
-      maxX: max(zone.map(({ x }) => x * imageWidth)),
-    }),
-    [zone, imageWidth, imageHeight]
-  )
+  const findTopRightPoint = () =>
+    zone.reduce((acc, point) => (point.x + acc.y > acc.x + point.y ? point : acc), zone[0])
+
+  const findTopLeftPoint = () => zone.reduce((acc, point) => (acc.x + acc.y > point.x + point.y ? point : acc), zone[0])
 
   const styleZoom = useMemo(() => {
     switch (true) {
@@ -74,11 +70,11 @@ const ZoomMark = ({
   }, [isHovered, task, isPrediction, isPrefill])
 
   useEffect(() => {
-    if (isSelected && trRef.current && lineRef.current) {
-      trRef.current.nodes([lineRef.current])
-      trRef.current.getLayer().batchDraw()
+    if (isSelected && transformerRef.current && lineRef.current) {
+      transformerRef.current.nodes([lineRef.current])
+      transformerRef.current.getLayer().batchDraw()
     }
-  }, [isSelected, trRef.current, lineRef.current])
+  }, [isSelected, transformerRef.current, lineRef.current])
 
   const _onMouseEnter = () => setIsHovered(true)
 
@@ -89,19 +85,33 @@ const ZoomMark = ({
   }
 
   return (
-    <Group draggable={isEditable} onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave} {...props}>
+    <Group draggable={!isPrediction} onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave} {...props}>
       <Group position="relative">
-        {!isEditable && (
-          <Image position="absolute" width={24} height={24} image={tagIcon} x={tagPosition.minX} y={tagPosition.minY} />
+        {isPrediction && (
+          <Image
+            position="absolute"
+            width={24 / scale}
+            height={24 / scale}
+            image={tagIcon}
+            x={findTopLeftPoint().x * imageWidth}
+            y={findTopLeftPoint().y * imageHeight}
+          />
         )}
         {isHovered && (
-          <Text
+          <Group
             position="absolute"
-            fontSize={16}
-            text={task?.label}
-            x={!isEditable ? tagPosition.minX + 30 : tagPosition.minX + 4}
-            y={tagPosition.minY + 4}
-          />
+            x={
+              isPrediction
+                ? findTopLeftPoint().x * imageWidth + 30 / scale
+                : findTopLeftPoint().x * imageWidth + 4 / scale
+            }
+            y={findTopLeftPoint().y * imageHeight + 4 / scale}
+          >
+            <Label>
+              <Tag fill={task.color} cornerRadius={2} />
+              <Text fontSize={16 / scale} text={task?.label} padding={2} />
+            </Label>
+          </Group>
         )}
         <Line
           name={`zoom_${index}`}
@@ -110,19 +120,19 @@ const ZoomMark = ({
           points={points}
           ref={lineRef}
           {...styleZoom}
-          onClick={isEditable && onSelectClick}
+          onClick={!isPrediction && onSelectClick}
           onTransformEnd={onTransformEnd}
         />
       </Group>
       {isHovered && (
         <Image
-          name="action_icon"
+          name="actionIcon"
           position="absolute"
-          width={12}
-          height={12}
+          width={12 / scale}
+          height={12 / scale}
           image={isPrediction && !isPrefill ? validateIcon : closeIcon}
-          x={tagPosition.maxX - 16}
-          y={tagPosition.minY + 4}
+          x={findTopRightPoint().x * imageWidth - 16 / scale}
+          y={findTopRightPoint().y * imageHeight + 4 / scale}
           onMouseEnter={(e) => {
             const container = e.target.getStage().container()
             container.style.cursor = 'pointer'
@@ -134,23 +144,12 @@ const ZoomMark = ({
           onClick={isPrediction && !isPrefill ? onValidateClick : onDeleteClick}
         />
       )}
-      {isSelected && (
-        <Transformer
-          ref={trRef}
-          flipEnabled={false}
-          boundBoxFunc={(oldBox, newBox) => {
-            if (Math.abs(newBox.width) < 5 || Math.abs(newBox.height) < 5) {
-              return oldBox
-            }
-            return newBox
-          }}
-        />
-      )}
+      {isSelected && <Transformer ref={transformerRef} flipEnabled={false} />}
     </Group>
   )
 }
 
-export default ZoomMark
+export default ZoneMarker
 
 const TaskValue = PropTypes.string
 
@@ -179,7 +178,7 @@ const TaskSection = PropTypes.shape({
   ),
 })
 
-ZoomMark.propTypes = {
+ZoneMarker.propTypes = {
   /** The hierarchy of labels that will be displayed in this list. Each section.
    * contains a title and multiple labels, which can themselves have children. */
   tasks: PropTypes.arrayOf(TaskSection),
@@ -202,7 +201,7 @@ ZoomMark.propTypes = {
   annotationIndex: PropTypes.number,
   predictionIndex: PropTypes.number,
   index: PropTypes.number,
-  stage: PropTypes.object,
+  scale: PropTypes.number,
   onValidateClick: PropTypes.func,
   onDeleteClick: PropTypes.func,
   onSelectClick: PropTypes.func,

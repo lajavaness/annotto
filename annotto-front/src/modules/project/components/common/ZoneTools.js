@@ -1,5 +1,5 @@
 import { GlobalHotKeys } from 'react-hotkeys'
-import { Typography } from 'antd'
+import { Button, Typography } from 'antd'
 import { isEmpty, isNil } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
@@ -125,7 +125,12 @@ const ZoneTools = ({
   const resolveSection = useCallback(
     (data, selected, onChange, title) => (
       <>
-        <Typography.Title level={5}>{title}</Typography.Title>
+        <Styled.TitleContainer align="baseline">
+          <Typography.Title level={5}>{title}</Typography.Title>
+          <Button onClick={onChange(null, data)} value="small">
+            {t(`project:annotation.labeling.resetSections`)}
+          </Button>
+        </Styled.TitleContainer>
         <Styled.RadioGroupSection value={selected?.value} onChange={onChange(null, data)}>
           <GlobalHotKeys keyMap={resolveKeyMap(data)} handlers={resolveHandlers(data, onChange)}>
             {data
