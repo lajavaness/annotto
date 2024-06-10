@@ -216,14 +216,18 @@ const ImageContainer = ({
       return
     }
 
+    const { attrsX, attrsY } = {
+      attrsX: event.target.attrs.x / imageWidth || 0,
+      attrsY: event.target.attrs.y / imageHeight || 0,
+    }
+
     const annotationToAdd = {
       zone: chunk(points, 2).map((point) => ({
-        x: (point[0] / imageWidth) * scaleX,
-        y: (point[1] / imageHeight) * scaleY,
+        x: (point[0] / imageWidth) * scaleX + attrsX,
+        y: (point[1] / imageHeight) * scaleY + attrsY,
       })),
       value,
     }
-    console.log(event.target.getStage(), scaleX, scaleY, zone, points, 123123, annotationToAdd, event.target)
 
     onAnnotationChange([
       ...annotations.filter((v) => !(isEqual(v.value, value) && isEqual(v.zone, zone))),
