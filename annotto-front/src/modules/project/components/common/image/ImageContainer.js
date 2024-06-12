@@ -1,6 +1,6 @@
 import { isEmpty, isNumber, chunk, find, isEqual } from 'lodash'
 import PropTypes from 'prop-types'
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import useImage from 'use-image'
 import { Stage, Layer, Image, Rect, Line } from 'react-konva'
 
@@ -42,6 +42,11 @@ const ImageContainer = ({
   const [image, status] = useImage(content)
 
   useZoomImage(observedDiv.current, stageRef.current, status, imageWidth, imageHeight)
+
+  useEffect(() => {
+    setPolygonPoints([])
+    setCurMouseRectPos([])
+  }, [content, mode])
 
   const resolvedAnnotationsAndPredictions = useResolvedAnnotationsAndPredictions(
     annotations,
@@ -246,37 +251,36 @@ const ImageContainer = ({
       >
         <Layer draggable={!selectedSection}>
           <Image image={image} ref={_onImageRefChange} />
-          {imageHeight
-            ? resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => {
-                const task = tasks.find((t) => t.value === value)
-                if (task && !task?.color) {
-                  task.color = theme.colors.defaultAnnotationColors[tasks.indexOf(task)]
-                }
+          {!!imageHeight &&
+            resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => {
+              const task = tasks.find((t) => t.value === value)
+              if (task && !task?.color) {
+                task.color = theme.colors.defaultAnnotationColors[tasks.indexOf(task)]
+              }
 
-                return (
-                  <ZoneMarker
-                    key={index}
-                    index={index}
-                    task={task}
-                    imageHeight={imageHeight}
-                    imageWidth={imageWidth}
-                    annotationIndex={annotationIndex}
-                    predictionIndex={predictionIndex}
-                    zone={zone}
-                    value={value}
-                    scale={stageRef.current?.scaleX()}
-                    isSelected={selectRoomId === index}
-                    onDeleteClick={_onDeleteClick(
-                      isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
-                    )}
-                    onValidateClick={_onValidateClick(predictionIndex)}
-                    onDragEnd={_onDragImageEnd(zone, value)}
-                    onTransformEnd={_onTransformEnd(zone, value)}
-                    onSelectClick={_onSelectRoomId(index)}
-                  />
-                )
-              })
-            : null}
+              return (
+                <ZoneMarker
+                  key={index}
+                  index={index}
+                  task={task}
+                  imageHeight={imageHeight}
+                  imageWidth={imageWidth}
+                  annotationIndex={annotationIndex}
+                  predictionIndex={predictionIndex}
+                  zone={zone}
+                  value={value}
+                  scale={stageRef.current?.scaleX()}
+                  isSelected={selectRoomId === index}
+                  onDeleteClick={_onDeleteClick(
+                    isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
+                  )}
+                  onValidateClick={_onValidateClick(predictionIndex)}
+                  onDragEnd={_onDragImageEnd(zone, value)}
+                  onTransformEnd={_onTransformEnd(zone, value)}
+                  onSelectClick={_onSelectRoomId(index)}
+                />
+              )
+            })}
           {curMouseRectPos
             .filter((v) => v.width)
             .map((value, index) => {
