@@ -14,8 +14,6 @@ import useZoomImage from 'shared/hooks/useZoomImage'
 
 import { isZoneAnnotationEquivalent } from 'shared/utils/annotationUtils'
 
-import theme from '__theme__'
-
 import * as Styled from './__styles__/ImageContainer.styles'
 
 const ImageContainer = ({
@@ -30,7 +28,9 @@ const ImageContainer = ({
 }) => {
   const [imageWidth, setImageWidth] = useState(0)
   const [imageHeight, setImageHeight] = useState(0)
+  const [scale, setScale] = useState(0)
   const [curMousePolygonPos, setCurMousePolygonPos] = useState([0, 0])
+  const [moveLayerPos, setMoveLayerPos] = useState({ x: 0, y: 0 })
   const [curMouseRectPos, setCurMouseRectPos] = useState([])
   const [polygonPoints, setPolygonPoints] = useState([])
   const [isMouseOverStartPoint, setMouseOverStartPoint] = useState(false)
@@ -46,12 +46,13 @@ const ImageContainer = ({
   useEffect(() => {
     setPolygonPoints([])
     setCurMouseRectPos([])
-  }, [content, mode])
+  }, [content, mode, selectedSection])
 
   const resolvedAnnotationsAndPredictions = useResolvedAnnotationsAndPredictions(
     annotations,
     predictions,
-    showPredictions
+    showPredictions,
+    tasks
   )
 
   const resolvedAnnotations = useMemo(
@@ -75,9 +76,7 @@ const ImageContainer = ({
     setMouseOverStartPoint(false)
   }
 
-  const _onSelectRoomId = (id) => () => {
-    setSelectRoomId(id)
-  }
+  const _onSelectRoomId = (id) => () => setSelectRoomId(id)
 
   const _onImageRefChange = (ref) => {
     if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
@@ -120,14 +119,21 @@ const ImageContainer = ({
     }
 
     if (mode === TWO_POINTS && curMouseRectPos.length === 0) {
-      setCurMouseRectPos([{ x: x - attrsX, y: y - attrsY, width: 0, height: 0 }])
+      setCurMouseRectPos([
+        {
+          x: x - attrsX - moveLayerPos.x,
+          y: y - attrsY - moveLayerPos.y,
+          width: 0,
+          height: 0,
+        },
+      ])
     }
 
     if (mode === FOUR_POINTS) {
       if (polygonPoints.length === 8) {
         createPolygon()
       } else {
-        setPolygonPoints((prevState) => [...prevState, x - attrsX, y - attrsY])
+        setPolygonPoints((prevState) => [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y])
       }
     }
 
@@ -135,7 +141,7 @@ const ImageContainer = ({
       if (isMouseOverStartPoint && polygonPoints.length >= 8) {
         createPolygon()
       } else {
-        setPolygonPoints((prevState) => [...prevState, x - attrsX, y - attrsY])
+        setPolygonPoints((prevState) => [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y])
       }
     }
   }
@@ -157,9 +163,9 @@ const ImageContainer = ({
       const annotationToAdd = {
         zone: [
           { x: firstX / imageWidth, y: firstY / imageHeight },
-          { x: (secondX - attrsX) / imageWidth, y: firstY / imageHeight },
-          { x: (secondX - attrsX) / imageWidth, y: (secondY - attrsY) / imageHeight },
-          { x: firstX / imageWidth, y: (secondY - attrsY) / imageHeight },
+          { x: (secondX - attrsX - moveLayerPos.x) / imageWidth, y: firstY / imageHeight },
+          { x: (secondX - attrsX - moveLayerPos.x) / imageWidth, y: (secondY - attrsY - moveLayerPos.y) / imageHeight },
+          { x: firstX / imageWidth, y: (secondY - attrsY - moveLayerPos.y) / imageHeight },
         ],
         value: selectedSection.value,
       }
@@ -183,11 +189,18 @@ const ImageContainer = ({
     if (mode === TWO_POINTS && curMouseRectPos.length === 1) {
       const { x: firstX, y: firstY } = curMouseRectPos[0]
 
-      setCurMouseRectPos([{ x: firstX, y: firstY, width: x - firstX - attrsX, height: y - firstY - attrsY }])
+      setCurMouseRectPos([
+        {
+          x: firstX,
+          y: firstY,
+          width: x - firstX - attrsX - moveLayerPos.x,
+          height: y - firstY - attrsY - moveLayerPos.y,
+        },
+      ])
     }
 
     if (mode !== TWO_POINTS && polygonPoints.length >= 2) {
-      setCurMousePolygonPos([x - attrsX, y - attrsY])
+      setCurMousePolygonPos([x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y])
     }
   }
 
@@ -216,6 +229,11 @@ const ImageContainer = ({
     ])
   }
 
+  const _onDragLayerEnd = (event) => {
+    const { x, y } = event.target.attrs
+    setMoveLayerPos({ x, y })
+  }
+
   const _onTransformEnd = (zone, value) => (event) => {
     const points = event.target.getPoints()
     const { scaleX, scaleY } = event.target.attrs
@@ -241,46 +259,43 @@ const ImageContainer = ({
       annotationToAdd,
     ])
   }
+  const _onLayerWheel = (event) => {
+    setScale(event.target.getStage().scaleX())
+  }
 
   return (
     <Styled.Root ref={observedDiv} data-testid={'__image-item__'}>
       <Stage
         ref={stageRef}
         onMouseDown={_handleMouseDown}
+        onWheel={_onLayerWheel}
         {...(selectedSection ? { onMouseUp: _handleMouseUp, onMouseMove: _handleMouseMove } : {})}
       >
-        <Layer draggable={!selectedSection}>
+        <Layer draggable={!selectedSection} onDragEnd={_onDragLayerEnd}>
           <Image image={image} ref={_onImageRefChange} />
           {!!imageHeight &&
-            resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex }, index) => {
-              const task = tasks.find((t) => t.value === value)
-              if (task && !task?.color) {
-                task.color = theme.colors.defaultAnnotationColors[tasks.indexOf(task)]
-              }
-
-              return (
-                <ZoneMarker
-                  key={index}
-                  index={index}
-                  task={task}
-                  imageHeight={imageHeight}
-                  imageWidth={imageWidth}
-                  annotationIndex={annotationIndex}
-                  predictionIndex={predictionIndex}
-                  zone={zone}
-                  value={value}
-                  scale={stageRef.current?.scaleX()}
-                  isSelected={selectRoomId === index}
-                  onDeleteClick={_onDeleteClick(
-                    isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
-                  )}
-                  onValidateClick={_onValidateClick(predictionIndex)}
-                  onDragEnd={_onDragImageEnd(zone, value)}
-                  onTransformEnd={_onTransformEnd(zone, value)}
-                  onSelectClick={_onSelectRoomId(index)}
-                />
-              )
-            })}
+            resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex, task }, index) => (
+              <ZoneMarker
+                key={index}
+                index={index}
+                task={task}
+                imageHeight={imageHeight}
+                imageWidth={imageWidth}
+                annotationIndex={annotationIndex}
+                predictionIndex={predictionIndex}
+                zone={zone}
+                value={value}
+                scale={scale || stageRef.current?.scaleX()}
+                isSelected={selectRoomId === index}
+                onDeleteClick={_onDeleteClick(
+                  isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
+                )}
+                onValidateClick={_onValidateClick(predictionIndex)}
+                onDragEnd={_onDragImageEnd(zone, value)}
+                onTransformEnd={_onTransformEnd(zone, value)}
+                onSelectClick={_onSelectRoomId(index)}
+              />
+            ))}
           {curMouseRectPos
             .filter((v) => v.width)
             .map((value, index) => {

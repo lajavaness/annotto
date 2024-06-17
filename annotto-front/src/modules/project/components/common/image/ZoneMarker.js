@@ -101,7 +101,7 @@ const ZoneMarker = ({
           stroke={task.color}
           points={points}
           {...styleZoom()}
-          onClick={!isPrediction && onSelectClick}
+          onClick={false && onSelectClick}
           onTransformEnd={onTransformEnd}
         />
       </Group>
@@ -112,8 +112,8 @@ const ZoneMarker = ({
           width={12 / scale}
           height={12 / scale}
           image={isPrediction && !isPrefill ? validateIcon : closeIcon}
-          x={findTopRightPoint().x * imageWidth - 16 / scale}
-          y={findTopRightPoint().y * imageHeight + 4 / scale}
+          x={findTopRightPoint().x * imageWidth - 12 / scale}
+          y={findTopRightPoint().y * imageHeight}
           onMouseEnter={(e) => {
             const container = e.target.getStage().container()
             container.style.cursor = 'pointer'

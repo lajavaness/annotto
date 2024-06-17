@@ -3,14 +3,27 @@ import { useMemo } from 'react'
 
 import { isZoneAnnotationEquivalent } from 'shared/utils/annotationUtils'
 
-const useResolvedAnnotationsAndPredictions = (annotations, predictions, showPredictions) => {
+import theme from '__theme__'
+
+const useResolvedAnnotationsAndPredictions = (annotations, predictions, showPredictions, tasks) => {
+  const filterEmptyZoneAndInsertTask = (data) =>
+    data
+      .filter(({ zone }) => !!zone)
+      .map((item) => {
+        const task = tasks.find((t) => t.value === item.value)
+        if (task && !task?.color) {
+          task.color = theme.colors.defaultAnnotationColors[tasks.indexOf(task)]
+        }
+        return { task, ...item }
+      })
+
   const resolvedAnnotations = useMemo(
-    () => (!isEmpty(annotations) ? annotations.filter(({ zone }) => !!zone) : []),
+    () => (!isEmpty(annotations) ? filterEmptyZoneAndInsertTask(annotations) : []),
     [annotations]
   )
 
   const resolvedPredictions = useMemo(
-    () => (!isEmpty(predictions) ? predictions.filter(({ zone }) => !!zone) : []),
+    () => (!isEmpty(predictions) ? filterEmptyZoneAndInsertTask(predictions) : []),
     [predictions]
   )
 
