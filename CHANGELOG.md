@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/lajavaness/annotto/compare/v1.6.3...v1.7.0) (2024-06-17)
+
+
+### Features
+
+* Add konva for image annotation ([#55](https://github.com/lajavaness/annotto/issues/55)) ([b924298](https://github.com/lajavaness/annotto/commit/b924298ca056f3e90fbe180529b8ad50844f7181))
+
 ## [1.6.3](https://github.com/lajavaness/annotto/compare/v1.6.2...v1.6.3) (2024-06-07)
 
 ## [1.6.2](https://github.com/lajavaness/annotto/compare/v1.6.1...v1.6.2) (2024-06-07)
