@@ -1,5 +1,4 @@
-import { act, render } from '@testing-library/react'
-import React from 'react'
+import { render } from '@testing-library/react'
 
 import ErrorBoundary from '../ErrorBoundary'
 
@@ -17,13 +16,6 @@ describe('ErrorBoundary', () => {
   it('matches snapshot', () => {
     const { asFragment } = render(getInstance())
     expect(asFragment()).toMatchSnapshot()
-  })
-
-  test('act works in this case', async () => {
-    await act(async () => {
-      const { getByText } = render(getInstance({ children: <div>ErrorBoundary</div> }))
-      expect(getByText('ErrorBoundary')).toBeVisible()
-    })
   })
 
   it('renders children', () => {

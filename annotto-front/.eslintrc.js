@@ -96,6 +96,8 @@ module.exports = {
     ],
     'no-await-in-loop': 0,
     'import/prefer-default-export': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
   },
   overrides: [
     {

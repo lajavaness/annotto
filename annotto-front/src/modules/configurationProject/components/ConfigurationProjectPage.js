@@ -4,7 +4,7 @@ import { navigate } from '@reach/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { useDown } from '@xstyled/styled-components'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Loader from 'shared/components/loader/Loader'

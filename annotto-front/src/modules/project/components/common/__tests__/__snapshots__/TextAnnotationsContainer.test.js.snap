@@ -2,7 +2,9 @@
 
 exports[`TextAnnotationsContainer matches snapshot 1`] = `
 <DocumentFragment>
-  Loading
+  <div
+    class="sc-grxQYx hCjbrg"
+  />
 </DocumentFragment>
 `;
 

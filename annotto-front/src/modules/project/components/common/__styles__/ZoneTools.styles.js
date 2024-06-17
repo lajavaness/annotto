@@ -1,4 +1,4 @@
-import { Radio } from 'antd'
+import { Radio, Space } from 'antd'
 import styled from '@xstyled/styled-components'
 
 export const Root = styled.div``
@@ -18,6 +18,12 @@ export const RadioGroupMode = styled(RadioGroup)`
     display: flex;
     gap: 1rem;
   }
+`
+
+export const TitleContainer = styled(Space)`
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
 `
 
 export const RadioGroupSection = styled(RadioGroup)`

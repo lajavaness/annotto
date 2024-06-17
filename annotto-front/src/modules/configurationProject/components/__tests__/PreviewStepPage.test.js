@@ -2,7 +2,6 @@ import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { createStore } from 'redux-dynamic-modules'
 import { render } from '@testing-library/react'
-import React from 'react'
 
 import theme from '__theme__'
 

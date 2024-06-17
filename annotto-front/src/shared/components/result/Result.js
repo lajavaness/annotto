@@ -2,7 +2,6 @@ import { Button } from 'antd'
 import { navigate } from '@reach/router'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import * as Styled from './__styles__/Result.styles'
 

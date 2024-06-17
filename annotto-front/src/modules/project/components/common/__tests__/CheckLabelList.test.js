@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components'
 import { fireEvent, render, screen } from '@testing-library/react'
-import React from 'react'
 
 import theme from '__theme__'
 

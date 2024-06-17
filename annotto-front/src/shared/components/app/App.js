@@ -2,7 +2,7 @@ import { Redirect } from '@reach/router'
 import { notification } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 
 import ErrorBoundary from 'shared/components/error/ErrorBoundary'
 

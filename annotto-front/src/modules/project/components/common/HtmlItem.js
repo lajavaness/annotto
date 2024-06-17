@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import { sanitizer } from 'shared/utils/htmlUtils'
 

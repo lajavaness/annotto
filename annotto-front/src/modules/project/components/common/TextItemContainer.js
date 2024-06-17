@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash'
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 
 import { sanitizer } from 'shared/utils/htmlUtils'
 

@@ -2,7 +2,7 @@ import { Tooltip } from 'antd'
 import { isEmpty } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 
 import * as Styled from './__styles__/AnnotatorsContainer.styles'
 

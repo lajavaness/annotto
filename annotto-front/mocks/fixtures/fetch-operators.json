@@ -1,109 +1,109 @@
 {
-	"operators": [
-		{
-			"name": "equal",
-			"param": {
-				"value": "Boolean"
-			}
-		},
-		{
-			"name": "range",
-			"param": {
-				"value": {
-					"from": "Date",
-					"to": "Date"
-				}
-			}
-		},
-		{
-			"name": "containsAny",
-			"param": {
-				"value": ["String"]
-			}
-		},
-		{
-			"name": "containsAll",
-			"param": {
-				"value": ["String"]
-			}
-		},
-		{
-			"name": "size",
-			"param": {
-				"value": "Number"
-			}
-		},
-		{
-			"name": "similarTo",
-			"param": {
-				"value": "String"
-			},
-			"optionalParam": {
-				"limit": "Number",
-				"neg_values": ["String"]
-			}
-		},
-		{
-			"name": "greaterThanAny",
-			"param": {
-				"value": ["String"]
-			},
-			"optionalParam": {
-				"threshold": "Number"
-			}
-		},
-		{
-			"name": "greaterThanAll",
-			"param": {
-				"value": ["String"]
-			},
-			"optionalParam": {
-				"threshold": "Number"
-			}
-		},
-		{
-			"name": "wrongPredictions",
-			"param": {
-				"value": ["String"]
-			},
-			"optionalParam": {
-				"threshold": "Number"
-			}
-		},
-		{
-			"name": "textContains",
-			"param": {
-				"value": "String"
-			}
-		}
-	],
-	"fields": {
-		"annotated": {
-			"operators": ["equal"]
-		},
-		"annotatedAt": {
-			"operators": ["range"]
-		},
-		"annotatedBy": {
-			"operators": ["containsAny", "containsAll"]
-		},
-		"annotationValues": {
-			"operators": ["containsAny", "containsAll", "size"]
-		},
-		"uuid": {
-			"operators": ["similarTo"]
-		},
-		"tags": {
-			"operators": ["containsAny", "containsAll", "size"]
-		},
-		"predictionValues": {
-			"operators": ["containsAny", "containsAll", "size"]
-		},
-		"predictionScores": {
-			"operators": ["greaterThanAny", "greaterThanAll", "wrongPredictions"]
-		},
-		"body": {
-			"operators": ["textContains"]
-		}
-	}
+  "operators": [
+    {
+      "name": "equal",
+      "param": {
+        "value": "Boolean"
+      }
+    },
+    {
+      "name": "range",
+      "param": {
+        "value": {
+          "from": "Date",
+          "to": "Date"
+        }
+      }
+    },
+    {
+      "name": "containsAny",
+      "param": {
+        "value": ["String"]
+      }
+    },
+    {
+      "name": "containsAll",
+      "param": {
+        "value": ["String"]
+      }
+    },
+    {
+      "name": "size",
+      "param": {
+        "value": "Number"
+      }
+    },
+    {
+      "name": "similarTo",
+      "param": {
+        "value": "String"
+      },
+      "optionalParam": {
+        "limit": "Number",
+        "neg_values": ["String"]
+      }
+    },
+    {
+      "name": "greaterThanAny",
+      "param": {
+        "value": ["String"]
+      },
+      "optionalParam": {
+        "threshold": "Number"
+      }
+    },
+    {
+      "name": "greaterThanAll",
+      "param": {
+        "value": ["String"]
+      },
+      "optionalParam": {
+        "threshold": "Number"
+      }
+    },
+    {
+      "name": "wrongPredictions",
+      "param": {
+        "value": ["String"]
+      },
+      "optionalParam": {
+        "threshold": "Number"
+      }
+    },
+    {
+      "name": "textContains",
+      "param": {
+        "value": "String"
+      }
+    }
+  ],
+  "fields": {
+    "annotated": {
+      "operators": ["equal"]
+    },
+    "annotatedAt": {
+      "operators": ["range"]
+    },
+    "annotatedBy": {
+      "operators": ["containsAny", "containsAll"]
+    },
+    "annotationValues": {
+      "operators": ["containsAny", "containsAll", "size"]
+    },
+    "uuid": {
+      "operators": ["similarTo"]
+    },
+    "tags": {
+      "operators": ["containsAny", "containsAll", "size"]
+    },
+    "predictionValues": {
+      "operators": ["containsAny", "containsAll", "size"]
+    },
+    "predictionScores": {
+      "operators": ["greaterThanAny", "greaterThanAll", "wrongPredictions"]
+    },
+    "body": {
+      "operators": ["textContains"]
+    }
+  }
 }

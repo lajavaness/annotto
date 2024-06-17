@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
@@ -30,6 +30,13 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key) => key }),
 }))
 
+jest.mock('react-konva', () => ({
+  Stage: ({ components }) => components,
+  Line: ({ components }) => components,
+}))
+
+class ResizeObserver {}
+
 describe('AnnotationItemWrapper component', () => {
   it('should render text container for text annotation type', () => {
     const { getByTestId } = render(getInstance())
@@ -48,6 +55,7 @@ describe('AnnotationItemWrapper component', () => {
   })
 
   it('should render image marker component for zone annotation type', () => {
+    window.ResizeObserver = ResizeObserver
     const props = {
       projectType: PROJECT_IMAGE,
       tasks: [{ type: ZONE, value: 'foo', label: 'foo' }],

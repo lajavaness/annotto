@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color'
 import { debounce, isEmpty, map, omit, size } from 'lodash'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {

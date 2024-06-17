@@ -3,7 +3,7 @@ import { isEmpty, isEqual, map } from 'lodash'
 import { useDown } from '@xstyled/styled-components'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import moment from 'moment'
 
 import {

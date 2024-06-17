@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import { createStore } from 'redux-dynamic-modules'
 import { render } from '@testing-library/react'
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 
 import 'assets/locales'
 

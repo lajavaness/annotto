@@ -1,7 +1,7 @@
 import { Checkbox, Form, Radio, Space } from 'antd'
 import { isEmpty } from 'lodash'
 import { useDispatch } from 'react-redux'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ALLITEMS, ANNOTATIONSANDCOMMENTS, CONFIGURATION, HISTORY } from 'shared/enums/exportTypes'

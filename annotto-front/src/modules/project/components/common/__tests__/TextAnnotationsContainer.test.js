@@ -1,12 +1,25 @@
+import { Suspense } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import React, { Suspense } from 'react'
 
 import 'assets/locales'
 
 import theme from '__theme__'
 
 import TextAnnotationsContainer from 'modules/project/components/common/TextAnnotationsContainer'
+
+jest.mock('react-i18next', () => ({
+  Trans: ({ components }) => {
+    return components
+  },
+  initReactI18next: {
+    type: '3rdParty',
+    init: jest.fn(),
+  },
+  useTranslation: () => ({
+    t: (key) => key,
+  }),
+}))
 
 const defaultProps = {}
 const getInstance = (props = {}) => (

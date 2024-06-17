@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import * as Styled from './__styles__/Card.styles'
 

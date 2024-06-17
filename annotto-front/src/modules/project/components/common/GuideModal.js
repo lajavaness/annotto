@@ -5,7 +5,7 @@ import { navigate } from '@reach/router'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React, { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 import WarningMessage from 'shared/components/warning/WarningMessage'

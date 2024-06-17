@@ -1,7 +1,6 @@
 import { Form, Switch } from 'antd'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import * as Styled from './__styles__/SettingsDrawer.styles'
 

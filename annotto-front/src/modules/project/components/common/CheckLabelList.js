@@ -2,7 +2,7 @@ import { Checkbox, Typography } from 'antd'
 import { GlobalHotKeys } from 'react-hotkeys'
 import { isEmpty, map } from 'lodash'
 import PropTypes from 'prop-types'
-import React, { useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 
 import Hotkey from 'shared/components/hotkey/Hotkey'
 import TagsOutlinedIcon from 'modules/project/components/common/TagsOutlinedIcon'

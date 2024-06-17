@@ -33,13 +33,13 @@
     "permissions": "Users permissions",
     "client": "Client",
     "type": "Project type",
-		"types": {
-			"text": "Text",
-			"image":"Image",
-			"video": "Video",
-			"audio": "Audio",
-			"html": "HTML"
-		},
+    "types": {
+      "text": "Text",
+      "image": "Image",
+      "video": "Video",
+      "audio": "Audio",
+      "html": "HTML"
+    },
     "name": "Project name",
     "deadline": "Project deadline",
     "description": "Project description",

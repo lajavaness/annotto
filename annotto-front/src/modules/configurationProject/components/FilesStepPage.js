@@ -3,7 +3,7 @@ import { UploadOutlined } from '@ant-design/icons'
 import { debounce, isEmpty, isEqual, some } from 'lodash'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import {
