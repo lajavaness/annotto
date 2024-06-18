@@ -25,7 +25,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
     const resizeObserver = new ResizeObserver(() => {
       stage.width(observedDiv.offsetWidth)
     })
-    console.log(observedDiv, 444444, stage)
+
     if (!observedDiv) {
       return
     }
@@ -33,7 +33,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
     if (stage) {
       resizeObserver.observe(observedDiv)
 
-      const scaleBy = 1.03
+      const scaleBy = 1.04
 
       stage.on('wheel', (e) => {
         e.evt.preventDefault()
@@ -50,10 +50,6 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
         }
 
         const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy
-
-        if (newScale < 0.4 || newScale > 2) {
-          return
-        }
 
         stage.scale({ x: newScale, y: newScale })
 

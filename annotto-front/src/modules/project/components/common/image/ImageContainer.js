@@ -8,6 +8,7 @@ import markerTypes, { FOUR_POINTS, POLYGON, TWO_POINTS } from 'shared/enums/mark
 
 import Loader from 'shared/components/loader/Loader'
 import ZoneMarker from 'modules/project/components/common/image/ZoneMarker'
+import AnchorPoint from 'modules/project/components/common/image/AnchorPoint'
 
 import useResolvedAnnotationsAndPredictions from 'shared/hooks/useResolvedAnnotationsAndPredictions'
 import useZoomImage from 'shared/hooks/useZoomImage'
@@ -15,7 +16,6 @@ import useZoomImage from 'shared/hooks/useZoomImage'
 import { isZoneAnnotationEquivalent } from 'shared/utils/annotationUtils'
 
 import * as Styled from './__styles__/ImageContainer.styles'
-import AnchorPoint from './AnchorPoint'
 
 const ImageContainer = ({
   content,
@@ -80,11 +80,8 @@ const ImageContainer = ({
   const _onSelectRoomId = (id) => () => setSelectRoomId(id)
 
   const _onImageRefChange = (ref) => {
-    console.log(ref, 3)
-    if (ref) {
-      if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
-      if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
-    }
+    if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
+    if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
   }
 
   const _onDeleteClick = (index) => () => {
@@ -355,12 +352,12 @@ const ImageContainer = ({
                 return (
                   <AnchorPoint
                     key={index}
-                    imageWidth={imageWidth}
-                    imageHeight={imageHeight}
+                    imageWidth={1}
+                    imageHeight={1}
                     color={selectedSection?.color}
                     point={{
-                      x: point[0] / imageWidth,
-                      y: point[1] / imageHeight,
+                      x: point[0],
+                      y: point[1],
                     }}
                     {...(index === 0
                       ? { onMouseOver: _handleMouseOverStartPoint, onMouseOut: _handleMouseOutStartPoint }
