@@ -7,6 +7,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
     () => {
       const newScale = observedDiv.offsetWidth / imageWidth
       stage.scale({ x: newScale, y: newScale })
+      stage.position({ x: 0, y: 0 })
     },
     imageWidth && observedDiv && status === 'loaded',
     status === 'loading'
@@ -24,7 +25,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
     const resizeObserver = new ResizeObserver(() => {
       stage.width(observedDiv.offsetWidth)
     })
-
+    console.log(observedDiv, 444444, stage)
     if (!observedDiv) {
       return
     }

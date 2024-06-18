@@ -4,6 +4,10 @@ import { useRef, useState, useEffect } from 'react'
 import { Group, Image, Line, Text, Transformer, Tag, Label } from 'react-konva'
 import useImage from 'use-image'
 
+import AnchorPoint from 'modules/project/components/common/image/AnchorPoint'
+
+import markerTypes, { TWO_POINTS } from 'shared/enums/markerTypes'
+
 const ZoneMarker = ({
   index,
   task,
@@ -14,6 +18,7 @@ const ZoneMarker = ({
   imageHeight,
   isSelected,
   scale,
+  mode,
   onValidateClick,
   onDeleteClick,
   onSelectClick,
@@ -24,6 +29,7 @@ const ZoneMarker = ({
   const transformerRef = useRef()
 
   const [isHovered, setIsHovered] = useState(false)
+  const [transPoints, setTransPoints] = useState([])
 
   const [tagIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/tag.svg`)
   const [patternIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/pattern.svg`)
@@ -55,7 +61,7 @@ const ZoneMarker = ({
   }
 
   useEffect(() => {
-    if (isSelected && transformerRef.current && lineRef.current) {
+    if (isSelected && transformerRef.current && lineRef.current && mode === TWO_POINTS) {
       transformerRef.current.nodes([lineRef.current])
       transformerRef.current.getLayer().batchDraw()
     }
@@ -64,6 +70,36 @@ const ZoneMarker = ({
   const _onMouseEnter = () => setIsHovered(true)
 
   const _onMouseLeave = () => setIsHovered(false)
+
+  const _onEditAnchorMove = (i) => (e) => {
+    setTransPoints(
+      points.map((value, subIndex) => {
+        if (subIndex === 2 * i) {
+          return e.target.attrs.x
+        }
+        if (subIndex === 2 * i + 1) {
+          return e.target.attrs.y
+        }
+        return value
+      })
+    )
+  }
+
+  const _onEditAnchorEnd = (i) => (e) => {
+    setTransPoints([])
+    onTransformEnd(
+      e,
+      points.map((value, subIndex) => {
+        if (subIndex === 2 * i) {
+          return e.target.attrs.x
+        }
+        if (subIndex === 2 * i + 1) {
+          return e.target.attrs.y
+        }
+        return value
+      })
+    )
+  }
 
   return (
     <Group draggable={!isPrediction} onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave} onDragEnd={onDragEnd}>
@@ -94,16 +130,19 @@ const ZoneMarker = ({
             </Label>
           </Group>
         )}
-        <Line
-          closed
-          name={`zoom_${index}`}
-          ref={lineRef}
-          stroke={task.color}
-          points={points}
-          {...styleZoom()}
-          onClick={false && onSelectClick}
-          onTransformEnd={onTransformEnd}
-        />
+        {transPoints.length === 0 && (
+          <Line
+            closed
+            name={`zoom_${index}`}
+            ref={lineRef}
+            stroke={task.color}
+            points={points}
+            {...styleZoom()}
+            onDblClick={!isPrediction && onSelectClick}
+            onTransformEnd={onTransformEnd}
+          />
+        )}
+        <Line closed name={`zoom_${index}_transform`} stroke={task.color} points={transPoints} {...styleZoom()} />
       </Group>
       {isHovered && (
         <Image
@@ -125,7 +164,22 @@ const ZoneMarker = ({
           onClick={isPrediction && !isPrefill ? onValidateClick : onDeleteClick}
         />
       )}
-      {isSelected && <Transformer ref={transformerRef} flipEnabled={false} />}
+      {isSelected &&
+        (mode === TWO_POINTS ? (
+          <Transformer rotateEnabled={false} flipEnabled={false} ref={transformerRef} />
+        ) : (
+          zone.map((point, i) => (
+            <AnchorPoint
+              key={i}
+              point={point}
+              color={task?.color}
+              imageWidth={imageWidth}
+              imageHeight={imageHeight}
+              onDragMove={_onEditAnchorMove(i)}
+              onDragEnd={_onEditAnchorEnd(i)}
+            />
+          ))
+        ))}
     </Group>
   )
 }
@@ -146,6 +200,8 @@ ZoneMarker.propTypes = {
       y: PropTypes.number.isRequired,
     })
   ),
+  /** Defines the mode of annotation, if the annotation is with 2,4 or multiple points. */
+  mode: PropTypes.oneOf(markerTypes),
   isSelected: PropTypes.bool,
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,

@@ -15,6 +15,7 @@ import useZoomImage from 'shared/hooks/useZoomImage'
 import { isZoneAnnotationEquivalent } from 'shared/utils/annotationUtils'
 
 import * as Styled from './__styles__/ImageContainer.styles'
+import AnchorPoint from './AnchorPoint'
 
 const ImageContainer = ({
   content,
@@ -79,8 +80,11 @@ const ImageContainer = ({
   const _onSelectRoomId = (id) => () => setSelectRoomId(id)
 
   const _onImageRefChange = (ref) => {
-    if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
-    if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
+    console.log(ref, 3)
+    if (ref) {
+      if (ref?.attrs?.image?.height !== imageHeight) setImageHeight(ref?.attrs?.image?.height)
+      if (ref?.attrs?.image?.width !== imageWidth) setImageWidth(ref?.attrs?.image?.width)
+    }
   }
 
   const _onDeleteClick = (index) => () => {
@@ -133,7 +137,15 @@ const ImageContainer = ({
       if (polygonPoints.length === 8) {
         createPolygon()
       } else {
-        setPolygonPoints((prevState) => [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y])
+        setPolygonPoints((prevState) => {
+          if (
+            prevState[prevState.length - 2] === x - attrsX - moveLayerPos.x &&
+            prevState[prevState.length - 1] === y - attrsY - moveLayerPos.y
+          ) {
+            return prevState
+          }
+          return [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y]
+        })
       }
     }
 
@@ -141,7 +153,15 @@ const ImageContainer = ({
       if (isMouseOverStartPoint && polygonPoints.length >= 8) {
         createPolygon()
       } else {
-        setPolygonPoints((prevState) => [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y])
+        setPolygonPoints((prevState) => {
+          if (
+            prevState[prevState.length - 2] === x - attrsX - moveLayerPos.x &&
+            prevState[prevState.length - 1] === y - attrsY - moveLayerPos.y
+          ) {
+            return prevState
+          }
+          return [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y]
+        })
       }
     }
   }
@@ -216,6 +236,10 @@ const ImageContainer = ({
   }
 
   const _onDragImageEnd = (zone, value) => (event) => {
+    if (event.target.attrs.name === 'anchorPoint') {
+      return
+    }
+
     const { x, y } = event.target.attrs
     const currentAnnotation = find(annotations, (v) => isEqual(v.value, value) && isEqual(v.zone, zone))
 
@@ -234,17 +258,19 @@ const ImageContainer = ({
     setMoveLayerPos({ x, y })
   }
 
-  const _onTransformEnd = (zone, value) => (event) => {
-    const points = event.target.getPoints()
+  const _onTransformEnd = (zone, value) => (event, transformPoints) => {
+    const points = transformPoints || event.target.getPoints()
     const { scaleX, scaleY } = event.target.attrs
     if (!scaleX && !scaleY) {
       return
     }
 
-    const { attrsX, attrsY } = {
-      attrsX: event.target.attrs.x / imageWidth || 0,
-      attrsY: event.target.attrs.y / imageHeight || 0,
-    }
+    const { attrsX, attrsY } = transformPoints
+      ? { attrsX: 0, attrsY: 0 }
+      : {
+          attrsX: event.target.attrs.x / imageWidth || 0,
+          attrsY: event.target.attrs.y / imageHeight || 0,
+        }
 
     const annotationToAdd = {
       zone: chunk(points, 2).map((point) => ({
@@ -273,81 +299,77 @@ const ImageContainer = ({
       >
         <Layer draggable={!selectedSection} onDragEnd={_onDragLayerEnd}>
           <Image image={image} ref={_onImageRefChange} />
-          {!!imageHeight &&
-            resolvedAnnotationsAndPredictions.map(({ zone, value, annotationIndex, predictionIndex, task }, index) => (
-              <ZoneMarker
-                key={index}
-                index={index}
-                task={task}
-                imageHeight={imageHeight}
-                imageWidth={imageWidth}
-                annotationIndex={annotationIndex}
-                predictionIndex={predictionIndex}
-                zone={zone}
-                value={value}
-                scale={scale || stageRef.current?.scaleX()}
-                isSelected={selectRoomId === index}
-                onDeleteClick={_onDeleteClick(
-                  isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
-                )}
-                onValidateClick={_onValidateClick(predictionIndex)}
-                onDragEnd={_onDragImageEnd(zone, value)}
-                onTransformEnd={_onTransformEnd(zone, value)}
-                onSelectClick={_onSelectRoomId(index)}
-              />
-            ))}
-          {curMouseRectPos
-            .filter((v) => v.width)
-            .map((value, index) => {
-              return (
-                <Rect
-                  fill="transparent"
-                  key={index}
-                  x={value.x}
-                  y={value.y}
-                  width={value.width}
-                  height={value.height}
+          {!!imageHeight && (
+            <>
+              {resolvedAnnotationsAndPredictions.map(
+                ({ zone, value, annotationIndex, predictionIndex, task }, index) => (
+                  <ZoneMarker
+                    key={index}
+                    index={index}
+                    task={task}
+                    imageHeight={imageHeight}
+                    imageWidth={imageWidth}
+                    annotationIndex={annotationIndex}
+                    predictionIndex={predictionIndex}
+                    zone={zone}
+                    value={value}
+                    scale={scale || stageRef.current?.scaleX()}
+                    mode={mode}
+                    isSelected={selectRoomId === index}
+                    onDeleteClick={_onDeleteClick(
+                      isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
+                    )}
+                    onValidateClick={_onValidateClick(predictionIndex)}
+                    onDragEnd={_onDragImageEnd(zone, value)}
+                    onTransformEnd={_onTransformEnd(zone, value)}
+                    onSelectClick={_onSelectRoomId(index)}
+                  />
+                )
+              )}
+              {curMouseRectPos
+                .filter((v) => v.width)
+                .map((value, index) => {
+                  return (
+                    <Rect
+                      fill="transparent"
+                      key={index}
+                      x={value.x}
+                      y={value.y}
+                      width={value.width}
+                      height={value.height}
+                      stroke={selectedSection?.color}
+                    />
+                  )
+                })}
+              {selectedSection && mode !== TWO_POINTS && (
+                <Line
+                  lineCap="round"
+                  lineJoin="round"
+                  strokeWidth={4}
+                  points={flattenedPoints}
                   stroke={selectedSection?.color}
                 />
-              )
-            })}
-          {selectedSection && mode !== TWO_POINTS && (
-            <Line
-              lineCap="round"
-              lineJoin="round"
-              strokeWidth={4}
-              points={flattenedPoints}
-              stroke={selectedSection?.color}
-            />
+              )}
+
+              {chunk(polygonPoints, 2).map((point, index) => {
+                return (
+                  <AnchorPoint
+                    key={index}
+                    imageWidth={imageWidth}
+                    imageHeight={imageHeight}
+                    color={selectedSection?.color}
+                    point={{
+                      x: point[0] / imageWidth,
+                      y: point[1] / imageHeight,
+                    }}
+                    {...(index === 0
+                      ? { onMouseOver: _handleMouseOverStartPoint, onMouseOut: _handleMouseOutStartPoint }
+                      : {})}
+                  />
+                )
+              })}
+            </>
           )}
-
-          {chunk(polygonPoints, 2).map((point, index) => {
-            const width = 6
-            const x = point[0] - width / 2
-            const y = point[1] - width / 2
-            const startPointAttr =
-              index === 0
-                ? {
-                    hitStrokeWidth: 12,
-                    onMouseOver: _handleMouseOverStartPoint,
-                    onMouseOut: _handleMouseOutStartPoint,
-                  }
-                : null
-
-            return (
-              <Rect
-                fill="white"
-                key={index}
-                x={x}
-                y={y}
-                width={width}
-                height={width}
-                stroke={selectedSection?.color}
-                strokeWidth={2}
-                {...startPointAttr}
-              />
-            )
-          })}
         </Layer>
       </Stage>
       {status !== 'loaded' && <Loader />}
