@@ -57,6 +57,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
           x: pointer.x - mousePointTo.x * newScale,
           y: pointer.y - mousePointTo.y * newScale,
         }
+        console.log(newPos, 33333)
         stage.position(newPos)
       })
     }

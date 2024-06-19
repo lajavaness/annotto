@@ -102,7 +102,12 @@ const ZoneMarker = ({
   }
 
   return (
-    <Group draggable={!isPrediction} onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave} onDragEnd={onDragEnd}>
+    <Group
+      draggable={isSelected && !isPrediction}
+      onMouseEnter={_onMouseEnter}
+      onMouseLeave={_onMouseLeave}
+      onDragEnd={onDragEnd}
+    >
       <Group position="relative">
         {isPrediction && (
           <Image

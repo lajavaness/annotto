@@ -251,8 +251,10 @@ const ImageContainer = ({
   }
 
   const _onDragLayerEnd = (event) => {
-    const { x, y } = event.target.attrs
-    setMoveLayerPos({ x, y })
+    if (event.target.attrs.name !== 'anchorPoint') {
+      const { x, y } = event.target.attrs
+      setMoveLayerPos({ x, y })
+    }
   }
 
   const _onTransformEnd = (zone, value) => (event, transformPoints) => {
