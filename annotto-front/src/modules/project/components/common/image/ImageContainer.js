@@ -42,12 +42,16 @@ const ImageContainer = ({
 
   const [image, status] = useImage(content)
 
-  useZoomImage(observedDiv.current, stageRef.current, status, imageWidth, imageHeight)
+  useZoomImage(observedDiv.current, stageRef.current, status, imageWidth, imageHeight, moveLayerPos)
 
   useEffect(() => {
     setPolygonPoints([])
     setCurMouseRectPos([])
   }, [content, mode, selectedSection])
+
+  useEffect(() => {
+    setScale(0)
+  }, [content])
 
   const resolvedAnnotationsAndPredictions = useResolvedAnnotationsAndPredictions(
     annotations,
@@ -251,7 +255,7 @@ const ImageContainer = ({
   }
 
   const _onDragLayerEnd = (event) => {
-    if (event.target.attrs.name !== 'anchorPoint') {
+    if (!['anchorPoint', 'zoneMarker'].includes(event.target.attrs.name)) {
       const { x, y } = event.target.attrs
       setMoveLayerPos({ x, y })
     }

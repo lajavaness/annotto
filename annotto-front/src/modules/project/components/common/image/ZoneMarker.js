@@ -103,6 +103,7 @@ const ZoneMarker = ({
 
   return (
     <Group
+      name="zoneMarker"
       draggable={isSelected && !isPrediction}
       onMouseEnter={_onMouseEnter}
       onMouseLeave={_onMouseLeave}

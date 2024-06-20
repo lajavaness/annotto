@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 
 import useOnceCall from 'shared/hooks/useOnceCall'
 
-const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
+const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight, moveLayerPos) => {
   useOnceCall(
     () => {
       const newScale = observedDiv.offsetWidth / imageWidth
       stage.scale({ x: newScale, y: newScale })
-      stage.position({ x: 0, y: 0 })
+      stage.position({ x: -moveLayerPos.x * newScale, y: -moveLayerPos.y * newScale })
     },
     imageWidth && observedDiv && status === 'loaded',
     status === 'loading'
@@ -57,7 +57,7 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight) => {
           x: pointer.x - mousePointTo.x * newScale,
           y: pointer.y - mousePointTo.y * newScale,
         }
-        console.log(newPos, 33333)
+
         stage.position(newPos)
       })
     }
