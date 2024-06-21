@@ -100,7 +100,8 @@
       "resetSections": "Reset Section",
       "relations": "Relations",
       "char": "Character",
-      "word": "Word"
+      "word": "Word",
+			"space": "Space"
     },
     "textAnnotation": {
       "placeholder": "Add text to annotate"

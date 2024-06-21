@@ -40,7 +40,7 @@ const ZoneTools = ({
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === ' ') {
+      if (event.keyCode === 32) {
         event.preventDefault()
         onSelectionChange()
       }
@@ -145,7 +145,7 @@ const ZoneTools = ({
           <Button onClick={onChange(null, data)} value="small">
             <Space>
               {t(`project:annotation.labeling.resetSections`)}
-              <Hotkey isSelected={!selected?.value} label={'Space'} />
+              <Hotkey isSelected={!selected?.value} label={t(`project:annotation.labeling.space`)} />
             </Space>
           </Button>
         </Styled.TitleContainer>

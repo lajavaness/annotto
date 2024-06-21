@@ -6,8 +6,6 @@ import useImage from 'use-image'
 
 import AnchorPoint from 'modules/project/components/common/image/AnchorPoint'
 
-import markerTypes, { TWO_POINTS } from 'shared/enums/markerTypes'
-
 const ZoneMarker = ({
   index,
   task,
@@ -18,7 +16,6 @@ const ZoneMarker = ({
   imageHeight,
   isSelected,
   scale,
-  mode,
   onValidateClick,
   onDeleteClick,
   onSelectClick,
@@ -41,6 +38,13 @@ const ZoneMarker = ({
 
   const points = flatten(zone.map(({ x, y }) => [x * imageWidth, y * imageHeight]))
 
+  const isRectangle =
+    zone.length === 4 &&
+    zone[0].x === zone[3].x &&
+    zone[1].x === zone[2].x &&
+    zone[0].y === zone[1].y &&
+    zone[2].y === zone[3].y
+
   const findTopRightPoint = () =>
     zone.reduce((acc, point) => (point.x + acc.y > acc.x + point.y ? point : acc), zone[0])
 
@@ -61,7 +65,7 @@ const ZoneMarker = ({
   }
 
   useEffect(() => {
-    if (isSelected && transformerRef.current && lineRef.current && mode === TWO_POINTS) {
+    if (isSelected && transformerRef.current && lineRef.current && isRectangle) {
       transformerRef.current.nodes([lineRef.current])
       transformerRef.current.getLayer().batchDraw()
     }
@@ -171,7 +175,7 @@ const ZoneMarker = ({
         />
       )}
       {isSelected &&
-        (mode === TWO_POINTS ? (
+        (isRectangle ? (
           <Transformer rotateEnabled={false} flipEnabled={false} ref={transformerRef} />
         ) : (
           zone.map((point, i) => (
@@ -206,8 +210,6 @@ ZoneMarker.propTypes = {
       y: PropTypes.number.isRequired,
     })
   ),
-  /** Defines the mode of annotation, if the annotation is with 2,4 or multiple points. */
-  mode: PropTypes.oneOf(markerTypes),
   isSelected: PropTypes.bool,
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,

@@ -180,6 +180,13 @@ const ImageContainer = ({
         attrsX: event.target.getStage().attrs.x / ratio || 0,
         attrsY: event.target.getStage().attrs.y / ratio || 0,
       }
+      if (
+        Math.abs(secondX - attrsX - moveLayerPos.x - firstX) < 10 ||
+        Math.abs(secondY - attrsY - moveLayerPos.y - firstY) < 10
+      ) {
+        setCurMouseRectPos([])
+        return
+      }
 
       const annotationToAdd = {
         zone: [
@@ -317,7 +324,6 @@ const ImageContainer = ({
                     zone={zone}
                     value={value}
                     scale={scale || stageRef.current?.scaleX()}
-                    mode={mode}
                     isSelected={selectRoomId === index}
                     onDeleteClick={_onDeleteClick(
                       isNumber(predictionIndex) && !annotationIndex ? predictionIndex : annotationIndex
