@@ -34,7 +34,7 @@ const ImageContainer = ({
   const [moveLayerPos, setMoveLayerPos] = useState({ x: 0, y: 0 })
   const [curMouseRectPos, setCurMouseRectPos] = useState([])
   const [polygonPoints, setPolygonPoints] = useState([])
-  const [isMouseOverStartPoint, setMouseOverStartPoint] = useState(false)
+  const [isMouseOverStartPoint, setIsMouseOverStartPoint] = useState(false)
   const [selectRoomId, setSelectRoomId] = useState()
 
   const observedDiv = useRef()
@@ -78,7 +78,19 @@ const ImageContainer = ({
     onAnnotationChange([...annotations, annotationToAdd])
     setPolygonPoints([])
     setCurMousePolygonPos([0, 0])
-    setMouseOverStartPoint(false)
+    setIsMouseOverStartPoint(false)
+  }
+
+  const addPolygonPoint = (x, attrsX, y, attrsY) => {
+    setPolygonPoints((prevState) => {
+      if (
+        prevState[prevState.length - 2] === x - attrsX - moveLayerPos.x &&
+        prevState[prevState.length - 1] === y - attrsY - moveLayerPos.y
+      ) {
+        return prevState
+      }
+      return [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y]
+    })
   }
 
   const _onSelectRoomId = (id) => () => setSelectRoomId(id)
@@ -138,15 +150,7 @@ const ImageContainer = ({
       if (polygonPoints.length === 8) {
         createPolygon()
       } else {
-        setPolygonPoints((prevState) => {
-          if (
-            prevState[prevState.length - 2] === x - attrsX - moveLayerPos.x &&
-            prevState[prevState.length - 1] === y - attrsY - moveLayerPos.y
-          ) {
-            return prevState
-          }
-          return [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y]
-        })
+        addPolygonPoint(x, attrsX, y, attrsY)
       }
     }
 
@@ -154,15 +158,7 @@ const ImageContainer = ({
       if (isMouseOverStartPoint && polygonPoints.length >= 8) {
         createPolygon()
       } else {
-        setPolygonPoints((prevState) => {
-          if (
-            prevState[prevState.length - 2] === x - attrsX - moveLayerPos.x &&
-            prevState[prevState.length - 1] === y - attrsY - moveLayerPos.y
-          ) {
-            return prevState
-          }
-          return [...prevState, x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y]
-        })
+        addPolygonPoint(x, attrsX, y, attrsY)
       }
     }
   }
@@ -229,18 +225,18 @@ const ImageContainer = ({
 
     if (mode !== TWO_POINTS && polygonPoints.length >= 2) {
       setCurMousePolygonPos([x - attrsX - moveLayerPos.x, y - attrsY - moveLayerPos.y])
+      if (
+        Math.abs(x - attrsX - moveLayerPos.x - polygonPoints[0]) > 12 ||
+        Math.abs(y - attrsY - moveLayerPos.y - polygonPoints[1]) > 12
+      ) {
+        setIsMouseOverStartPoint(false)
+      }
     }
   }
 
-  const _handleMouseOverStartPoint = (event) => {
+  const _handleMouseOverStartPoint = () => {
     if (polygonPoints.length < 8) return
-    event.target.scale({ x: 2, y: 2 })
-    setMouseOverStartPoint(true)
-  }
-
-  const _handleMouseOutStartPoint = (event) => {
-    event.target.scale({ x: 1, y: 1 })
-    setMouseOverStartPoint(false)
+    setIsMouseOverStartPoint(true)
   }
 
   const _onDragImageEnd = (zone, value) => (event) => {
@@ -295,6 +291,7 @@ const ImageContainer = ({
       annotationToAdd,
     ])
   }
+
   const _onLayerWheel = (event) => {
     setScale(event.target.getStage().scaleX())
   }
@@ -364,15 +361,17 @@ const ImageContainer = ({
                 return (
                   <AnchorPoint
                     key={index}
+                    scale={scale || stageRef.current?.scaleX()}
                     imageWidth={1}
                     imageHeight={1}
                     color={selectedSection?.color}
-                    point={{
-                      x: point[0],
-                      y: point[1],
-                    }}
+                    point={{ x: point[0], y: point[1] }}
                     {...(index === 0
-                      ? { onMouseOver: _handleMouseOverStartPoint, onMouseOut: _handleMouseOutStartPoint }
+                      ? {
+                          isMouseOverStartPoint,
+                          hitStrokeWidth: 12,
+                          onMouseOver: _handleMouseOverStartPoint,
+                        }
                       : {})}
                   />
                 )

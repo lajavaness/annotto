@@ -181,6 +181,7 @@ const ZoneMarker = ({
           zone.map((point, i) => (
             <AnchorPoint
               key={i}
+              scale={scale}
               point={point}
               color={task?.color}
               imageWidth={imageWidth}

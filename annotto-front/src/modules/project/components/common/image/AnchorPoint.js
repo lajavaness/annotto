@@ -1,8 +1,18 @@
 import PropTypes from 'prop-types'
 import { Rect } from 'react-konva'
 
-const AnchorPoint = ({ point, color, imageWidth, imageHeight, onDragMove, onDragEnd, onMouseOver, onMouseOut }) => {
-  const width = 6
+const AnchorPoint = ({
+  isMouseOverStartPoint,
+  scale,
+  point,
+  color,
+  imageWidth,
+  imageHeight,
+  onDragMove,
+  onDragEnd,
+  onMouseOver,
+}) => {
+  const width = isMouseOverStartPoint ? 12 / scale : 6 / scale
   const x = point.x * imageWidth - width / 2
   const y = point.y * imageHeight - width / 2
 
@@ -16,12 +26,10 @@ const AnchorPoint = ({ point, color, imageWidth, imageHeight, onDragMove, onDrag
       width={width}
       height={width}
       stroke={color}
-      strokeWidth={2}
-      hitStrokeWidth={12}
+      strokeWidth={3}
       onDragMove={onDragMove}
       onDragEnd={onDragEnd}
       onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
     />
   )
 }
@@ -29,6 +37,8 @@ const AnchorPoint = ({ point, color, imageWidth, imageHeight, onDragMove, onDrag
 export default AnchorPoint
 
 AnchorPoint.propTypes = {
+  isMouseOverStartPoint: PropTypes.bool,
+  scale: PropTypes.number,
   imageWidth: PropTypes.number,
   imageHeight: PropTypes.number,
   color: PropTypes.string,
@@ -41,5 +51,4 @@ AnchorPoint.propTypes = {
   onDragMove: PropTypes.func,
   onDragEnd: PropTypes.func,
   onMouseOver: PropTypes.func,
-  onMouseOut: PropTypes.func,
 }
