@@ -1,4 +1,4 @@
-import { isEmpty, isNumber, chunk, find, isEqual } from 'lodash'
+import { isEmpty, isNumber, chunk, isEqual } from 'lodash'
 import PropTypes from 'prop-types'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useImage from 'use-image'
@@ -243,18 +243,19 @@ const ImageContainer = ({
     if (event.target.attrs.name === 'anchorPoint') {
       return
     }
-
     const { x, y } = event.target.attrs
-    const currentAnnotation = find(annotations, (v) => isEqual(v.value, value) && isEqual(v.zone, zone))
 
-    const annotationToAdd = {
-      zone: currentAnnotation.zone.map((point) => ({ x: point.x + x / imageWidth, y: point.y + y / imageHeight })),
-      value,
-    }
-    onAnnotationChange([
-      ...annotations.filter((v) => !(isEqual(v.value, value) && isEqual(v.zone, zone))),
-      annotationToAdd,
-    ])
+    onAnnotationChange(
+      annotations.map((item) => {
+        if (isEqual(item.value, value) && isEqual(item.zone, zone)) {
+          return {
+            zone: item.zone.map((point) => ({ x: point.x + x / imageWidth, y: point.y + y / imageHeight })),
+            value,
+          }
+        }
+        return item
+      })
+    )
   }
 
   const _onDragLayerEnd = (event) => {
@@ -278,18 +279,20 @@ const ImageContainer = ({
           attrsY: event.target.attrs.y / imageHeight || 0,
         }
 
-    const annotationToAdd = {
-      zone: chunk(points, 2).map((point) => ({
-        x: (point[0] / imageWidth) * scaleX + attrsX,
-        y: (point[1] / imageHeight) * scaleY + attrsY,
-      })),
-      value,
-    }
-
-    onAnnotationChange([
-      ...annotations.filter((v) => !(isEqual(v.value, value) && isEqual(v.zone, zone))),
-      annotationToAdd,
-    ])
+    onAnnotationChange(
+      annotations.map((item) => {
+        if (isEqual(item.value, value) && isEqual(item.zone, zone)) {
+          return {
+            zone: chunk(points, 2).map((point) => ({
+              x: (point[0] / imageWidth) * scaleX + attrsX,
+              y: (point[1] / imageHeight) * scaleY + attrsY,
+            })),
+            value,
+          }
+        }
+        return item
+      })
+    )
   }
 
   const _onLayerWheel = (event) => {

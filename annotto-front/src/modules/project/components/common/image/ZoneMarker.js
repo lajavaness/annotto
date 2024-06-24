@@ -108,7 +108,7 @@ const ZoneMarker = ({
   return (
     <Group
       name="zoneMarker"
-      draggable={isSelected && !isPrediction}
+      draggable={isSelected && !isPrefill}
       onMouseEnter={_onMouseEnter}
       onMouseLeave={_onMouseLeave}
       onDragEnd={onDragEnd}
@@ -148,7 +148,7 @@ const ZoneMarker = ({
             stroke={task.color}
             points={points}
             {...styleZoom()}
-            onDblClick={!isPrediction && onSelectClick}
+            onDblClick={!isPrefill && onSelectClick}
             onTransformEnd={onTransformEnd}
           />
         )}
