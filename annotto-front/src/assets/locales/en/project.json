@@ -101,7 +101,7 @@
       "relations": "Relations",
       "char": "Character",
       "word": "Word",
-			"space": "Space"
+      "escape": "Escape"
     },
     "textAnnotation": {
       "placeholder": "Add text to annotate"

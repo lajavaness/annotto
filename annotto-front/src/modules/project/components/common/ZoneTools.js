@@ -145,7 +145,7 @@ const ZoneTools = ({
           <Button onClick={onChange(null, data)} value="small">
             <Space>
               {t(`project:annotation.labeling.resetSections`)}
-              <Hotkey isSelected={!selected?.value} label={t(`project:annotation.labeling.space`)} />
+              <Hotkey isSelected={!selected?.value} label={t(`project:annotation.labeling.escape`)} />
             </Space>
           </Button>
         </Styled.TitleContainer>
