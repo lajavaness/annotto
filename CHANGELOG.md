@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/lajavaness/annotto/compare/v1.7.0...v1.8.0) (2024-06-24)
+
+
+### Features
+
+* Add edit zone ([#60](https://github.com/lajavaness/annotto/issues/60)) ([deeef68](https://github.com/lajavaness/annotto/commit/deeef686e03c7e7c88b890e3ff217ec7fb0f1e53))
+
 # [1.7.0](https://github.com/lajavaness/annotto/compare/v1.6.3...v1.7.0) (2024-06-17)
 
 
