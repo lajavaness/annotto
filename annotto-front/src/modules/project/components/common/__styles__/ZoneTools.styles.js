@@ -24,6 +24,10 @@ export const TitleContainer = styled(Space)`
   margin-bottom: 4px;
   display: flex;
   justify-content: space-between;
+  kbd {
+    width: auto;
+    padding: 0 4px;
+  }
 `
 
 export const RadioGroupSection = styled(RadioGroup)`

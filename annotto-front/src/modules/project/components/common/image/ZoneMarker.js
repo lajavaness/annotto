@@ -4,6 +4,8 @@ import { useRef, useState, useEffect } from 'react'
 import { Group, Image, Line, Text, Transformer, Tag, Label } from 'react-konva'
 import useImage from 'use-image'
 
+import AnchorPoint from 'modules/project/components/common/image/AnchorPoint'
+
 const ZoneMarker = ({
   index,
   task,
@@ -24,6 +26,7 @@ const ZoneMarker = ({
   const transformerRef = useRef()
 
   const [isHovered, setIsHovered] = useState(false)
+  const [transPoints, setTransPoints] = useState([])
 
   const [tagIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/tag.svg`)
   const [patternIcon] = useImage(`${process.env.PUBLIC_URL}/static/images/pattern.svg`)
@@ -35,6 +38,13 @@ const ZoneMarker = ({
 
   const points = flatten(zone.map(({ x, y }) => [x * imageWidth, y * imageHeight]))
 
+  const isRectangle =
+    zone.length === 4 &&
+    zone[0].x === zone[3].x &&
+    zone[1].x === zone[2].x &&
+    zone[0].y === zone[1].y &&
+    zone[2].y === zone[3].y
+
   const findTopRightPoint = () =>
     zone.reduce((acc, point) => (point.x + acc.y > acc.x + point.y ? point : acc), zone[0])
 
@@ -42,7 +52,7 @@ const ZoneMarker = ({
 
   const styleZoom = () => {
     switch (true) {
-      case isHovered:
+      case isHovered || isSelected:
         return { fill: task?.color, opacity: 0.3 }
       case isPrediction:
         return { fillPatternImage: patternIcon, opacity: 0.5, dash: [4, 4] }
@@ -55,7 +65,7 @@ const ZoneMarker = ({
   }
 
   useEffect(() => {
-    if (isSelected && transformerRef.current && lineRef.current) {
+    if (isSelected && transformerRef.current && lineRef.current && isRectangle) {
       transformerRef.current.nodes([lineRef.current])
       transformerRef.current.getLayer().batchDraw()
     }
@@ -65,8 +75,44 @@ const ZoneMarker = ({
 
   const _onMouseLeave = () => setIsHovered(false)
 
+  const _onEditAnchorMove = (i) => (e) => {
+    setTransPoints(
+      points.map((value, subIndex) => {
+        if (subIndex === 2 * i) {
+          return e.target.attrs.x
+        }
+        if (subIndex === 2 * i + 1) {
+          return e.target.attrs.y
+        }
+        return value
+      })
+    )
+  }
+
+  const _onEditAnchorEnd = (i) => (e) => {
+    setTransPoints([])
+    onTransformEnd(
+      e,
+      points.map((value, subIndex) => {
+        if (subIndex === 2 * i) {
+          return e.target.attrs.x
+        }
+        if (subIndex === 2 * i + 1) {
+          return e.target.attrs.y
+        }
+        return value
+      })
+    )
+  }
+
   return (
-    <Group draggable={!isPrediction} onMouseEnter={_onMouseEnter} onMouseLeave={_onMouseLeave} onDragEnd={onDragEnd}>
+    <Group
+      name="zoneMarker"
+      draggable={isSelected}
+      onMouseEnter={_onMouseEnter}
+      onMouseLeave={_onMouseLeave}
+      onDragEnd={onDragEnd}
+    >
       <Group position="relative">
         {isPrediction && (
           <Image
@@ -94,16 +140,19 @@ const ZoneMarker = ({
             </Label>
           </Group>
         )}
-        <Line
-          closed
-          name={`zoom_${index}`}
-          ref={lineRef}
-          stroke={task.color}
-          points={points}
-          {...styleZoom()}
-          onClick={false && onSelectClick}
-          onTransformEnd={onTransformEnd}
-        />
+        {transPoints.length === 0 && (
+          <Line
+            closed
+            name={`zoom_${index}`}
+            ref={lineRef}
+            stroke={task.color}
+            points={points}
+            {...styleZoom()}
+            onDblClick={!isPrefill && !isPrediction && onSelectClick}
+            onTransformEnd={onTransformEnd}
+          />
+        )}
+        <Line closed name={`zoom_${index}_transform`} stroke={task.color} points={transPoints} {...styleZoom()} />
       </Group>
       {isHovered && (
         <Image
@@ -125,7 +174,23 @@ const ZoneMarker = ({
           onClick={isPrediction && !isPrefill ? onValidateClick : onDeleteClick}
         />
       )}
-      {isSelected && <Transformer ref={transformerRef} flipEnabled={false} />}
+      {isSelected &&
+        (isRectangle ? (
+          <Transformer rotateEnabled={false} flipEnabled={false} ref={transformerRef} />
+        ) : (
+          zone.map((point, i) => (
+            <AnchorPoint
+              key={i}
+              scale={scale}
+              point={point}
+              color={task?.color}
+              imageWidth={imageWidth}
+              imageHeight={imageHeight}
+              onDragMove={_onEditAnchorMove(i)}
+              onDragEnd={_onEditAnchorEnd(i)}
+            />
+          ))
+        ))}
     </Group>
   )
 }

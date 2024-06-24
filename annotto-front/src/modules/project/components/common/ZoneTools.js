@@ -1,9 +1,9 @@
 import { GlobalHotKeys } from 'react-hotkeys'
-import { Button, Typography } from 'antd'
+import { Button, Space, Typography } from 'antd'
 import { isEmpty, isNil } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 
 import { CHAR, FOUR_POINTS, POLYGON, TWO_POINTS, WORD, nerMarkerTypes, zoneMarkerTypes } from 'shared/enums/markerTypes'
 
@@ -37,6 +37,21 @@ const ZoneTools = ({
         : [],
     [entitiesRelationsGroup]
   )
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if ([27, 32].includes(event.keyCode)) {
+        event.preventDefault()
+        onSelectionChange()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
 
   const resolveContentMode = useCallback(
     (type) =>
@@ -128,7 +143,10 @@ const ZoneTools = ({
         <Styled.TitleContainer align="baseline">
           <Typography.Title level={5}>{title}</Typography.Title>
           <Button onClick={onChange(null, data)} value="small">
-            {t(`project:annotation.labeling.resetSections`)}
+            <Space>
+              {t(`project:annotation.labeling.resetSections`)}
+              <Hotkey isSelected={!selected?.value} label={t(`project:annotation.labeling.escape`)} />
+            </Space>
           </Button>
         </Styled.TitleContainer>
         <Styled.RadioGroupSection value={selected?.value} onChange={onChange(null, data)}>
