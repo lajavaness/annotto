@@ -52,7 +52,7 @@ const ZoneMarker = ({
 
   const styleZoom = () => {
     switch (true) {
-      case isHovered:
+      case isHovered || isSelected:
         return { fill: task?.color, opacity: 0.3 }
       case isPrediction:
         return { fillPatternImage: patternIcon, opacity: 0.5, dash: [4, 4] }
@@ -108,7 +108,7 @@ const ZoneMarker = ({
   return (
     <Group
       name="zoneMarker"
-      draggable={isSelected && !isPrefill}
+      draggable={isSelected}
       onMouseEnter={_onMouseEnter}
       onMouseLeave={_onMouseLeave}
       onDragEnd={onDragEnd}
@@ -148,7 +148,7 @@ const ZoneMarker = ({
             stroke={task.color}
             points={points}
             {...styleZoom()}
-            onDblClick={!isPrefill && onSelectClick}
+            onDblClick={!isPrefill && !isPrediction && onSelectClick}
             onTransformEnd={onTransformEnd}
           />
         )}

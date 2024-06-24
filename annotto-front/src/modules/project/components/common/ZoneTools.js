@@ -40,7 +40,7 @@ const ZoneTools = ({
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.keyCode === 32) {
+      if ([27, 32].includes(event.keyCode)) {
         event.preventDefault()
         onSelectionChange()
       }
