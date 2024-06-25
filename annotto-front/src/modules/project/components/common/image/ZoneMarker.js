@@ -148,7 +148,7 @@ const ZoneMarker = ({
             stroke={task.color}
             points={points}
             {...styleZoom()}
-            onDblClick={!isPrefill && !isPrediction && onSelectClick}
+            onDblClick={!isPrediction && onSelectClick}
             onTransformEnd={onTransformEnd}
           />
         )}
