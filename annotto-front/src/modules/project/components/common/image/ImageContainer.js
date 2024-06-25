@@ -111,9 +111,11 @@ const ImageContainer = ({
   }
 
   const _onValidateClick = (index) => () => {
-    if (!isEmpty(annotations) && !!onAnnotationChange) {
-      onAnnotationChange([...annotations, predictions.filter(({ zone }) => !!zone)?.[index]])
-    }
+    onAnnotationChange(
+      !isEmpty(annotations)
+        ? [...annotations, predictions.filter(({ zone }) => !!zone)?.[index]]
+        : [predictions.filter(({ zone }) => !!zone)?.[index]]
+    )
   }
 
   const _handleMouseDown = (event) => {
