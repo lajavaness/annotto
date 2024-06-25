@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/lajavaness/annotto/compare/v1.8.0...v1.8.1) (2024-06-25)
+
+
+### Bug Fixes
+
+* **front:** Fix input space when textarea ([#61](https://github.com/lajavaness/annotto/issues/61)) ([a269a9b](https://github.com/lajavaness/annotto/commit/a269a9bbce6c861b579107d21c6fc49b3d6dcd91))
+
 # [1.8.0](https://github.com/lajavaness/annotto/compare/v1.7.0...v1.8.0) (2024-06-24)
 
 
