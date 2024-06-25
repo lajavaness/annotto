@@ -15,9 +15,9 @@ const useZoomImage = (observedDiv, stage, status, imageWidth, imageHeight, moveL
 
   useOnceCall(
     () => {
-      stage.height(imageHeight * (observedDiv.offsetWidth / imageWidth))
+      stage.height(imageHeight * (observedDiv.offsetWidth / imageWidth), status)
     },
-    imageWidth && observedDiv && imageHeight,
+    imageWidth && observedDiv && imageHeight && status === 'loaded',
     status === 'loading'
   )
 
