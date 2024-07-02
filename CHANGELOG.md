@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/lajavaness/annotto/compare/v1.8.1...v1.8.2) (2024-07-02)
+
+
+### Bug Fixes
+
+* Set rate limit window to 1min ([#63](https://github.com/lajavaness/annotto/issues/63)) ([cb2526e](https://github.com/lajavaness/annotto/commit/cb2526e23d269ef4064927ba50399cb3f1af083b))
+
 ## [1.8.1](https://github.com/lajavaness/annotto/compare/v1.8.0...v1.8.1) (2024-06-25)
 
 
