@@ -208,13 +208,13 @@ export const getClient = async (clientName: string, { _user }: { _user: User }) 
 }
 
 export const saveProject = async (project: ProjectDocument, user: User) => {
-  // if (project.s3) {
-  //   project.s3 = {
-  //     accessKeyId: encrypt(project.s3.accessKeyId),
-  //     secretAccessKey: encrypt(project.s3.secretAccessKey),
-  //     region: project.s3.region,
-  //   }
-  // }
+  if (project.s3) {
+    project.s3 = {
+      accessKeyId: encrypt(project.s3.accessKeyId),
+      secretAccessKey: encrypt(project.s3.secretAccessKey),
+      region: project.s3.region,
+    }
+  }
 
   await project.save({ _user: user } as mongoose.SaveOptions)
   await logProject(project)
