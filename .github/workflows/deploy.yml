@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18 ]
+        node-version: [18]
       fail-fast: true
     steps:
       - uses: actions/checkout@v3
@@ -23,20 +23,20 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
       - name: Start environment to tests
-        run: docker-compose up -d
+        run: docker compose up -d
       - name: Install dependencies
         run: yarn install
       - name: Run unit tests
         run: yarn test:ci
       - name: Stop containers
         if: always()
-        run: docker-compose down
+        run: docker compose down
 
   integration-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18 ]
+        node-version: [18]
       fail-fast: true
     steps:
       - uses: actions/checkout@v3
@@ -47,14 +47,14 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
       - name: Start environment to tests
-        run: docker-compose up -d
+        run: docker compose up -d
       - name: Install dependencies
         run: yarn install
       - name: Run unit tests
         run: yarn test:int:ci
       - name: Stop containers
         if: always()
-        run: docker-compose down
+        run: docker compose down
 
   semantic-release:
     runs-on: ubuntu-latest
@@ -93,7 +93,7 @@ jobs:
       - semantic-release
     strategy:
       matrix:
-        node-version: [ 18 ]
+        node-version: [18]
     permissions:
       contents: read
       packages: write
@@ -135,7 +135,7 @@ jobs:
       - semantic-release
     strategy:
       matrix:
-        node-version: [ 18 ]
+        node-version: [18]
     permissions:
       contents: read
       packages: write
@@ -180,7 +180,7 @@ jobs:
       - semantic-release
     strategy:
       matrix:
-        node-version: [ 18]
+        node-version: [18]
     permissions:
       contents: read
       packages: write
