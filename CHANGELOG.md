@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/lajavaness/annotto/compare/v1.8.2...v1.8.3) (2024-12-18)
+
+
+### Bug Fixes
+
+* Encrypt s3 creds on project update ([#64](https://github.com/lajavaness/annotto/issues/64)) ([61bed77](https://github.com/lajavaness/annotto/commit/61bed770a1338830005f456c652e8767e06e395b))
+
 ## [1.8.2](https://github.com/lajavaness/annotto/compare/v1.8.1...v1.8.2) (2024-07-02)
 
 
